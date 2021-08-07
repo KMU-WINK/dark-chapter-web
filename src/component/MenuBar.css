@@ -1,0 +1,35 @@
+button {
+    border: none;
+    background: none;
+}
+.menuBarButtonDiv {
+    position: absolute;
+    top: 52px;
+    left: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.menuBtn {
+    width: 24px;
+    height: 24px;
+}
+.menuComponent {
+    background: #f3f3ed;
+    padding : 134px 0 0 32px;
+    position: relative;
+    text-align: left;
+}
+.menuComponent h2 {
+    color: #2c2c38;
+    margin-bottom: 30px;
+}
+.menuTitle {
+    color: #bdbdbd;
+    font-size: 12px;
+}
+.appLockNotice {
+    font-size: 11px;
+    color: #bdbdbd;
+    margin-left: 43px;
+}
