@@ -11,10 +11,46 @@ import logout from '../static/payout.png'
 
 function MenuBar () {
     const [visible,setVisible] = useState(false);
-
+    const [alert, setAlert] = useState(true);
+    const [appLock, setAppLock] = useState(true);
     const showMenuList = () =>{
         return setVisible(!visible)
     }
+    const ChangeAlarmSetting = () =>{
+        setAlert(!alert)
+        if (alert) {
+            document.querySelector('.alertToggleBtn').style.left = '16px'
+            document.querySelector('.alertToggleBackground').style.background = '#bdbdbd'
+        }else {
+            document.querySelector('.alertToggleBtn').style.left = '0'
+            document.querySelector('.alertToggleBackground').style.background = '#43BC48'
+        }
+    }
+    const changeLockSetting =() =>{
+        setAppLock(!appLock)
+        if (appLock) {
+            document.querySelector('.lockToggleBtn').style.left = '16px'
+            document.querySelector('.lockToggleBackground').style.background = '#bdbdbd'
+        }else {
+            document.querySelector('.lockToggleBtn').style.left = '0'
+            document.querySelector('.lockToggleBackground').style.background = '#43BC48'
+        }
+    }
+
+    // const [aniValue, setAniValue] = useState(new Animated.Value(0));
+    // const color = isOn ? onColor : offColor;
+    //
+    // const moveSwitchToggle = aniValue.interpolate({
+    //     inputRange: [0, 1],
+    //     outputRange: [0, 20],
+    // });
+    //
+    // Animated.timing(aniValue, {
+    //     toValue: isOn ? 1 : 0,
+    //     duration: 200,
+    //     easing: Easing.linear,
+    //     useNativeDriver: true,
+    // }).start();
     return(
         visible ?
             <div className='menuComponent'>
@@ -22,49 +58,61 @@ function MenuBar () {
                     <img src={arrowBack} alt="menuCloseBtn" className='menuBtn'/>
                 </button>
                 <h2>Menu</h2>
-                <div className='myAccount'>
+                <div className='menuElement'>
                     <p className='menuTitle'>My Account</p>
                     <div>
                         <button>
-                            <img src={userIcon} alt=""/>
+                            <img src={userIcon} alt="" className='menuComponentIcon'/>
                             <p>비밀번호 변경</p>
                         </button>
                     </div>
-                    <div>
+                    <div className='menuElement'>
                         <button>
-                            <img src={userIcon} alt=""/>
+                            <img src={userIcon} alt="" className='menuComponentIcon'/>
                             <p>닉네임 변경</p>
                         </button>
                     </div>
                 </div>
-                <div>
+                <div className='menuElement'>
                     <p className='menuTitle'>App setting</p>
-                    <div>
-                        <img src={bell} alt=""/>
-                        <p>알람설정 ON</p>
+                    <div className='menuToggleElement'>
+                        <img src={bell} alt="" className='menuComponentIcon'/>
+                        <p>{alert?'알림설정 ON':'알림설정 OFF'}</p>
+                        <div className='toggle'>
+                            <button onClick={ChangeAlarmSetting}>
+                                <div className={'toggleBackground'+' alertToggleBackground'}/>
+                                <div className={'toggleBtn' + ' alertToggleBtn'}/>
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <img src={lockIcon} alt=""/>
-                        <p>앱 잠금 OFF</p>
+                    <div className='menuToggleElement'>
+                        <img src={lockIcon} alt="" className='menuComponentIcon'/>
+                        <p>{appLock?'앱 잠금 ON':'앱 잠금 OFF'}</p>
+                        <div className='toggle'>
+                            <button onClick={changeLockSetting}>
+                                <div className={'toggleBackground' + ' lockToggleBackground'}/>
+                                <div className={'toggleBtn' + ' lockToggleBtn'}/>
+                            </button>
+                        </div>
                     </div>
                     <p className='appLockNotice'>비밀번호 분실시 찾기 어려워요ㅠ</p>
                 </div>
-                <div>
+                <div className='menuElement'>
                     <p className='menuTitle'>Information</p>
-                    <div>
-                        <img src={versionIcon} alt=""/>
+                    <div className='versionSection'>
+                        <img src={versionIcon} alt="" className='menuComponentIcon'/>
                         <p>version</p>
-                        <p>1.0v</p>
+                        <p style={{color : '#bdbdbd',fontSize : '11px',position:'absolute',right:'40px'}}>1.0v</p>
                     </div>
                     <div>
                         <button>
-                            <img src={shield} alt=""/>
+                            <img src={shield} alt="" style={{width : '13px',height :'16px',marginRight : '27px'}}/>
                             <p>개인정보 정책</p>
                         </button>
                     </div>
                 </div>
-                <button>
-                    <img src={logout} alt=""/>
+                <button className='logoutBtn'>
+                    <img src={logout} alt="" className='menuComponentIcon'/>
                     <p>Logout</p>
                 </button>
             </div>

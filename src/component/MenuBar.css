@@ -1,6 +1,14 @@
 button {
     border: none;
     background: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+p {
+    margin: 0;
 }
 .menuBarButtonDiv {
     position: absolute;
@@ -19,6 +27,7 @@ button {
     padding : 134px 0 0 32px;
     position: relative;
     text-align: left;
+    height: 100vh;
 }
 .menuComponent h2 {
     color: #2c2c38;
@@ -27,9 +36,56 @@ button {
 .menuTitle {
     color: #bdbdbd;
     font-size: 12px;
+    margin-bottom: 12px;
+}
+.menuComponentIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 24px;
+}
+.menuElement {
+    margin-bottom: 40px;
+}
+.menuElement div {
+    margin-bottom: 18px;
+}
+.menuToggleElement {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.toggle {
+    position: absolute;
+    margin-bottom: 0;
+    right: 40px;
+}
+.toggleBtn {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(25 ,30 ,36, 0.15);
+    margin-bottom: 0 !important;
+    left: 0;
+    -webkit-transform: left 0.5s;
+    transition: left 0.5s;
+    position: absolute;
+}
+.toggleBackground {
+    width: 36px;
+    height: 16px;
+    border-radius: 10px;
+    background: #43BC48;
+    margin-bottom: 0 !important;
 }
 .appLockNotice {
     font-size: 11px;
     color: #bdbdbd;
     margin-left: 43px;
+}
+.versionSection {
+    display: flex;
+    align-items: center;
+}
+.logoutBtn {
 }
