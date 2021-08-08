@@ -78,6 +78,25 @@ p {
     background: #43BC48;
     margin-bottom: 0 !important;
 }
+.lockToggleBackground {
+    width: 36px;
+    height: 16px;
+    border-radius: 10px;
+    margin-bottom: 0 !important;
+    background: #bdbdbd;
+}
+.lockToggleBtn {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(25 ,30 ,36, 0.15);
+    margin-bottom: 0 !important;
+    left: 16px;
+    -webkit-transform: left 0.5s;
+    transition: left 0.5s;
+    position: absolute;
+}
 .appLockNotice {
     font-size: 11px;
     color: #bdbdbd;

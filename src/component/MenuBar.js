@@ -12,7 +12,7 @@ import logout from '../static/payout.png'
 function MenuBar () {
     const [visible,setVisible] = useState(false);
     const [alert, setAlert] = useState(true);
-    const [appLock, setAppLock] = useState(true);
+    const [appLock, setAppLock] = useState(false);
     const showMenuList = () =>{
         return setVisible(!visible)
     }
@@ -28,13 +28,6 @@ function MenuBar () {
     }
     const changeLockSetting =() =>{
         setAppLock(!appLock)
-        if (appLock) {
-            document.querySelector('.lockToggleBtn').style.left = '16px'
-            document.querySelector('.lockToggleBackground').style.background = '#bdbdbd'
-        }else {
-            document.querySelector('.lockToggleBtn').style.left = '0'
-            document.querySelector('.lockToggleBackground').style.background = '#43BC48'
-        }
     }
 
     // const [aniValue, setAniValue] = useState(new Animated.Value(0));
@@ -90,8 +83,8 @@ function MenuBar () {
                         <p>{appLock?'앱 잠금 ON':'앱 잠금 OFF'}</p>
                         <div className='toggle'>
                             <button onClick={changeLockSetting}>
-                                <div className={'toggleBackground' + ' lockToggleBackground'}/>
-                                <div className={'toggleBtn' + ' lockToggleBtn'}/>
+                                <div className={appLock?'toggleBackground':'lockToggleBackground'}/>
+                                <div className={appLock?'toggleBtn':'lockToggleBtn'}/>
                             </button>
                         </div>
                     </div>
