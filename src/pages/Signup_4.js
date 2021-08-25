@@ -25,7 +25,7 @@ function Signup_4(){
 
     return(
         <Container color={config.BACKGROUND_COLOR}>
-            <GoBackBtn/>
+            <GoBackBtn previousPage="/signup/password"/>
             <SignupText title = "별명설정" description = "사용하실 별명을 입력해주세요."/>
             <NicknameInput
                 setIsActive={setIsActive}

@@ -7,7 +7,10 @@ import EmailInput from "../component/input/EmailInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
-function ResetEmail(){
+import {useHistory} from "react-router-dom";
+
+function ResetPassword_1(){
+    const history = useHistory();
 
     const [isActive, setIsActive] = useState(false);
     const [email, setEmail] = useState("");
@@ -17,7 +20,10 @@ function ResetEmail(){
 
         // 서버 통신 후 잘못된 이메일일 경우
         if(email !== "aaa@aa.com") setMessage("이메일을 다시 확인해주세요.");
-        else setMessage("")
+        else {
+            setMessage("")
+            history.push('/resetPassword/pwd')
+        }
 
 
     }
@@ -98,4 +104,4 @@ color: #FFFFFF;
 
 `
 
-export default ResetEmail
+export default ResetPassword_1

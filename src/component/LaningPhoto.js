@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import React, { useState } from 'react';
+import {
+    Link
+} from "react-router-dom";
 import * as config from '../config'
 
 function LandingPhoto(){
     return(
         <PhotoArea>
-            {/*<A></A>*/}
             <Div>
                 비록, 흑역사일지라도 <br/>
                 괜찮아요.
             </Div>
-            <Button>흑역사 극복하러가기</Button>
+            <Link to='/signup'>
+                <Button>흑역사 극복하러가기</Button>
+            </Link>
 
         </PhotoArea>
     )

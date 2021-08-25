@@ -3,10 +3,17 @@ import styled from "styled-components";
 import React from "react";
 import goBackBtn from "../../svg/goBackBtn.svg"
 
-function GoBackBtn(){
+import {useHistory} from "react-router-dom";
+
+function GoBackBtn(props){
+    const history = useHistory();
+
+    console.log(props)
     return(
         <>
-            <BackIcon onClick={()=>console.log('click')}/>
+            <BackIcon onClick={() =>{
+                history.push(props.previousPage)
+            }}/>
         </>
     )
 }
