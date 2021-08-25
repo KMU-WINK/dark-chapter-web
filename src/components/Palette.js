@@ -195,8 +195,7 @@ const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
   background-size: contain;
-
-  //background-image: url(../img/background.png);
+  //background: #f2f2ec;
 `
 
 const Header = styled.div`
@@ -276,10 +275,6 @@ const InitCircle = styled.div`
   text-align : center;
 `
 
-const InitText = styled.div`
-  
-`
-
 const Circle = styled.div`
   position: absolute;
   width: 240px;
@@ -309,17 +304,11 @@ const ColorResult = styled.div`
 
 const CircleResult = styled.div`
   border-radius: 50%;
-  //position: absolute;
-  //left: 0%;
-  //right: 92.53%;
-  //top: 100%;
-  //bottom: -100%;
   width : 13px;
   height : 13px;
   margin-left : 2.5px;
   margin-right : 2.5px;
   background : ${props=>resultColor[props.idx]}
-
 `
 
 const ResultButton = styled.button`
@@ -330,14 +319,8 @@ const ResultButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0px 1px;
-
-  //position: absolute;
   width: 46px;
   height: 35px;
-  //left: 298px;
-  //top: 521px;
-  /* Pretendard/Button 2 [14px] */
-
   font-family: Pretendard;
   font-style: normal;
   font-weight: normal;
