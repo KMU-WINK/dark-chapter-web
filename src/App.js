@@ -6,17 +6,19 @@ import {Palette} from "./components/Palette";
 import {
     AppLock
 } from './pages';
+import Sympathy from "./pages/Sympathy";
+import Progress from "./pages/Progress";
 
 function App() {
-  return (
-    <div className="App">
-      <Menu/>
-      <Palette/>
+  return <>
+      {/*<Menu/>*/}
+      {/*  <Palette/>*/}
+        <Sympathy/>
+      <Progress/>
       <Router>
           <Route path = '/appLock' component={AppLock}/>
       </Router>
-    </div>
-  );
+  </>
 }
 
 export default App;
