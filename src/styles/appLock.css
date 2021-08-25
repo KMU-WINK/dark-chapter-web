@@ -1,0 +1,56 @@
+.root {
+    background: #F3F3ED;
+    min-height: 100vh;
+    padding: 139px 0 0 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+}
+.appLockTitle {
+    font-size: 18px;
+    width: 100%;
+    color: rgba(44, 44, 56, 1);
+}
+.lockNotice {
+    color: rgba(220, 220, 220, 1);
+    font-size: 12px;
+}
+.passwordSection {
+    margin: 80px 0 0 5%;
+    display: flex;
+    flex-direction: row;
+    gap : 16px;
+    position: relative;
+}
+.passwordCircle {
+    width: 56px;
+    height: 56px;
+    background: rgba(130,130,130,.2);
+    border-radius: 28px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.passwordFill {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    color : rgba(18, 18, 29, 1);
+    border-radius: 28px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#password {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background : rgba(0,0,0,0);
+    color: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+}
