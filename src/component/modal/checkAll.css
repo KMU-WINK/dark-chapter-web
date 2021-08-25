@@ -1,0 +1,54 @@
+/*input[type="checkbox"]+label {*/
+/*    display: block;*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    background: url('../../svg/mail.svg') no-repeat 0 0px / contain;*/
+/*}*/
+
+/*input[type='checkbox']:checked+label {*/
+/*    background: url('../../svg/check_all.svg') no-repeat 0 1px / contain;*/
+/*}*/
+
+/*input[type="checkbox"] {*/
+/*    display: none;*/
+/*}*/
+
+
+/*input[type=checkbox] { display:none; }*/
+
+/*input[type=checkbox] + label {*/
+
+/*    display: inline-block;*/
+
+/*    cursor: pointer;*/
+
+/*    line-height: 22px;*/
+
+/*    padding-left: 22px;*/
+
+/*    background: url('../svg/not_check_all.svg')*/
+/*    left/22px no-repeat;*/
+
+/*}*/
+
+/*input[type=checkbox]:checked + label {*/
+/*    background-image: url('../svg/check_all.svg');*/
+/*}*/
+
+.ccheck input[type="checkbox"] {
+    display:none;
+}
+
+.ccheck label{
+
+}
+
+.ccheck input[type="checkbox"] + label{
+    padding:0 0 0 30px;
+    height:20px;
+    background:url("../../svg/not_check_all.svg")no-repeat;
+
+}
+.ccheck input[type="checkbox"]:checked + label{
+    background:url("../../svg/check_all.svg")no-repeat;
+}
