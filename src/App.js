@@ -20,16 +20,12 @@ import ResetPassword_1 from "./pages/ResetPassword_1";
 import ResetPassword_2 from "./pages/ResetPassword_2";
 import ResetNickname_2 from "./pages/ResetNickname_2";
 import ResetNickname_1 from "./pages/ResetNickname_1";
+import Sympathy from "./pages/Sympathy";
+import Progress from "./pages/Progress";
 
 function App() {
   return (
-    <div>
-      {/*<Menu/>*/}
-      {/*<Palette/>*/}
-      {/*<Landing_1/>*/}
-
-      {/*<ResetNickname_1/>*/}
-
+    <>
       <Router>
           <Switch>
               <Route exact path="/" component={Landing_1}></Route>
@@ -45,8 +41,7 @@ function App() {
           </Switch>
           {/*<Route path = '/appLock' component={AppLock}/>*/}
       </Router>
-    </div>
-  );
+  </>
 }
 
 export default App;
