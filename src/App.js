@@ -9,35 +9,36 @@ import {
 import Menu from './component/MenuBar';
 import {Palette} from "./components/Palette";
 import {
-    AppLock
+    Landing_1,
+    Login_1,
+    Signup_1,
+    Signup_2,
+    Signup_4,
+    ResetPassword_1,
+    ResetPassword_2,
+    ResetNickname_1,
+    ResetNickname_2,
+    Sympathy,
+    Progress,
+    AppLock,
+    PostPage,
 } from './pages';
-import Landing_1 from "./pages/Landing_1";
-import Signup_1 from "./pages/Signup_1";
-import Login_1 from "./pages/Login_1";
-import Signup_2 from "./pages/Signup_2";
-import Signup_4 from "./pages/Signup_4";
-import ResetPassword_1 from "./pages/ResetPassword_1";
-import ResetPassword_2 from "./pages/ResetPassword_2";
-import ResetNickname_2 from "./pages/ResetNickname_2";
-import ResetNickname_1 from "./pages/ResetNickname_1";
-import Sympathy from "./pages/Sympathy";
-import Progress from "./pages/Progress";
 
 function App() {
   return (
     <>
       <Router>
           <Switch>
-              <Route exact path="/" component={Landing_1}></Route>
-              <Route  path="/login" component={Login_1}></Route>
-              <Route exact path = "/signup" component={Signup_1}></Route>
-              <Route  path = "/signup/password" component={Signup_2}></Route>
-              <Route  path = "/signup/nickname" component={Signup_4}></Route>
+              <Route exact path="/" component={Landing_1}/>
+              <Route  path="/login" component={Login_1}/>
+              <Route exact path = "/signup" component={Signup_1}/>
+              <Route  path = "/signup/password" component={Signup_2}/>
+              <Route  path = "/signup/nickname" component={Signup_4}/>
 
-              <Route  exact path = "/resetPassword" component={ResetPassword_1}></Route>
-              <Route  path = "/resetPassword/pwd" component={ResetPassword_2}></Route>
-
-              <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}></Route>
+              <Route  exact path = "/resetPassword" component={ResetPassword_1}/>
+              <Route  path = "/resetPassword/pwd" component={ResetPassword_2}/>
+              <Route path="/post" component={PostPage}/>
+              <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
           </Switch>
           {/*<Route path = '/appLock' component={AppLock}/>*/}
       </Router>
