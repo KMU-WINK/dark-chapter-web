@@ -7,7 +7,7 @@ import NicknameInput from "../component/input/NicknameInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
-function ResetNickname(){
+function ResetNickname_2(){
     const [nickname,setNickname] = useState('');
 
     const [isActive, setIsActive] = useState(false);
@@ -58,4 +58,4 @@ const BtnWrap = styled.div`
 `
 
 
-export default ResetNickname
+export default ResetNickname_2

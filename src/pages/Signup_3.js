@@ -6,7 +6,11 @@ import CheckAll from "../component/modal/CheckAll";
 import CheckOne from "../component/modal/CheckOne";
 import bi_x_active from "../svg/bi_x.svg";
 
+import {useHistory} from "react-router-dom";
+
 function Signup_3(props){
+    let history = useHistory();
+
     const [active, setActive] = useState(true);
     const [agreeAll, setAll] = useState(true);
     const [agreeService, setService] = useState(true);
@@ -74,7 +78,12 @@ function Signup_3(props){
                 {
                     active
                         ?
-                        <NextBtn>확인</NextBtn>
+                        <NextBtn
+                            onClick={() => {
+                                history.push('/signup/nickname')
+                            }
+                            }
+                        >확인</NextBtn>
                         :
                         <DisableNextBtn disabled>확인</DisableNextBtn>
                 }

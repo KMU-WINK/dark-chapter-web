@@ -1,16 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import Menu from './component/MenuBar';
 import {Palette} from "./components/Palette";
 import {
     AppLock
 } from './pages';
+import Landing_1 from "./pages/Landing_1";
+import Signup_1 from "./pages/Signup_1";
+import Login_1 from "./pages/Login_1";
+import Signup_2 from "./pages/Signup_2";
+import Signup_4 from "./pages/Signup_4";
+import ResetPassword_1 from "./pages/ResetPassword_1";
+import ResetPassword_2 from "./pages/ResetPassword_2";
+import ResetNickname_2 from "./pages/ResetNickname_2";
+import ResetNickname_1 from "./pages/ResetNickname_1";
+import Sympathy from "./pages/Sympathy";
+import Progress from "./pages/Progress";
 
 function App() {
   return (
-    <div className="App">
-          <Menu/>
+    <>
+      <Router>
           <Switch>
               <Route exact path="/" component={Landing_1}></Route>
               <Route  path="/login" component={Login_1}></Route>
@@ -24,7 +40,8 @@ function App() {
               <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}></Route>
           </Switch>
           {/*<Route path = '/appLock' component={AppLock}/>*/}
-  </div>)
+      </Router>
+  </>)
 }
 
 export default App;

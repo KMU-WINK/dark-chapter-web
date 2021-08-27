@@ -7,7 +7,7 @@ import PasswordInput from "../component/input/PasswordInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
-function ResetPwd(){
+function ResetPassword_2(){
 
     const [isActive, setIsActive] = useState(false)
 
@@ -98,4 +98,4 @@ const BtnWrap = styled.div`
     margin-top : 56px;
 `
 
-export default ResetPwd
+export default ResetPassword_2
