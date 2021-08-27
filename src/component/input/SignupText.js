@@ -20,7 +20,7 @@ function SignupText(props){
 
 const TitleBox = styled.div`
     width: 123px;
-    margin-top : 98px;
+    margin-top : 36px;
     margin-left : 30px;
 `
 const Title = styled.span`
