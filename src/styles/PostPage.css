@@ -1,8 +1,7 @@
 #root {
     background: #f3f3ed;
     width: 100%;
-    height: calc(100vh - 24px);
-    padding-top : 24px;
+    height: 100vh;
 }
 .Header {
     width: 100%;

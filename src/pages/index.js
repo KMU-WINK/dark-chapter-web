@@ -11,3 +11,4 @@ export { default as ResetNickname_2} from "./ResetNickname_2";
 export { default as Sympathy} from "./Sympathy";
 export { default as Progress} from "./Progress";
 export { default as PostPage} from "./PostPage";
+export { default as PostEmotionPage} from "./PostEmotionPage"
