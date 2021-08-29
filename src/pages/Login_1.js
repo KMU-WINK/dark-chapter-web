@@ -39,7 +39,7 @@ const Container = styled.div`
     background : ${props => props.color}
 `
 const BtnWrap = styled.div`
-    margin-top : 57px;
+    margin-top : 32px;
 `
 
 export default Login_1

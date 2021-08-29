@@ -10,19 +10,27 @@ function GoBackBtn(props){
 
     console.log(props)
     return(
-        <>
+        <Div>
             <BackIcon onClick={() =>{
                 history.push(props.previousPage)
             }}/>
-        </>
+        </Div>
     )
 }
+
+const Div = styled.div`
+    width : 100%;
+    height : 56px;
+    position : relative;
+`
 
 const BackIcon = styled.img.attrs({
     src : goBackBtn
 })`
-    margin-left:24px;
-    margin-top : 16px
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left : 24px
 `
 
 export default GoBackBtn

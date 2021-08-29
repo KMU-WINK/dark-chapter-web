@@ -96,11 +96,11 @@ const Container = styled.div`
 `
 
 const Div = styled.div`
-    margin-top : 50px;
+    margin-top : 88px;
 `
 
 const BtnWrap = styled.div`
-    margin-top : 56px;
+    margin-top : 32px;
 `
 
 
