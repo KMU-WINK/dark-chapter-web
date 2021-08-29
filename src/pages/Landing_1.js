@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 
-import LandingPhoto from "../component/LaningPhoto";
+import LandingPhoto from "../component/LaningModal";
 import Login_1 from "./Login_1";
 import Signup_1 from "./Signup_1";
 

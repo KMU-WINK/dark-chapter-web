@@ -160,7 +160,7 @@ function LoginInput(props){
 const Wrap = styled.div`
     width: 328px;
     margin : 0 auto;
-    margin-top : 62px;
+    margin-top : 88px;
 
 `
 
@@ -171,7 +171,7 @@ const InputBox = styled.div`
 `
 
 const PasswordBox = styled(InputBox)`
-    margin-top : 12px;
+    margin-top : 16px;
 `
 
 const InputEmail = styled.input.attrs({

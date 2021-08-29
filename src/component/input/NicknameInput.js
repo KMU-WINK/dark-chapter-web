@@ -67,7 +67,7 @@ function NicknameInput(props){
 const Container = styled.div`
     width: 328px;
     margin : 0 auto;
-    margin-top : 62px;
+    margin-top : 88px;
     position : relative;
 `
 

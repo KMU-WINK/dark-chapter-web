@@ -26,17 +26,15 @@ function Signup_1(){
             setMessage("올바른 이메일 형식이 아닙니다.");
 
         }
-        // else if (email !==  "BlackYeoksa@gmail.com"){
-        //     setMessage("가입 불가능한 이메일 입니다.")
-        //     console.log("2")
+            // else if (email !==  "BlackYeoksa@gmail.com"){
+            //     setMessage("가입 불가능한 이메일 입니다.")
+            //     console.log("2")
         // }
         else if (email === "cyh6099@naver.com") {
-            console.log("okok")
             history.push('/signup/password')
             // return <Redirect to='/signupPwd'/>
-
-
         }
+        else setMessage("이미 등록된 이메일 입니다.")
     }
 
     return(
@@ -53,10 +51,10 @@ function Signup_1(){
                 {isActive
                     ?
 
-                        <ActiveBtn
-                            text = "Next"
-                            check = {checkValidate}
-                        />
+                    <ActiveBtn
+                        text = "Next"
+                        check = {checkValidate}
+                    />
 
 
                     :

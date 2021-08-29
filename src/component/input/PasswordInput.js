@@ -46,74 +46,74 @@ function PasswordInput(props){
     return (
 
 
-            <PwdInputWrap>
-                <PasswordIcon/>
+        <PwdInputWrap>
+            <PasswordIcon/>
 
-                {
-                    (function () {
-                        if (isRevealPwd && isPwdActive){
-                            return (
-                                <InRevealActiveIcon
-                                    onClick={changePwdReveal}
-                                    active = {isPwdActive}
-                                />
-                            )
-                        }
-                        else if (isRevealPwd && !isPwdActive){
-                            return (
+            {
+                (function () {
+                    if (isRevealPwd && isPwdActive){
+                        return (
+                            <InRevealActiveIcon
+                                onClick={changePwdReveal}
+                                active = {isPwdActive}
+                            />
+                        )
+                    }
+                    else if (isRevealPwd && !isPwdActive){
+                        return (
 
-                                <InRevealInactiveIcon
-                                    onClick={changePwdReveal}
-                                    active = {isPwdActive}
-                                />
+                            <InRevealInactiveIcon
+                                onClick={changePwdReveal}
+                                active = {isPwdActive}
+                            />
 
-                            )
-                        }
-                        else if (!isRevealPwd && isPwdActive){
-                            return (
+                        )
+                    }
+                    else if (!isRevealPwd && isPwdActive){
+                        return (
 
-                                <RevealActiveIcon
-                                    onClick={changePwdReveal}
-                                    active = {isPwdActive}
-                                />
+                            <RevealActiveIcon
+                                onClick={changePwdReveal}
+                                active = {isPwdActive}
+                            />
 
-                            )
-                        }
-                        else if (!isRevealPwd && !isPwdActive){
-                            return (
+                        )
+                    }
+                    else if (!isRevealPwd && !isPwdActive){
+                        return (
 
-                                <RevealInactiveIcon
-                                    onClick={changePwdReveal}
-                                    active = {isPwdActive}
-                                />
+                            <RevealInactiveIcon
+                                onClick={changePwdReveal}
+                                active = {isPwdActive}
+                            />
 
-                            )
-                        }
-                    })()
-                }
+                        )
+                    }
+                })()
+            }
 
-                {isPwdActive
-                    ?<XIcon onClick={() => setPwd("")} />
-                    :<InactiveXIcon onClick={() => setPwd("")}/>
-                }
+            {isPwdActive
+                ?<XIcon onClick={() => setPwd("")} />
+                :<InactiveXIcon onClick={() => setPwd("")}/>
+            }
 
-                <InputPwd
-                    type={isRevealPwd ? "text" : "password"}
-                    value={pwd}
-                    onChange = {onChangePwd}
-                    active = {isPwdActive}
-                    color = {config.BACKGROUND_COLOR}
-                    active_color = {config.ACTIVE_COLOR}
-                    inactive_color = {config.INACTIVE_COLOR}
-                />
+            <InputPwd
+                type={isRevealPwd ? "text" : "password"}
+                value={pwd}
+                onChange = {onChangePwd}
+                active = {isPwdActive}
+                color = {config.BACKGROUND_COLOR}
+                active_color = {config.ACTIVE_COLOR}
+                inactive_color = {config.INACTIVE_COLOR}
+            />
 
-                {
-                    props.isValidateMsg
-                        ?null
-                        : <ErrorMessage message ={props.pwdMsg} />
-                }
+            {
+                props.isValidateMsg
+                    ?null
+                    : <ErrorMessage message ={props.pwdMsg} />
+            }
 
-            </PwdInputWrap>
+        </PwdInputWrap>
 
     )
 }
@@ -122,8 +122,7 @@ const PwdInputWrap = styled.div`
     width : 328px;
     height: 62px;
     position : relative;
-    margin: 0 auto;
-    margin-top : 12px
+    margin: 16px auto;
 `
 
 
