@@ -105,3 +105,31 @@
 .current {
     background: #000;
 }
+.emotionNotice {
+    position: absolute;
+    margin-top : 111px;
+    left: 50px;
+    color: #777;
+}
+.notCompleteNotice {
+    color: #777;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: opacity 1s;
+}
+.minusBtn {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 36px;
+    left: 7px;
+}
+.currentCnt {
+    position: absolute;
+    top: 55px;
+    left: 32px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}

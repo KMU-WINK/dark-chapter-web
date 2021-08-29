@@ -22,6 +22,7 @@ import {
     Progress,
     AppLock,
     PostPage,
+    PostEmotionPage,
 } from './pages';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route  exact path = "/resetPassword" component={ResetPassword_1}/>
               <Route  path = "/resetPassword/pwd" component={ResetPassword_2}/>
               <Route path="/post" component={PostPage}/>
+              <Route path="/postEmotion" component={PostEmotionPage}/>
               <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
           </Switch>
           {/*<Route path = '/appLock' component={AppLock}/>*/}
