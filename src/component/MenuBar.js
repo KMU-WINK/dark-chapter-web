@@ -8,8 +8,10 @@ import versionIcon from '../static/version.png'
 import shield from '../static/Vector.png'
 import bell from '../static/bell.png'
 import logout from '../static/payout.png'
+import {useHistory} from "react-router-dom";
 
 function MenuBar () {
+    const history = useHistory();
     const [visible,setVisible] = useState(false);
     const [alert, setAlert] = useState(true);
     const [appLock, setAppLock] = useState(false);
@@ -28,6 +30,7 @@ function MenuBar () {
     }
     const changeLockSetting =() =>{
         setAppLock(!appLock)
+        if (!appLock) history.push('/appLock')
     }
 
     // const [aniValue, setAniValue] = useState(new Animated.Value(0));
@@ -54,13 +57,13 @@ function MenuBar () {
                 <div className='menuElement'>
                     <p className='menuTitle'>My Account</p>
                     <div>
-                        <button>
+                        <button onClick={()=>{history.push('/resetPassword')}}>
                             <img src={userIcon} alt="" className='menuComponentIcon'/>
                             <p>비밀번호 변경</p>
                         </button>
                     </div>
                     <div className='menuElement'>
-                        <button>
+                        <button onClick={()=>{history.push('/resetNickname')}}>
                             <img src={userIcon} alt="" className='menuComponentIcon'/>
                             <p>닉네임 변경</p>
                         </button>

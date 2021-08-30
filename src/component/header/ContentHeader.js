@@ -3,6 +3,7 @@ import styled from "styled-components";
 import list from "../../svg/list.svg";
 import Modal from 'react-modal';
 import {useState} from "react";
+
 const customStyles = {
     content: {
         width : '316px',
@@ -27,15 +28,13 @@ const ContentHeader = (props) => {
 
     return <>
         <Header>
-            <GoBackBtn/>
+            <GoBackBtn back={props.back}/>
             <ListIcon onClick={openModal} textColor={props.textColor}/>
         </Header>
         <Modal
             isOpen={modalIsOpen}
-            // onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}
-            // contentLabel="Example Modal"
         >
             <Center>
                 <ModalBar/>

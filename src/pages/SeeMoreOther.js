@@ -3,13 +3,13 @@ import ContentHeader from "../component/header/ContentHeader";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import LogMoreContent from "../component/content/LogMoreContent";
 
-const SeeMoreContent = () => {
+const SeeMoreOther = () => {
     const backgroundColor = ["#d1d9de","#96a1b1","#2c2d39"]
     const tagColor = ["#EAEAEA","#EAEAEA","#ABABAF"]
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap background={backgroundColor[2]}>
-        <ContentHeader state={"share"} back={'/progress'}/>
+        <ContentHeader state={"share"}  previousPage={'/myLog'}/>
         <Wrap2>
             <PaletteCircle
                 width={120} height={120}
@@ -18,11 +18,11 @@ const SeeMoreContent = () => {
                 feeling={[20,10,20,50]}
             />
         </Wrap2>
-        <LogMoreContent status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
+        <LogMoreContent status={"OtherLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
     </Wrap>
 }
 
-export default SeeMoreContent;
+export default SeeMoreOther;
 
 const Wrap = styled.div`
   width: 100vw;

@@ -1,7 +1,9 @@
 import React,{ useState, useEffect } from "react";
 import '../styles/appLock.css'
+import {useHistory} from "react-router-dom";
 
 function AppLock (){
+    const history = useHistory();
     const [password, setPassword] = useState('')
     const [passwordComponent, setPasswordComponent] = useState([
         <div className='passwordCircle'> </div>,
@@ -11,7 +13,7 @@ function AppLock (){
     const [notice, setNotice] = useState('앱을 잠그기 위한 비밀번호를 입력해 주세요.')
     const inputNumber = ({target}) =>{
         setPassword(target.value)
-
+        if (password.length === 3) history.push('/home')
     }
     return(
         <div className='root'>

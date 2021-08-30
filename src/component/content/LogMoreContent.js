@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import LogTitle from "./LogTitle";
+import { Route, Link } from 'react-router-dom';
 
 const LogMoreContent = (props) => {
     return <Wrap textColor={props.textColor}>
@@ -13,7 +14,11 @@ const LogMoreContent = (props) => {
             <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
             <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
             <Wrap2>
-                <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>극복하기</OvercomeBtn>
+                {props.status === "MyLog"?
+                    <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>극복하기</OvercomeBtn>
+                    :
+                    <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                }
             </Wrap2>
         </TextBox>
     </Wrap>
@@ -26,7 +31,7 @@ const Wrap = styled.div`
   color : ${props=>props.textColor};
 `
 
-const TextBox = styled.div`
+const TextBox = styled.div` 
   font-family: Pretendard;
   font-style: normal;
   font-weight: normal;

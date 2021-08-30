@@ -31,7 +31,7 @@ function ResetPassword_1(){
     return(
         <Container color={config.BACKGROUND_COLOR}>
 
-            <GoBackBtn/>
+            <GoBackBtn previousPage="/home"/>
             <SignupText title = "비밀번호 재설정" description = "가입하셨던 이메일을 입력해주세요."/>
             <EmailInput
                 setIsActive={setIsActive}
