@@ -28,7 +28,7 @@ function PostPage () {
                 <p className='titleLength'>{title.length}/20</p>
             </div>
             <div className='postContents'>
-                <textarea type="text" maxLength="5000" required placeholder='내용을 입력해주세요' onChange={contentsInput}/>
+                <textarea type="text" maxLength="5000" rows='20' required placeholder='내용을 입력해주세요' onChange={contentsInput}/>
                 <div className='contentsFooter'>
                     <p className='contentsLength'>{contents.length}/5000</p>
                     <button className='inputCompleteBtn'>완료</button>
