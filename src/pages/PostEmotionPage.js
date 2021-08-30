@@ -29,8 +29,8 @@ function PostEmotionPage () {
         sad : [70, 101, 152],
         laugh : [253, 173, 166],
     })
-    const [modify, setModify] = useState(true)
-
+    const [modify, setModify] = useState(false)
+    const [complete, setComplete] = useState(false)
     useEffect(() => {
         popupInteraction()
     }, [cnt]);
@@ -118,20 +118,28 @@ function PostEmotionPage () {
     }
     const minusFeeling = async (feeling) => {
         if(feeling === "angry") {
-            setAngry(angry-8);
-            cntAngry -= 1;
+            if (cntAngry>0) {
+                setAngry(angry - 8);
+                cntAngry -= 1;
+            }
         }
         else if(feeling === "shy") {
-            setShy(shy-8);
-            cntShy -= 1;
+            if (cntShy>0) {
+                setShy(shy - 8);
+                cntShy -= 1;
+            }
         }
         else if(feeling === "sad") {
-            setSad(sad-8);
-            cntSad -= 1;
+            if (cntSad>0) {
+                setSad(sad - 8);
+                cntSad -= 1;
+            }
         }
         else if(feeling === "laugh") {
-            setLaugh(laugh-12);
-            cntLaugh -= 1
+            if (cntLaugh>0) {
+                setLaugh(laugh - 12);
+                cntLaugh -= 1
+            }
         }
 
         let idx = 0;
@@ -145,6 +153,10 @@ function PostEmotionPage () {
         if (cnt<10){
             setFillEmotion(false)
             setTimeout(()=>{setFillEmotion(true)},1000)
+        }else {
+            setComplete(true)
+            document.querySelector('.popup').style.bottom = '-188px'
+            document.querySelector('.contentsInfo').style.opacity = 0
         }
     }
     const ModifyAction = () =>{
@@ -165,37 +177,31 @@ function PostEmotionPage () {
         </Circles>
 
         <Result className='contentsInfo'>
-            <p className='contentsLength'>{cnt}/10</p>
+            <p className='contentsLength'>{((cntAngry+cntShy+cntSad+cntLaugh)<=10)?cntAngry+cntShy+cntSad+cntLaugh:10}/10</p>
             <button className='inputCompleteBtn' onClick={ModifyAction}>{modify?'완료':'수정'}</button>
         </Result>
           {modify ?
               <PopUp className='popup'>
-                  <button style={{position:'relative'}} onClick={minusFeeling('angry')}>
+                  <div style={{position:'relative'}} onClick={()=>{minusFeeling('angry')}}>
                       <ColorButton color={color.angry}/>
                       <img src={minus} className='minusBtn'/>
                       <p className='currentCnt'>{cntAngry}</p>
                       <SelectDiv>화나요</SelectDiv>
-                  </button>
-                  <div style={{position:'relative'}}>
-                      <ColorButton color={color.shy} onClick={() => {
-                          showFeeling("shy")
-                      }}/>
+                  </div>
+                  <div style={{position:'relative'}}  onClick={() => {minusFeeling("shy")}}>
+                      <ColorButton color={color.shy}/>
                       <img src={minus} className='minusBtn'/>
                       <p className='currentCnt' style={{color : '#5A5A5A'}}>{cntShy}</p>
                       <SelectDiv>부끄러워요</SelectDiv>
                   </div>
-                  <div style={{position:'relative'}}>
-                      <ColorButton color={color.sad} onClick={() => {
-                          showFeeling("sad")
-                      }}/>
+                  <div style={{position:'relative'}} onClick={() => {minusFeeling("sad")}}>
+                      <ColorButton color={color.sad}/>
                       <img src={minus} className='minusBtn'/>
                       <p className='currentCnt'>{cntSad}</p>
                       <SelectDiv>우울해요</SelectDiv>
                   </div>
-                  <div style={{position:'relative'}}>
-                      <ColorButton color={color.laugh} onClick={() => {
-                          showFeeling("laugh")
-                      }}/>
+                  <div style={{position:'relative'}} onClick={() => {minusFeeling("laugh")}}>
+                      <ColorButton color={color.laugh}/>
                       <img src={minus} className='minusBtn'/>
                       <p className='currentCnt'>{cntLaugh}</p>
                       <SelectDiv>웃겨요</SelectDiv>
@@ -229,8 +235,10 @@ function PostEmotionPage () {
               </PopUp>
           }
     </Wrap>
+        <p className='completeMsg' style={{opacity : `${complete?1:0}`}}>으앙 부끄러워요 <br/>빨리 흑역사 빠뜨리러 가요 !</p>
     </>)
 }
+
 const Wrap = styled.div`
   width: 100vw;
   height: fit-content;
