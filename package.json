@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "react-modal": "3.14.3",
     "react-router-dom": "^5.2.0"
   }
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const LogContent = () => {
-    return <>
+const LogTitle = (props) => {
+    return <Wrap textColor={props.textColor} tagColor={props.tagColor}>
         <LogDate>21.05.23</LogDate>
         <Title>썸남 앞에서 코파버렸다</Title>
         <Tags>
@@ -10,12 +10,14 @@ const LogContent = () => {
             <Tag>#해시태</Tag>
             <Tag>#해시</Tag>
         </Tags>
-        <TextBox>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</TextBox>
-        <SeeMore>더보기</SeeMore>
-    </>
+    </Wrap>
 }
 
-export default LogContent;
+export default LogTitle;
+
+const Wrap = styled.div`
+  color: ${props=>props.textColor};
+`
 
 const LogDate = styled.div`
   font-family: Roboto;
@@ -23,7 +25,7 @@ const LogDate = styled.div`
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
-  color: #FFFFFF;
+  ;
 `
 
 const Title = styled.div`
@@ -32,7 +34,6 @@ const Title = styled.div`
   font-weight: normal;
   font-size: 18px;
   line-height: 20px;
-  color: #FFFFFF;
   margin-top : 8px;
 `
 
@@ -51,7 +52,7 @@ const Tag = styled.div`
   padding: 4px 8px 4px 6px;
 
   height: 18px;
-  background: #ABABAF;
+  background:#EAEAEA;
   border-radius: 16px;
   margin-right : 8px;
   font-family: Pretendard;
@@ -59,23 +60,5 @@ const Tag = styled.div`
   font-weight: 500;
   font-size: 10px;
   line-height: 13px;
-`
-
-const TextBox = styled.div`
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: #FFFFFF;
-  margin-top : 24px;
-`
-
-const SeeMore = styled.div`
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: #FFFFFF;
+  color : black;
 `

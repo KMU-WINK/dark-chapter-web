@@ -1,25 +1,27 @@
 import styled from 'styled-components';
-import GoBackBtn from "../component/button/GoBackBtn";
-import list from "../svg/list.svg";
-import LogContent from "../components/LogContent";
+import LogContent from "../component/content/LogContent";
+import ContentHeader from "../component/header/ContentHeader";
+import PaletteCircle from "../component/circle/PaletteCircle";
 
 const Progress = () => {
-    return <>
-        <Wrap>
-            <Header>
-                <GoBackBtn/>
-                <ListIcon/>
-            </Header>
+    const backgroundColor = ["#d1d9de","#96a1b1","#2c2d39"]
+    const tagColor = ["#e9e9e9","#EAEAEA","#ABABAF"]
+    const textColor = ["#000","#fff","#fff"]
+
+    return <Wrap backgroundColor={backgroundColor[1]}>
+            <ContentHeader textColor={textColor[0]}/>
 
             <Wrap2>
-                <Circle/>
+                <PaletteCircle
+                    width={240} height={240}
+                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
+                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
+                    feeling={[20,10,20,50]}
+                />
             </Wrap2>
 
-            <Wrap3>
-                <LogContent/>
-            </Wrap3>
-        </Wrap>
-    </>
+            <LogContent tagColor={tagColor[1]} textColor={textColor[1]}/>
+    </Wrap>
 }
 
 export default Progress
@@ -27,19 +29,7 @@ export default Progress
 const Wrap = styled.div`
   height: 100vh;
   width: 100vw;
-  background: #2c2d39;
-`
-
-const Header = styled.div`
-  display : flex;
-  justify-content : space-between;
-`
-
-const ListIcon = styled.img.attrs({
-    src : list
-})`
-    margin-right: 24px;
-    margin-top : 16px;
+  background: ${props=>props.backgroundColor};
 `
 
 const Wrap2 = styled.div`
@@ -48,16 +38,4 @@ const Wrap2 = styled.div`
   margin-top : 97px;
 `
 
-const Circle = styled.div`
-  width : 240px;
-  height : 240px;
-  border-radius : 50%;
-  //background : #282c34;
-  background : white;
-  display : flex;
-  justify-content: center;
-`
 
-const Wrap3 = styled.div`
-  margin : 102px 24px 70px 24px;
-`
