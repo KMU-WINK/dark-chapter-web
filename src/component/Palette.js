@@ -13,7 +13,6 @@ let cntSad = 0;
 let cntLaugh = 0;
 
 export const Palette = () => {
-    const [kind, setKind] = useState(0);
     const [cnt, setCnt] = useState(0);
 
     const [angry, setAngry] = useState(0)
@@ -29,7 +28,6 @@ export const Palette = () => {
     })
 
     useEffect(() => {
-        // showColor();
     }, [cnt]);
 
     const ShowCircles = () => {

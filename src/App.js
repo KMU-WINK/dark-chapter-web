@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
     BrowserRouter as Router,
@@ -6,8 +5,6 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Menu from './component/MenuBar';
-import {Palette} from "./components/Palette";
 import {
     Landing_1,
     Login_1,
@@ -24,7 +21,8 @@ import {
     PostPage,
     PostEmotionPage,
 } from './pages';
-
+import SeeMoreContent from "./pages/SeeMoreContent";
+import OtherLog from './pages/OtherLog';
 function App() {
   return (
     <>
@@ -41,6 +39,11 @@ function App() {
               <Route path="/post" component={PostPage}/>
               <Route path="/postEmotion" component={PostEmotionPage}/>
               <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
+
+              <Route path = "/sympathy" component={Sympathy}/>
+              <Route exact path = "/progress" component={Progress}/>
+              <Route path = "/progress/seeMore" component={SeeMoreContent}/>
+              <Route path = '/other' component={OtherLog}/>
           </Switch>
           {/*<Route path = '/appLock' component={AppLock}/>*/}
       </Router>
