@@ -6,7 +6,7 @@ import MyLogHeader from "../component/MyLog/MyLogHeader";
 import MyLogBottomFloor from "../component/MyLog/MyLogBottomFloor";
 import Scale from "../component/MyLog/Scale";
 
-function MyLog(){
+function MyLogPage(){
     const useScroll = () => {
         const [state, setState] = useState({
             x : 0,
@@ -45,4 +45,4 @@ const Div = styled.div`
     width : 360px;
 `
 
-export default MyLog
+export default MyLogPage
