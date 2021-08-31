@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import UpArrow from '../../svg/upArrow.svg';
 import listView from '../../svg/listView.svg';
-const OtherHeader = () => {
 
-    return <Wrap>
-        <Wrap2>
-            <UpArrowIcon/>
-            <HeaderText>공감하기</HeaderText>
-        </Wrap2>
-        <ListViewIcon/>
-    </Wrap>
+const OtherHeader = (props) => {
+
+    return <>
+        <Wrap>
+            <Wrap2>
+                <UpArrowIcon/>
+                <HeaderText>공감하기</HeaderText>
+            </Wrap2>
+            <ListViewIcon/>
+        </Wrap>
+    </>
 }
 
 export default OtherHeader;
@@ -41,13 +44,12 @@ const HeaderText = styled.div`
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;
-  /* identical to box height, or 160% */
   letter-spacing: -0.03em;
   color: #FFFFFF;
 `
 const ListViewIcon = styled.img.attrs({
-    src : listView
-})`
+        src : listView
+    })`
     margin-right: 24px;
     margin-top : 16px;
     width : 24px;

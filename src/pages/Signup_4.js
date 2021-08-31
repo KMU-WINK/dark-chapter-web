@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import styled from "styled-components";
 import * as config from '../config'
+import {Route, Link, useHistory} from 'react-router-dom';
 
 import SignupText from "../component/input/SignupText";
 import NicknameInput from "../component/input/NicknameInput";
@@ -16,9 +17,12 @@ function Signup_4(){
     const [isActive, setIsActive] = useState(false);
 
     const [message, setMessage] = useState("")
-
+    const history = useHistory();
     const check = () => {
-        if (nickname !== 'aaa'){
+        if (nickname === 'aaa') {
+            history.push('/home');
+        }
+        else{
             setMessage("블가능한 별명입니다.")
         }
     }

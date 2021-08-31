@@ -12,3 +12,10 @@ export { default as Sympathy} from "./Sympathy";
 export { default as Progress} from "./Progress";
 export { default as PostPage} from "./PostPage";
 export { default as PostEmotionPage} from "./PostEmotionPage"
+export { default as Progress} from "./MyLog";
+export { default as PostPage} from "./PostPage";
+export { default as SeeMoreContent} from "./SeeMoreContent";
+export { default as OtherLog} from "./OtherLog";
+export { default as SelectSympathy} from "./SelectSympathy";
+export { default as Home} from "./Home";
+export { default as SeeMoreOther} from "./SeeMoreOther";
