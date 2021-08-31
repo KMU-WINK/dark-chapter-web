@@ -9,6 +9,9 @@ export { default as ResetPassword_2} from "./ResetPassword_2";
 export { default as ResetNickname_1} from "./ResetNickname_1";
 export { default as ResetNickname_2} from "./ResetNickname_2";
 export { default as Sympathy} from "./Sympathy";
+export { default as Progress} from "./Progress";
+export { default as PostPage} from "./PostPage";
+export { default as PostEmotionPage} from "./PostEmotionPage"
 export { default as Progress} from "./MyLog";
 export { default as PostPage} from "./PostPage";
 export { default as SeeMoreContent} from "./SeeMoreContent";

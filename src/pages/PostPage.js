@@ -10,11 +10,14 @@ function PostPage () {
     const contentsInput = ({target}) =>{
         setContents(target.value)
     }
+    const postEmotion = () =>{
+        window.location.href ='/postEmotion'
+    }
     return (<>
         <div className='Header'>
             <button className='backBtn'><img src={black_x} alt=""/></button>
             {title.length !== 0 && contents.length !== 0 ?
-                <button className='nextBtn' style={{opacity: 1}}>다음</button>
+                <button className='nextBtn' style={{opacity: 1}} onClick={postEmotion}>다음</button>
                 : <button className='nextBtn' style={{opacity : 0.3}}>다음</button>
             }
         </div>
@@ -25,10 +28,9 @@ function PostPage () {
                 <p className='titleLength'>{title.length}/20</p>
             </div>
             <div className='postContents'>
-                <textarea type="text" maxLength="5000" required placeholder='내용을 입력해주세요' onChange={contentsInput}/>
+                <textarea type="text" maxLength="5000" rows='20' required placeholder='내용을 입력해주세요' onChange={contentsInput}/>
                 <div className='contentsFooter'>
                     <p className='contentsLength'>{contents.length}/5000</p>
-                    <div className='pageCircle'><div className='circle current'/><div className='circle'/></div>
                     <button className='inputCompleteBtn'>완료</button>
                 </div>
             </div>

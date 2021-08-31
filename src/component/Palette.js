@@ -21,10 +21,10 @@ export const Palette = () => {
     const [laugh, setLaugh] = useState(0)
 
     const [color, setColor] = useState({
-        angry : [255, 32, 54],
-        shy : [255, 248, 144],
-        sad : [54, 97, 151],
-        laugh : [251, 172, 165],
+        angry : [254, 78, 98],
+        shy : [255, 249, 217],
+        sad : [70, 101, 152],
+        laugh : [253, 173, 166],
     })
 
     useEffect(() => {
@@ -188,10 +188,10 @@ export const Palette = () => {
         </PopUp>
     </Wrap>
 }
-
+export default Palette
 const Wrap = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
   background-size: contain;
   //background: #f2f2ec;
 `
