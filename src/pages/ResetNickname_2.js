@@ -6,8 +6,10 @@ import SignupText from "../component/input/SignupText";
 import NicknameInput from "../component/input/NicknameInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
+import {useHistory} from "react-router-dom";
 
 function ResetNickname_2(){
+    const history = useHistory();
     const [nickname,setNickname] = useState('');
 
     const [isActive, setIsActive] = useState(false);
@@ -17,6 +19,9 @@ function ResetNickname_2(){
     const check = () => {
         if (nickname !== 'aaa'){
             setMessage("블가능한 별명입니다.")
+        }
+        else {
+            history.push('/home');
         }
     }
 

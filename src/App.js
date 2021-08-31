@@ -19,9 +19,13 @@ import {
     Progress,
     AppLock,
     PostPage,
+    SelectSympathy,
+    SeeMoreContent,
+    OtherLog,
+    Home,
+    SeeMoreOther,
 } from './pages';
-import SeeMoreContent from "./pages/SeeMoreContent";
-import OtherLog from './pages/OtherLog';
+
 function App() {
   return (
     <>
@@ -33,17 +37,22 @@ function App() {
               <Route  path = "/signup/password" component={Signup_2}/>
               <Route  path = "/signup/nickname" component={Signup_4}/>
 
+              <Route path = "/Home" component={Home}/>
+              <Route path="/post" component={PostPage}/>
+
               <Route  exact path = "/resetPassword" component={ResetPassword_1}/>
               <Route  path = "/resetPassword/pwd" component={ResetPassword_2}/>
-              <Route path="/post" component={PostPage}/>
-              <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
+              <Route exact path = "/resetNickname" component={ResetNickname_1}/>
+              <Route path = "/resetNickname/pwd" component={ResetNickname_2}/>
 
+              <Route exact path = "/myLog" component={Progress}/>
+              <Route path = "/myLog/seeMore" component={SeeMoreContent}/>
+              <Route exact path = '/other' component={OtherLog}/>
+              <Route path = '/other/seeMore' component={SeeMoreOther}/>
+              <Route path = "/selectSympathy" component={SelectSympathy}/>
               <Route path = "/sympathy" component={Sympathy}/>
-              <Route exact path = "/progress" component={Progress}/>
-              <Route path = "/progress/seeMore" component={SeeMoreContent}/>
-              <Route path = '/other' component={OtherLog}/>
           </Switch>
-          {/*<Route path = '/appLock' component={AppLock}/>*/}
+          <Route path = '/appLock' component={AppLock}/>
       </Router>
   </>)
 }

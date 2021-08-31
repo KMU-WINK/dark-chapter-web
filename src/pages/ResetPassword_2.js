@@ -6,9 +6,10 @@ import SignupText from "../component/input/SignupText";
 import PasswordInput from "../component/input/PasswordInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
+import {useHistory} from "react-router-dom";
 
 function ResetPassword_2(){
-
+    const history = useHistory();
     const [isActive, setIsActive] = useState(false)
 
     const [isValidateMsg, setValidate] = useState(true)
@@ -27,6 +28,7 @@ function ResetPassword_2(){
         else {
             setValidate(true)
             setPwdMessage("")
+            history.push('/home')
         }
 
         console.log('pwd : ' + pwd)
@@ -47,7 +49,7 @@ function ResetPassword_2(){
     return(
         <>
             <Container color={config.BACKGROUND_COLOR}>
-                <GoBackBtn/>
+                <GoBackBtn previousPage="/resetPassword"/>
                 <SignupText title = "비밀번호 재설정" description = "변경하고 싶으신 비밀번호를 입력해주세요."/>
 
                 <Div>
