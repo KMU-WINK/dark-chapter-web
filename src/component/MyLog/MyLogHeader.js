@@ -52,7 +52,7 @@ const MyLogText = styled.span`
 
 const Jewelry = styled.img.attrs({
     src : jewelry
-})`  
+})`
     position: absolute;
     width: 24px;
     height: 24px;
