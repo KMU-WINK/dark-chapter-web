@@ -5,60 +5,61 @@ import circle from "../../svg/MyLog-circle.png"
 
 function MyLogFloor(props){
 
+    // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
+    const rendering = () => {
+        const result = [];
+        for (let i = 0; i< props.num; i++){
+            result.push(
+                <PostBox>
+                    <Hr borderColor = {props.color}/>
+                    <Circle circleColor = {props.color}></Circle>
+                    <Post>
 
-
+                        <PaletteCircle/>
+                        <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
+                        <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
+                    </Post>
+                </PostBox>
+            )
+        }
+        return result;
+    }
     return(
-        <Div background={props.background}>
+        <Div
+            backgroundTop={props.backgroundTop}
+            backgroundBottom={props.backgroundBottom}
+            num={props.num}
+        >
             <Text color={props.color}>{props.floor}</Text>
 
-            {/*여기다 map함수 쓰면 될듯*/}
-            <PostBox>
-                <Hr borderColor = {props.color}/>
-                <Circle circleColor = {props.color}></Circle>
-                <Post>
+            {rendering()}
 
-                    <PaletteCircle/>
-                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                    <PostBody>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                </Post>
-            </PostBox>
+            {/*데이터 패칭할 때 이거 사용 + map함수*/}
+            {/*<PostBox>*/}
+            {/*    <Hr borderColor = {props.color}/>*/}
+            {/*    <Circle circleColor = {props.color}></Circle>*/}
+            {/*    <Post>*/}
+
+            {/*        <PaletteCircle/>*/}
+            {/*        <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>*/}
+            {/*        <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>*/}
+            {/*    </Post>*/}
+            {/*</PostBox>*/}
             {/**/}
 
-            <PostBox>
-                <Hr borderColor = {props.color}/>
-                <Circle circleColor = {props.color}></Circle>
-                <Post>
-
-                    <PaletteCircle/>
-                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                    <PostBody>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                </Post>
-            </PostBox>
-
-            <PostBox>
-                <Hr borderColor = {props.color}/>
-                <Circle circleColor = {props.color}></Circle>
-                <Post>
-
-                    <PaletteCircle/>
-                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                    <PostBody>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                </Post>
-            </PostBox>
         </Div>
     )
 }
 
 const Div = styled.div`
     width : 360px;
-    background : linear-gradient(#D2DADF 50%, #97A2B2 90%)
+    background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
+
+    height: ${props => props.num<=3 ? "440px" : "auto"}
 `
 
-const Text = styled.span`
-    display : block;
-    margin-top : 39px;
+const Text = styled.div`
     margin-left : 24px;
-    margin-bottom : -40px;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: -0.03em;
@@ -69,14 +70,17 @@ const Text = styled.span`
 const PostBox = styled.div`
     width : 360px;
     position : relative;
+    height : 130px;
 `
 
 const Post = styled.div`
     width : 262px;
     height : 60px;
-    margin-top: 70px;
+
     margin-left : 65px;
-    position : relative;
+    position : absolute;
+    top: 50%;
+    transform : translateY(-50%);
 `
 
 const Hr = styled.div`
@@ -91,7 +95,7 @@ const Hr = styled.div`
 const Circle = styled.div`
     position : absolute;
     left : 32px;
-    top : 52%;
+    top : 51%;
     transform : translateY(-50%);
     border: 2px solid ${props => props.circleColor};
     border-radius: 50%;
@@ -128,8 +132,8 @@ const PostBody = styled.span`
     font-weight: normal;
     font-size: 10px;
     line-height: 13px;
-    
-    color: #747474;
+
+    color: ${props => props.color};
 `
 
 export default MyLogFloor
