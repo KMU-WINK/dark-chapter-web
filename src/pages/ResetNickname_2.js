@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import * as config from "../config";
 import GoBackBtn from "../component/button/GoBackBtn";
-import SignupText from "../component/input/SignupText";
-import NicknameInput from "../component/input/NicknameInput";
+import SignupText from "../component/signup/SignupText";
+import NicknameInput from "../component/signup/NicknameInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 import {useHistory} from "react-router-dom";

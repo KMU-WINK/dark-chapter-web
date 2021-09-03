@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 
+import "../../fonts/fonts.css"
+
 function ActiveBtn(props){
     console.log(props)
     return(
@@ -25,6 +27,10 @@ const NextBtn = styled.button`
     font-size: 16px;
     margin : 0 auto;
     display : block;
+    background: #FFFFFF;
+    font-weight: 700;
+    font-family: PretendartVariable;
+    color: #000000
 `
 
 export default ActiveBtn

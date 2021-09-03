@@ -2,8 +2,8 @@ import styled from "styled-components";
 import React, { useState } from 'react';
 import * as config from '../config'
 import GoBackBtn from "../component/button/GoBackBtn";
-import SignupText from "../component/input/SignupText";
-import EmailInput from "../component/input/EmailInput";
+import SignupText from "../component/signup/SignupText";
+import EmailInput from "../component/signup/EmailInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 

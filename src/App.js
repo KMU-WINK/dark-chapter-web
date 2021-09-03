@@ -16,7 +16,7 @@ import {
     ResetNickname_1,
     ResetNickname_2,
     Sympathy,
-    Progress,
+
     AppLock,
     PostPage,
     PostEmotionPage,
@@ -25,8 +25,9 @@ import {
     OtherLog,
     Home,
     SeeMoreOther,
-  
+    Record_3
 } from './pages';
+import MyLogPage from "./pages/MyLogPage";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
               <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
               <Route exact path = "/resetNickname" component={ResetNickname_1}/>
               <Route path = "/resetNickname/pwd" component={ResetNickname_2}/>
-              <Route exact path = "/myLog" component={Progress}/>
+              {/*<Route exact path = "/myLog" component={Progress}/>*/}
               <Route path = "/myLog/seeMore" component={SeeMoreContent}/>
               <Route exact path = '/other' component={OtherLog}/>
               <Route path = '/other/seeMore' component={SeeMoreOther}/>

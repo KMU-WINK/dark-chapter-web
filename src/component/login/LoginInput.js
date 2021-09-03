@@ -102,7 +102,7 @@ function LoginInput(props){
             <PasswordBox>
                 <PasswordIcon/>
                 <InputPwd
-                    type={isReveal ? "text" : "password"}
+                    type={!isReveal ? "text" : "password"}
                     value={pwd}
                     onChange = {onChangePwd}
                     active = {isPwdActive}
