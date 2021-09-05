@@ -25,8 +25,10 @@ import {
     OtherLog,
     Home,
     SeeMoreOther,
+    Menu,
 } from './pages';
 
+import PopUp from './component/modal/PopUp.js';
 function App() {
     return (
         <>
@@ -58,6 +60,7 @@ function App() {
                     <Route path='/other/seeMore' component={SeeMoreOther}/>
                     <Route path="/selectSympathy" component={SelectSympathy}/>
                     <Route path="/sympathy" component={Sympathy}/>
+                    <Route path="/popup" component={PopUp}></Route>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
             </Router>
