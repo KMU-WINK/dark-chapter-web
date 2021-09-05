@@ -5,6 +5,7 @@ import styled from "styled-components";
 import check_all from '../../svg/check_all.svg';
 import not_check_all from '../../svg/not_check_all.svg';
 import './checkAll.css'
+import "../../fonts/fonts.css"
 
 
 
@@ -22,8 +23,9 @@ function CheckAll(props){
             className="ccheck"
             style={{
                 position : "relative",
-                width: 321,
+                width: "100%",
                 height: 24,
+                marginLeft: 16
             }}
         >
 
@@ -32,9 +34,12 @@ function CheckAll(props){
                 type="checkbox"
                 checked={props.checked}
                 onClick={checked}
+                // style={{marginLeft:16}}
             />
             <Label for="input" />
-            <Span>전체 동의</Span>
+            <Span
+                style={{marginLeft:-4}}
+            >전체 동의</Span>
         </div>
     )
 }
@@ -57,9 +62,10 @@ const Span = styled.span`
     height: 21px;
     left: 36px;
     top: 2px;
-    font-weight: bold;
     font-size: 14px;
     color: #FFFFFF;
+    font-weight: 700;
+    font-family: PretendartVariable;
 `
 
 

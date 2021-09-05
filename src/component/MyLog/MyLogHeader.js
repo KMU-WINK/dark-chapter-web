@@ -4,11 +4,13 @@ import styled from "styled-components";
 import arrow from "../../svg/arrow.svg"
 import jewelry from "../../svg/jewelry-box.svg"
 
+import "../../fonts/fonts.css"
+
 
 function MyLogHeader(){
     return(
         <Wrap>
-            <Header>
+            <Header className="jejugothic">
                 <Icon/>
                 <MyLogText>My_log</MyLogText>
                 <Jewelry/>

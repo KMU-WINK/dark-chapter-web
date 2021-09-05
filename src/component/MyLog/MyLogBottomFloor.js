@@ -16,6 +16,7 @@ const Div = styled.div`
     width : 100%;
     height : 200px;
     background : ${props => props.background};
+    padding-top:26px
 `
 
 const Text = styled.div`

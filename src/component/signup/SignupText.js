@@ -2,24 +2,26 @@ import styled from "styled-components";
 import React from 'react';
 import * as config from '../../config'
 
+import "../../fonts/fonts.css"
+
 function SignupText(props){
     return(
-        <>
-            <TitleBox>
-                <Title color = {config.ACTIVE_COLOR}>
+        <div className="jejugothic">
+            <TitleBox >
+                <Title color = {config.ACTIVE_COLOR} >
                     {props.title}
                 </Title>
             </TitleBox>
-            <Description color = {config.ACTIVE_COLOR}>
+            <Description color = {config.ACTIVE_COLOR} >
                 {props.description}
             </Description>
-        </>
+        </div>
     )
 }
 
 
 const TitleBox = styled.div`
-    width: 123px;
+    width: 100%;
     margin-top : 36px;
     margin-left : 30px;
 `

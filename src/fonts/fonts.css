@@ -1,0 +1,18 @@
+/** import 영역 **/
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { /** 폰트 영문 이름 지정 **/
+    font-family: 'Jeju Gothic', sans-serif;
+}
+
+@font-face {
+    font-family: "PretendartVariable";
+    font-weight: 700;
+    src: url("../fonts/PretendardVariable.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "PretendartVariable";
+    font-weight: 400;
+    src: url("../fonts/PretendardVariable.woff2") format("woff2");
+}

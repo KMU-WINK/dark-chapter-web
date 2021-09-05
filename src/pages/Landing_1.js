@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, {useState} from 'react';
 import * as config from '../config';
+import "../fonts/fonts.css"
 
 import {
     Link
@@ -13,7 +14,7 @@ import Signup_1 from "./Signup_1";
 
 function Landing_1() {
     return (
-        <Container color={config.BACKGROUND_COLOR}>
+        <Container color={config.BACKGROUND_COLOR} className="jejugothic">
             <Div>
                 <Text>로고</Text>
                 <A to='/login'>
