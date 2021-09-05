@@ -2,11 +2,13 @@ import styled from "styled-components";
 import React, {useState} from 'react';
 import * as config from '../config'
 
-import SignupText from "../component/input/SignupText";
+import SignupText from "../component/signup/SignupText";
 import LoginInput from "../component/login/LoginInput";
 import GoBackBtn from "../component/button/GoBackBtn";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
+
+import "../fonts/fonts.css"
 
 function Login_1() {
     const [isActive, setIsActive] = useState(false);

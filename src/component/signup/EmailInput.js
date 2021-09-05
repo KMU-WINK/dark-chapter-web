@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 
-
+import "../../fonts/fonts.css"
 import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
 
@@ -13,7 +13,7 @@ import bi_x_inactive from '../../svg/bi_x_inactive.svg'
 function EmailInput(props){
     const [email, setEmail] = useState("");
 
-    // @여부에 따라 input border 색깔 변경
+    // @여부에 따라 signup border 색깔 변경
     const [isAtSign, setIsAtSign] = useState()
 
 
@@ -87,7 +87,9 @@ const InputEmail = styled.input.attrs({
     font-size: 14px;
     background : #2C2C38;
     color : #FFFFFF;
-    border-color: ${props => props.active ? "#FFFFFF" : "#828282"}
+    font-weight: 400;
+    font-family: PretendartVariable;
+    border-color: ${props => props.active ? "#FFFFFF" : "#828282"};
 `
 const XIcon = styled.img.attrs({
     src : bi_x_active

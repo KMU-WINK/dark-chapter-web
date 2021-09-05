@@ -9,22 +9,29 @@ import bi_x_active from "../svg/bi_x.svg";
 import {useHistory} from "react-router-dom";
 
 function Signup_3(props){
+    let flag = false
+
     let history = useHistory();
 
-    const [active, setActive] = useState(true);
-    const [agreeAll, setAll] = useState(true);
-    const [agreeService, setService] = useState(true);
-    const [agreeInfo, setInfo] = useState(true);
-    const [agreeMarketing, setMarketing] = useState(true);
+    const [active, setActive] = useState(false);
+    const [agreeAll, setAll] = useState(false);
+    const [agreeService, setService] = useState(false);
+    const [agreeInfo, setInfo] = useState(false);
+    const [agreeMarketing, setMarketing] = useState(false);
 
     useEffect(() => {
+        console.log("call")
+        console.log("all: ",agreeAll)
+        console.log("service: ",agreeService)
+        console.log("info: ",agreeInfo)
+        console.log("marketing: ",agreeMarketing)
         if(agreeService && agreeInfo && agreeMarketing){
             setAll(true)
             setActive(true)
         }
         else if(agreeService && agreeInfo){
             setActive(true)
-            setAll(false)
+            setAll(true)
         }
         else{
             setActive(false)
@@ -56,18 +63,21 @@ function Signup_3(props){
                 <DivideLine/>
                 <CheckBoxWrap>
                     <CheckOne
+
                         setChecked={setService}
                         checked={agreeService}
                         id="service"
-                        body = "서비스 이용약관"
+                        body = "서비스 이용약관 (필수)"
                     />
                     <CheckOne
+
                         setChecked={setInfo}
                         checked={agreeInfo}
                         id="info"
-                        body = "개인정보 수집 및 이용"
+                        body = "개인정보 수집 및 이용 (필수)"
                     />
                     <CheckOne
+
                         setChecked={setMarketing}
                         checked = {agreeMarketing}
                         id="marketing"
@@ -128,12 +138,12 @@ const DivideLine = styled.hr`
 `
 
 const CheckAllWrap = styled.div`
-    width: 321px;
-    margin: 16px auto;
+    width: 100%;
+    // margin: 16px auto;
 `
 
 const CheckBoxWrap = styled.div`
-    width: 321px;
+    width: 100%;
     height: 88px;
     margin: 16px auto;
 `

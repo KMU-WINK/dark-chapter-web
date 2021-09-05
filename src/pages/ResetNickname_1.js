@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react'
 import styled from "styled-components";
 import * as config from '../config'
 
-import SignupText from "../component/input/SignupText";
+import SignupText from "../component/signup/SignupText";
 import GoBackBtn from "../component/button/GoBackBtn";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
-import PasswordInput from "../component/input/PasswordInput";
+import PasswordInput from "../component/signup/PasswordInput";
 
 import {useHistory} from "react-router-dom";
 

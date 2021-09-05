@@ -26,7 +26,9 @@ import {
     Home,
     SeeMoreOther,
     Menu,
+  
 } from './pages';
+import MyLogPage from "./pages/MyLogPage";
 
 function App() {
   return (
