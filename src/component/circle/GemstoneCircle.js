@@ -4,56 +4,61 @@ import PaletteCircle from "./PaletteCircle";
 import shadowCircle from "../../svg/shadowCircle.svg";
 import surfaceCircle from "../../svg/surfaceCircle.svg";
 
-const GemstoneCircle = () => {
-
-    return <Wrap>
-        <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[50,47,45,43]}
-                        color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        black={false}
-        />
-        {/*<ShadowCircle/>*/}
+const GemstoneCircle = (props) => {
+    return <Wrap size={props.size}>
+        <Wrap1>
+            <SympathyCircle size={props.size}
+                            backgroundColor={props.backgroundColor}
+                            feeling={props.sympathyFeeling}
+                            color={props.sympathyColor}
+                            black={props.black}
+            />
+        </Wrap1>
+        <ShadowCircle size={props.size}/>
         <Wrap2>
             <PaletteCircle
-                width={100} height={100}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
+                width={props.width} height={props.height}
+                deg={props.deg}
+                color={props.paletteColor}
+                feeling={props.paletteFeeling}
             />
         </Wrap2>
-
-        <SurfaceCircle/>
+        <SurfaceCircle size={props.size}/>
     </Wrap>
 }
 
 export default GemstoneCircle;
 
 const Wrap = styled.div`
-  //width : 1px;
-  //height : 1px;
+  width: ${props=>props.size}px;
+  height: ${props=>props.size}px;
+  position : relative;
+  display : flex;
+  justify-content: center;
+`
+
+const Wrap1 = styled.div`
+  width: ${props=>props.size}px;
+  height: ${props=>props.size}px;
+  display : flex;
+  justify-content: center;
 `
 
 const ShadowCircle = styled.img.attrs({
     src : shadowCircle
 })`
     position : absolute;
-    left : 50px;
-    top : 50px;
-    width: 100px;
-    height: 100px;
+    width: ${props=>props.size}px;
+    height: ${props=>props.size}px;
 `
 const Wrap2 = styled.div`
   position : absolute;
-  left : 50px;
-  top : 50px;
 `
 
 const SurfaceCircle = styled.img.attrs({
     src : surfaceCircle
 })`
   position : absolute;
-  left : 50px;
-  top : 50px;
-  width: 100px;
-  height: 100px;
+  width: ${props=>props.size}px;
+  height: ${props=>props.size}px;
 `

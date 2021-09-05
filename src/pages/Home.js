@@ -15,7 +15,7 @@ const Home = () => {
     const [title, setTitle] = useState('흑역사를 입력해주세요')
     const [init, setInit] = useState(true);
 
-    return <>
+    return <All>
         <Header>
             <MenuIcon onClick={()=>{history.push('/menu')}}/>
             <PlusIcon onClick={()=>{history.push('/post')}}/>
@@ -50,17 +50,23 @@ const Home = () => {
         <Wrap2>
             <Page onClick={()=>{history.push('/myLog')}}>
                 <Icon/>
-                <Name>My_log</Name>
+                <Name className="jejugothic">My_log</Name>
             </Page>
             <Page onClick={()=>{history.push('/other')}}>
                 <Icon/>
-                <Name>Other_log</Name>
+                <Name className="jejugothic">Other_log</Name>
             </Page>
         </Wrap2>
-    </>
+    </All>
 }
 
 export default Home;
+
+const All = styled.div`
+  width : 100vw;
+  height : 100vh;
+  background: #F3F3ED;
+`
 
 const Header = styled.div`
   display : flex;
@@ -148,7 +154,6 @@ const Icon = styled.img.attrs({
 `
 
 const Name = styled.div`
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 11.6883px;
