@@ -26,9 +26,9 @@ import {
     Home,
     SeeMoreOther,
     Menu,
-  
+    GemstoneLog,
+    GemstoneList,
 } from './pages';
-import MyLogPage from "./pages/MyLogPage";
 
 function App() {
   return (
@@ -61,6 +61,9 @@ function App() {
               <Route path = '/other/seeMore' component={SeeMoreOther}/>
               <Route path = "/selectSympathy" component={SelectSympathy}/>
               <Route path = "/sympathy" component={Sympathy}/>
+
+              <Route path = "/gemstone" component={GemstoneList}/>
+              <Route path = "/gemstoneLog" component={GemstoneLog}/>
           </Switch>
           <Route path = '/appLock' component={AppLock}/>
       </Router>

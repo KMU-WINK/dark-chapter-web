@@ -18,4 +18,6 @@ export { default as SelectSympathy} from "./SelectSympathy";
 export { default as Home} from "./Home";
 export { default as SeeMoreOther} from "./SeeMoreOther";
 export { default as Menu} from "../component/MenuBar";
+export { default as GemstoneList} from "./GemstoneList";
+export { default as GemstoneLog} from "./GemstoneLog";
 export { default as Record_3} from "./Record_3";
