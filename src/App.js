@@ -16,7 +16,7 @@ import {
     ResetNickname_1,
     ResetNickname_2,
     Sympathy,
-    Progress,
+    MyLog,
     AppLock,
     PostPage,
     PostEmotionPage,
@@ -47,7 +47,7 @@ function App() {
               <Route exact path = "/resetNickname/pwd" component={ResetNickname_2}/>
               <Route exact path = "/resetNickname" component={ResetNickname_1}/>
               <Route path = "/resetNickname/pwd" component={ResetNickname_2}/>
-              <Route exact path = "/myLog" component={Progress}/>
+              <Route exact path = "/myLog" component={MyLog}/>
               <Route path = "/myLog/seeMore" component={SeeMoreContent}/>
               <Route exact path = '/other' component={OtherLog}/>
               <Route path = '/other/seeMore' component={SeeMoreOther}/>
