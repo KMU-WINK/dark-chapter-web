@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import {
     Link
 } from "react-router-dom";
-import * as config from '../config'
 
 function LandingPhoto(){
     return(
@@ -22,7 +21,7 @@ function LandingPhoto(){
 }
 
 const PhotoArea = styled.div`
-    width : 360px;
+    width : 100%;
     height: 629px;
     background: rgba(196, 196, 196, 0.2);
     margin-top : 48px;
@@ -57,7 +56,6 @@ const Photo = styled.div`
     font-size: 18px;
     line-height: 21px;
     letter-spacing: -0.025em;
-
     color: rgba(255, 255, 255, 0.1);
 `
 

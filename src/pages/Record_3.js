@@ -1,11 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import back from "../svg/record_3_background.svg"
 import hr_group from "../svg/black_scale_group.svg"
-import circle from "../svg/record_3_circle.svg"
-import white_hr from "../svg/white_hr.svg"
+import white_hr from "../svg/white_scale_group.svg"
 
 import "../fonts/fonts.css"
+import Record_3_nextFloor from "../component/Record_3_nextFloor";
+import Record_3_goTop from "../component/Record_3_goTop";
+import Record_3_header from "../component/Record_3_header";
+import Record_3_circle from "../component/Record_3_circle";
+import Record_3_bottom from "../component/Record_3_bottom";
+
+import white_scale from "../svg/white_scale.svg"
 
 //TO DO
 //1. 미터 글씨 커지게 하기
@@ -13,86 +18,169 @@ import "../fonts/fonts.css"
 //3. 심층에선 위로 올라가기 버튼
 
 
-function Record_3(){
+function Record_3() {
+    const [isMove, setIsMove] = useState(false)
+    const [nextMeter, setNextMeter] = useState(0);
+    const [nextTextColor, setNextTextColor] = useState("#747474")
+    const [goTop, setGoTop] = useState(false);
 
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    const useScroll = () => {
+        const [state, setState] = useState({
+            x: 0,
+            y: 0
+        });
+        const onScroll = () => {
+            setState({x: window.scrollX, y: window.scrollY});
+        };
+        useEffect(() => {
+            window.addEventListener("scroll", onScroll); // scorll할 때 onScroll 이벤트 핸들러 지정
+            return () => window.removeEventListener("scroll", onScroll); // clean up
+        }, []);
+        return state;
+    }
+    const {y} = useScroll();
 
     useEffect(() => {
         console.log(window.scrollY)
-    },[])
+        if (window.scrollY > 0) setIsMove(true)
+        const target = document.getElementById("test")
+
+        let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
+
+        if (tmp <= 100) {
+
+            setNextMeter(100 - tmp)
+            setNextTextColor("#747474")
+            setGoTop(false)
+        } else if (tmp > 500) {
+
+            setGoTop(true)
+        } else if (100 < tmp <= 500) {
+
+            setNextMeter(500 - tmp)
+            setNextTextColor("#FFFFFF")
+            setGoTop(false)
+        }
+        const equalCircle = document.getElementById(String(tmp))
+        // console.log(equalCircle)
+        for (let i = 0; i < 1000; i += 10) {
+            const notEqualCircle = document.getElementById(String(i))
+            notEqualCircle.style.fontSize = "10px"
+            notEqualCircle.style.marginTop = "6px"
+        }
+
+        equalCircle.style.fontSize = "16px"
+        equalCircle.style.marginTop = "4px"
+    }, [y])
+
 
     const hrRendering = () => {
         const result = [];
         let meter = 0;
-        for(let i= 0;i < 1001; i++){
-            if (meter <= 90){
-                console.log("black")
-                result.push(<MeterWrap className="jejugothic">
-
+        for (let i = 0; i < 1000; i++) {
+            if (meter <= 90) {
+                result.push(
+                    <MeterWrap className="jejugothic">
                         <Scale/>
-                        <MeterText>{meter}m</MeterText>
-                    </MeterWrap >
+                        <MeterText
+                            id={meter}
+                            color="#747474"
+                        >{meter}m</MeterText>
+                    </MeterWrap>
                 )
-            }
-            else{
-                console.log("white")
-                result.push(<MeterWrap className="jejugothic">
-
+            } else {
+                result.push(
+                    <MeterWrap className="jejugothic">
                         <WhiteScale/>
-                        <MeterText>{meter}m</MeterText>
+                        <MeterText
+                            id={meter}
+                            color="#FFFFFF"
+                        >{meter}m</MeterText>
                     </MeterWrap>
                 )
             }
             meter += 10
         }
+        result.push(<MeterWrap>
+            <WhiteHr/>
+            <MeterText
+                id="10000"
+                color='#FFFFFF'
+            >
+                10000m
+            </MeterText>
+        </MeterWrap>)
         return result
 
     }
-    // const target = document.getElementById("test")
-    // console.log(target.getBoundingClientRect().top)
 
-    return(
-        <Wrap>
+
+    return (
+        <Wrap color={isMove ? "linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 95%)" : "#F3F3ED"}>
+            <Record_3_header flag={isMove}/>
             <Space id="test"></Space>
-            <Div>
-                <Circle/>
-            </Div>
+            <Record_3_circle/>
+
+
             {/*<GroundColor/>*/}
 
             <MeterSpace>
                 {hrRendering()}
             </MeterSpace>
-
+            {isMove ?
+                goTop ?
+                    <Record_3_goTop
+                        click={goToTop}
+                    />
+                    :
+                    <Record_3_nextFloor
+                        meter={nextMeter}
+                        textColor={nextTextColor}
+                    />
+                :
+                null
+            }
+            <Record_3_bottom/>
         </Wrap>
     )
 }
 
 const Space = styled.div`
-    width : 100%;
-    height : 267px;
+    width : 100px;
+    height : 211px;
 `
 
 const Wrap = styled.div`
-    width : 360px;
-    height : fit-content; 
-    background : linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 );
+    width : 100%;
+    background : ${props => props.color};
+    position: relative;
 `
 
-
-const GroundColor = styled.img.attrs({
-    src: back
-})`
-`
 
 const Scale = styled.img.attrs({
-    src:hr_group
+    src: hr_group
 })`
-display:block;
+    display:block;
     margin-top:10px;
 `
 const WhiteScale = styled.img.attrs({
-    src:white_hr
+    src: white_hr
 })`
-display:block;
+    display:block;
+    margin-top:10px;
+`
+const WhiteHr = styled.img.attrs({
+    src: white_scale
+})`
+    display:block;
     margin-top:10px;
 `
 
@@ -115,25 +203,10 @@ const MeterText = styled.span`
     display: flex;
     align-items: center;
     letter-spacing: -0.03em;
-    
-    color: #FFFFFF;
+    color: ${props => props.color};
     
     opacity: 0.5;
 `
 
-const Div = styled.div`
-    width: 100%;
-    position: fixed;
-    left: 50%;
-    transform: translateX( -50% ); 
-    height: 56px;
-    margin-left: 100px;
-`
-
-const Circle = styled.img.attrs({
-    src: circle
-})`
-    
-`
 
 export default Record_3;

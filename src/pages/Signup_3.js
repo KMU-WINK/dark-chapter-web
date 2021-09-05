@@ -44,21 +44,23 @@ function Signup_3(props){
 
     return(
         <Wrap>
-            <ModalWrap color={config.BACKGROUND_COLOR}>
-                <XIcon
-                    onClick={() => {
-                        onClose(false);
-                    }}
-                />
-                <CheckAllWrap>
-                    <CheckAll
-                        setAll = {setAll}
-                        checked = {agreeAll}
-                        setService={setService}
-                        setInfo={setInfo}
-                        setMarketing={setMarketing}
+            <ModalWrap color={config.BACKGROUND_COLOR} id="qqq">
+                <Div>
+                    <XIcon
+                        onClick={() => {
+                            onClose(false);
+                        }}
                     />
-                </CheckAllWrap>
+                    <CheckAllWrap>
+                        <CheckAll
+                            setAll = {setAll}
+                            checked = {agreeAll}
+                            setService={setService}
+                            setInfo={setInfo}
+                            setMarketing={setMarketing}
+                        />
+                    </CheckAllWrap>
+                </Div>
 
                 <DivideLine/>
                 <CheckBoxWrap>
@@ -104,8 +106,8 @@ function Signup_3(props){
 
 
 const Wrap = styled.div`
-    width : 360px;
-    height : 760px;
+    width : 100%;
+    height : 100vh;
     position : fixed;
     left : 0;
     right:0;
@@ -116,19 +118,29 @@ const Wrap = styled.div`
 `
 
 const ModalWrap = styled.div`
-    width : 360px;
+    width : 100%;
     height : 298px;
     position : fixed;
-    top : 462px;
+    left : 0;
+    right:0;
+    
+    bottom : 0;
+    z-index : 100;
     background: ${props => props.color};
 
 `
+
+const Div = styled.div`
+    width: 100%- 32px;
+    margin: 0 auto;
+`
+
 const XIcon = styled.img.attrs({
     src : bi_x_active
 })`
     display : block;
     float: right;
-    padding: 16px;
+    padding-right: 16px;
 `
 
 const DivideLine = styled.hr`
@@ -138,7 +150,7 @@ const DivideLine = styled.hr`
 `
 
 const CheckAllWrap = styled.div`
-    width: 100%;
+    // width: 100%;
     // margin: 16px auto;
 `
 
@@ -158,7 +170,6 @@ const BaseBtn = styled.button`
     display : block;
     align-items : center;
     font-weight: bold;
-
 `
 
 const NextBtn = styled(BaseBtn)`
