@@ -1,51 +1,21 @@
 import GoBackBtn from "../button/GoBackBtn";
 import styled from "styled-components";
 import list from "../../svg/list.svg";
-import Modal from 'react-modal';
 import {useState} from "react";
-
-const customStyles = {
-    content: {
-        width : '316px',
-        height : '150px',
-        top: '600px',
-        left : '0px',
-        borderRadius : '20px 20px 0px 0px',
-        border : 'none',
-    },
-};
+import ContentMenu from "../modal/ContentMenu";
 
 const ContentHeader = (props) => {
-    const [modalIsOpen, setIsOpen] = useState(false)
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
+    const [visible, setVisible] = useState(false);
 
     return <>
         <Header>
             <GoBackBtn back={props.back}/>
-            <ListIcon onClick={openModal} textColor={props.textColor}/>
+            <ListIcon onClick={()=>{setVisible(true)}} textColor={props.textColor}/>
         </Header>
-        <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            style={customStyles}
-        >
-            <Center>
-                <ModalBar/>
-            </Center>
-            {props.state === "share"?
-                <ContentList>공유하기</ContentList>
-                :
-                <ContentList>공감 더 끌어모으기</ContentList>
-            }
-            <ContentList>삭제</ContentList>
-        </Modal>
+        {visible?
+            <ContentMenu onClose={setVisible} state={props.state}/>
+            : null
+        }
     </>
 }
 

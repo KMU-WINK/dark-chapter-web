@@ -17,3 +17,5 @@ export { default as OtherLog} from "./OtherLog";
 export { default as SelectSympathy} from "./SelectSympathy";
 export { default as Home} from "./Home";
 export { default as SeeMoreOther} from "./SeeMoreOther";
+export { default as Menu} from "../component/MenuBar";
+export { default as Record_3} from "./Record_3";

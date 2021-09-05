@@ -16,14 +16,12 @@ const Div = styled.div`
     width : 100%;
     height : 200px;
     background : ${props => props.background};
-    margin-top: 180px;
+    padding-top:26px
 `
 
-const Text = styled.span`
-    display : block;
-    margin-top : 39px;
+const Text = styled.div`
     margin-left : 24px;
-    margin-bottom : -40px;
+
     font-size: 16px;
     line-height: 24px;
     letter-spacing: -0.03em;

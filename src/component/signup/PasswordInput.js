@@ -98,7 +98,7 @@ function PasswordInput(props){
             }
 
             <InputPwd
-                type={isRevealPwd ? "text" : "password"}
+                type={!isRevealPwd ? "text" : "password"}
                 value={pwd}
                 onChange = {onChangePwd}
                 active = {isPwdActive}
@@ -137,6 +137,8 @@ const InputPwd = styled.input.attrs({
     border-width: 0 0 2px;
     background-color : ${props => props.color};
     font-size: 14px;
+    font-weight: 400;
+    font-family: PretendartVariable;
     color : ${props => props.active_color};
     border-color: ${props => props.active ? props.active_color : props.inactive_color};
 `

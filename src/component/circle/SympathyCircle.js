@@ -7,7 +7,8 @@ const SympathyCircle = (props) => {
             <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
-                t={Math.max(136-((40/50)*props.feeling[0]),96)} l={60}
+                t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
+                l={60-Math.min((72/50)*props.feeling[0],72)/2}
                 color={props.color[0]} blur={Math.min(70+props.feeling[0],120)}
             />
         </>
@@ -15,12 +16,14 @@ const SympathyCircle = (props) => {
             <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
-                t={Math.max(136-((40/50)*props.feeling[0]),96)} l={90}
+                t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
+                l={90-Math.min((72/50)*props.feeling[0],72)/2}
                 color={props.color[0]} blur={Math.min(70+props.feeling[0],120)}
             />
             <Circle
                 size={Math.min(160+((80/50)*props.feeling[1]),240)}
-                t={Math.max(156-((30/50)*props.feeling[1]),126)} l={0}
+                t={Math.max(156-((30/50)*props.feeling[1]),126)-Math.min((80/50)*props.feeling[1],80)/2}
+                l={30-Math.min((80/50)*props.feeling[1],80)/2}
                 color={props.color[1]} blur={Math.min(70+props.feeling[1],120)}
             />
         </>
@@ -29,17 +32,20 @@ const SympathyCircle = (props) => {
             <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
-                t={Math.max(136-((40/50)*props.feeling[0]),96)} l={90}
+                t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
+                l={90-Math.min((72/50)*props.feeling[0],72)/2}
                 color={props.color[0]} blur={Math.min(70+props.feeling[0],120)/2}
             />
             <Circle
                 size={Math.min(160+((80/50)*props.feeling[1]),240)}
-                t={Math.max(156-((30/50)*props.feeling[1]),126)} l={0}
+                t={Math.max(156-((30/50)*props.feeling[1]),126)-Math.min((80/50)*props.feeling[1],80)/2}
+                l={30-Math.min((80/50)*props.feeling[1],80)/2}
                 color={props.color[1]} blur={Math.min(70+props.feeling[1],120)/2}
             />
             <Circle
                 size={Math.min(120+((64/50)*props.feeling[2]),184)}
-                t={240} l={160}
+                t={240-Math.min((64/50)*props.feeling[2],64)/2}
+                l={160-Math.min((64/50)*props.feeling[2],64)/2}
                 color={props.color[2]} blur={Math.min(60+(40/50)*props.feeling[2],100)/2}
             />
         </>
@@ -48,22 +54,26 @@ const SympathyCircle = (props) => {
             <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
-                t={Math.max(136-((40/50)*props.feeling[0]),96)} l={90}
+                t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
+                l={90-Math.min((72/50)*props.feeling[0],72)/2}
                 color={props.color[0]} blur={Math.min(70+props.feeling[0],120)/2}
             />
             <Circle
                 size={Math.min(160+((80/50)*props.feeling[1]),240)}
-                t={Math.max(156-((30/50)*props.feeling[1]),126)} l={30}
+                t={Math.max(156-((30/50)*props.feeling[1]),126)-Math.min((80/50)*props.feeling[1],80)/2}
+                l={30-Math.min((80/50)*props.feeling[1],80)/2}
                 color={props.color[1]} blur={Math.min(70+props.feeling[1],120)/2}
             />
             <Circle
                 size={Math.min(120+((64/50)*props.feeling[2]),184)}
-                t={240} l={160}
+                t={240-Math.min((64/50)*props.feeling[2],64)/2}
+                l={160-Math.min((64/50)*props.feeling[2],64)/2}
                 color={props.color[2]} blur={Math.min(60+(40/50)*props.feeling[2],100)/2}
             />
             <Circle
                 size={Math.min(88+((32/50)*props.feeling[3]),120)}
-                t={296} l={100}
+                t={296-Math.min((32/50)*props.feeling[3],32)/2}
+                l={100-Math.min((32/50)*props.feeling[3],32)/2}
                 color={props.color[3]} blur={Math.min(70+(25/50)*props.feeling[3],95)/2}
             />
         </>

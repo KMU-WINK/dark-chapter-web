@@ -77,8 +77,10 @@ const InputBox = styled.div`
 `
 
 const Nickname = styled.span`
-    font-weight: bold;
+    
     font-size: 14px;
+    font-weight: 700;
+    font-family: PretendartVariable;
     line-height: 26px;
     color: ${props => props.font_color};
     position: absolute;
@@ -95,6 +97,8 @@ const InputNickname = styled.input.attrs({
     outline: 0;
     border-width: 0 0 2px;
     font-size: 14px;
+    font-weight: 400;
+    font-family: PretendartVariable;
     background : ${props => props.color};
     color : ${props => props.active_color};
     border-color: ${props => props.active ? props.active_color : props.inactive_color}

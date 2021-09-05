@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
-import SignupText from "../component/input/SignupText";
-import PasswordInput from "../component/input/PasswordInput";
+import SignupText from "../component/signup/SignupText";
+import PasswordInput from "../component/signup/PasswordInput";
 import GoBackBtn from "../component/button/GoBackBtn";
 import Signup_3 from "./Signup_3";
 import ActiveBtn from "../component/button/ActiveBtn";

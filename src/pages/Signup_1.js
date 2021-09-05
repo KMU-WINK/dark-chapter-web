@@ -2,8 +2,8 @@ import styled from "styled-components";
 import React, { useState } from 'react';
 import * as config from '../config'
 
-import EmailInput from "../component/input/EmailInput";
-import SignupText from "../component/input/SignupText";
+import EmailInput from "../component/signup/EmailInput";
+import SignupText from "../component/signup/SignupText";
 import GoBackBtn from "../component/button/GoBackBtn";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
@@ -30,7 +30,7 @@ function Signup_1(){
             //     setMessage("가입 불가능한 이메일 입니다.")
             //     console.log("2")
         // }
-        else if (email === "cyh6099@naver.com") {
+        else if (email === "aaa@aa.com") {
             history.push('/signup/password')
             // return <Redirect to='/signupPwd'/>
         }

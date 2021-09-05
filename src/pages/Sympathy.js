@@ -9,7 +9,7 @@ const Sympathy = () => {
         <Space/>
         <Circle/>
         <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[30,30,20,20]}
+                        feeling={[50,47,45,43]}
                         color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
         />
         <Text>
