@@ -14,3 +14,91 @@
     border-radius: 10px 10px 0 0;
     padding : 28px 24px 0 24px;
 }
+.categorySelect {
+    display: flex;
+    flex-direction: row;
+    gap : 0 10px;
+    margin-bottom: 16px;
+}
+.categorySelect button {
+    color : #DCDCDC;
+    font-size: 16px;
+}
+.selectedCategoryLength {
+    color: #747474;
+    font-size: 12px;
+    position: absolute;
+    top: 30px;
+    right: 24px;
+}
+.selectedSection {
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    gap: 0 4px;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.selectedSection::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+.selectedCategoryButton {
+    background-color: #2c2c38;
+    padding: 6px 10px;
+    border-radius: 16px;
+    color : #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+.categoryElementSection {
+    display: flex;
+    gap: 7px 4px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.subtitle {
+    color: #747474;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.categoryElement {
+    border: #DCDCDC 1.5px solid;
+    border-radius: 16px;
+    color: #747474;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5.5px 10px;
+}
+.categoryBottomBtn {
+    display: flex;
+    color : #2C2C38;
+    font-size: 14px;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 16px;
+}
+.bottomBtnRight {
+    display: flex;
+    flex-direction: row;
+    gap : 0 16px;
+}
+.privateBtn, .shareBtn {
+    display: flex;
+    flex-direction: column;
+    gap : 6px 0;
+}
+.resetBtn img{
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+.privateBtn img{
+    width: 24px;
+    height: 24px;
+}
+.shareBtn img{
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+}
