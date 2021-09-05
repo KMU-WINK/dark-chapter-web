@@ -18,24 +18,29 @@ function MyLogFloor(props){
     console.log(height)
     // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
     const rendering = () => {
+        let hr_height = 60;
+        console.log(hr_height)
         const result = [];
         for (let i = 0; i< props.num; i++){
             result.push(
-                <PostBox>
+                <div style={{position: "relative"}}>
                     <HR src={props.color === "white" ? white_hr: black_hr}
-
+                        h={hr_height}
                     />
-                    <Post>
-                        <PaletteCircle/>
-                        <div style={{marginLeft:16}}>
-                            <div className="jejugothic">
-                                <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                            </div>
+                    <PostBox>
 
-                            <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                        </div>
-                    </Post>
-                </PostBox>
+                        <Post>
+                            <PaletteCircle/>
+                            <div style={{marginLeft:16}}>
+                                <div className="jejugothic">
+                                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
+                                </div>
+
+                                <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
+                            </div>
+                        </Post>
+                    </PostBox>
+                </div>
             )
             height += 60
         }
@@ -70,7 +75,7 @@ function MyLogFloor(props){
 }
 
 const Wrap = styled.div`
-    width : 360px;
+    width : 100%;
     background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
     padding-top:26px;
     height: ${props => props.height}px;
@@ -89,6 +94,7 @@ const PostBox = styled.div`
     width : 360px;
     height : 130px;
     position: relative;
+    margin: 0 auto;
 `
 
 const Post = styled.div`
@@ -100,18 +106,6 @@ const Post = styled.div`
     transform: translateY(-50%)
 `
 
-const Div = styled.div`
-    position: absolute;
-    top: ${props=>props.height}px
-`
-
-
-// const PaletteCircle = styled.img.attrs({
-//     src : circle
-// })`
-//     margin-left:65px;
-// `
-
 const PaletteCircle = styled.div`
     width:60px;
     height: 60px;
@@ -121,7 +115,6 @@ const PaletteCircle = styled.div`
 `
 
 const PostTitle = styled.span`
-    
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.03em;
@@ -136,13 +129,14 @@ const PostBody = styled.div`
     font-family: PretendartVariable;
     font-size: 10px;
     line-height: 13px;
-
     color: ${props => props.color};
 `
 
 const HR = styled.img`
     position: absolute;
-    top: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    
 `
 
 export default MyLogFloor
