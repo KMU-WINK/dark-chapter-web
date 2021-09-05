@@ -30,7 +30,7 @@ function Signup_1(){
             //     setMessage("가입 불가능한 이메일 입니다.")
             //     console.log("2")
         // }
-        else if (email === "cyh6099@naver.com") {
+        else if (email === "aaa@aa.com") {
             history.push('/signup/password')
             // return <Redirect to='/signupPwd'/>
         }

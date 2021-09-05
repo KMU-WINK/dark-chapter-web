@@ -9,7 +9,6 @@ export { default as ResetPassword_2} from "./ResetPassword_2";
 export { default as ResetNickname_1} from "./ResetNickname_1";
 export { default as ResetNickname_2} from "./ResetNickname_2";
 export { default as Sympathy} from "./Sympathy";
-// export { default as Progress} from "./Progress";
 export { default as PostPage} from "./PostPage";
 export { default as PostEmotionPage} from "./PostEmotionPage"
 export { default as MyLog} from "./MyLog";
@@ -18,4 +17,7 @@ export { default as OtherLog} from "./OtherLog";
 export { default as SelectSympathy} from "./SelectSympathy";
 export { default as Home} from "./Home";
 export { default as SeeMoreOther} from "./SeeMoreOther";
+export { default as Menu} from "../component/MenuBar";
+export { default as GemstoneList} from "./GemstoneList";
+export { default as GemstoneLog} from "./GemstoneLog";
 export { default as Record_3} from "./Record_3";

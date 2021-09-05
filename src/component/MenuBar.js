@@ -48,74 +48,69 @@ function MenuBar () {
     //     useNativeDriver: true,
     // }).start();
     return(
-        visible ?
-            <div className='menuComponent'>
-                <button className='menuBarButtonDiv' onClick={showMenuList}>
-                    <img src={arrowBack} alt="menuCloseBtn" className='menuBtn'/>
-                </button>
-                <h2>Menu</h2>
-                <div className='menuElement'>
-                    <p className='menuTitle'>My Account</p>
-                    <div>
-                        <button onClick={()=>{history.push('/resetPassword')}}>
-                            <img src={userIcon} alt="" className='menuComponentIcon'/>
-                            <p>비밀번호 변경</p>
-                        </button>
-                    </div>
-                    <div className='menuElement'>
-                        <button onClick={()=>{history.push('/resetNickname')}}>
-                            <img src={userIcon} alt="" className='menuComponentIcon'/>
-                            <p>닉네임 변경</p>
-                        </button>
-                    </div>
+        <div className='menuComponent'>
+            <button className='menuBarButtonDiv' onClick={()=>{history.push('/home')}}>
+                <img src={arrowBack} alt="menuCloseBtn" className='menuBtn'/>
+            </button>
+            <h2>Menu</h2>
+            <div className='menuElement'>
+                <p className='menuTitle'>My Account</p>
+                <div>
+                    <button onClick={()=>{history.push('/resetPassword')}}>
+                        <img src={userIcon} alt="" className='menuComponentIcon'/>
+                        <p>비밀번호 변경</p>
+                    </button>
                 </div>
                 <div className='menuElement'>
-                    <p className='menuTitle'>App setting</p>
-                    <div className='menuToggleElement'>
-                        <img src={bell} alt="" className='menuComponentIcon'/>
-                        <p>{alert?'알림설정 ON':'알림설정 OFF'}</p>
-                        <div className='toggle'>
-                            <button onClick={ChangeAlarmSetting}>
-                                <div className={'toggleBackground'+' alertToggleBackground'}/>
-                                <div className={'toggleBtn' + ' alertToggleBtn'}/>
-                            </button>
-                        </div>
-                    </div>
-                    <div className='menuToggleElement'>
-                        <img src={lockIcon} alt="" className='menuComponentIcon'/>
-                        <p>{appLock?'앱 잠금 ON':'앱 잠금 OFF'}</p>
-                        <div className='toggle'>
-                            <button onClick={changeLockSetting}>
-                                <div className={appLock?'toggleBackground':'lockToggleBackground'}/>
-                                <div className={appLock?'toggleBtn':'lockToggleBtn'}/>
-                            </button>
-                        </div>
-                    </div>
-                    <p className='appLockNotice'>비밀번호 분실시 찾기 어려워요ㅠ</p>
+                    <button onClick={()=>{history.push('/resetNickname')}}>
+                        <img src={userIcon} alt="" className='menuComponentIcon'/>
+                        <p>닉네임 변경</p>
+                    </button>
                 </div>
-                <div className='menuElement'>
-                    <p className='menuTitle'>Information</p>
-                    <div className='versionSection'>
-                        <img src={versionIcon} alt="" className='menuComponentIcon'/>
-                        <p>version</p>
-                        <p style={{color : '#bdbdbd',fontSize : '11px',position:'absolute',right:'40px'}}>1.0v</p>
-                    </div>
-                    <div>
-                        <button>
-                            <img src={shield} alt="" style={{width : '13px',height :'16px',marginRight : '27px'}}/>
-                            <p>개인정보 정책</p>
-                        </button>
-                    </div>
-                </div>
-                <button className='logoutBtn'>
-                    <img src={logout} alt="" className='menuComponentIcon'/>
-                    <p>Logout</p>
-                </button>
             </div>
-        :
-        <button className='menuBarButtonDiv' onClick={showMenuList}>
-            <img alt="menuOpenBtn" src={menuLogo} className='menuBtn'/>
-        </button>
+            <div className='menuElement'>
+                <p className='menuTitle'>App setting</p>
+                <div className='menuToggleElement'>
+                    <img src={bell} alt="" className='menuComponentIcon'/>
+                    <p>{alert?'알림설정 ON':'알림설정 OFF'}</p>
+                    <div className='toggle'>
+                        <button onClick={ChangeAlarmSetting}>
+                            <div className={'toggleBackground'+' alertToggleBackground'}/>
+                            <div className={'toggleBtn' + ' alertToggleBtn'}/>
+                        </button>
+                    </div>
+                </div>
+                <div className='menuToggleElement'>
+                    <img src={lockIcon} alt="" className='menuComponentIcon'/>
+                    <p>{appLock?'앱 잠금 ON':'앱 잠금 OFF'}</p>
+                    <div className='toggle'>
+                        <button onClick={changeLockSetting}>
+                            <div className={appLock?'toggleBackground':'lockToggleBackground'}/>
+                            <div className={appLock?'toggleBtn':'lockToggleBtn'}/>
+                        </button>
+                    </div>
+                </div>
+                <p className='appLockNotice'>비밀번호 분실시 찾기 어려워요ㅠ</p>
+            </div>
+            <div className='menuElement'>
+                <p className='menuTitle'>Information</p>
+                <div className='versionSection'>
+                    <img src={versionIcon} alt="" className='menuComponentIcon'/>
+                    <p>version</p>
+                    <p style={{color : '#bdbdbd',fontSize : '11px',position:'absolute',right:'40px'}}>1.0v</p>
+                </div>
+                <div>
+                    <button>
+                        <img src={shield} alt="" style={{width : '13px',height :'16px',marginRight : '27px'}}/>
+                        <p>개인정보 정책</p>
+                    </button>
+                </div>
+            </div>
+            <button className='logoutBtn'>
+                <img src={logout} alt="" className='menuComponentIcon'/>
+                <p>Logout</p>
+            </button>
+        </div>
     )
 }
 export default MenuBar;

@@ -53,12 +53,12 @@ const OvercomeBtn = styled.button`
   height: 32px;
   border: 1px solid ${props=>props.textColor};
   color : ${props=>props.textColor};
+  box-sizing: border-box;
   border-radius: 20px;
   font-family: Pretendard;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 21px;
-  background : transparent;
-  margin-bottom : 5px;
+  padding : 10px;
 `

@@ -31,12 +31,12 @@ const MyLog = () => {
                     null
                     :
                     <>
-                        <SympathyCircle feeling={[40,30,20,10]} color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]} backgroundColor={backgroundColor[1]} />
+                        <SympathyCircle feeling={[40,30,20,10]} color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]} backgroundColor={backgroundColor[2]} />
                     </>
                 }
             </Wrap2>
 
-            <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor[1]} textColor={textColor[2]}/>
+            <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor[2]} textColor={textColor[2]}/>
     </Wrap>
 }
 
