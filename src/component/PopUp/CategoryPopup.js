@@ -4,7 +4,7 @@ import resetIcon from '../../svg/reset.svg'
 import privateIcon from '../../svg/private.svg'
 import shareIcon from '../../svg/carbon_share.svg'
 
-function CategoryPopup(){
+function CategoryPopup(props){
     const [choose, setChoose] = useState([]);
     const [category, setCategory] = useState('place');
     const categoryList = {
@@ -32,6 +32,9 @@ function CategoryPopup(){
         'regret' : ['(ㅍㅅㅍ)','수치플','쎈척','멍청','반성','자퇴각','퇴사각'],
         'sad' : ['(ㅠㅅㅠ)','우울','트라우마','후회']
     }}
+    const setUnvisible = () =>{
+        props.setCategory(!props.category)
+    }
     const functionCategoryElement = (crrnt) => {
         let elementList = categoryList[crrnt]
         let elementValue = [];
@@ -60,7 +63,6 @@ function CategoryPopup(){
                 if (tag) {
                     tag.className = 'selectedCategoryButton'
                 }
-                console.log(tag)
             }
         }
     }
@@ -98,6 +100,7 @@ function CategoryPopup(){
     }
     return(
         <div className='categoryPopup'>
+            <div onClick={setUnvisible} className='popupCloseDiv'></div>
             <div className='categoryContents'>
                 <div className='categorySelect'>
                     <button value='place' onClick={categoryChange} style={{color : '#2c2c38'}}>장소</button>

@@ -5,6 +5,12 @@
     width: 100%;
     background-color: rgba(0,0,0,.7);
 }
+.popupCloseDiv {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 8%;
+}
 .categoryContents {
     width: calc(100% - 48px);
     height: calc(92% - 28px);
