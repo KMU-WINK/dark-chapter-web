@@ -55,12 +55,12 @@ function Record_3() {
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
 
-        if (tmp <= 100) {
+        if (tmp === 100) {
 
-            setNextMeter(100 - tmp)
+            setNextMeter(400)
             setNextTextColor("#747474")
             setGoTop(false)
-        } else if (tmp > 500) {
+        } else if (tmp >= 500) {
 
             setGoTop(true)
         } else if (100 < tmp <= 500) {
