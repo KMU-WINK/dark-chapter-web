@@ -173,70 +173,70 @@ function PostEmotionPage () {
             }
         </div>
         <p className='notCompleteNotice' style={{opacity : `${fillEmotion?0:1}`}}>감정을 다 채워주세요</p>
-      <Wrap>
-        <Circles>
-            <ShowCircles/>
-        </Circles>
+        <Wrap>
+            <Circles>
+                <ShowCircles/>
+            </Circles>
 
-        <Result className='contentsInfo'>
-            <p className='contentsLength'>{((cntAngry+cntShy+cntSad+cntLaugh)<=10)?cntAngry+cntShy+cntSad+cntLaugh:10}/10</p>
-            <button className='inputCompleteBtn' onClick={ModifyAction}>{modify?'완료':'수정'}</button>
-        </Result>
-          {modify ?
-              <PopUp className='popup'>
-                  <div style={{position:'relative'}} onClick={()=>{minusFeeling('angry')}}>
-                      <ColorButton color={color.angry}/>
-                      <img src={minus} className='minusBtn'/>
-                      <p className='currentCnt'>{cntAngry}</p>
-                      <SelectDiv>화나요</SelectDiv>
-                  </div>
-                  <div style={{position:'relative'}}  onClick={() => {minusFeeling("shy")}}>
-                      <ColorButton color={color.shy}/>
-                      <img src={minus} className='minusBtn'/>
-                      <p className='currentCnt' style={{color : '#5A5A5A'}}>{cntShy}</p>
-                      <SelectDiv>부끄러워요</SelectDiv>
-                  </div>
-                  <div style={{position:'relative'}} onClick={() => {minusFeeling("sad")}}>
-                      <ColorButton color={color.sad}/>
-                      <img src={minus} className='minusBtn'/>
-                      <p className='currentCnt'>{cntSad}</p>
-                      <SelectDiv>우울해요</SelectDiv>
-                  </div>
-                  <div style={{position:'relative'}} onClick={() => {minusFeeling("laugh")}}>
-                      <ColorButton color={color.laugh}/>
-                      <img src={minus} className='minusBtn'/>
-                      <p className='currentCnt'>{cntLaugh}</p>
-                      <SelectDiv>웃겨요</SelectDiv>
-                  </div>
-              </PopUp> :
-              <PopUp className='popup'>
-                  <div>
-                      <ColorButton color={color.angry} onClick={() => {
-                          showFeeling("angry")
-                      }}/>
-                      <SelectDiv>화나요</SelectDiv>
-                  </div>
-                  <div>
-                      <ColorButton color={color.shy} onClick={() => {
-                          showFeeling("shy")
-                      }}/>
-                      <SelectDiv>부끄러워요</SelectDiv>
-                  </div>
-                  <div>
-                      <ColorButton color={color.sad} onClick={() => {
-                          showFeeling("sad")
-                      }}/>
-                      <SelectDiv>우울해요</SelectDiv>
-                  </div>
-                  <div>
-                      <ColorButton color={color.laugh} onClick={() => {
-                          showFeeling("laugh")
-                      }}/>
-                      <SelectDiv>웃겨요</SelectDiv>
-                  </div>
-              </PopUp>
-          }
-    </Wrap>
+            <Result className='contentsInfo'>
+                <p className='contentsLength'>{((cntAngry+cntShy+cntSad+cntLaugh)<=10)?cntAngry+cntShy+cntSad+cntLaugh:10}/10</p>
+                <button className='inputCompleteBtn' onClick={ModifyAction}>{modify?'완료':'수정'}</button>
+            </Result>
+            {modify ?
+                <PopUp className='popup'>
+                    <div style={{position:'relative'}} onClick={()=>{minusFeeling('angry')}}>
+                        <ColorButton color={color.angry}/>
+                        <img src={minus} className='minusBtn'/>
+                        <p className='currentCnt'>{cntAngry}</p>
+                        <SelectDiv>화나요</SelectDiv>
+                    </div>
+                    <div style={{position:'relative'}}  onClick={() => {minusFeeling("shy")}}>
+                        <ColorButton color={color.shy}/>
+                        <img src={minus} className='minusBtn'/>
+                        <p className='currentCnt' style={{color : '#5A5A5A'}}>{cntShy}</p>
+                        <SelectDiv>부끄러워요</SelectDiv>
+                    </div>
+                    <div style={{position:'relative'}} onClick={() => {minusFeeling("sad")}}>
+                        <ColorButton color={color.sad}/>
+                        <img src={minus} className='minusBtn'/>
+                        <p className='currentCnt'>{cntSad}</p>
+                        <SelectDiv>우울해요</SelectDiv>
+                    </div>
+                    <div style={{position:'relative'}} onClick={() => {minusFeeling("laugh")}}>
+                        <ColorButton color={color.laugh}/>
+                        <img src={minus} className='minusBtn'/>
+                        <p className='currentCnt'>{cntLaugh}</p>
+                        <SelectDiv>웃겨요</SelectDiv>
+                    </div>
+                </PopUp> :
+                <PopUp className='popup'>
+                    <div>
+                        <ColorButton color={color.angry} onClick={() => {
+                            showFeeling("angry")
+                        }}/>
+                        <SelectDiv>화나요</SelectDiv>
+                    </div>
+                    <div>
+                        <ColorButton color={color.shy} onClick={() => {
+                            showFeeling("shy")
+                        }}/>
+                        <SelectDiv>부끄러워요</SelectDiv>
+                    </div>
+                    <div>
+                        <ColorButton color={color.sad} onClick={() => {
+                            showFeeling("sad")
+                        }}/>
+                        <SelectDiv>우울해요</SelectDiv>
+                    </div>
+                    <div>
+                        <ColorButton color={color.laugh} onClick={() => {
+                            showFeeling("laugh")
+                        }}/>
+                        <SelectDiv>웃겨요</SelectDiv>
+                    </div>
+                </PopUp>
+            }
+        </Wrap>
         <p className='completeMsg' style={{opacity : `${complete?1:0}`}}>으앙 부끄러워요 <br/>빨리 흑역사 빠뜨리러 가요 !</p>
         {category?
             <CategoryPopup/>:null

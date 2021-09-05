@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {useEffect, useState} from "react";
 import { Route, Link } from 'react-router-dom';
 import PaletteCircle from "../component/circle/PaletteCircle";
+import SympathyCircle from "../component/circle/SympathyCircle";
 
 const SelectSympathy = () => {
     const [cnt, setCnt] = useState(0);
@@ -12,6 +13,7 @@ const SelectSympathy = () => {
         laugh : "#FFF9D9",
     })
     const [feel, setFeel] = useState("");
+
     const clickSym = (sym) => {
         setFeel(sym)
     }
@@ -19,8 +21,23 @@ const SelectSympathy = () => {
     const ShowComplete = () => {
         return <>
             {feel !== ""?
-                <Link to={'/sympathy'}><Complete>완료</Complete></Link>
-                : null
+                <Wrap>
+                    <SympathyCircle feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
+                    <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
+                    <Link to={'/sympathy'}><Complete opacity={1}>완료</Complete></Link>
+                </Wrap>
+                : <Wrap>
+                    <Circles>
+                        <PaletteCircle
+                            width={240} height={240}
+                            deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
+                            color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
+                            feeling={[20,10,20,50]}
+                        />
+                    </Circles>
+                    <Message>공감할 감정을 눌러주세요</Message>
+                    <Complete opacity={0.5}>완료</Complete>
+                </Wrap>
             }
         </>
     }
@@ -28,37 +45,25 @@ const SelectSympathy = () => {
     return <Wrap>
         <Space/>
         <Header>공감하기</Header>
-
-        <Circles>
-            <PaletteCircle
-                width={240} height={240}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
-            />
-        </Circles>
-
-        <Message>공감할 감정을 눌러주세요</Message>
-
         <Wrap1>
             <ShowComplete/>
         </Wrap1>
 
         <Select>
             <div>
-                <ColorButton color={color.angry} onClick={()=>{clickSym("angry")}}/>
+                <ColorButton color={color.angry} onClick={()=>{clickSym("#fc4e62")}}/>
                 <SelectDiv>화나요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.laugh} onClick={()=>{clickSym("laugh")}}/>
+                <ColorButton color={color.laugh} onClick={()=>{clickSym("#FFF9D9")}}/>
                 <SelectDiv>웃겨요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.sad} onClick={()=>{clickSym("sad")}}/>
+                <ColorButton color={color.sad} onClick={()=>{clickSym("#466597")}}/>
                 <SelectDiv>우울해요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.shy} onClick={()=>{clickSym("shy")}}/>
+                <ColorButton color={color.shy} onClick={()=>{clickSym("#fbaca5")}}/>
                 <SelectDiv>부끄러워요</SelectDiv>
             </div>
         </Select>
@@ -155,14 +160,36 @@ const Wrap1 = styled.div`
 `
 
 const Complete = styled.button`
-  width : 50px;
-  margin: 24px 24px 0 0;
+  position: absolute;
+  width: 61px;
+  height: 18px;
+  left: 275px;
+  top: 520.5px;
   font-family: Pretendard;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: right;
   color: #FFFFFF;
-  background : transparent;
-  border : none;
+  opacity: ${props=>props.opacity};
+`
+
+const SympathyText = styled.div`
+  position: absolute;
+  height: 21px;
+  left: 96.83px;
+  top: 483px;
+  font-family: JejuGothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
 `

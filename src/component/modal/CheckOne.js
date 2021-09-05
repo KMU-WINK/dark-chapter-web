@@ -2,46 +2,52 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 
 import './checkOne.css'
+import "../../fonts/fonts.css"
 
 function CheckOne(props){
 
-    const [isChecked, setIsChecked] = useState(true);
-
-
-    useEffect(() => {
-        props.setChecked(isChecked)
-    },[isChecked])
-
+    const checked = () => {
+        props.setChecked(!props.checked)
+    }
 
     return(
 
-        <Div>
-            <input
-                type="checkbox"
-                id={props.id}
-                checked={props.checked}
-                onClick={() =>{
-                    setIsChecked(!isChecked);
+        <Wrap>
+            <Div>
+                <input
+                    type="checkbox"
+                    id={props.id}
+                    checked={props.checked}
+                    onClick={() => {
+                        checked()
+                    }}
 
-                }}
-            />
+                />
                 <label
-                    for={props.id
-                    }></label>
-            <Span>
-                {props.body}
-            </Span>
+                    htmlFor={props.id
+                    }
+                ></label>
+                <Span style={{marginLeft:12}}>
+                    {props.body}
+                </Span>
+            </Div>
             <A>내용 보기</A>
-        </Div>
+        </Wrap>
 
     )
 }
 
-const Div = styled.div`
+const Wrap = styled.div`
     position : relative;
-    width: 321px;
+    width: 100%;
     height: 24px;
-    margin-top : 8px
+    margin-top : 8px;
+    display:flex;
+    justify-content: space-between; 
+`
+
+const Div =styled.div`
+    margin-left: 16px;
 `
 
 const Span = styled.span`
@@ -49,40 +55,19 @@ const Span = styled.span`
     height: 21px;
     left: 36px;
     top: 2px;
-    font-weight: bold;
+    font-weight: 700;
+    font-family: PretendartVariable;
     font-size: 14px;
     color: #FFFFFF;
 `
-
-
-// const CheckOne = styled.img.attrs({
-//     src: check_one
-// })`
-//     display : block;
-//     margin-left : 16px;
-//     margin-top : 8px;
-//     position: absolute;
-//     left: 0px;
-//     top: 0px;
-// `
-
-// const NotCheckOne = styled.img.attrs({
-//     src: not_check_one
-// })`
-//     display : block;
-//     margin-left : 16px;
-//     margin-top : 8px;
-//     position: absolute;
-//     left: 0px;
-//     top: 0px;
-// `
 
 const A = styled.a`
     text-decoration:none;
     font-size: 10px;
     color: #DCDCDC;
-    position: absolute;
-    left: 283px;
     top: 5px;
+    font-weight: 400;
+    font-family: PretendartVariable;
+    margin-right:23px;
 `
 export default CheckOne
