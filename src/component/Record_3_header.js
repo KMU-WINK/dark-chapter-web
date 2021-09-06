@@ -4,13 +4,16 @@ import arrow from "../svg/arrow.svg";
 import goBack from "../svg/record_3_goback.svg";
 
 function Record_3_header(props){
+    const changeCategory = () =>{
+        props.setCategory(!props.category)
+    }
     return(
 
         <Header>
             <GoBack/>
             {props.flag ?
                 <NextText
-                    onClick={()=>console.log("click")}
+                    onClick={changeCategory}
                     color="2C2C38"
                 >다음</NextText> :
                 <NextText

@@ -32,7 +32,6 @@ function PostEmotionPage () {
     })
     const [modify, setModify] = useState(false)
     const [complete, setComplete] = useState(false)
-    const [category, setCategory] = useState(true)
     useEffect(() => {
         popupInteraction()
     }, [cnt]);
@@ -238,9 +237,6 @@ function PostEmotionPage () {
             }
         </Wrap>
         <p className='completeMsg' style={{opacity : `${complete?1:0}`}}>으앙 부끄러워요 <br/>빨리 흑역사 빠뜨리러 가요 !</p>
-        {category?
-            <CategoryPopup/>:null
-        }
     </>)
 }
 
