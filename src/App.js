@@ -28,6 +28,8 @@ import {
     Menu,
     GemstoneLog,
     GemstoneList,
+    Record_3,
+    WalkThrough_1,
 
 } from './pages';
 
@@ -67,6 +69,8 @@ function App() {
 
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
+
+                    <Route path="/WK1" component={WalkThrough_1}/>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
             </Router>
