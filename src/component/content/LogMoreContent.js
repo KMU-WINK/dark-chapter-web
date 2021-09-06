@@ -17,7 +17,13 @@ const LogMoreContent = (props) => {
                 {props.status === "MyLog"?
                     <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>극복하기</OvercomeBtn>
                     :
-                    <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                    <>
+                        {props.status === "OtherLog"?
+                            <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                            :
+                            null
+                        }
+                    </>
                 }
             </Wrap2>
         </TextBox>
