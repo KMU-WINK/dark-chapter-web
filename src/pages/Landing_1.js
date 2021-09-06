@@ -40,15 +40,15 @@ function Landing_1() {
 }
 
 const Container = styled.div`
-    width: 360px;
-    height: 760px;
+    width: 100%;
+    height: 100%;
     background : ${props => props.color};
 `
 
 const Div = styled.div`
     display : flex;
     justify-content : space-between;
-    width : 320px;
+    width : 100%;
     margin : 0 auto;
 `
 

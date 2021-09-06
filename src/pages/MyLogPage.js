@@ -88,7 +88,7 @@ function MyLogPage(){
                     color={"black"}
                     bodyTextColor = {"#747474"}
                     backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
-                    floor={"상충"}
+                    floor={"상층"}
                     num={firstFloor}
                 />
                 <MyLogFloor
@@ -117,8 +117,8 @@ function MyLogPage(){
 }
 
 const Div = styled.div`
-    
-    width : 360px;
+    width : 100%;
+    height: 100vh;
     background : #D2DADF
     
 `

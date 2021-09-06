@@ -4,7 +4,6 @@ const SympathyCircle = (props) => {
 
     const ShowSympathyCircle = () => {
         if (props.feeling.length === 1) return <>
-            <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
                 t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
@@ -13,7 +12,6 @@ const SympathyCircle = (props) => {
             />
         </>
         else if (props.feeling.length === 2) return <>
-            <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
                 t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
@@ -29,7 +27,6 @@ const SympathyCircle = (props) => {
         </>
 
         else if (props.feeling.length === 3) return <>
-            <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
                 t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
@@ -51,7 +48,6 @@ const SympathyCircle = (props) => {
         </>
 
         else if (props.feeling.length === 4) return <>
-            <Black backgroundColor={props.backgroundColor}/>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)}
                 t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2}
@@ -80,6 +76,10 @@ const SympathyCircle = (props) => {
     }
 
     return <Wrap>
+        {props.black?
+            <Black backgroundColor={props.backgroundColor}/>
+            : null
+        }
         <ShowSympathyCircle/>
     </Wrap>
  }

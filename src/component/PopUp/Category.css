@@ -1,0 +1,16 @@
+.categoryPopup {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,.7);
+}
+.categoryContents {
+    width: calc(100% - 48px);
+    height: calc(92% - 28px);
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    padding : 28px 24px 0 24px;
+}

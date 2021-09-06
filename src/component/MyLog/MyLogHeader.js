@@ -11,8 +11,10 @@ function MyLogHeader(){
     return(
         <Wrap>
             <Header className="jejugothic">
-                <Icon/>
-                <MyLogText>My_log</MyLogText>
+                <Div>
+                    <Icon/>
+                    <MyLogText>My_log</MyLogText>
+                </Div>
                 <Jewelry/>
             </Header>
         </Wrap>
@@ -28,22 +30,28 @@ const Header = styled.div`
     width : 100%;
     height : 56px;
     position:relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+const Div = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
 `
 
 const Icon = styled.img.attrs({
     src : arrow
 })`
-    position : absolute;
-    left: 24px;
-    top: 16px;
+    padding-right: 8px;
 `
 
 const MyLogText = styled.span`
-    position: absolute;
+    
     width: 67px;
     height: 32px;
-    left: 56px;
-    top: 12px;
+    
     font-family: JejuGothic;
     font-style: normal;
     font-weight: normal;
@@ -55,11 +63,10 @@ const MyLogText = styled.span`
 const Jewelry = styled.img.attrs({
     src : jewelry
 })`
-    position: absolute;
+    
     width: 24px;
     height: 24px;
-    left: 312px;
-    top: 15.49px;
+    padding-right: 16px;
 `
 
 
