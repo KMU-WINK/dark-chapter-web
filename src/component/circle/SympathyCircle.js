@@ -40,7 +40,7 @@ const SympathyCircle = (props) => {
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)/value.one.size}
                 t={Math.max(136-((40/50)*props.feeling[0]),96)-Math.min((72/50)*props.feeling[0],72)/2-value.one.top}
-                l={60-Math.min((72/50)*props.feeling[0],72)/2-value.one.left}
+                l={75-Math.min((72/50)*props.feeling[0],72)/2-value.one.left}
                 color={props.color[0]} blur={Math.min(70+props.feeling[0],120)/value.one.blur}
             />
         </>
@@ -140,7 +140,6 @@ const Black = styled.div`
   left: 60px;
   top: 153px;
   z-index : 10;
-  position: absolute;
   width : 240px;
   height : 240px;
   border-radius: 50%;

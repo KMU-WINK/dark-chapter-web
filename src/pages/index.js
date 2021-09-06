@@ -22,3 +22,4 @@ export { default as GemstoneList} from "./GemstoneList";
 export { default as GemstoneLog} from "./GemstoneLog";
 export { default as Record_3} from "./Record_3";
 export { default as WalkThrough_1} from "./WalkThrough_1";
+export { default as MyLogPage} from "./MyLogPage";

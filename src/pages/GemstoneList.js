@@ -9,7 +9,7 @@ const GemstoneList = () => {
 
     return <All className="jejugothic">
         <Header>
-            <GoBackBtn black={true} previousPage={'/'}/>
+            <GoBackBtn black={true} previousPage={'/myLogPage'}/>
             <Text>원석함</Text>
         </Header>
 
@@ -132,7 +132,7 @@ const Title = styled.div`
 `
 
 const Date = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;

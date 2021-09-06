@@ -32,7 +32,7 @@ const CategoryDiv = styled.div`
   border-radius: 12px;
 `
 const HashTag = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -42,7 +42,7 @@ const HashTag = styled.div`
 `
 
 const Category = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

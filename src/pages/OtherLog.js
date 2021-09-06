@@ -10,7 +10,7 @@ const OtherLog = () => {
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap backgroundColor={backgroundColor[2]}>
-        <OtherHeader/>
+        <OtherHeader previousPage={'/home'}/>
         <Wrap1>
             <SelectCategory/>
         </Wrap1>

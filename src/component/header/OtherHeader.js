@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import UpArrow from '../../svg/upArrow.svg';
 import listView from '../../svg/listView.svg';
+import {useHistory} from "react-router-dom";
 
 const OtherHeader = (props) => {
-
+    const history = useHistory();
     return <>
-        <Wrap>
+        <Wrap className={"jejugothic"}>
             <Wrap2>
-                <UpArrowIcon/>
+                <UpArrowIcon onClick={()=>{history.push(props.previousPage)}}/>
                 <HeaderText>공감하기</HeaderText>
             </Wrap2>
             <ListViewIcon/>
@@ -39,7 +40,6 @@ const UpArrowIcon = styled.img.attrs({
 
 const HeaderText = styled.div`
   margin : 12px 0 0 8px;
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
