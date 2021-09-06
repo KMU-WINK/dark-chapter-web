@@ -30,8 +30,10 @@ import {
     GemstoneList,
     Record_3,
     WalkThrough_1,
+
 } from './pages';
 
+import PopUp from './component/modal/PopUp.js';
 function App() {
     return (
         <>
@@ -63,6 +65,7 @@ function App() {
                     <Route path='/other/seeMore' component={SeeMoreOther}/>
                     <Route path="/selectSympathy" component={SelectSympathy}/>
                     <Route path="/sympathy" component={Sympathy}/>
+                    <Route path="/popup" component={PopUp}></Route>
 
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>

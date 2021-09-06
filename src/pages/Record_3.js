@@ -11,6 +11,7 @@ import Record_3_circle from "../component/Record_3_circle";
 import Record_3_bottom from "../component/Record_3_bottom";
 
 import white_scale from "../svg/white_scale.svg"
+import CategoryPopup from "../component/PopUp/CategoryPopup";
 
 //TO DO
 //1. 미터 글씨 커지게 하기
@@ -23,6 +24,8 @@ function Record_3() {
     const [nextMeter, setNextMeter] = useState(0);
     const [nextTextColor, setNextTextColor] = useState("#747474")
     const [goTop, setGoTop] = useState(false);
+    const [category, setCategory] = useState(false)
+    const [complete, setComplete] = useState(false)
 
     const goToTop = () => {
         window.scrollTo({
@@ -125,7 +128,7 @@ function Record_3() {
 
     return (
         <Wrap color={isMove ? "linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 95%)" : "#F3F3ED"}>
-            <Record_3_header flag={isMove}/>
+            <Record_3_header flag={isMove} category={category} setCategory = {setCategory}/>
             <Space id="test"></Space>
             <Record_3_circle/>
 
@@ -149,6 +152,9 @@ function Record_3() {
                 null
             }
             <Record_3_bottom/>
+            {category?
+                <CategoryPopup category={category} setCategory ={setCategory}/>:null
+            }
         </Wrap>
     )
 }
