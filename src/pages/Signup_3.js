@@ -167,7 +167,6 @@ const BaseBtn = styled.button`
     border-radius: 60px;
     font-size: 16px;
     margin : 30px auto;
-    display : block;
     align-items : center;
     font-weight: bold;
 `
