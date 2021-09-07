@@ -9,7 +9,6 @@ import bi_x_active from "../svg/bi_x.svg";
 import {useHistory} from "react-router-dom";
 
 function Signup_3(props){
-    let flag = false
 
     let history = useHistory();
 

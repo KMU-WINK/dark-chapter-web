@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from "styled-components";
 import * as config from '../config'
-import {Route, Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import SignupText from "../component/signup/SignupText";
 import NicknameInput from "../component/signup/NicknameInput";

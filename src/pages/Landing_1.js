@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from 'react';
+import React from 'react';
 
 import "../fonts/fonts.css"
 
@@ -11,9 +11,6 @@ import logo from "../svg/white_logo.svg"
 
 
 function Landing_1() {
-
-
-
     return (
         <Container className="jejugothic" >
             <A to='/login'>
@@ -111,7 +108,8 @@ const ButtonText = styled.span`
 
 const CircleWrap = styled.div`
     width: 100%;
-    height: 100vh;  
+    height: 100vh;
+    
 `
 
 const Circle = styled.div`
