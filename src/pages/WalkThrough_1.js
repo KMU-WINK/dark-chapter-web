@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import background_1 from "../svg/walk_through_1.svg"
 import background_2 from "../svg/walk_through_2.svg";
+import background_3 from "../svg/walk_through_3.svg";
 import WalkThoughText from "../component/walk-through/WalkThoughText";
 import Step from "../component/walk-through/Step";
 import Slider from "react-slick";
@@ -21,7 +22,7 @@ const WalkThrough_1 = () => {
     };
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 1,
@@ -43,22 +44,35 @@ const WalkThrough_1 = () => {
 
     return (
 
-        <Container>
+        <Container id="qq">
             <Step step={step[currentIdx]}/>
             <Slider {...settings}>
+                {/*<div style={{}}>*/}
+                {/*    <h3>1</h3>*/}
+                {/*</div >*/}
+                {/*<div style={{}}>*/}
+                {/*    <h3>2</h3>*/}
+                {/*</div>*/}
+                {/*<div style={{}}>*/}
+                {/*    <h3>3</h3>*/}
+                {/*</div>*/}
                 <Wrap>
                     <WalkThoughText text={text1}/>
-                    <Img1/>
+                    <div style={{position: "absolute", bottom:0, width: "100%"}}>
+                        <Wave/>
+
+                    </div>
+                    {/*<Img1/>*/}
                 </Wrap>
 
                 <Wrap>
                     <WalkThoughText text={text2}/>
-                    <Img2/>
+                    {/*<Img2/>*/}
                 </Wrap>
 
                 <Wrap>
                     <WalkThoughText text={text3}/>
-                    <Img2/>
+                    {/*<Img3/>*/}
                 </Wrap>
             </Slider>
         </Container>
@@ -69,37 +83,52 @@ const WalkThrough_1 = () => {
 
 const Container = styled.div`
     background: #2C2C38;
+    width:100%;
+    height: 100vh;
 `
 
-const Wrap = styled.div`
-    height: 100vh;
-    width: 100%;
-    position: relative
+const Wrap = styled(Container)`
+    position: relative;
 `
 
-const Img1 = styled.img.attrs({
-    src: background_1
-})`
-    width: 100%/3;
-    height: 100vh;
-    position: fixed;
-    bottom: 0
+const Wave = styled.div`
+  position: relative;
+  bottom: 0;
+  height: 300px;
+  width: 100%;
+  background: black;
+  
+  
+  
+  &::before {
+    content: "";
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 80%;
+      height: 200px;
+      background-color: black;
+      right: -140px;
+      top: -60px;
+      border-top: 1px solid white
+      
+  };
+  
+  &::after {
+    content: "";
+  display: block;
+  position: absolute;
+  border-radius: 60% 50%;
+  width: 90%;
+  height: 240px;
+  background-color: #2C2C38;
+  left: -58px;
+  top: -200px;
+  border-bottom: 1px solid white
+  
+  }
 `
-const Img2 = styled.img.attrs({
-    src: background_2
-})`
-    width: 100%/3;
-    height: 100vh;
-    position: fixed;
-    bottom: 0
-`
-// const Img1 = styled.img.attrs({
-//     src: background_img
-// })`
-//     width: 100%;
-//     height: 100vh;
-//     position: fixed;
-//     bottom: 0
-// `
+
+
 
 export default WalkThrough_1

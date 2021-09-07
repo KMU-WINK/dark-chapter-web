@@ -1,4 +1,6 @@
 <svg width="361" height="761" viewBox="0 0 361 761" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<rect width="360" height="760" transform="translate(0.319336 0.5)" fill="#2C2C38"/>
 <g opacity="0.5" filter="url(#filter0_f)">
 <ellipse cx="204.423" cy="347.553" rx="251.413" ry="301.559" fill="#FFE9CF"/>
 </g>
@@ -16,6 +18,7 @@
 <path d="M-951.836 583.758C-597.675 563.264 -619.849 525.203 -469.712 525.202C-273.243 525.202 -174.362 604.008 78.9793 604.008C314.871 604.008 328.315 593.486 486.135 563.995C674.849 528.732 706.2 547.102 759.973 563.995" stroke="url(#paint2_linear)" stroke-opacity="0.5" stroke-width="0.880412" stroke-linecap="round"/>
 <g filter="url(#filter4_f)">
 <circle cx="180.32" cy="443.367" r="70" fill="#2C2C38"/>
+</g>
 </g>
 <defs>
 <filter id="filter0_f" x="-183.973" y="-90.9889" width="776.792" height="877.084" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -64,5 +67,8 @@
 <stop offset="0.796875" stop-color="#888888"/>
 <stop offset="1" stop-color="white" stop-opacity="0"/>
 </linearGradient>
+<clipPath id="clip0">
+<rect width="360" height="760" fill="white" transform="translate(0.319336 0.5)"/>
+</clipPath>
 </defs>
 </svg>
