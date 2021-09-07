@@ -57,7 +57,7 @@ function App() {
 
                     <Route path="/post" component={PostPage}/>
                     <Route path="/postEmotion" component={PostEmotionPage}/>
-
+                    <Route path='/sinkEmotion' component={Record_3}></Route>
                     <Route exact path="/myLog" component={MyLog}/>
                     <Route path="/myLog/seeMore" component={SeeMoreContent}/>
 

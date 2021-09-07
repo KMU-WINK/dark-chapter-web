@@ -283,6 +283,7 @@ const Result = styled.div`
   bottom: 188px;
   opacity: 0;
   transition: opacity 2s;
+  font-family: PretendartVariable;
 `
 
 const PopUp = styled.div`

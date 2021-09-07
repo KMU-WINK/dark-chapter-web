@@ -6,6 +6,11 @@
 button {
     border: none;
     background: none;
+    font-family: 'PretendartVariable';
+}
+input,
+textarea{
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .Header {
     width: 100%;
@@ -31,6 +36,7 @@ button {
     justify-content: center;
     color: rgba(44,44,56);
     opacity: 0.3;
+    font-family: PretendartVariable;
 }
 .TextContents {
     margin-top : 24px;
@@ -62,7 +68,7 @@ button {
     outline: none;
     font-size: 18px;
     padding-left: 31px;
-    font-weight: bold;
+    font-weight: 400;
 }
 .titleLength {
     position: absolute;
@@ -118,6 +124,7 @@ button {
     margin-top : 111px;
     left: 50px;
     color: #777;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .notCompleteNotice {
     color: #777;
