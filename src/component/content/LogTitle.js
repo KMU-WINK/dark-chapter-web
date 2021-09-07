@@ -53,7 +53,7 @@ const Tag = styled.div`
   background: ${props=>props.tagColor};
   border-radius: 16px;
   margin-right : 8px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 500;
   font-size: 10px;

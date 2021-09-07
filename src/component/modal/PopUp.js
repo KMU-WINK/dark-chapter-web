@@ -5,7 +5,7 @@ const PopUp = (props) => {
     const history = useHistory();
     const {onClose} = props;
 
-    return <OpacityView>
+    return <OpacityView className={"jejugothic"}>
         <PopupBox>
             <Message>{props.text}</Message>
             {props.text2 ? <Message2>{props.text2}</Message2> : null}
@@ -37,7 +37,6 @@ const PopupBox = styled.div`
     background: #F7F7F5;
     left: 66px;
     top: 279.35px;
-    font-family: 'Jeju Gothic';
     text-align: center;
     box-shadow: 0px 2.668604612350464px 7.116279125213623px 0px #0000001A;
 `

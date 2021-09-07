@@ -43,7 +43,7 @@ const GoBack = styled.img.attrs({
     margin-left: 24px;
 `
 const NextText = styled.button`
-    font-family: Pretendard;
+    font-family: PretendartVariable;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

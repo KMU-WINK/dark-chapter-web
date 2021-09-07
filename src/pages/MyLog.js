@@ -18,7 +18,7 @@ const MyLog = () => {
     }
 
     return <Wrap backgroundColor={backgroundColor[2]}>
-            <ContentHeader textColor={textColor[2]}/>
+            <ContentHeader textColor={textColor[2]} previousPage={'/myLogPage'}/>
 
             <Wrap2 onClick={()=>{clickPalette()}}>
                 <PaletteCircle
@@ -31,7 +31,7 @@ const MyLog = () => {
                     null
                     :
                     <>
-                        <SympathyCircle feeling={[40,30,20,10]} color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]} backgroundColor={backgroundColor[2]} />
+                        <SympathyCircle black={true} feeling={[40,30,20,10]} color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]} backgroundColor={backgroundColor[2]} />
                     </>
                 }
             </Wrap2>
