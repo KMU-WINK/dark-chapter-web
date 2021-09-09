@@ -18,15 +18,18 @@ function Step(props){
 const Container = styled.div`
     width: 100%;
     margin:0 auto;
-    
+    position: relative;
 `
 
-const Div = styled.div`    
+const Div = styled.div`
     width: 100%;
     padding-top: 82px;
     display: flex;
     justify-content: center;
     margin-left: -8px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
 `
 
 const Circle = styled.div`

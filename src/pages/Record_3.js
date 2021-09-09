@@ -25,7 +25,9 @@ function Record_3() {
     const [nextTextColor, setNextTextColor] = useState("#747474")
     const [goTop, setGoTop] = useState(false);
     const [category, setCategory] = useState(false)
-    const [complete, setComplete] = useState(false)
+
+    // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
+    const bottomFloorHeight =window.innerHeight - 332
 
     const goToTop = () => {
         window.scrollTo({
@@ -41,11 +43,11 @@ function Record_3() {
             y: 0
         });
         const onScroll = () => {
-            setState({x: window.scrollX, y: window.scrollY});
+            setState({x:window.scrollX, y:window.scrollY});
         };
         useEffect(() => {
             window.addEventListener("scroll", onScroll); // scorll할 때 onScroll 이벤트 핸들러 지정
-            return () => window.removeEventListener("scroll", onScroll); // clean up
+            return () =>window.removeEventListener("scroll", onScroll); // clean up
         }, []);
         return state;
     }
@@ -54,9 +56,9 @@ function Record_3() {
     useEffect(() => {
         console.log(window.scrollY)
         if (window.scrollY > 0) setIsMove(true)
-        const target = document.getElementById("test")
+        const target =document.getElementById("test")
 
-        let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
+        let tmp =Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
 
         if (tmp === 100) {
 
@@ -72,10 +74,10 @@ function Record_3() {
             setNextTextColor("#FFFFFF")
             setGoTop(false)
         }
-        const equalCircle = document.getElementById(String(tmp))
+        const equalCircle =document.getElementById(String(tmp))
         // console.log(equalCircle)
-        for (let i = 0; i < 1000; i += 10) {
-            const notEqualCircle = document.getElementById(String(i))
+        for (let i = 0; i <= 10000; i += 10) {
+            const notEqualCircle =document.getElementById(String(i))
             notEqualCircle.style.fontSize = "10px"
             notEqualCircle.style.marginTop = "6px"
         }
@@ -152,7 +154,7 @@ function Record_3() {
                 :
                 null
             }
-            <Record_3_bottom/>
+            <Record_3_bottom height={bottomFloorHeight}/>
             {category?
                 <CategoryPopup category={category} setCategory ={setCategory}/>:null
             }
@@ -199,7 +201,7 @@ const MeterSpace = styled.div`
 const MeterWrap = styled.div`
     display:flex;
     align-items: flex-start;
-    
+
 `
 
 const MeterText = styled.span`
@@ -212,7 +214,7 @@ const MeterText = styled.span`
     align-items: center;
     letter-spacing: -0.03em;
     color: ${props => props.color};
-    
+
     opacity: 0.5;
 `
 

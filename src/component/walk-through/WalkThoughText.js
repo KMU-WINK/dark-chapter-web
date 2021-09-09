@@ -15,18 +15,19 @@ function WalkThoughText(props){
 const Container = styled.div`
     width: 100%;
     height: 70px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
+    font-family: JejuGothic;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
 
 
-    letter-spacing: -0.03em;
-    
-    color: #FFFFFF;
-    
-    padding-left: 36px;
-    padding-top : 72px
+letter-spacing: -0.03em;
+
+color: #FFFFFF;
+
+padding-left: 36px;
+margin-top : 154px
 `
 
 export default WalkThoughText
