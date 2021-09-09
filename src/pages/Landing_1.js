@@ -92,7 +92,7 @@ const Button = styled.button`
     height: 40px;
     background: rgba(234, 234, 234, 0.2);
     border-radius: 20px;
-    margin: 200px auto;
+    margin: 140px auto;
     font-family: PretendartVariable;
     font-style: normal;
     font-weight: 700;
