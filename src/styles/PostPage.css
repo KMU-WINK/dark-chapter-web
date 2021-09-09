@@ -1,7 +1,8 @@
 #root {
     background: #f3f3ed;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 24px);
+    padding-top: 24px;
 }
 button {
     border: none;
@@ -92,7 +93,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px 0;
+    margin-bottom: 16px;
 }
 .contentsLength {
     color: rgba(0,0,0,.2);

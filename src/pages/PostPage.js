@@ -7,6 +7,7 @@ function PostPage (props) {
     const [title,setTitle] = useState('')
     const [contents, setContents] = useState('')
     const [visible, setVisible] = useState(false);
+    const [typingFocus, setTypingFocus] = useState(false);
     const titleInput = ({target}) =>{
         setTitle(target.value)
     }
@@ -16,6 +17,12 @@ function PostPage (props) {
     const postEmotion = () =>{
         window.location.href ='/postEmotion'
     }
+    const checkFocus = () =>{
+        setTypingFocus(document.activeElement.tagName==='TEXTAREA'?true:false)
+    }
+    useEffect(()=>{
+        checkFocus()
+    },[document.activeElement])
     return (<>
         <div className='Header'>
             <button className='backBtn' onClick={()=>{setVisible(true)}}><img src={black_x} alt=""/></button>
@@ -34,7 +41,7 @@ function PostPage (props) {
                 <textarea type="text" maxLength="5000" rows='20' required placeholder='내용을 입력해주세요' onChange={contentsInput}/>
                 <div className='contentsFooter'>
                     <p className='contentsLength'>{contents.length}/5000</p>
-                    <button className='inputCompleteBtn'>완료</button>
+                    <button className='inputCompleteBtn' onClick={checkFocus}>{typingFocus?'완료':null}</button>
                 </div>
             </div>
         </div>
