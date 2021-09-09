@@ -134,6 +134,7 @@ function PostEmotionPage () {
             setComplete(true)
             document.querySelector('.popup').style.bottom = '-188px'
             document.querySelector('.contentsInfo').style.opacity = 0
+            setTimeout(()=>{window.location.href ='/postDepth'},3000)
         }
     }
     const ModifyAction = () =>{
@@ -265,6 +266,7 @@ const Result = styled.div`
   bottom: 188px;
   opacity: 0;
   transition: opacity 2s;
+  font-family: PretendartVariable;
 `
 
 const PopUp = styled.div`

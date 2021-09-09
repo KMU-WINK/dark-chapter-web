@@ -73,8 +73,6 @@ function App() {
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
 
-                    <Route path="/record-3" component={Record_3}/>
-
                     <Route path="/walk-through" component={WalkThrough_1}/>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
