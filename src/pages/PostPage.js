@@ -6,6 +6,7 @@ import PopUp from '../component/modal/PopUp.js';
 function PostPage (props) {
     const [title,setTitle] = useState('')
     const [contents, setContents] = useState('')
+    const [isPopup, setIsPopup] = useState(false);
     const [visible, setVisible] = useState(false);
     const [typingFocus, setTypingFocus] = useState(false);
     const titleInput = ({target}) =>{
@@ -25,7 +26,7 @@ function PostPage (props) {
     },[document.activeElement])
     return (<>
         <div className='Header'>
-            <button className='backBtn' onClick={()=>{setVisible(true)}}><img src={black_x} alt=""/></button>
+            <button className='backBtn' onClick={()=>{setIsPopup(true)}}><img src={black_x} alt=""/></button>
             {title.length !== 0 && contents.length !== 0 ?
                 <button className='nextBtn' style={{opacity: 1}} onClick={postEmotion}>다음</button>
                 : <button className='nextBtn' style={{opacity : 0.3}}>다음</button>
@@ -45,8 +46,8 @@ function PostPage (props) {
                 </div>
             </div>
         </div>
-        {visible?
-            <PopUp onClose={setVisible} state={props.state} text="정말 나가시겠어요?" text2="기록한 모든게 다 사라져요."/>
+        {isPopup?
+            <PopUp onClose={setIsPopup} state={props.state} text="정말 나가시겠어요?" text2="기록한 모든게 다 사라져요."/>
             : null
         }
     </>)
