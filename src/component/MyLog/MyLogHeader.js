@@ -5,17 +5,19 @@ import arrow from "../../svg/arrow.svg"
 import jewelry from "../../svg/jewelry-box.svg"
 
 import "../../fonts/fonts.css"
+import {useHistory} from "react-router-dom";
 
 
 function MyLogHeader(){
+    const history = useHistory();
     return(
-        <Wrap>
-            <Header className="jejugothic">
+        <Wrap className={"jejugothic"}>
+            <Header>
                 <Div>
-                    <Icon/>
+                    <Icon onClick={()=>history.push('/home')}/>
                     <MyLogText>My_log</MyLogText>
                 </Div>
-                <Jewelry/>
+                <Jewelry onClick={()=>{history.push('/gemstone')}}/>
             </Header>
         </Wrap>
     )
@@ -51,8 +53,6 @@ const MyLogText = styled.span`
     
     width: 67px;
     height: 32px;
-    
-    font-family: JejuGothic;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;

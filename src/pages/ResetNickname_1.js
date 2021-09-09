@@ -16,8 +16,6 @@ function ResetNickname_1(){
 
     const [isActive, setIsActive] = useState(false)
 
-    const [isValidateMsg, setValidate] = useState(true)
-
     const [pwd,setPwd] = useState("")
 
     const [pwdMessage, setPwdMessage] = useState("fff")

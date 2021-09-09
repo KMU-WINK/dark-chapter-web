@@ -82,7 +82,7 @@ const ContentList1 = styled.div`
   height: 26.5px;
   left: 25.1px;
   top: 39.26px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -97,7 +97,7 @@ const ContentList2 = styled.div`
   height: 26.5px;
   left: 25.1px;
   top: 79.29px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

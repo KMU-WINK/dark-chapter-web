@@ -127,6 +127,7 @@ function Record_3() {
 
 
     return (
+
         <Wrap color={isMove ? "linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 95%)" : "#F3F3ED"}>
             <Record_3_header flag={isMove} category={category} setCategory = {setCategory}/>
             <Space id="test"></Space>
@@ -163,6 +164,7 @@ const Space = styled.div`
     width : 100px;
     height : 211px;
 `
+
 
 const Wrap = styled.div`
     width : 100%;

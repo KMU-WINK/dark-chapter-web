@@ -5,12 +5,13 @@ import { Route, Link } from 'react-router-dom';
 const Sympathy = () => {
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
-        <Wrap>
+        <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
         <SympathyCircle backgroundColor={"#2c2c38"}
                         feeling={[50,47,45,43]}
                         color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        black={true}
         />
         <Text>
             <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
@@ -55,7 +56,6 @@ const Text = styled.div`
 `
 
 const SympathyText = styled.div`
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -67,7 +67,7 @@ const SympathyText = styled.div`
 `
 
 const FromText = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;

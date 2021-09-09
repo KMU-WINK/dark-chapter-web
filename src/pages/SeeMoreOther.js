@@ -9,7 +9,7 @@ const SeeMoreOther = () => {
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap background={backgroundColor[2]}>
-        <ContentHeader state={"share"}  previousPage={'/myLog'}/>
+        <ContentHeader state={"share"}  previousPage={'/other'}/>
         <Wrap2>
             <PaletteCircle
                 width={120} height={120}

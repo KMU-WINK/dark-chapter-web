@@ -22,7 +22,7 @@ const SelectSympathy = () => {
         return <>
             {feel !== ""?
                 <Wrap>
-                    <SympathyCircle feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
+                    <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
                     <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
                     <Link to={'/sympathy'}><Complete opacity={1}>완료</Complete></Link>
                 </Wrap>
@@ -42,7 +42,7 @@ const SelectSympathy = () => {
         </>
     }
 
-    return <Wrap>
+    return <Wrap className={"jejugothic"}>
         <Space/>
         <Header>공감하기</Header>
         <Wrap1>
@@ -77,7 +77,6 @@ const Space = styled.div`
 `
 
 const Header = styled.div`
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -104,7 +103,6 @@ const Circles = styled.div`
 
 const Message = styled.div`
   margin-top : 60px;
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -165,7 +163,7 @@ const Complete = styled.button`
   height: 18px;
   left: 275px;
   top: 520.5px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -182,7 +180,6 @@ const SympathyText = styled.div`
   height: 21px;
   left: 96.83px;
   top: 483px;
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
