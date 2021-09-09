@@ -3,8 +3,7 @@ import logo from "../svg/logo.svg";
 import menu from "../svg/menu.svg";
 import plus from "../svg/plus.svg";
 import initPalette from "../svg/initPalette.svg"
-import wave1 from "../svg/wave.svg";
-import wave2 from "../svg/wave2.svg";
+import wave from "../svg/wave.svg";
 import download from "../svg/download.svg"
 import {useState} from "react";
 import PaletteCircle from "../component/circle/PaletteCircle";
@@ -15,7 +14,7 @@ const Home = () => {
     const [title, setTitle] = useState('흑역사를 입력해주세요')
     const [init, setInit] = useState(true);
 
-    return <>
+    return <All>
         <Header>
             <MenuIcon onClick={()=>{history.push('/menu')}}/>
             <PlusIcon onClick={()=>{history.push('/post')}}/>
@@ -42,36 +41,48 @@ const Home = () => {
             }
         </Wrap3>
 
-        {/*<WaveDiv>*/}
-        {/*    <Wave1/>*/}
-        {/*    <Wave2/>*/}
-        {/*</WaveDiv>*/}
+        <WaveDiv>
+            {init?
+                <Wave top={551} height={208}/>
+                :
+                <Wave top={291.11} height={467}/>
+            }
+        </WaveDiv>
 
         <Wrap2>
-            <Page onClick={()=>{history.push('/myLog')}}>
+            <Page onClick={()=>{history.push('/myLogPage')}}>
                 <Icon/>
-                <Name>My_log</Name>
+                <Name className="jejugothic">My_log</Name>
             </Page>
             <Page onClick={()=>{history.push('/other')}}>
                 <Icon/>
-                <Name>Other_log</Name>
+                <Name className="jejugothic">Other_log</Name>
             </Page>
         </Wrap2>
-    </>
+    </All>
 }
 
 export default Home;
+
+const All = styled.div`
+  width : 100vw;
+  height : 100vh;
+  background: #F3F3ED;
+  overflow : no-content;
+`
 
 const Header = styled.div`
   display : flex;
   justify-content: space-between;
 `
+
 const MenuIcon = styled.img.attrs({
     src : menu
 })`
     margin-left : 24px;
     margin-top : 9px;
 `
+
 const PlusIcon = styled.img.attrs({
     src : plus
 })`
@@ -92,7 +103,7 @@ const LogoDiv = styled.img.attrs({
 
 const Title = styled.div`
   margin-top : 16px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -112,34 +123,29 @@ const InitDiv = styled.img.attrs({
 `
 
 const WaveDiv = styled.div`
-    margin-top : 118px;
+    margin-top : 100px;
 `
 
-const Wave1 = styled.img.attrs({
-    src : wave1
+const Wave = styled.img.attrs({
+    src : wave
 })`
-    //margin-top : 87.1px;
   position: absolute;
-  width: 2777px;
-  height: 97px;
-  left: -832.19px;
-  top: 531.11px;
-`
-const Wave2 = styled.img.attrs({
-    src : wave2
-})`
-  //margin-top : 71px;
+  width : 360px;
+  height : ${props=>props.height}px;
+  top: ${props=>props.top}px;
 `
 
 const Wrap2 = styled.div`
   display : flex;
   justify-content: space-around;
-  margin : 204px 30px 0 30px;
+  margin : 250px 30px 0 30px;
+  z-index : 5;
 `
 
 const Page = styled.div`
   display : flex;
   justify-content: center;
+  z-index : 5;
 `
 
 const Icon = styled.img.attrs({
@@ -148,7 +154,6 @@ const Icon = styled.img.attrs({
 `
 
 const Name = styled.div`
-  font-family: JejuGothic;
   font-style: normal;
   font-weight: normal;
   font-size: 11.6883px;

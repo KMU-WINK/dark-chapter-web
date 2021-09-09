@@ -3,14 +3,19 @@ import styled from "styled-components";
 import list from "../../svg/list.svg";
 import {useState} from "react";
 import ContentMenu from "../modal/ContentMenu";
+import blackList from "../../svg/list_black.svg";
 
 const ContentHeader = (props) => {
     const [visible, setVisible] = useState(false);
 
     return <>
         <Header>
-            <GoBackBtn back={props.back}/>
-            <ListIcon onClick={()=>{setVisible(true)}} textColor={props.textColor}/>
+            <GoBackBtn black={props.black} previousPage={props.previousPage}/>
+            {props.black?
+                <BListIcon onClick={()=>{setVisible(true)}} textColor={props.textColor}/>
+                :
+                <ListIcon onClick={()=>{setVisible(true)}} textColor={props.textColor}/>
+            }
         </Header>
         {visible?
             <ContentMenu onClose={setVisible} state={props.state}/>
@@ -31,31 +36,13 @@ const ListIcon = styled.img.attrs({
 })`
     margin-right: 24px;
     margin-top : 16px;
+    fill: ${props=>props.color};
 `
 
-const ModalBar = styled.div`
-  width: 40px;
-  height: 4px;
-  display : flex;
-  justify-content: center;
-
-  background: #C4C4C4;
-  border-radius: 15px;
-`
-
-const Center = styled.div`
-  display : flex;
-  justify-content: center;
-  margin-bottom : 10px;
-`
-
-const ContentList = styled.div`
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 25px;
-  letter-spacing: 0.05em;
-  color: #040404;
-  margin-top : 13px;
+const BListIcon = styled.img.attrs({
+    src : blackList
+})`
+    margin-right: 24px;
+    margin-top : 16px;
+    fill: ${props=>props.color};
 `

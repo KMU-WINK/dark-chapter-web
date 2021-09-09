@@ -17,7 +17,13 @@ const LogMoreContent = (props) => {
                 {props.status === "MyLog"?
                     <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>극복하기</OvercomeBtn>
                     :
-                    <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                    <>
+                        {props.status === "OtherLog"?
+                            <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                            :
+                            null
+                        }
+                    </>
                 }
             </Wrap2>
         </TextBox>
@@ -32,7 +38,7 @@ const Wrap = styled.div`
 `
 
 const TextBox = styled.div` 
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -55,7 +61,7 @@ const OvercomeBtn = styled.button`
   color : ${props=>props.textColor};
   box-sizing: border-box;
   border-radius: 20px;
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

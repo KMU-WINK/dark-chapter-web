@@ -18,7 +18,7 @@ const Wrap = styled.div`
 `
 
 const TextBox = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -29,7 +29,7 @@ const TextBox = styled.div`
 `
 
 const SeeMore = styled.div`
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

@@ -28,6 +28,9 @@ import {
     Menu,
     GemstoneLog,
     GemstoneList,
+    Record_3,
+    WalkThrough_1,
+    MyLogPage,
 
 } from './pages';
 
@@ -57,7 +60,9 @@ function App() {
 
                     <Route path="/post" component={PostPage}/>
                     <Route path="/postEmotion" component={PostEmotionPage}/>
+                    <Route path="/postDepth" component={Record_3}/>
 
+                    <Route exact path="/myLogPage" component={MyLogPage}/>
                     <Route exact path="/myLog" component={MyLog}/>
                     <Route path="/myLog/seeMore" component={SeeMoreContent}/>
 
@@ -70,6 +75,8 @@ function App() {
 
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
+
+                    <Route path="/walk-through" component={WalkThrough_1}/>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
             </Router>

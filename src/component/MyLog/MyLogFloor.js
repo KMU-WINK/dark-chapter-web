@@ -1,13 +1,13 @@
 import React,{useEffect} from 'react';
 import styled from "styled-components";
-
-import circle from "../../svg/MyLog-circle.png";
 import "../../fonts/fonts.css";
 import white_hr from "../../svg/white_hr.svg"
 import black_hr from "../../svg/black_hr.svg"
+import PaletteCircle from "../circle/PaletteCircle";
+import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
-
+    const history = useHistory();
     let height = 0;
     if(props.num <= 3){
         height = 414
@@ -28,9 +28,13 @@ function MyLogFloor(props){
                         h={hr_height}
                     />
                     <PostBox>
-
-                        <Post>
-                            <PaletteCircle/>
+                        <Post onClick={()=>{history.push('/myLog')}}>
+                            <PaletteCircle
+                                width={60} height={60}
+                                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
+                                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
+                                feeling={[20,10,20,50]}
+                            />
                             <div style={{marginLeft:16}}>
                                 <div className="jejugothic">
                                     <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
@@ -94,7 +98,7 @@ const PostBox = styled.div`
     width : 360px;
     height : 130px;
     position: relative;
-    margin: 0 auto;
+    margin: 0 64px;
 `
 
 const Post = styled.div`
@@ -103,16 +107,16 @@ const Post = styled.div`
     display: flex;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
 `
 
-const PaletteCircle = styled.div`
-    width:60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 1px solid red;
-    margin-left: 65px;
-`
+// const PaletteCircle = styled.div`
+//     width:60px;
+//     height: 60px;
+//     border-radius: 50%;
+//     border: 1px solid red;
+//     margin-left: 65px;
+// `
 
 const PostTitle = styled.span`
     font-size: 14px;

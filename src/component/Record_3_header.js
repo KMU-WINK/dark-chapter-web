@@ -4,13 +4,16 @@ import arrow from "../svg/arrow.svg";
 import goBack from "../svg/record_3_goback.svg";
 
 function Record_3_header(props){
+    const changeCategory = () =>{
+        props.setCategory(!props.category)
+    }
     return(
 
         <Header>
             <GoBack/>
             {props.flag ?
                 <NextText
-                    onClick={()=>console.log("click")}
+                    onClick={changeCategory}
                     color="2C2C38"
                 >다음</NextText> :
                 <NextText
@@ -40,7 +43,7 @@ const GoBack = styled.img.attrs({
     margin-left: 24px;
 `
 const NextText = styled.button`
-    font-family: Pretendard;
+    font-family: PretendartVariable;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

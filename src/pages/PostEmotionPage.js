@@ -1,16 +1,11 @@
 import React,{ useState, useEffect } from "react";
 import '../styles/PostPage.css'
 import black_x from "../svg/black_x.svg";
-import back from "../img/eva_arrow-ios-back-fill.png";
-import pencil from "../img/ei_pencil.png";
-import colorPalette from "../img/fluent_color-20-regular.png";
-import trash from "../img/ei_trash.png";
-import help from "../img/help.png";
 import styled from "styled-components";
 import minus from "../svg/minusBtn.svg"
-import CategoryPopup from '../component/PopUp/CategoryPopup'
+import whiteCircle from "../svg/whiteCircle.svg"
+import PaletteCircle from "../component/circle/PaletteCircle";
 
-const resultColor = ["#FF2036FF","#FFF890FF","#366197FF","#EAEAE5","#EAEAE5","#EAEAE5","#EAEAE5","#EAEAE5","#EAEAE5","#EAEAE5"]
 let cntAngry = 0;
 let cntShy = 0;
 let cntSad = 0;
@@ -25,14 +20,13 @@ function PostEmotionPage () {
     const [laugh, setLaugh] = useState(0)
     const [fillEmotion, setFillEmotion] = useState(true)
     const [color, setColor] = useState({
-        angry : [254, 78, 98],
-        shy : [255, 249, 217],
-        sad : [70, 101, 152],
-        laugh : [253, 173, 166],
+        angry : "#FF2036FF",
+        shy : "#FFF890FF",
+        sad : "#366197FF",
+        laugh : "#faaba4",
     })
     const [modify, setModify] = useState(false)
     const [complete, setComplete] = useState(false)
-    const [category, setCategory] = useState(true)
     useEffect(() => {
         popupInteraction()
     }, [cnt]);
@@ -43,6 +37,7 @@ function PostEmotionPage () {
     const ShowCircles = () => {
         let feel = [];
         let feelColor = [];
+        let degree = [];
 
         if (cntAngry>0) {
             feel.push(angry);
@@ -60,39 +55,29 @@ function PostEmotionPage () {
             feel.push(laugh);
             feelColor.push(color.laugh);
         }
-        console.log(feel);
-        console.log(feelColor);
 
         if (feel.length === 0) return <InitCircle><p className='emotionNotice'>10개의 감정이 필요해요!</p></InitCircle>
+        else if (feel.length === 1) degree = ["50% 50%", "0% 0%", "0% 0%", "0% 0%"]
+        else if (feel.length === 2) degree = ["14.6% 14.6%", "85.4% 85.4%", "0% 0%", "0% 0%"]
+        else if (feel.length === 3) degree = ["50% 0", "6.7% 75%","93.3% 75%", "0% 0%"]
+        else if (feel.length === 4) degree = ["14% 14%", "14% 86%", "86% 14%","86% 86%"]
+        for (let i=4;i>0;i--){
+            feel.push(0);
+            feelColor.push("transparent");
+        }
 
-        else if (feel.length === 1) return <Circle deg={"50% 0"} feeling={feel[0]} color={feelColor[0]}/>
-        else if (feel.length === 2){
-            return <>
-                <Circle deg={"14.6% 14.6%"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[1]} color={feelColor[1]}/>
-            </>
-        }
-        else if (feel.length === 3){
-            return <>
-                <Circle deg={"50% 0"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"6.7% 75%"} feeling={feel[1]} color={feelColor[1]}/>
-                <Circle deg={"93.3% 75%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"93.3% 75%"} feeling={feel[2]} color={feelColor[2]}/>
-            </>
-        }
-        else if (feel.length === 4){
-            return <>
-                <Circle deg={"14.6% 14.6%"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"14.6% 85.4%"} feeling={feel[1]} color={feelColor[1]}/>
-                <Circle deg={"85.4% 14.6%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"85.4% 14.6%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[3]} color={feelColor[3]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[3]} color={feelColor[3]}/>
-            </>
-        }
+        return <>
+            <PaletteCircle
+                width={240} height={240}
+                deg={degree}
+                color={feelColor}
+                feeling={feel} />
+        </>
     }
 
     const showFeeling = async (feeling) => {
+        if (cntAngry+cntShy+cntSad+cntLaugh > 10) return null;
+
         if(feeling === "angry") {
             setAngry(angry+8);
             cntAngry += 1;
@@ -109,15 +94,10 @@ function PostEmotionPage () {
             setLaugh(laugh+12);
             cntLaugh += 1
         }
-
-        let idx = 0;
-        for(let j=0;j<cntAngry;j++) resultColor[idx++] = "#FF2036FF"
-        for(let j=0;j<cntShy;j++) resultColor[idx++] = "#FFF890FF"
-        for(let j=0;j<cntSad;j++) resultColor[idx++] = "#366197FF"
-        for(let j=0;j<cntLaugh;j++) resultColor[idx++] = "#faaba4"
         setCnt(cnt+1)
         console.log(cntAngry, cntShy, cntSad, cntLaugh)
     }
+
     const minusFeeling = async (feeling) => {
         if(feeling === "angry") {
             if (cntAngry>0) {
@@ -143,14 +123,9 @@ function PostEmotionPage () {
                 cntLaugh -= 1
             }
         }
-
-        let idx = 0;
-        for(let j=0;j<cntAngry;j++) resultColor[idx++] = "#FF2036FF"
-        for(let j=0;j<cntShy;j++) resultColor[idx++] = "#FFF890FF"
-        for(let j=0;j<cntSad;j++) resultColor[idx++] = "#366197FF"
-        for(let j=0;j<cntLaugh;j++) resultColor[idx++] = "#faaba4"
         setCnt(cnt+1)
     }
+
     const NextBtn =()=>{
         if (cnt<10){
             setFillEmotion(false)
@@ -159,6 +134,7 @@ function PostEmotionPage () {
             setComplete(true)
             document.querySelector('.popup').style.bottom = '-188px'
             document.querySelector('.contentsInfo').style.opacity = 0
+            setTimeout(()=>{window.location.href ='/postDepth'},3000)
         }
     }
     const ModifyAction = () =>{
@@ -238,9 +214,6 @@ function PostEmotionPage () {
             }
         </Wrap>
         <p className='completeMsg' style={{opacity : `${complete?1:0}`}}>으앙 부끄러워요 <br/>빨리 흑역사 빠뜨리러 가요 !</p>
-        {category?
-            <CategoryPopup/>:null
-        }
     </>)
 }
 
@@ -266,13 +239,19 @@ const InitCircle = styled.div`
   background: #e9e9e4;
   text-align : center;
 `
+const White = styled.img.attrs({
+    src : whiteCircle
+})`
+    opacity: 50;
+`
+
 
 const Circle = styled.div`
   position: absolute;
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: ${props=>props.mode};
   background: radial-gradient(circle at ${props=>props.deg}, rgb(${props=>props.color[0]},${props=>props.color[1]},${props=>props.color[2]}) ${props => props.feeling}%, rgba(${props=>props.color[0]},${props=>props.color[1]},${props=>props.color[2]},0.2) 70.71%);
   filter: blur(3px);
   backdrop-filter: blur(20px);
@@ -287,6 +266,7 @@ const Result = styled.div`
   bottom: 188px;
   opacity: 0;
   transition: opacity 2s;
+  font-family: PretendartVariable;
 `
 
 const PopUp = styled.div`
@@ -316,7 +296,7 @@ const ColorButton = styled.button`
   width : 50px;
   height : 50px;
   border-radius: 50px;
-  background : rgb(${props=>props.color[0]},${props=>props.color[1]},${props=>props.color[2]});
+  background : ${props=>props.color};
   border : none;
   margin-top : 40px;
   margin-left : 11.8px;

@@ -57,6 +57,16 @@ const Wrap = styled.div`
   border-radius: 20px 20px 0px 0px;
 `
 
+const Wrap2 = styled.div`
+  background : white;
+  position: absolute;
+  width: 360px;
+  height: 118px;
+  left: 0px;
+  top: 642px;
+  border-radius: 10px 10px 0px 0px;
+`
+
 const ModalBar = styled.div`
   position: absolute;
   width: 40px;
@@ -79,8 +89,7 @@ const ContentList1 = styled.div`
   height: 26.5px;
   left: 25.1px;
   top: 39.26px;
-
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -95,8 +104,7 @@ const ContentList2 = styled.div`
   height: 26.5px;
   left: 25.1px;
   top: 79.29px;
-
-  font-family: Pretendard;
+  font-family: PretendartVariable;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
