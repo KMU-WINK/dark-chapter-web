@@ -1,10 +1,12 @@
 .categoryPopup {
+    opacity: 1;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: rgba(0,0,0,.7);
     font-family: PretendartVariable;
+    transition: opacity 1s;
 }
 .popupCloseDiv {
     position: absolute;
@@ -82,9 +84,11 @@
     color : #2C2C38;
     font-size: 14px;
     justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 48px);
     padding-bottom: 16px;
     font-family: "Noto Sans KR";
+    position: absolute;
+    bottom: 0;
 }
 .bottomBtnRight {
     display: flex;
