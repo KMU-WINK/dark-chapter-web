@@ -2,12 +2,8 @@
     display:none;
 }
 
-.ccheck label{
-
-}
-
 .ccheck input[type="checkbox"] + label{
-    padding:0 0 0 0px;
+    padding:0 0 0 0;
     height:20px;
     background:url("../../svg/not_check_all.svg")no-repeat;
 

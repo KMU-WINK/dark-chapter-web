@@ -11,6 +11,7 @@ import * as config from "../config";
 
 
 function Signup_2(){
+    console.log(window.innerWidth)
     const [popup, setPopup] = useState(false);
     const [isActive, setIsActive] = useState(false)
 
@@ -84,7 +85,8 @@ function Signup_2(){
                     <InactiveBtn text = "Next"/>
                 </BtnWrap>
             }
-            {popup && <Signup_3 onClose = {setPopup}/>}
+
+            {popup ? <Signup_3 onClose = {setPopup} width={document.documentElement.clientWidth}/>:null}
         </Container>
     )
 }

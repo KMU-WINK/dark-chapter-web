@@ -20,7 +20,8 @@ import CategoryPopup from "../component/PopUp/CategoryPopup";
 
 
 function Record_3() {
-    const [isMove, setIsMove] = useState(false)
+    const [isMove, setIsMove] = useState(false);
+    const [isHundred, setIsHundred] = useState(false);
     const [nextMeter, setNextMeter] = useState(0);
     const [nextTextColor, setNextTextColor] = useState("#747474")
     const [goTop, setGoTop] = useState(false);
@@ -54,28 +55,47 @@ function Record_3() {
     const {y} = useScroll();
 
     useEffect(() => {
-        console.log(window.scrollY)
+        // console.log(window.scrollY)
         if (window.scrollY > 0) setIsMove(true)
         const target = document.getElementById("test")
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
+        console.log(tmp)
 
-        if (tmp === 100) {
 
-            setNextMeter(400)
-            setNextTextColor("#747474")
-            setGoTop(false)
-        } else if (tmp >= 500) {
-
+        if(tmp<100){
+            setIsHundred(false)
+        }
+        else if(tmp >= 500){
             setGoTop(true)
-        } else if (100 < tmp <= 500) {
-
+            setNextTextColor("#FFFFFF")
+            setIsHundred(true)
+        }
+        else if(100 <= tmp <= 500){
             setNextMeter(500 - tmp)
             setNextTextColor("#FFFFFF")
             setGoTop(false)
+            setIsHundred(true)
         }
+
+        // else if(tmp===)
+        // if (tmp >= 100) {
+        //     console.log("hundred")
+        //     setNextMeter(400-tmp+100)
+        //     setNextTextColor("#FFFFFF")
+        //     setGoTop(false)
+        // } else if (tmp >= 500) {
+        //     console.log("gogo")
+        //     setGoTop(true)
+        //     setNextTextColor("#FFFFFF")
+        // } else if (100 < tmp <= 500) {
+        //
+        //     setNextMeter(500 - tmp)
+        //     setNextTextColor("#747474")
+        //     setGoTop(false)
+        // }
         const equalCircle = document.getElementById(String(tmp))
-        // console.log(equalCircle)
+
         for (let i = 0; i <= 10000; i += 10) {
             const notEqualCircle = document.getElementById(String(i))
             notEqualCircle.style.fontSize = "10px"
@@ -91,6 +111,7 @@ function Record_3() {
         const result = [];
         let meter = 0;
         for (let i = 0; i < 1000; i++) {
+
             if (meter <= 90) {
                 result.push(
                     <MeterWrap className="jejugothic">
@@ -130,20 +151,25 @@ function Record_3() {
 
     return (
 
-        <Wrap color={isMove ? "linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 95%)" : "#F3F3ED"}>
-            <Record_3_header flag={isMove} category={category} setCategory={setCategory}/>
+        <Wrap Wrap color={isMove ? "linear-gradient(#D2DADF 1%,#D2DADF 1%, #97A2B2 3%,#97A2B2 3%, #2C2C38 7%, #2C2C38 85%)" : "#F3F3ED"}>
+            <Record_3_header
+                flag={isMove}
+                category={category}
+                setCategory={setCategory}
+                isHundred={isHundred}
+            />
             {isMove ? null :
                 <TextDiv className="jejugothic">
                     <P>아래로 내려</P>
                     <P>수심을 설정해 주세요</P>
                 </TextDiv>}
-            <Space id="test"></Space>
+            <Space id="test" height={window.innerHeight/2-80}></Space>
             <Record_3_circle/>
 
 
             {/*<GroundColor/>*/}
 
-            <MeterSpace>
+            <MeterSpace id="retkpeor" height={document.documentElement.clientHeight-56}>
                 {hrRendering()}
             </MeterSpace>
             {isMove ?
@@ -169,7 +195,7 @@ function Record_3() {
 
 const Space = styled.div`
     width : 100px;
-    height : 211px;
+    height : ${props=>props.height}px;
 `
 
 
@@ -189,10 +215,10 @@ const TextDiv = styled.div`
 
 const P = styled.p`
     font-size: 14px;
-line-height: 21px;
-letter-spacing: -0.03em;
-
-color: rgba(0, 0, 0, 0.5);
+    line-height: 21px;
+    letter-spacing: -0.03em;
+    
+    color: rgba(0, 0, 0, 0.5);
 `
 
 
@@ -216,7 +242,9 @@ const WhiteHr = styled.img.attrs({
 `
 
 const MeterSpace = styled.div`
-    margin-top: 80px;
+    padding-top:80px;
+
+    // transform: translateX(-50%)
 `
 
 const MeterWrap = styled.div`

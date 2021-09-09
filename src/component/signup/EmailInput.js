@@ -5,7 +5,7 @@ import "../../fonts/fonts.css"
 import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
 
-import emailIcon from '../../svg/mail.svg'
+import emailIcon from '../../svg/signup_mail.svg'
 import bi_x_active from '../../svg/bi_x.svg'
 import bi_x_inactive from '../../svg/bi_x_inactive.svg'
 
@@ -20,6 +20,8 @@ function EmailInput(props){
     const onChangeEmail = e => {
         setEmail(e.target.value);
     };
+
+    console.log("a: ",document.documentElement.clientWidth)
 
 
     useEffect(()=>{
@@ -36,7 +38,7 @@ function EmailInput(props){
     },[email])
 
     return (
-        <Wrap>
+        <Wrap width={document.documentElement.clientWidth-48}>
 
             <InputBox>
                 <img
@@ -65,10 +67,11 @@ function EmailInput(props){
     )
 }
 const Wrap = styled.div`
-    width: 328px;
-    margin : 0 auto;
+    width: ${props=>props.width}px;
     margin-top : 88px;
     position : relative;
+    padding: 0 24px
+    
 `
 const InputBox = styled.div`
     height: 38px;
@@ -79,7 +82,7 @@ const InputEmail = styled.input.attrs({
     placeholder:"BlackYeoksa@gmail.com"
 })`
     text-align : center;
-    width: 328px;
+    width: 100%;
     height: 38px;
     outline: 0;
     border-width: 0 0 2px;
@@ -95,14 +98,14 @@ const XIcon = styled.img.attrs({
     src : bi_x_active
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 const InactiveXIcon = styled.img.attrs({
     src : bi_x_inactive
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function Record_3_circle(){
     return(
-        <Div>
+        <Div id="circle">
             <Circle></Circle>
         </Div>
     )
@@ -16,6 +16,8 @@ const Div = styled.div`
     left: 0;
     right: 0;
     text-align: center;
+    top:50%;
+    transform: translateY(-50%);
 `
 
 const Circle = styled.div`

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, {useState, useEffect} from "react"
 import * as config from '../../config'
 
-import Password from '../../svg/password.svg';
+import Password from '../../svg/signup_password.svg';
 import bi_x from '../../svg/bi_x.svg';
 import bi_x_inactive from '../../svg/bi_x_inactive.svg'
 
@@ -16,6 +16,8 @@ import inreveal_inactive from '../../svg/inreveal_inactive.svg'
 
 
 function PasswordInput(props){
+
+    console.log(document.documentElement.clientWidth)
     // 활성화, 비활성화
     const [isPwdActive,setPwdActive] = useState(false);
 
@@ -46,14 +48,14 @@ function PasswordInput(props){
     return (
 
 
-        <PwdInputWrap>
+        <PwdInputWrap width={document.documentElement.clientWidth-48}>
             <PasswordIcon/>
 
             {
                 (function () {
                     if (isRevealPwd && isPwdActive){
                         return (
-                            <InRevealActiveIcon
+                            <RevealActiveIcon
                                 onClick={changePwdReveal}
                                 active = {isPwdActive}
                             />
@@ -62,7 +64,7 @@ function PasswordInput(props){
                     else if (isRevealPwd && !isPwdActive){
                         return (
 
-                            <InRevealInactiveIcon
+                            <RevealInactiveIcon
                                 onClick={changePwdReveal}
                                 active = {isPwdActive}
                             />
@@ -71,21 +73,21 @@ function PasswordInput(props){
                     }
                     else if (!isRevealPwd && isPwdActive){
                         return (
-
-                            <RevealActiveIcon
+                            <InRevealActiveIcon
                                 onClick={changePwdReveal}
                                 active = {isPwdActive}
                             />
+
 
                         )
                     }
                     else if (!isRevealPwd && !isPwdActive){
                         return (
-
-                            <RevealInactiveIcon
+                            <InRevealInactiveIcon
                                 onClick={changePwdReveal}
                                 active = {isPwdActive}
                             />
+
 
                         )
                     }
@@ -98,7 +100,7 @@ function PasswordInput(props){
             }
 
             <InputPwd
-                type={!isRevealPwd ? "text" : "password"}
+                type={!isRevealPwd ? "password" : "text"}
                 value={pwd}
                 onChange = {onChangePwd}
                 active = {isPwdActive}
@@ -119,10 +121,11 @@ function PasswordInput(props){
 }
 
 const PwdInputWrap = styled.div`
-    width : 328px;
+    width : ${props=>props.width}px;
     height: 62px;
     position : relative;
-    margin: 16px auto;
+    
+    margin: 16px 24px auto;
 `
 
 
@@ -131,7 +134,7 @@ const InputPwd = styled.input.attrs({
 
 })`
     text-align : center;
-    width: 328px;
+    width: 100%;
     height: 38px;
     outline: 0;
     border-width: 0 0 2px;
@@ -155,7 +158,7 @@ const RevealActiveIcon = styled.img.attrs({
     src: reveal_active,
 })`
     position : absolute;
-    left: 272px;
+    right: 32px;
     top: 7px;
 `;
 
@@ -163,7 +166,7 @@ const RevealInactiveIcon = styled.img.attrs({
     src: reveal_inactive,
 })`
     position : absolute;
-    left: 272px;
+    right: 32px;
     top: 7px;
 `;
 
@@ -171,7 +174,7 @@ const InRevealInactiveIcon = styled.img.attrs({
     src: inreveal_inactive,
 })`
     position : absolute;
-    left: 272px;
+    right: 32px;
     top: 7px;
 `;
 
@@ -179,7 +182,7 @@ const InRevealActiveIcon = styled.img.attrs({
     src: inreveal_active
 })`
     position : absolute;
-    left: 272px;
+    right: 32px;
     top: 7px;
 `
 
@@ -187,14 +190,14 @@ const XIcon = styled.img.attrs({
     src : bi_x
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 const InactiveXIcon = styled.img.attrs({
     src : bi_x_inactive
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 

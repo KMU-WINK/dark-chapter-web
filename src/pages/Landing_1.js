@@ -12,7 +12,7 @@ import logo from "../svg/white_logo.svg"
 
 function Landing_1() {
     return (
-        <Container className="jejugothic" >
+        <Container>
             <A to='/login'>
                 <Text>로그인</Text>
             </A>
@@ -21,8 +21,8 @@ function Landing_1() {
                 <Span>비록 흑역사일지라도</Span>
             </Div>
 
-            <Link >
-                <Button to='/signup'>
+            <Link to='/signup'>
+                <Button >
                     <ButtonText>회원가입</ButtonText>
                 </Button>
             </Link>
@@ -47,12 +47,14 @@ const Text = styled.a`
     margin-top: 20px;
     margin-right: 20px;
     display: block;
+    font-family: PretendartVariable;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF
 `
 const A = styled(Link)`
     width: 100%;
-    font-weight: bold;
-    font-size: 18px;
-    color : #FFFFFF;
     text-decoration : none;
     height: 56px;
     display: block;
@@ -93,17 +95,16 @@ const Button = styled.button`
     background: rgba(234, 234, 234, 0.2);
     border-radius: 20px;
     margin: 140px auto;
-    font-family: PretendartVariable;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
     color: #FFFFFF;
 `
 
 const ButtonText = styled.span`
     text-align: center;
-    flex: 1
+    flex: 1;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: PretendartVariable;
 `
 
 const CircleWrap = styled.div`

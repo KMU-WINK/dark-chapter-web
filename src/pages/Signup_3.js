@@ -19,7 +19,6 @@ function Signup_3(props){
     const [agreeMarketing, setMarketing] = useState(false);
 
     useEffect(() => {
-        console.log("call")
         console.log("all: ",agreeAll)
         console.log("service: ",agreeService)
         console.log("info: ",agreeInfo)
@@ -30,7 +29,7 @@ function Signup_3(props){
         }
         else if(agreeService && agreeInfo){
             setActive(true)
-            setAll(true)
+            setAll(false)
         }
         else{
             setActive(false)
@@ -42,26 +41,37 @@ function Signup_3(props){
     const {onClose} = props;
 
     return(
-        <Wrap>
-            <ModalWrap color={config.BACKGROUND_COLOR} id="qqq">
+        <Wrap width={props.width}>
+            <ModalWrap color={config.BACKGROUND_COLOR} width={props.width}>
+                {/*<Div>*/}
+                {/*    <div onClick={()=>console.log("click")}>*/}
+                {/*        <XIcon*/}
+                {/*            id="rater"*/}
+                {/*            onClick={click}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*    <CheckAllWrap>*/}
+                {/*        <CheckAll*/}
+                {/*            setAll = {setAll}*/}
+                {/*            checked = {agreeAll}*/}
+                {/*            setService={setService}*/}
+                {/*            setInfo={setInfo}*/}
+                {/*            setMarketing={setMarketing}*/}
+                {/*        />*/}
+                {/*    </CheckAllWrap>*/}
+                {/*</Div>*/}
                 <Div>
-                    <XIcon
-                        onClick={() => {
-                            onClose(false);
-                        }}
+                    <CheckAll
+                        setAll = {setAll}
+                        checked = {agreeAll}
+                        setService={setService}
+                        setInfo={setInfo}
+                        setMarketing={setMarketing}
+                        onClose={props.onClose}
                     />
-                    <CheckAllWrap>
-                        <CheckAll
-                            setAll = {setAll}
-                            checked = {agreeAll}
-                            setService={setService}
-                            setInfo={setInfo}
-                            setMarketing={setMarketing}
-                        />
-                    </CheckAllWrap>
                 </Div>
 
-                <DivideLine/>
+                <DivideLine width={document.documentElement.clientWidth-32}/>
                 <CheckBoxWrap>
                     <CheckOne
 
@@ -91,6 +101,7 @@ function Signup_3(props){
                         ?
                         <NextBtn
                             onClick={() => {
+
                                 history.push('/signup/nickname')
                             }
                             }
@@ -105,7 +116,7 @@ function Signup_3(props){
 
 
 const Wrap = styled.div`
-    width : 100%;
+    width: ${props=>props.width}px;
     height : 100vh;
     position : fixed;
     left : 0;
@@ -117,12 +128,10 @@ const Wrap = styled.div`
 `
 
 const ModalWrap = styled.div`
-    width : 100%;
+    width : ${props=>props.width}px;
     height : 298px;
     position : fixed;
     left : 0;
-    right:0;
-    
     bottom : 0;
     z-index : 100;
     background: ${props => props.color};
@@ -130,21 +139,13 @@ const ModalWrap = styled.div`
 `
 
 const Div = styled.div`
-    width: 100%- 32px;
-    margin: 0 auto;
-`
-
-const XIcon = styled.img.attrs({
-    src : bi_x_active
-})`
-    display : block;
-    float: right;
-    padding-right: 16px;
+    width: 100%;
+    height: 100px;
+    position:relative;
 `
 
 const DivideLine = styled.hr`
-    width: 328px;
-    margin-top:16px;
+    width: ${props=>props.width}px;
     border: 1px solid #FFFFFF;
 `
 
