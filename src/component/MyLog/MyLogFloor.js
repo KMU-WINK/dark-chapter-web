@@ -15,7 +15,7 @@ function MyLogFloor(props){
     else{
         height = props.num * 130 + 24;
     }
-    console.log(height)
+
     // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
     const rendering = () => {
         let hr_height = 60;

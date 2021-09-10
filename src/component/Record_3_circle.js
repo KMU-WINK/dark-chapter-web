@@ -4,6 +4,7 @@ import PaletteCircle from "./circle/PaletteCircle";
 
 function Record_3_circle(){
     return(
+
         <Div>
             <PaletteCircle
                 width={160} height={160}
@@ -22,6 +23,8 @@ const Div = styled.div`
     left: 0;
     right: 0;
     text-align: center;
+    top:50%;
+    transform: translateY(-50%);
 `
 
 // const Circle = styled.div`
@@ -31,5 +34,6 @@ const Div = styled.div`
 //     border-radius: 50%;
 //     display: inline-block
 // `
+
 
 export default Record_3_circle;
