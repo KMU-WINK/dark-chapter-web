@@ -92,7 +92,7 @@ const Nickname = styled.span`
 const InputNickname = styled.input.attrs({
     placeholder:"별명은 개인 식별 용도로만 사용됩니다."
 })`
-    // text-align : center;
+    text-align : center;
     width: 100%;
     height: 38px;
     outline: 0;
@@ -103,7 +103,7 @@ const InputNickname = styled.input.attrs({
     background : ${props => props.color};
     color : ${props => props.active_color};
     border-color: ${props => props.active ? props.active_color : props.inactive_color};
-    padding: 0 68px;
+    // padding: 0 68px;
 `
 
 
