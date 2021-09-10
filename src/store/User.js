@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx'
 
-import * as userAPI from "../axios/User";
+import * as userAPI from "../axios/user-service";
 
 class User {
   @observable email = null;
