@@ -33,7 +33,11 @@ function CategoryPopup(props){
         'sad' : ['(ㅠㅅㅠ)','우울','트라우마','후회']
     }}
     const setUnvisible = () =>{
-        props.setCategory(!props.category)
+        document.querySelector('.categoryContents').style.height = 0;
+        document.querySelector('.categoryBottomBtn').style.bottom = '-62px';
+        setTimeout(()=>{
+            props.setCategory(!props.category)
+        },1000)
     }
     useEffect(()=>{
         const SelectedList = document.querySelectorAll('.categoryElementSection .selectedCategoryButton')
@@ -49,6 +53,10 @@ function CategoryPopup(props){
             }
         }
     },[category])
+    useEffect(()=>{
+        document.querySelector('.categoryContents').style.height = 'calc(92% - 28px)';
+        document.querySelector('.categoryBottomBtn').style.bottom = '0';
+    },[])
     const functionCategoryElement = (crrnt) => {
         let elementList = categoryList[crrnt]
         let elementValue = [];
@@ -109,6 +117,7 @@ function CategoryPopup(props){
         <div className='categoryPopup'>
             <div onClick={setUnvisible} className='popupCloseDiv'/>
             <div className='categoryContents'>
+                <div className='modalBar'/>
                 <div className='categorySelect'>
                     <button value='place' onClick={categoryChange} style={{color : '#2c2c38'}}>장소</button>
                     <button value='person' onClick={categoryChange}>사람</button>

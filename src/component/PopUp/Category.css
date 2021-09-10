@@ -1,5 +1,4 @@
 .categoryPopup {
-    opacity: 1;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -16,12 +15,22 @@
 }
 .categoryContents {
     width: calc(100% - 48px);
-    height: calc(92% - 28px);
+    height: 0;
     position: absolute;
     bottom: 0;
     background-color: white;
     border-radius: 10px 10px 0 0;
     padding : 28px 24px 0 24px;
+    transition: height 1s;
+}
+.modalBar {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    left: 160px;
+    top: 12px;
+    background: #C4C4C4;
+    border-radius: 15px;
 }
 .categorySelect {
     display: flex;
@@ -88,7 +97,7 @@
     padding-bottom: 16px;
     font-family: "Noto Sans KR";
     position: absolute;
-    bottom: 0;
+    bottom: -62px;
 }
 .bottomBtnRight {
     display: flex;

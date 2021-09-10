@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import '../styles/PostPage.css'
-import black_x from "../svg/black_x.svg";
+import backIcon from "../svg/record_3_goback.svg";
 import styled from "styled-components";
 import minus from "../svg/minusBtn.svg"
 import whiteCircle from "../svg/whiteCircle.svg"
@@ -142,7 +142,7 @@ function PostEmotionPage () {
     }
     return(<>
         <div className='Header'>
-            <button className='backBtn'><img src={black_x} alt=""/></button>
+            <button className='backBtn'><img src={backIcon} alt=""/></button>
             {cnt < 10?
                 <button className='nextBtn' style={{opacity: 0.3}} onClick={NextBtn}>다음</button>
                 : <button className='nextBtn' style={{opacity : 1}} onClick={NextBtn}>다음</button>
