@@ -82,7 +82,7 @@ const InputBox = styled.div`
 const InputEmail = styled.input.attrs({
     placeholder:"BlackYeoksa@gmail.com"
 })`
-    // text-align : center;
+    text-align : center;
     width: 100%;
     height: 38px;
     outline: 0;
@@ -94,7 +94,7 @@ const InputEmail = styled.input.attrs({
     font-weight: 400;
     font-family: PretendartVariable;
     border-color: ${props => props.active ? "#FFFFFF" : "#828282"};
-    padding: 0 68px;
+    // padding: 0 68px;
     
 `
 const XIcon = styled.img.attrs({
