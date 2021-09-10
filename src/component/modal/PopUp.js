@@ -28,6 +28,13 @@ function PopUp(props) {
                     setVisible(false);
                 }, 3000);
                 break;
+            case "delete_gemstone":
+                setVisible(true);
+                setToastText("원석을 삭제했어요.");
+                setTimeout(function() {
+                    setVisible(false);
+                }, 3000);
+                break;
             case "overcome":
                 history.push('/gemstone');
                 break;

@@ -24,7 +24,7 @@ const ContentMenu = (props) => {
                 </>
             }
             {props.state === "none"?
-                <ContentList1 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList1>
+                <ContentList1 onClick={()=>{setIsPopup("delete_gemstone")}}>삭제</ContentList1>
                 :
                 <ContentList2 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList2>
             }
@@ -39,6 +39,10 @@ const ContentMenu = (props) => {
         }
         {isPopup === "delete"?
             <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
+            : null
+        }
+        {isPopup === "delete_gemstone"?
+            <PopUp onClose={setIsPopup} state={props.state} title="delete_gemstone" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
             : null
         }
     </OpacityView>
