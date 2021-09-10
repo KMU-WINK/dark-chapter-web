@@ -15,6 +15,9 @@ function AppLock (){
         setPassword(target.value)
         if (password.length === 3) history.push('/home')
     }
+    useEffect(()=>{
+        document.querySelector('#password').focus()
+    },[])
     return(
         <div className='root'>
             <label htmlFor="password"className='appLockTitle'>앱 비밀번호 설정</label>

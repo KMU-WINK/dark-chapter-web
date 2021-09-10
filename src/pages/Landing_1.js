@@ -18,10 +18,10 @@ function Landing_1() {
                 <Logo/>
                 <Span>비록 흑역사일지라도</Span>
             </Div>
-
             <Signup to='/signup' onClick={()=>console.log("landing")}>
                 <SignupText>회원가입</SignupText>
             </Signup>
+
             <CircleWrap>
                 <BlueCircle/>
                 <RedCircle/>

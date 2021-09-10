@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import {useEffect, useState} from "react";
-import { Route, Link } from 'react-router-dom';
+import {Route, Link, useHistory} from 'react-router-dom';
 import PaletteCircle from "../component/circle/PaletteCircle";
 import SympathyCircle from "../component/circle/SympathyCircle";
+import upArrow from "../svg/upArrow.svg";
+import OtherHeader from "../component/header/OtherHeader";
 
 const SelectSympathy = () => {
+    const history = useHistory();
     const [cnt, setCnt] = useState(0);
     const [color, setColor] = useState({
         angry : "#fc4e62",
@@ -23,7 +26,7 @@ const SelectSympathy = () => {
             {feel !== ""?
                 <Wrap>
                     <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
-                    <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
+                    {/*<SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>*/}
                     <Link to={'/sympathy'}><Complete opacity={1}>완료</Complete></Link>
                 </Wrap>
                 : <Wrap>
@@ -43,8 +46,11 @@ const SelectSympathy = () => {
     }
 
     return <Wrap className={"jejugothic"}>
-        <Space/>
-        <Header>공감하기</Header>
+        {/*<Header>*/}
+        {/*    <HeaderIcon onClick={()=>{history.push('/other/seeMore')}}/>*/}
+        {/*    <HeaderText>공감하기</HeaderText>*/}
+        {/*</Header>*/}
+        <OtherHeader previousPage={'/other/seeMore'} list={false}/>
         <Wrap1>
             <ShowComplete/>
         </Wrap1>
@@ -72,20 +78,26 @@ const SelectSympathy = () => {
 
 export default SelectSympathy;
 
-const Space = styled.div`
-  height : 10px;
+const Header = styled.div`
+  display : flex;
+  justify-content: flex-start;
 `
 
-const Header = styled.div`
+const HeaderText = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;
-  margin-left : 56px;
+  margin-left : 8px;
   letter-spacing: -0.03em;
-  margin-top : 5px;
-  height: 56px;
+  margin-top : 12px;
   color : white;
+`
+const HeaderIcon = styled.img.attrs({
+    src : upArrow
+})`
+    margin-left: 24px;
+    margin-top : 16px;
 `
 
 const Wrap = styled.div`
@@ -161,7 +173,7 @@ const Complete = styled.button`
   position: absolute;
   width: 61px;
   height: 18px;
-  left: 275px;
+  left: 310px;
   top: 520.5px;
   font-family: PretendartVariable;
   font-style: normal;

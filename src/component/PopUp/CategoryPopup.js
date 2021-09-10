@@ -33,8 +33,30 @@ function CategoryPopup(props){
         'sad' : ['(ㅠㅅㅠ)','우울','트라우마','후회']
     }}
     const setUnvisible = () =>{
-        props.setCategory(!props.category)
+        document.querySelector('.categoryContents').style.height = 0;
+        document.querySelector('.categoryBottomBtn').style.bottom = '-62px';
+        setTimeout(()=>{
+            props.setCategory(!props.category)
+        },1000)
     }
+    useEffect(()=>{
+        const SelectedList = document.querySelectorAll('.categoryElementSection .selectedCategoryButton')
+        for(let l=0;l<SelectedList.length;l++){
+            SelectedList[l].className = 'categoryElement'
+        }
+        if (choose.length){
+            for(let i=0;i<choose.length;i++){
+                const tag = document.querySelector('.categoryElement[name='+choose[i]+']')
+                if (tag) {
+                    tag.className = 'selectedCategoryButton'
+                }
+            }
+        }
+    },[category])
+    useEffect(()=>{
+        document.querySelector('.categoryContents').style.height = 'calc(92% - 28px)';
+        document.querySelector('.categoryBottomBtn').style.bottom = '0';
+    },[])
     const functionCategoryElement = (crrnt) => {
         let elementList = categoryList[crrnt]
         let elementValue = [];
@@ -57,21 +79,15 @@ function CategoryPopup(props){
         for(let i=0;i<prnt.length;i++){
             prnt[i].style.color = prnt[i].value===target.value?'#2C2C38':'#dcdcdc'
         }
-        if (choose.length){
-            for(let i=0;i<choose.length;i++){
-                const tag = document.querySelector('.categoryElement[name='+choose[i]+']')
-                if (tag) {
-                    tag.className = 'selectedCategoryButton'
-                }
-            }
-        }
     }
     const addChoose = ({target}) =>{
         if (choose.length<4) {
-            setChoose([...choose,target.value])
-            const addElem = document.querySelector('.categoryElement[name='+target.value+']')
-            if (addElem) {
-                addElem.className='selectedCategoryButton'
+            if (choose.indexOf(target.value)<0) {
+                setChoose([...choose, target.value])
+                const addElem = document.querySelector('.categoryElement[name=' + target.value + ']')
+                if (addElem) {
+                    addElem.className = 'selectedCategoryButton'
+                }
             }
         }
     }
@@ -83,7 +99,6 @@ function CategoryPopup(props){
         let changeList = choose.slice(0,idx).concat(choose.slice(idx+1))
         setChoose(changeList)
         const delElem = document.querySelector('.selectedCategoryButton[name='+target.value+']')
-        console.log(delElem)
         if (delElem){
             delElem.className = 'categoryElement'
         }
@@ -100,8 +115,9 @@ function CategoryPopup(props){
     }
     return(
         <div className='categoryPopup'>
-            <div onClick={setUnvisible} className='popupCloseDiv'></div>
+            <div onClick={setUnvisible} className='popupCloseDiv'/>
             <div className='categoryContents'>
+                <div className='modalBar'/>
                 <div className='categorySelect'>
                     <button value='place' onClick={categoryChange} style={{color : '#2c2c38'}}>장소</button>
                     <button value='person' onClick={categoryChange}>사람</button>
@@ -109,12 +125,14 @@ function CategoryPopup(props){
                     <button value='emotion' onClick={categoryChange}>감정</button>
                 </div>
                 <p className='selectedCategoryLength'>{choose.length}/4</p>
-                {choose.length?<div className='selectedSection'>
-                    {choose.map(e=>(
-                    <button className='selectedCategoryButton' onClick={delChoose} value={e}>{e} <p style={{color : '#747474',fontSize : '14px',marginLeft : '3px'}}>X</p></button>))
+                <div>
+                    {choose.length?<div className='selectedSection'>
+                        {choose.map(e=>(
+                        <button className='selectedCategoryButton' onClick={delChoose} value={e}>{e} <p style={{color : '#747474',fontSize : '14px',marginLeft : '3px'}}>X</p></button>))
+                        }
+                    </div>:null
                     }
-                </div>:null
-                }
+                </div>
                 {functionCategoryElement(category)}
                 <div className='categoryBottomBtn'>
                     <button className='resetBtn' onClick={initBtn}><img src={resetIcon} alt=""/> 전체 초기화</button>
