@@ -25,6 +25,9 @@ function Record_3() {
     const [nextTextColor, setNextTextColor] = useState("#747474")
     const [goTop, setGoTop] = useState(false);
     const [category, setCategory] = useState(false)
+
+    // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
+    const bottomFloorHeight = window.innerHeight - 332
     const [complete, setComplete] = useState(false)
 
     const goToTop = () => {
@@ -74,7 +77,7 @@ function Record_3() {
         }
         const equalCircle = document.getElementById(String(tmp))
         // console.log(equalCircle)
-        for (let i = 0; i < 1000; i += 10) {
+        for (let i = 0; i <= 10000; i += 10) {
             const notEqualCircle = document.getElementById(String(i))
             notEqualCircle.style.fontSize = "10px"
             notEqualCircle.style.marginTop = "6px"
@@ -129,7 +132,12 @@ function Record_3() {
     return (
 
         <Wrap color={isMove ? "linear-gradient(#D2DADF 1%, #97A2B2 5%, #2C2C38 95%)" : "#F3F3ED"}>
-            <Record_3_header flag={isMove} category={category} setCategory = {setCategory}/>
+            <Record_3_header flag={isMove} category={category} setCategory={setCategory}/>
+            {isMove ? null :
+                <TextDiv className="jejugothic">
+                    <P>아래로 내려</P>
+                    <P>수심을 설정해 주세요</P>
+                </TextDiv>}
             <Space id="test"></Space>
             <Record_3_circle/>
 
@@ -152,9 +160,9 @@ function Record_3() {
                 :
                 null
             }
-            <Record_3_bottom/>
-            {category?
-                <CategoryPopup category={category} setCategory ={setCategory}/>:null
+            <Record_3_bottom height={bottomFloorHeight}/>
+            {category ?
+                <CategoryPopup category={category} setCategory={setCategory}/> : null
             }
         </Wrap>
     )
@@ -170,6 +178,22 @@ const Wrap = styled.div`
     width : 100%;
     background : ${props => props.color};
     position: relative;
+`
+
+const TextDiv = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 122px;
+    text-align: center
+`
+
+const P = styled.p`
+    font-size: 14px;
+line-height: 21px;
+letter-spacing: -0.03em;
+
+color: rgba(0, 0, 0, 0.5);
 `
 
 
@@ -199,7 +223,7 @@ const MeterSpace = styled.div`
 const MeterWrap = styled.div`
     display:flex;
     align-items: flex-start;
-    
+
 `
 
 const MeterText = styled.span`
@@ -212,7 +236,7 @@ const MeterText = styled.span`
     align-items: center;
     letter-spacing: -0.03em;
     color: ${props => props.color};
-    
+
     opacity: 0.5;
 `
 
