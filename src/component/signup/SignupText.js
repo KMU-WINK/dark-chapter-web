@@ -3,7 +3,7 @@ import React from 'react';
 import * as config from '../../config'
 
 import "../../fonts/fonts.css"
-import { readUser } from "../../axios/User"
+import { readUser } from "../../axios/user-service"
 
 function SignupText(props){
     return(
