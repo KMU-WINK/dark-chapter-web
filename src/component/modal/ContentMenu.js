@@ -13,18 +13,22 @@ const ContentMenu = (props) => {
                 <ModalBar/>
             </Center>
             {props.state === "share"?
-                <ContentList1 onClick={()=>{console.log("share")}}>공유하기</ContentList1>
+                <ContentList1 onClick={()=>{setIsPopup("share")}}>공유하기</ContentList1>
                 :
                 <ContentList1 onClick={()=>{setIsPopup("collect")}}>공감 더 끌어모으기</ContentList1>
             }
             <ContentList2 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList2>
         </Wrap>
+        {isPopup === "share"?
+            <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?"/>
+            : null
+        }
         {isPopup === "collect"?
-            <PopUp onClose={setIsPopup} state={props.state} text="공감을 더 모으고 싶으신가요?"/>
+            <PopUp onClose={setIsPopup} state={props.state} title="collect_sympathy" text="공감을 더 모으고 싶으신가요?"/>
             : null
         }
         {isPopup === "delete"?
-            <PopUp onClose={setIsPopup} state={props.state} text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
+            <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
             : null
         }
     </OpacityView>
