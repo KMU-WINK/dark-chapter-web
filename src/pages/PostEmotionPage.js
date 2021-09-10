@@ -163,7 +163,7 @@ function PostEmotionPage () {
     }
     return(<>
         <div className='Header'>
-            <button className='backBtn' onClick={()=>history.push('/post')}><img src={goBack} alt=""/></button>
+            <button className='backBtn' onClick={()=>history.push('/post')}><img src={backIcon} alt=""/></button>
             {cntAngry+cntShy+cntLaugh+cntSad !== 10?
                 <button className='nextBtn' style={{opacity: 0.3}} onClick={NextBtn}>다음</button>
                 : <button className='nextBtn' style={{opacity : 1}} onClick={NextBtn}>다음</button>
