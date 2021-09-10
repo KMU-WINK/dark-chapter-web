@@ -17,9 +17,8 @@ const OtherLog = () => {
         <Wrap2>
             <PaletteCircle
                 width={240} height={240}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                 color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
+                feeling={[3,2,2,3]}
             />
         </Wrap2>
         <Wrap3>

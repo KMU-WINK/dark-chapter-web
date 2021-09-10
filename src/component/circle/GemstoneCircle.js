@@ -14,7 +14,7 @@ const GemstoneCircle = (props) => {
                             black={props.black}
             />
         </Wrap1>
-        <ShadowCircle size={props.size}/>
+        <ShadowCircle style={{zIndex:2}} size={props.size}/>
         <Wrap2>
             <PaletteCircle
                 width={props.width} height={props.height}
@@ -42,6 +42,7 @@ const Wrap1 = styled.div`
   height: ${props=>props.size}px;
   display : flex;
   justify-content: center;
+  z-index:1;
 `
 
 const ShadowCircle = styled.img.attrs({
@@ -52,9 +53,12 @@ const ShadowCircle = styled.img.attrs({
     left : -5px;
     width: ${props=>props.size+10}px;
     height: ${props=>props.size+10}px;
+  // width: ${props=>props.size}px;
+  // height: ${props=>props.size}px;
 `
 const Wrap2 = styled.div`
   position : absolute;
+  z-index: 3;
 `
 
 const SurfaceCircle = styled.img.attrs({
@@ -63,4 +67,5 @@ const SurfaceCircle = styled.img.attrs({
   position : absolute;
   width: ${props=>props.size}px;
   height: ${props=>props.size}px;
+  z-index: 4;
 `

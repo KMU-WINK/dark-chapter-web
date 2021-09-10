@@ -19,7 +19,7 @@ const GemstoneLog = (props) => {
                 width={100} height={100}
                 deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                 paletteColor={["#FF2036FF","#366197FF","#FFF890FF","#faaba4"]}
-                paletteFeeling={[40,10,30,20]}
+                paletteFeeling={[4,1,3,2]}
             />
         </Wrap2>
 
