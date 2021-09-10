@@ -11,7 +11,7 @@ import white_hr from "../svg/white_scale_group.svg"
 
 
 
-function MyLogPage(){
+function MyLogList(){
 
 
     // 임의로 정한 흑역사 층별 데이터 개수
@@ -145,4 +145,4 @@ const ScaleWrap = styled.div`
 `
 
 
-export default MyLogPage
+export default MyLogList
