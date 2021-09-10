@@ -25,8 +25,8 @@ const GemstoneList = () => {
 
                         width={85} height={85}
                         deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        paletteColor={["#FF2036FF","#366197FF","#FFF890FF","#faaba4"]}
-                        paletteFeeling={[40,10,30,20]}
+                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        paletteFeeling={[4,1,2,3]}
                     />
                 </Wrap1>
 
@@ -49,8 +49,8 @@ const GemstoneList = () => {
 
                         width={85} height={85}
                         deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        paletteColor={["#366197FF","#FF2036FF","#faaba4","#FFF890FF"]}
-                        paletteFeeling={[20,10,20,50]}
+                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        paletteFeeling={[2,1,2,5]}
                     />
                 </Wrap1>
 
@@ -73,8 +73,8 @@ const GemstoneList = () => {
 
                         width={85} height={85}
                         deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        paletteColor={["#FFF890FF","#366197FF","#faaba4","#FF2036FF"]}
-                        paletteFeeling={[20,10,20,50]}
+                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        paletteFeeling={[2,2,4,2]}
                     />
                 </Wrap1>
 
