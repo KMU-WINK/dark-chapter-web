@@ -6,10 +6,11 @@ import check_all from '../../svg/check_all.svg';
 import not_check_all from '../../svg/not_check_all.svg';
 import './checkAll.css'
 import "../../fonts/fonts.css"
+import bi_x_active from "../../svg/bi_x.svg";
 
 
-
-function CheckAll(props){
+function CheckAll(props) {
+    console.log(props)
 
     const checked = () => {
         props.setAll(!props.checked)
@@ -18,34 +19,42 @@ function CheckAll(props){
         props.setMarketing(!props.checked)
     }
 
-    return(
-        <div
+
+    return (
+        <Wrap
             className="ccheck"
-            style={{
-                position : "relative",
-                width: "100%",
-                height: 24,
-                marginLeft: 16
-            }}
         >
 
-            <Input
-                id="input"
-                type="checkbox"
-                checked={props.checked}
-                onClick={checked}
-                // style={{marginLeft:16}}
-            />
-            <Label for="input" />
-            <Span
-                style={{marginLeft:-4}}
-            >전체 동의</Span>
-        </div>
+                <Input
+                    id="input"
+                    type="checkbox"
+                    checked={props.checked}
+                    onClick={checked}
+                    // style={{marginLeft:16}}
+                />
+                <Label for="input"/>
+                <Span
+                    style={{marginLeft: 12, paddingTop:68}}
+                >전체 동의</Span>
+
+            <XIcon onClick={()=>props.onClose()}/>
+        </Wrap>
     )
 }
 
+const Wrap = styled.div`
+    position: relative;
+    width: 100%;
+    height: 24px;
+    display:flex;
+    justify-content: space-between;
+    padding-top: 68px;
+    padding-left: 16px;
+`
+
+
 const Label = styled.label`
-    margin-top : 64px;
+    padding-left:16px;
 `;
 
 const Input = styled.input`
@@ -68,6 +77,12 @@ const Span = styled.span`
     font-family: PretendartVariable;
 `
 
-
+const XIcon = styled.img.attrs({
+    src: bi_x_active
+})`
+    position:absolute;
+    right:32px;
+    top: 16px;
+`
 
 export default CheckAll

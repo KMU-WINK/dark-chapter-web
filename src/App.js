@@ -34,14 +34,14 @@ import {
 
 } from './pages';
 
-import PopUp from './component/modal/PopUp.js';
 function App() {
     return (
         <>
             <Router>
                 <Switch>
 
-                    <Route exact path="/" component={Landing_1}/>
+                    <Route exact path="/" component={WalkThrough_1}/>
+                    <Route path="/landing" component={Landing_1}/>
                     <Route path="/login" component={Login_1}/>
 
                     <Route exact path="/signup" component={Signup_1}/>
@@ -68,14 +68,10 @@ function App() {
                     <Route path='/other/seeMore' component={SeeMoreOther}/>
                     <Route path="/selectSympathy" component={SelectSympathy}/>
                     <Route path="/sympathy" component={Sympathy}/>
-                    <Route path="/popup" component={PopUp}/>
 
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
 
-                    <Route path="/record-3" component={Record_3}/>
-
-                    <Route path="/walk-through" component={WalkThrough_1}/>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
             </Router>

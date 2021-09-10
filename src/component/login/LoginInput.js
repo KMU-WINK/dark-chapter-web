@@ -11,7 +11,6 @@ import reveal_inactive from "../../svg/reveal_inactive.svg";
 import inreveal_inactive from "../../svg/inreveal_inactive.svg";
 import inreveal_active from "../../svg/inreveal_active.svg";
 
-
 function LoginInput(props){
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
@@ -76,7 +75,7 @@ function LoginInput(props){
     },[isPwdActive])
 
     return(
-        <Wrap>
+        <Wrap width={document.documentElement.clientWidth-48}>
             <InputBox>
                 <img
                     src={emailIcon}
@@ -159,7 +158,7 @@ function LoginInput(props){
     )
 }
 const Wrap = styled.div`
-    width: 328px;
+    width: ${props=>props.width}px;
     margin : 0 auto;
     margin-top : 88px;
 
@@ -179,7 +178,7 @@ const InputEmail = styled.input.attrs({
     placeholder:"BlackYeoksa@gmail.com"
 })`
     text-align : center;
-    width: 328px;
+    width: 100%;
     height: 38px;
     outline: 0;
     border-width: 0 0 2px;
@@ -195,7 +194,7 @@ const InputPwd = styled.input.attrs({
     placeholder:"4자리 이상"
 })`
     text-align : center;
-    width: 328px;
+    width: 100%;
     height: 38px;
     outline: 0;
     border-width: 0 0 2px;
@@ -209,7 +208,7 @@ const RevealActiveIcon = styled.img.attrs({
     src: reveal_active,
 })`
     position : absolute;
-    left: 304px;
+    right:0;
 top: 7px;
 
 `;
@@ -218,7 +217,7 @@ const RevealInactiveIcon = styled.img.attrs({
     src: reveal_inactive,
 })`
     position : absolute;
-    left: 304px;
+    right:0;
 top: 7px;
 
 `;

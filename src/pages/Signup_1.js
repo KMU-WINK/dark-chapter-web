@@ -11,6 +11,7 @@ import InactiveBtn from "../component/button/InactiveBtn";
 import {useHistory} from "react-router-dom"
 
 function Signup_1() {
+    console.log(window.innerWidth)
     let history = useHistory()
 
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
@@ -29,6 +30,7 @@ function Signup_1() {
 
         } else setMessage("이미 등록된 이메일 입니다.")
     }
+
 
     return (
         <Container color={config.BACKGROUND_COLOR}>

@@ -1,9 +1,11 @@
 .categoryPopup {
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: rgba(0,0,0,.7);
+    font-family: PretendartVariable;
+    transition: opacity 1s;
 }
 .popupCloseDiv {
     position: absolute;
@@ -13,12 +15,22 @@
 }
 .categoryContents {
     width: calc(100% - 48px);
-    height: calc(92% - 28px);
+    height: 0;
     position: absolute;
     bottom: 0;
     background-color: white;
     border-radius: 10px 10px 0 0;
     padding : 28px 24px 0 24px;
+    transition: height 1s;
+}
+.modalBar {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    left: 160px;
+    top: 12px;
+    background: #C4C4C4;
+    border-radius: 15px;
 }
 .categorySelect {
     display: flex;
@@ -29,6 +41,7 @@
 .categorySelect button {
     color : #DCDCDC;
     font-size: 16px;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .selectedCategoryLength {
     color: #747474;
@@ -80,8 +93,11 @@
     color : #2C2C38;
     font-size: 14px;
     justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 48px);
     padding-bottom: 16px;
+    font-family: "Noto Sans KR";
+    position: absolute;
+    bottom: -62px;
 }
 .bottomBtnRight {
     display: flex;

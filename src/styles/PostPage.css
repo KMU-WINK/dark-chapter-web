@@ -6,9 +6,17 @@
 button {
     border: none;
     background: none;
+    font-family: 'PretendartVariable';
+}
+input,
+textarea{
+    font-family: 'PretendartVariable', sans-serif;
+    font-size: 14px;
+    line-height: 25px;
 }
 .Header {
     width: 100%;
+    padding-top: 24px;
     height: 56px;
     display: flex;
     justify-content: space-between;
@@ -31,11 +39,13 @@ button {
     justify-content: center;
     color: rgba(44,44,56);
     opacity: 0.3;
+    font-family: PretendartVariable;
 }
 .TextContents {
     margin-top : 24px;
 }
 .postTitle {
+
     width: calc(100% - 48px);
     padding: 0 24px;
     height: 28px;
@@ -55,14 +65,15 @@ button {
     top: 4px;
 }
 .postTitle input {
-    width: calc(100% - 31px);
+    width: calc(100% - 70px);
     height: 100%;
     background: none;
     border: none;
     outline: none;
     font-size: 18px;
     padding-left: 31px;
-    font-weight: bold;
+    font-weight: 400;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .titleLength {
     position: absolute;
@@ -92,7 +103,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px 0;
+    margin-bottom: 16px;
 }
 .contentsLength {
     color: rgba(0,0,0,.2);
@@ -118,6 +129,7 @@ button {
     margin-top : 111px;
     left: 50px;
     color: #777;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .notCompleteNotice {
     color: #777;
