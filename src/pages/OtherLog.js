@@ -10,7 +10,7 @@ const OtherLog = () => {
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap backgroundColor={backgroundColor[2]}>
-        <OtherHeader previousPage={'/home'}/>
+        <OtherHeader previousPage={'/home'} list={true}/>
         <Wrap1>
             <SelectCategory/>
         </Wrap1>
@@ -22,7 +22,9 @@ const OtherLog = () => {
                 feeling={[20,10,20,50]}
             />
         </Wrap2>
-        <LogContent seeMorePage={'/other/seeMore'} tagColor={tagColor[2]} textColor={textColor[2]}/>
+        <Wrap3>
+            <LogContent date={false} seeMorePage={'/other/seeMore'} tagColor={tagColor[2]} textColor={textColor[2]}/>
+        </Wrap3>
     </Wrap>
 }
 
@@ -42,4 +44,7 @@ const Wrap2 = styled.div`
   display : flex;
   justify-content: center;
   margin-top : 56px;
+`
+const Wrap3 = styled.div`
+  margin-top : 300px;
 `

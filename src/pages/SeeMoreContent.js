@@ -18,7 +18,9 @@ const SeeMoreContent = () => {
                 feeling={[20,10,20,50]}
             />
         </Wrap2>
-        <LogMoreContent status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
+        <Wrap3>
+            <LogMoreContent date={true} status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
+        </Wrap3>
     </Wrap>
 }
 
@@ -32,4 +34,7 @@ const Wrap = styled.div`
 
 const Wrap2 = styled.div`
   margin-top : 52px;
+`
+const Wrap3 = styled.div`
+  margin-top : 180px;
 `
