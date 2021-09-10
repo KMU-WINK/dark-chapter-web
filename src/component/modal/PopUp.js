@@ -1,17 +1,50 @@
-import styled from "styled-components";
-import {useHistory} from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import React,{ useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import toastMessage from "./ToastMessage.js"
 
-const PopUp = (props) => {
+function PopUp(props) {
     const history = useHistory();
+    const [visible, setVisible] = useState(false);
+    const [toastText, setToastText] = useState("");
     const {onClose} = props;
+
+    const yesButtonClicked = () => {
+        switch (props.title) {
+            case "exit_PostPage":
+                history.push('/home');
+                break;
+            case "collect_sympathy":
+                setVisible(true);
+                setToastText("공감을 더 모으기 위해 다시 업로드 되었어요!");
+                setTimeout(function() {
+                    setVisible(false);
+                }, 3000);
+                break;
+            case "delete_posting":
+                setVisible(true);
+                setToastText("흑역사를 삭제했어요.");
+                setTimeout(function() {
+                    setVisible(false);
+                }, 3000);
+                break;
+            case "overcome":
+                history.push('/gemstone');
+                break;
+        }
+    }
 
     return <OpacityView className={"jejugothic"}>
         <PopupBox>
             <Message>{props.text}</Message>
             {props.text2 ? <Message2>{props.text2}</Message2> : null}
             <NoButton onClick={()=>{onClose(false)}}>아니오</NoButton>
-            <YesButton onClick={()=>{history.push('/home')}}>예</YesButton>
+            <YesButton onClick={yesButtonClicked}>예</YesButton>
         </PopupBox>
+        {visible === true?
+            toastMessage(toastText)
+            : null
+        }
     </OpacityView>
 }
 
@@ -27,6 +60,7 @@ const OpacityView = styled.div`
   bottom : 0;
   z-index : 100;
   background: rgba(0, 0, 0, 0.3);
+  text-align: center;
 `
 
 const PopupBox = styled.div`
@@ -76,3 +110,5 @@ const YesButton = styled.div`
     line-height: 35.68px;
     font-size: 14px;
 `
+
+

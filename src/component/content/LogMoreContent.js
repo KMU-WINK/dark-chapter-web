@@ -1,33 +1,43 @@
 import styled from "styled-components";
 import LogTitle from "./LogTitle";
 import { Route, Link } from 'react-router-dom';
+import React, {useState} from "react";
+import PopUp from "../modal/PopUp.js";
 
 const LogMoreContent = (props) => {
-    return <Wrap textColor={props.textColor}>
-        <LogTitle date={props.date} tagColor={props.tagColor} textColor={props.textColor}/>
-        <TextBox>
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...
-            <Wrap2>
-                {props.status === "MyLog"?
-                    <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>극복하기</OvercomeBtn>
-                    :
-                    <>
-                        {props.status === "OtherLog"?
-                            <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
-                            :
-                            null
-                        }
-                    </>
-                }
-            </Wrap2>
-        </TextBox>
-    </Wrap>
+    const [isPopup, setIsPopup] = useState(false);
+
+    return <>
+            <Wrap textColor={props.textColor}>
+            <LogTitle tagColor={props.tagColor} textColor={props.textColor}/>
+            <TextBox>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                <Wrap2>
+                    {props.status === "MyLog"?
+                        <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor} onClick={()=>{setIsPopup(true)}}>극복하기</OvercomeBtn>
+                        :
+                        <>
+                            {props.status === "OtherLog"?
+                                <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                                :
+                                null
+                            }
+                        </>
+                    }
+                </Wrap2>
+            </TextBox>
+        </Wrap>
+        {isPopup?
+            <PopUp onClose={setIsPopup} state={props.state} title="overcome" text="흑역사를 극복하셨나요?"/>
+            : null
+        }
+        </>
 }
 
 export default LogMoreContent;
