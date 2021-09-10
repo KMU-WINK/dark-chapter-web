@@ -1,19 +1,17 @@
 import styled from "styled-components";
 import React from 'react';
-
-import "../fonts/fonts.css"
+import "../fonts/fonts.css";
 
 import {
     Link
 } from "react-router-dom";
 
-import logo from "../svg/white_logo.svg"
-
+import logo from "../svg/white_logo.svg";
 
 function Landing_1() {
     return (
         <Container>
-            <A to='/login'>
+            <A to='/login' onClick={()=>console.log("login")}>
                 <Text>로그인</Text>
             </A>
             <Div>
@@ -21,18 +19,15 @@ function Landing_1() {
                 <Span>비록 흑역사일지라도</Span>
             </Div>
 
-            <Link to='/signup'>
-                <Button >
-                    <ButtonText>회원가입</ButtonText>
-                </Button>
-            </Link>
+            <Signup to='/signup' onClick={()=>console.log("landing")}>
+                <SignupText>회원가입</SignupText>
+            </Signup>
             <CircleWrap>
                 <BlueCircle/>
                 <RedCircle/>
                 <YellowCircle/>
             </CircleWrap>
         </Container>
-
     )
 }
 
@@ -51,7 +46,7 @@ const Text = styled.a`
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    color: #FFFFFF
+    color: #FFFFFF;
 `
 const A = styled(Link)`
     width: 100%;
@@ -59,7 +54,7 @@ const A = styled(Link)`
     height: 56px;
     display: block;
     text-align: right;
-    position: relative
+    position: relative;
 `
 
 const Div = styled.div`
@@ -75,7 +70,7 @@ const Logo = styled.img.attrs({
     margin: 0 auto;
     width: 80px;
     height: 16px;
-    fill: white
+    fill: white;
 `
 
 const Span = styled.span`
@@ -89,28 +84,36 @@ const Span = styled.span`
     display: block;
 `
 
-const Button = styled.button`
+const Signup = styled(Link)`
     width: 160px;
     height: 40px;
     background: rgba(234, 234, 234, 0.2);
     border-radius: 20px;
     margin: 140px auto;
     color: #FFFFFF;
+    display:block;
+    text-decoration : none;
+    position: relative;
+    z-index: 10;
 `
 
-const ButtonText = styled.span`
-    text-align: center;
-    flex: 1;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
+const SignupText = styled.span`
     font-family: PretendartVariable;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
+    display: block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
 `
 
 const CircleWrap = styled.div`
     width: 100%;
     height: 100vh;
-    
+    z-index:5;
 `
 
 const Circle = styled.div`

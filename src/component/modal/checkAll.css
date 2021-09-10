@@ -2,6 +2,7 @@
     display:none;
 }
 
+
 .ccheck input[type="checkbox"] + label{
     padding:0 0 0 0;
     height:20px;

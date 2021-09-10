@@ -31,6 +31,7 @@ function PasswordInput(props){
     };
 
 
+
     // 비밀번호 보여주기 여부 관리
     const changePwdReveal = () => {
         setIsRevealPwd(!isRevealPwd)
@@ -133,7 +134,7 @@ const InputPwd = styled.input.attrs({
     placeholder:"4자리 이상",
 
 })`
-    text-align : center;
+    // text-align : center;
     width: 100%;
     height: 38px;
     outline: 0;
@@ -144,6 +145,7 @@ const InputPwd = styled.input.attrs({
     font-family: PretendartVariable;
     color : ${props => props.active_color};
     border-color: ${props => props.active ? props.active_color : props.inactive_color};
+    padding: 0 68px;
 `
 
 const PasswordIcon = styled.img.attrs({

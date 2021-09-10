@@ -65,6 +65,8 @@ function Record_3() {
 
         if(tmp<100){
             setIsHundred(false)
+            setNextMeter(100 - tmp)
+            setNextTextColor("#747474")
         }
         else if(tmp >= 500){
             setGoTop(true)
@@ -78,22 +80,6 @@ function Record_3() {
             setIsHundred(true)
         }
 
-        // else if(tmp===)
-        // if (tmp >= 100) {
-        //     console.log("hundred")
-        //     setNextMeter(400-tmp+100)
-        //     setNextTextColor("#FFFFFF")
-        //     setGoTop(false)
-        // } else if (tmp >= 500) {
-        //     console.log("gogo")
-        //     setGoTop(true)
-        //     setNextTextColor("#FFFFFF")
-        // } else if (100 < tmp <= 500) {
-        //
-        //     setNextMeter(500 - tmp)
-        //     setNextTextColor("#747474")
-        //     setGoTop(false)
-        // }
         const equalCircle = document.getElementById(String(tmp))
 
         for (let i = 0; i <= 10000; i += 10) {
@@ -149,6 +135,7 @@ function Record_3() {
     }
 
 
+
     return (
 
         <Wrap Wrap color={isMove ? "linear-gradient(#D2DADF 1%,#D2DADF 1%, #97A2B2 3%,#97A2B2 3%, #2C2C38 7%, #2C2C38 85%)" : "#F3F3ED"}>
@@ -158,37 +145,39 @@ function Record_3() {
                 setCategory={setCategory}
                 isHundred={isHundred}
             />
-            {isMove ? null :
-                <TextDiv className="jejugothic">
-                    <P>아래로 내려</P>
-                    <P>수심을 설정해 주세요</P>
-                </TextDiv>}
-            <Space id="test" height={window.innerHeight/2-80}></Space>
-            <Record_3_circle/>
+            <div id="ykgkg">
+                {isMove ? null :
+                    <TextDiv className="jejugothic">
+                        <P>아래로 내려</P>
+                        <P>수심을 설정해 주세요</P>
+                    </TextDiv>}
+                <Space id="test" height={window.innerHeight/2-80}></Space>
+                <Record_3_circle/>
 
 
-            {/*<GroundColor/>*/}
+                {/*<GroundColor/>*/}
 
-            <MeterSpace id="retkpeor" height={document.documentElement.clientHeight-56}>
-                {hrRendering()}
-            </MeterSpace>
-            {isMove ?
-                goTop ?
-                    <Record_3_goTop
-                        click={goToTop}
-                    />
+                <MeterSpace id="retkpeor" height={document.documentElement.clientHeight-56}>
+                    {hrRendering()}
+                </MeterSpace>
+                {isMove ?
+                    goTop ?
+                        <Record_3_goTop
+                            click={goToTop}
+                        />
+                        :
+                        <Record_3_nextFloor
+                            meter={nextMeter}
+                            textColor={nextTextColor}
+                        />
                     :
-                    <Record_3_nextFloor
-                        meter={nextMeter}
-                        textColor={nextTextColor}
-                    />
-                :
-                null
-            }
-            <Record_3_bottom height={bottomFloorHeight}/>
-            {category ?
-                <CategoryPopup category={category} setCategory={setCategory}/> : null
-            }
+                    null
+                }
+                <Record_3_bottom height={bottomFloorHeight}/>
+                {category ?
+                    <CategoryPopup category={category} setCategory={setCategory}/> : null
+                }
+            </div>
         </Wrap>
     )
 }
@@ -209,7 +198,7 @@ const TextDiv = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 122px;
+    margin-top: 122px;
     text-align: center
 `
 
@@ -250,7 +239,7 @@ const MeterSpace = styled.div`
 const MeterWrap = styled.div`
     display:flex;
     align-items: flex-start;
-
+    z-index: -1
 `
 
 const MeterText = styled.span`

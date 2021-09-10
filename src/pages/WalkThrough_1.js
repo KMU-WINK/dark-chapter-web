@@ -11,6 +11,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Redirect} from "react-router-dom"
+import Landing_1 from "./Landing_1";
 
 
 const WalkThrough_1 = () => {
@@ -40,14 +41,14 @@ const WalkThrough_1 = () => {
 
     const step = [[1,0.5,0.5], [0.5,1,0.5], [0.5,0.5,1]]
 
-    useEffect(() => {
-        if(currentIdx === 3){
-            console.log("hello")
-            setFlag(true)
-            // let history = useHistory();
-            // history.push('/')
-        }
-    },[currentIdx])
+    // useEffect(() => {
+    //     if(currentIdx === 3){
+    //         console.log("hello")
+    //         setFlag(true)
+    //         // let history = useHistory();
+    //         // history.push('/')
+    //     }
+    // },[currentIdx])
 
     if(flag){
         return (<Redirect to="/"/>)
@@ -75,7 +76,9 @@ const WalkThrough_1 = () => {
 
                     <Img3/>
                 </Wrap>
-                <div></div>
+                <Wrap>
+                    <Landing_1/>
+                </Wrap>
             </Slider>
         </Container>
 

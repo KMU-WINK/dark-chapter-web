@@ -87,8 +87,8 @@ function ResetPassword_2(){
 }
 
 const Container = styled.div`
-    width: 360px;
-    height: 760px;
+    width: 100%;
+    height: 100vh;
     background : ${props => props.color};
 `
 

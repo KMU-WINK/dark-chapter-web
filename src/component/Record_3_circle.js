@@ -20,6 +20,7 @@ const Div = styled.div`
     transform: translateY(-50%);
 `
 
+
 const Circle = styled.div`
     width: 160px;
     height: 160px;

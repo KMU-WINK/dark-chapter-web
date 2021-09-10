@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 
 import MyLogFloor from "../component/MyLog/MyLogFloor";
@@ -7,13 +7,7 @@ import MyLogBottomFloor from "../component/MyLog/MyLogBottomFloor";
 import scale from "../svg/black_scale_group.svg"
 import white_hr from "../svg/white_scale_group.svg"
 
-
-
-
-
 function MyLogList(){
-
-
     // 임의로 정한 흑역사 층별 데이터 개수
     const firstFloor = 4
     const secondFloor = 5
@@ -23,14 +17,6 @@ function MyLogList(){
     const firstPct = firstFloor/total * 100-10;
     const secondPct = secondFloor/total * 100-30;
     const thirdPct = thirdFloor/total * 100;
-    // const firstPct=10
-    // const secondPct=20
-    // const thirdPct=30
-
-    console.log(firstPct)
-    console.log(secondPct)
-    console.log(thirdPct)
-
 
     let checkFirst = 0;
     // 눈금 영역 height
@@ -55,12 +41,9 @@ function MyLogList(){
             else{
                 result.push(<WhiteScale/>)
             }
-
         }
         return result
     }
-
-
 
     return(
         <Div
@@ -68,48 +51,40 @@ function MyLogList(){
             second={secondPct}
             third={thirdPct}
         >
-
-            {/* num은 이 페이지가 흑역사 하나당 높이가 130px인데 기본적으로 층별로 흑역사 3개의 높이는 차지하고 있어야 되가지고
-                num으로 흑역사가 몇개인지 넘겨줘서 3개 미만이면 height : 440px 아니면 auto로 줄라고 넣은겁니다.
-             */}
-
             <MyLogHeader/>
-            <div
-                style={{
-                    width:"100%",
-                    height: 14
-                }}
-            ></div>
-            <div style={{position:"relative"}}>
-                <ScaleWrap height={height}>
-                    {hrRendering()}
-                </ScaleWrap>
-                <MyLogFloor
-                    color={"black"}
-                    bodyTextColor = {"#747474"}
-                    backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
-                    floor={"상층"}
-                    num={firstFloor}
-                />
-                <MyLogFloor
-                    color={"white"}
-                    bodyTextColor = {"#DCDCDC"}
-                    backgroundTop={"#97A2B2"}
-                    backgroundBottom={"#2C2C38"}
-                    floor={"중충"}
-                    num={secondFloor}
-                />
-                <MyLogFloor
-                    num={thirdFloor}
-                    color={"white"}
-                    bodyTextColor = {"#DCDCDC"}
-                    backgroundTop={"#2C2C38"}
-                    backgroundBottom={"#2C2C38"}
-                    floor={"심충"}/>
-                <MyLogBottomFloor
-                    color={"white"}
-                    background={"#2C2C38"}
-                    floor={"바닥층"}/>
+            <div>
+
+                <div style={{position:"relative"}}>
+                    <ScaleWrap height={height}>
+                        {hrRendering()}
+                    </ScaleWrap>
+                    <MyLogFloor
+                        color={"black"}
+                        bodyTextColor = {"#747474"}
+                        backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
+                        floor={"상층"}
+                        num={firstFloor}
+                    />
+                    <MyLogFloor
+                        color={"white"}
+                        bodyTextColor = {"#DCDCDC"}
+                        backgroundTop={"#97A2B2"}
+                        backgroundBottom={"#2C2C38"}
+                        floor={"중충"}
+                        num={secondFloor}
+                    />
+                    <MyLogFloor
+                        num={thirdFloor}
+                        color={"white"}
+                        bodyTextColor = {"#DCDCDC"}
+                        backgroundTop={"#2C2C38"}
+                        backgroundBottom={"#2C2C38"}
+                        floor={"심충"}/>
+                    <MyLogBottomFloor
+                        color={"white"}
+                        background={"#2C2C38"}
+                        floor={"바닥층"}/>
+                </div>
             </div>
 
         </Div>
@@ -119,8 +94,7 @@ function MyLogList(){
 const Div = styled.div`
     width : 100%;
     height: 100vh;
-    background : #D2DADF
-    
+    background : #D2DADF;
 `
 
 const Scale = styled.img.attrs({

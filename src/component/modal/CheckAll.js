@@ -19,6 +19,7 @@ function CheckAll(props) {
         props.setMarketing(!props.checked)
     }
 
+
     return (
         <Wrap
             className="ccheck"

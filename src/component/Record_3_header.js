@@ -10,7 +10,7 @@ function Record_3_header(props){
     return(
 
         <Header>
-            <GoBack icon={props.isHundred?whiteGoBack:blackGoBack}/>
+            <GoBack icon={props.isHundred?whiteGoBack:blackGoBack} onClick={()=>console.log("click")}/>
             {props.flag ?
                 <NextText
                     onClick={changeCategory}
@@ -36,6 +36,7 @@ const Header = styled.div`
     position: fixed;
     top:0;
     overflow:hidden;
+    z-index:0
 `
 
 const GoBack = styled.img.attrs(props=>({
@@ -43,6 +44,7 @@ const GoBack = styled.img.attrs(props=>({
 }))`
     margin-left: 24px;
 `
+
 const NextText = styled.button`
     font-family: PretendartVariable;
     font-style: normal;
