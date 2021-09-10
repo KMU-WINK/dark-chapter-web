@@ -48,14 +48,14 @@ const Wrap = styled.div`
 `
 
 const TextBox = styled.div` 
-  font-family: PretendartVariable;
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
   margin-top : 24px;
   overflow : auto;
-  height : 301px;
+  height : 340px;
 `
 
 const Wrap2 = styled.div`
@@ -76,5 +76,5 @@ const OvercomeBtn = styled.button`
   font-weight: bold;
   font-size: 14px;
   line-height: 21px;
-  padding : 10px;
+  padding : 14px;
 `

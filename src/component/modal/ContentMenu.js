@@ -8,16 +8,26 @@ const ContentMenu = (props) => {
 
     return <OpacityView>
         <Blank onClick={()=>{onClose(false)}}></Blank>
-        <Wrap>
+        <Wrap height={props.state==="none"?118:165} top={props.state==="none"?642:595.5}>
             <Center>
                 <ModalBar/>
             </Center>
             {props.state === "share"?
                 <ContentList1 onClick={()=>{setIsPopup("share")}}>공유하기</ContentList1>
                 :
-                <ContentList1 onClick={()=>{setIsPopup("collect")}}>공감 더 끌어모으기</ContentList1>
+                <>
+                    {props.state === "collect"?
+                        <ContentList1 onClick={()=>{setIsPopup("collect")}}>공감 더 끌어모으기</ContentList1>
+                        :
+                        null
+                    }
+                </>
             }
-            <ContentList2 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList2>
+            {props.state === "none"?
+                <ContentList1 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList1>
+                :
+                <ContentList2 onClick={()=>{setIsPopup("delete")}}>삭제</ContentList2>
+            }
         </Wrap>
         {isPopup === "share"?
             <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?"/>
@@ -55,21 +65,12 @@ const Blank = styled.div`
 const Wrap = styled.div`
   background : white;
   width: 360px;
-  height: 165px;
+  height: ${props=>props.height}px;
   position : fixed;
-  top: 595.5px;
+  top: ${props=>props.top}px;
   border-radius: 20px 20px 0px 0px;
 `
 
-const Wrap2 = styled.div`
-  background : white;
-  position: absolute;
-  width: 360px;
-  height: 118px;
-  left: 0px;
-  top: 642px;
-  border-radius: 10px 10px 0px 0px;
-`
 
 const ModalBar = styled.div`
   position: absolute;

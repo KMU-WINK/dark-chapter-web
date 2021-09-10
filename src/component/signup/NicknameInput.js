@@ -41,8 +41,8 @@ function NicknameInput(props){
     },[nickname])
 
     return(
-        <Container>
-            <InputBox>
+        <Container width={document.documentElement.clientWidth-48}>
+            <InputBox width={document.documentElement.clientWidth-48}>
                 <Nickname font_color = {config.ACTIVE_COLOR}>별명</Nickname>
                 <InputNickname
                     value = {nickname}
@@ -65,13 +65,14 @@ function NicknameInput(props){
 }
 
 const Container = styled.div`
-    width: 328px;
+    width: ${props=>props.width}px;
     margin : 0 auto;
     margin-top : 88px;
     position : relative;
 `
 
 const InputBox = styled.div`
+    width: ${props=>props.width}px;
     height: 38px;
     position : relative;
 `
@@ -91,8 +92,8 @@ const Nickname = styled.span`
 const InputNickname = styled.input.attrs({
     placeholder:"별명은 개인 식별 용도로만 사용됩니다."
 })`
-    text-align : center;
-    width: 328px;
+    // text-align : center;
+    width: 100%;
     height: 38px;
     outline: 0;
     border-width: 0 0 2px;
@@ -101,21 +102,23 @@ const InputNickname = styled.input.attrs({
     font-family: PretendartVariable;
     background : ${props => props.color};
     color : ${props => props.active_color};
-    border-color: ${props => props.active ? props.active_color : props.inactive_color}
+    border-color: ${props => props.active ? props.active_color : props.inactive_color};
+    padding: 0 68px;
 `
+
 
 const XIcon = styled.img.attrs({
     src : bi_x_active
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 const InactiveXIcon = styled.img.attrs({
     src : bi_x_inactive
 })`
     position : absolute;
-    left: 304px;
+    right: 0;
     top: 7px;
 `
 

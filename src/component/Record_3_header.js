@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
-import arrow from "../svg/arrow.svg";
-import goBack from "../svg/record_3_goback.svg";
+import whiteGoBack from "../svg/goBackBtn.svg";
+import blackGoBack from "../svg/goBack_black.svg"
 
 function Record_3_header(props){
     const changeCategory = () =>{
@@ -10,11 +10,11 @@ function Record_3_header(props){
     return(
 
         <Header>
-            <GoBack/>
+            <GoBack icon={props.isHundred?whiteGoBack:blackGoBack} onClick={()=>console.log("click")}/>
             {props.flag ?
                 <NextText
                     onClick={changeCategory}
-                    color="2C2C38"
+                    color={props.isHundred?"#FFFFFF":"#2C2C38"}
                 >다음</NextText> :
                 <NextText
                     disabled
@@ -33,15 +33,18 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top:0;
+    overflow:hidden;
+    z-index:0
 `
 
-const GoBack = styled.img.attrs({
-    src: goBack
-})`
+const GoBack = styled.img.attrs(props=>({
+    src: props.icon
+}))`
     margin-left: 24px;
 `
+
 const NextText = styled.button`
     font-family: PretendartVariable;
     font-style: normal;

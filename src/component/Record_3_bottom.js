@@ -5,7 +5,7 @@ import fish from "../svg/fish.svg"
 
 function Record_3_bottom(props){
     return(
-        <Div background={props.background}>
+        <Div background={props.background} height={props.height}>
             <Text color={props.color}>{props.floor}</Text>
             <Fish></Fish>
         </Div>
@@ -14,7 +14,7 @@ function Record_3_bottom(props){
 
 const Div = styled.div`
     width : 100%;
-    height : 400px;
+    height : ${props=>props.height}px;
     background : ${props => props.background};
     padding-top:26px
 `

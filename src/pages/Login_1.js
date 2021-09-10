@@ -15,7 +15,7 @@ function Login_1() {
 
     return (
         <Container color={config.BACKGROUND_COLOR}>
-            <GoBackBtn previousPage="/"/>
+            <GoBackBtn previousPage="/landing"/>
             <SignupText title="로그인" description="가입하신 이메일과 비밀번호를 입력해 주세요."/>
             <LoginInput
                 setIsActive={setIsActive}
@@ -35,9 +35,10 @@ function Login_1() {
     )
 }
 
+
 const Container = styled.div`
-    width: 360px;
-    height: 760px;
+    width: 100%;
+    height: 100vh;
     background : ${props => props.color}
 `
 const BtnWrap = styled.div`
