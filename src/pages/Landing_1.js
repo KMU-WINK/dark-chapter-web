@@ -21,11 +21,11 @@ function Landing_1() {
                 <Span>비록 흑역사일지라도</Span>
             </Div>
 
-            <Link >
+            {/*<Link >*/}
                 <Button to='/signup'>
                     <ButtonText>회원가입</ButtonText>
                 </Button>
-            </Link>
+            {/*</Link>*/}
             <CircleWrap>
                 <BlueCircle/>
                 <RedCircle/>

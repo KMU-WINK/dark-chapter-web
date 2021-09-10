@@ -42,8 +42,8 @@ function App() {
         <>
             <Router>
                 <Switch>
-
-                    <Route exact path="/" component={Landing_1}/>
+                    <Route exact path="/" component={WalkThrough_1}/>
+                    <Route path="/landing" component={Landing_1}/>
                     <Route path="/login" component={Login_1}/>
 
                     <Route exact path="/signup" component={Signup_1}/>
@@ -76,7 +76,6 @@ function App() {
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
 
-                    <Route path="/walk-through" component={WalkThrough_1}/>
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>
             </Router>
