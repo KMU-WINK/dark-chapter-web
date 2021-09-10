@@ -50,7 +50,7 @@ const WalkThrough_1 = () => {
     },[currentIdx])
 
     if(flag){
-        return (<Redirect to="/"/>)
+        return (<Redirect to="/landing"/>)
     }
 
     return (

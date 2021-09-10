@@ -29,12 +29,16 @@ function MyLogFloor(props){
                     />
                     <PostBox>
                         <Post onClick={()=>{history.push('/myLog')}}>
-                            <PaletteCircle
-                                width={60} height={60}
-                                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                                feeling={[20,10,20,50]}
-                            />
+
+                            <CircleDiv>
+                                <PaletteCircle
+                                    width={60} height={60}
+                                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
+                                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
+                                    feeling={[20,10,20,50]}
+                                />
+                            </CircleDiv>
+
                             <div style={{marginLeft:16}}>
                                 <div className="jejugothic">
                                     <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
@@ -110,13 +114,10 @@ const Post = styled.div`
     transform: translateY(-50%);
 `
 
-// const PaletteCircle = styled.div`
-//     width:60px;
-//     height: 60px;
-//     border-radius: 50%;
-//     border: 1px solid red;
-//     margin-left: 65px;
-// `
+const CircleDiv = styled.div`
+  margin-left : 25px;
+  margin-right : 30px;
+`
 
 const PostTitle = styled.span`
     font-size: 14px;

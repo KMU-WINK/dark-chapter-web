@@ -2,7 +2,7 @@
     background: #f3f3ed;
     width: 100%;
     height: calc(100vh - 24px);
-    padding-top: 24px;
+    /*padding-top : 24px;*/
 }
 button {
     border: none;
@@ -43,6 +43,7 @@ textarea{
     margin-top : 24px;
 }
 .postTitle {
+
     width: calc(100% - 48px);
     padding: 0 24px;
     height: 28px;

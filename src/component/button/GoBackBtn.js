@@ -43,6 +43,8 @@ const BackIcon = styled.img.attrs({
 const BBackIcon = styled.img.attrs({
     src : blackGoBack
 })`
+    width : 24px;
+    height: 24px;
     position:absolute;
     top:50%;
     transform:translateY(-50%);

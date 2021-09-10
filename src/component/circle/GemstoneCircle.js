@@ -48,8 +48,10 @@ const ShadowCircle = styled.img.attrs({
     src : shadowCircle
 })`
     position : absolute;
-    width: ${props=>props.size}px;
-    height: ${props=>props.size}px;
+    top : -5px;
+    left : -5px;
+    width: ${props=>props.size+10}px;
+    height: ${props=>props.size+10}px;
 `
 const Wrap2 = styled.div`
   position : absolute;
