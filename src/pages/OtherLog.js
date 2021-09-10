@@ -5,11 +5,11 @@ import OtherHeader from "../component/header/OtherHeader";
 import SelectCategory from "../component/content/SelectCategory";
 
 const OtherLog = () => {
-    const backgroundColor = ["#d1d9de","#96a1b1","#2c2d39"]
-    const tagColor = ["#e9e9e9","#EAEAEA","#ABABAF"]
-    const textColor = ["#000","#fff","#fff"]
+    const backgroundColor = "#2c2d39"
+    const tagColor = "#ABABAF"
+    const textColor = "#fff"
 
-    return <Wrap backgroundColor={backgroundColor[2]}>
+    return <Wrap backgroundColor={backgroundColor}>
         <OtherHeader previousPage={'/home'} list={true}/>
         <Wrap1>
             <SelectCategory/>
@@ -23,7 +23,7 @@ const OtherLog = () => {
             />
         </Wrap2>
         <Wrap3>
-            <LogContent date={false} seeMorePage={'/other/seeMore'} tagColor={tagColor[2]} textColor={textColor[2]}/>
+            <LogContent date={false} seeMorePage={'/other/seeMore'} tagColor={tagColor} textColor={textColor}/>
         </Wrap3>
     </Wrap>
 }

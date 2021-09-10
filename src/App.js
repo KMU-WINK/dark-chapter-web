@@ -31,7 +31,7 @@ import {
     Record_3,
     WalkThrough_1,
     MyLogPage,
-
+    OtherList,
 } from './pages';
 
 function App() {
@@ -64,7 +64,8 @@ function App() {
                     <Route exact path="/myLog" component={MyLog}/>
                     <Route path="/myLog/seeMore" component={SeeMoreContent}/>
 
-                    <Route exact path='/other' component={OtherLog}/>
+                    <Route exact path='/other' component={OtherList}/>
+                    <Route path='/otherLog' component={OtherLog}/>
                     <Route path='/other/seeMore' component={SeeMoreOther}/>
                     <Route path="/selectSympathy" component={SelectSympathy}/>
                     <Route path="/sympathy" component={Sympathy}/>
