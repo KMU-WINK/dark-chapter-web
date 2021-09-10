@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
+import {inject, observer} from "mobx-react";
 
 import emailIcon from "../../svg/mail.svg";
 import Password from "../../svg/password.svg";
@@ -10,6 +11,9 @@ import reveal_inactive from "../../svg/reveal_inactive.svg";
 import inreveal_inactive from "../../svg/inreveal_inactive.svg";
 import inreveal_active from "../../svg/inreveal_active.svg";
 
+
+@inject('User')
+@observer
 function LoginInput(props){
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
@@ -18,7 +22,6 @@ function LoginInput(props){
     //
     // const [isPwdValidate, setIsPwdValidate] = useState(false);
     // const [pwdVMsg, setPwdVMsg] = useState("");
-
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
 
