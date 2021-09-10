@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from "react";
-import '../styles/PostPage.css';
-import goBack from "../svg/goBack_black.svg";
+import '../styles/PostPage.css'
+import backIcon from "../svg/record_3_goback.svg";
 import styled from "styled-components";
 import minus from "../svg/minusBtn.svg";
 import {useHistory} from "react-router-dom";

@@ -25,6 +25,7 @@ function Record_3() {
     const [nextTextColor, setNextTextColor] = useState("#747474")
     const [goTop, setGoTop] = useState(false);
     const [category, setCategory] = useState(false)
+    const [complete, setComplete] = useState(false)
 
     // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
     const bottomFloorHeight = window.innerHeight - 332
@@ -222,7 +223,7 @@ const MeterSpace = styled.div`
 const MeterWrap = styled.div`
     display:flex;
     align-items: flex-start;
-
+    
 `
 
 const MeterText = styled.span`
@@ -235,7 +236,7 @@ const MeterText = styled.span`
     align-items: center;
     letter-spacing: -0.03em;
     color: ${props => props.color};
-
+    
     opacity: 0.5;
 `
 

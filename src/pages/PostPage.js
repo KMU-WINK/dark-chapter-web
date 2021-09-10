@@ -35,7 +35,7 @@ function PostPage (props) {
         <div className='TextContents'>
             <div className='postTitle'>
                 <p className='titleIcon'>#</p>
-                <input type="text" required placeholder='흑역사에게 이름을 지어주세요' onChange={titleInput}/>
+                <input type="text" required placeholder='흑역사에게 이름을 지어주세요' maxLength='20' onChange={titleInput}/>
                 <p className='titleLength'>{title.length}/20</p>
             </div>
             <div className='postContents'>

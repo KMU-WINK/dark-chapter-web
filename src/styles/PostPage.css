@@ -1,8 +1,7 @@
 #root {
     background: #f3f3ed;
     width: 100%;
-    height: calc(100vh - 24px);
-    /*padding-top : 24px;*/
+    height: 100vh;
 }
 button {
     border: none;
@@ -11,10 +10,13 @@ button {
 }
 input,
 textarea{
-    font-family: 'Jeju Gothic', sans-serif;
+    font-family: 'PretendartVariable', sans-serif;
+    font-size: 14px;
+    line-height: 25px;
 }
 .Header {
     width: 100%;
+    padding-top: 24px;
     height: 56px;
     display: flex;
     justify-content: space-between;
@@ -63,7 +65,7 @@ textarea{
     top: 4px;
 }
 .postTitle input {
-    width: calc(100% - 31px);
+    width: calc(100% - 70px);
     height: 100%;
     background: none;
     border: none;
@@ -71,6 +73,7 @@ textarea{
     font-size: 18px;
     padding-left: 31px;
     font-weight: 400;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 .titleLength {
     position: absolute;
