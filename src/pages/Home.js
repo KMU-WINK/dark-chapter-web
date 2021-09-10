@@ -12,7 +12,7 @@ import {useHistory} from "react-router-dom";
 const Home = () => {
     const history = useHistory();
     const [title, setTitle] = useState('흑역사를 입력해주세요')
-    const [init, setInit] = useState(true);
+    const [init, setInit] = useState(false);
 
     return <All>
         <Header>
@@ -32,12 +32,15 @@ const Home = () => {
             {init?
                 <InitDiv/>
                 :
-                <PaletteCircle
-                    width={128} height={128}
-                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                    feeling={[20,10,20,50]}
-                />
+                <>
+                    {/*<White/>*/}
+                    <PaletteCircle
+                        width={128} height={128}
+                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
+                        color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
+                        feeling={[40,10,20,30]}
+                    />
+                </>
             }
         </Wrap3>
 
@@ -138,7 +141,7 @@ const Wave = styled.img.attrs({
 const Wrap2 = styled.div`
   display : flex;
   justify-content: space-around;
-  margin : 250px 30px 0 30px;
+  margin : 320px 30px 0 30px;
   z-index : 5;
 `
 
@@ -162,4 +165,12 @@ const Name = styled.div`
   letter-spacing: -0.03em;
   color: #747474;
   margin-left : 2px;
+`
+const White = styled.div`
+  background : white;
+  width : ${props=>props.w}px;
+  position : absolute;
+  height : ${props=>props.h}px;
+  z-index : -10;
+  mix-blend-mode : normal;
 `

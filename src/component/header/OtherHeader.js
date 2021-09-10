@@ -11,7 +11,11 @@ const OtherHeader = (props) => {
                 <UpArrowIcon onClick={()=>{history.push(props.previousPage)}}/>
                 <HeaderText>공감하기</HeaderText>
             </Wrap2>
-            <ListViewIcon/>
+            {props.list?
+                <ListViewIcon/>
+                :
+                null
+            }
         </Wrap>
     </>
 }

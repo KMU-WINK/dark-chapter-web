@@ -20,10 +20,11 @@ function SignupText(props){
 }
 
 
+
 const TitleBox = styled.div`
     width: 100%;
     margin-top : 36px;
-    margin-left : 30px;
+    margin-left : 24px;
 `
 const Title = styled.span`
     color : ${props => props.color};
@@ -34,7 +35,7 @@ const Description = styled.div`
     font-size: 12px;
     color : ${props => props.color};
     color: rgba(255, 255, 255, 0.6);
-    margin-left : 30px;
+    margin-left : 24px;
     margin-top : 16px;
 `
 

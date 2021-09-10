@@ -7,7 +7,6 @@ function PostPage (props) {
     const [title,setTitle] = useState('')
     const [contents, setContents] = useState('')
     const [isPopup, setIsPopup] = useState(false);
-    const [visible, setVisible] = useState(false);
     const [typingFocus, setTypingFocus] = useState(false);
     const titleInput = ({target}) =>{
         setTitle(target.value)
@@ -35,7 +34,7 @@ function PostPage (props) {
         <div className='TextContents'>
             <div className='postTitle'>
                 <p className='titleIcon'>#</p>
-                <input type="text" required placeholder='흑역사에게 이름을 지어주세요' onChange={titleInput}/>
+                <input type="text" required placeholder='흑역사에게 이름을 지어주세요' maxLength='20' onChange={titleInput}/>
                 <p className='titleLength'>{title.length}/20</p>
             </div>
             <div className='postContents'>
@@ -47,7 +46,7 @@ function PostPage (props) {
             </div>
         </div>
         {isPopup?
-            <PopUp onClose={setIsPopup} state={props.state} text="정말 나가시겠어요?" text2="기록한 모든게 다 사라져요."/>
+            <PopUp onClose={setIsPopup} state={props.state} title="exit_PostPage" text="정말 나가시겠어요?" text2="기록한 모든게 다 사라져요."/>
             : null
         }
     </>)

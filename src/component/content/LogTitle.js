@@ -3,8 +3,12 @@ import styled from "styled-components";
 const LogTitle = (props) => {
     console.log(props)
     return <Wrap className="jejugothic" textColor={props.textColor} tagColor={props.tagColor}>
-        <LogDate>21.05.23</LogDate>
-        <Title>썸남 앞에서 코파버렸다</Title>
+        {props.date?
+            <LogDate>21.05.23</LogDate>
+            :
+            null
+        }
+            <Title>썸남 앞에서 코파버렸다</Title>
         <Tags>
             <Tag tagColor={props.tagColor}>#해시</Tag>
             <Tag tagColor={props.tagColor}>#해시태그</Tag>
@@ -48,7 +52,7 @@ const Tag = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 4px 8px 4px 6px;
+  padding: 1px 8px 1px 6px;
   height: 18px;
   background: ${props=>props.tagColor};
   border-radius: 16px;
