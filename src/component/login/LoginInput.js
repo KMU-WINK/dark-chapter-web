@@ -12,8 +12,6 @@ import inreveal_inactive from "../../svg/inreveal_inactive.svg";
 import inreveal_active from "../../svg/inreveal_active.svg";
 
 
-@inject('User')
-@observer
 function LoginInput(props){
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
