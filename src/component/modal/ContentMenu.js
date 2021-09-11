@@ -51,8 +51,8 @@ const ContentMenu = (props) => {
 export default ContentMenu;
 
 const OpacityView = styled.div`
-  width : 360px;
-  height : 760px;
+  width : 100%;
+  height : 100vh;
   position : fixed;
   left : 0;
   right:0;
@@ -62,14 +62,14 @@ const OpacityView = styled.div`
   background : rgba(0,0,0,0.6);
 `
 const Blank = styled.div`
-  width : 360px;
+  width : 100%;
   height: 595px;
 `
 
 const Wrap = styled.div`
   background : white;
-  width: 360px;
-  height: ${props=>props.height}px;
+  width: 100%;
+  height: 100vh;
   position : fixed;
   top: ${props=>props.top}px;
   border-radius: 20px 20px 0px 0px;
@@ -80,7 +80,7 @@ const ModalBar = styled.div`
   position: absolute;
   width: 40px;
   height: 4px;
-  left: 160px;
+  left: 45%;
   top: 12px;
   background: #C4C4C4;
   border-radius: 15px;
@@ -109,9 +109,9 @@ const ContentList1 = styled.div`
 
 const ContentList2 = styled.div`
   position: absolute;
-  width: 104.83px;
+  width: 100%;
   height: 26.5px;
-  left: 25.1px;
+  left: 8%;
   top: 79.29px;
   font-family: PretendartVariable;
   font-style: normal;

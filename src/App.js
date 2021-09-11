@@ -28,6 +28,8 @@ import {
     Menu,
     GemstoneLog,
     GemstoneList,
+    GenerateGemstone,
+    gotoGemstone,
     Record_3,
     WalkThrough_1,
     MyLogPage,
@@ -72,6 +74,8 @@ function App() {
 
                     <Route path="/gemstone" component={GemstoneList}/>
                     <Route path="/gemstoneLog" component={GemstoneLog}/>
+                    <Route path="/generateGemstone" component={GenerateGemstone}/>
+                    <Route path="/gotoGemstone" component={gotoGemstone}/>
 
                 </Switch>
                 <Route path='/appLock' component={AppLock}/>

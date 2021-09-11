@@ -58,8 +58,8 @@ function PopUp(props) {
 export default PopUp;
 
 const OpacityView = styled.div`
-  width : 360px;
-  height : 760px;
+  width : 100%;
+  height : 100vh;
   position : fixed;
   left : 0;
   right: 0;
@@ -74,10 +74,10 @@ const PopupBox = styled.div`
     position: absolute;
     height: 124px;
     width: 230px;
+    top: 279.35px;
     border-radius: 5px;
     background: #F7F7F5;
-    left: 66px;
-    top: 279.35px;
+    margin-left: 18%;
     text-align: center;
     box-shadow: 0px 2.668604612350464px 7.116279125213623px 0px #0000001A;
 `
