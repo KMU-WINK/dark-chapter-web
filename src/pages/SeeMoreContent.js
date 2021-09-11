@@ -19,7 +19,11 @@ const SeeMoreContent = () => {
             />
         </Wrap2>
         <Wrap3>
-            <LogMoreContent date={true} status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
+            <LogMoreContent status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}
+                            title={"myLog/seeMore의 title"}
+                            tag={["# myLog", "# 해시", "# 내용", "# 태그"]}
+                            content={"myLog의 더보기 내용입니다."}
+            />
         </Wrap3>
     </Wrap>
 }

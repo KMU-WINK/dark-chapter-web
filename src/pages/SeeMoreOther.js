@@ -10,7 +10,6 @@ const SeeMoreOther = () => {
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap background={backgroundColor[2]}>
-        {/*<ContentHeader state={"share"}  previousPage={'/other'}/>*/}
         <OtherHeader previousPage={'/other'} list={true}/>
         <Wrap2>
             <PaletteCircle
@@ -21,7 +20,11 @@ const SeeMoreOther = () => {
             />
         </Wrap2>
         <Wrap3>
-            <LogMoreContent date={false} status={"OtherLog"} tagColor={tagColor[2]} textColor={textColor[2]}/>
+            <LogMoreContent status={"OtherLog"} tagColor={tagColor[2]} textColor={textColor[2]}
+                            title={"otherLog/seeMore의 title"}
+                            tag={["# otherLog", "# 해시", "# 내용", "# 태그"]}
+                            content={"myLog의 더보기 내용입니다."}
+            />
         </Wrap3>
     </Wrap>
 }

@@ -31,12 +31,18 @@ const MyLog = () => {
                     null
                     :
                     <>
-                        <SympathyCircle black={true} feeling={[40,30,20,10]} color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]} backgroundColor={backgroundColor[2]} />
+                        <SympathyCircle black={true} feeling={[40,30,20,10]}
+                                        color={["#FF2036FF","#366197FF","#faaba4","#FFF890FF"]}
+                                        backgroundColor={backgroundColor[0]} />
                     </>
                 }
             </Wrap2>
             <Wrap3>
-                <LogContent date={true} seeMorePage={'/myLog/seeMore'} tagColor={tagColor[0]} textColor={textColor[0]}/>
+                <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor[0]} textColor={textColor[0]}
+                            title={"myLog의 title"} tag={["# 나의 기록","# 해시태그"]}
+                            timeStamp={"2021-05-21"}
+                            content={"myLog의 content"}
+                />
             </Wrap3>
     </Wrap>
 }

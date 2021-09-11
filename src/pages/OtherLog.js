@@ -22,7 +22,11 @@ const OtherLog = () => {
             />
         </Wrap2>
         <Wrap3>
-            <LogContent date={false} seeMorePage={'/other/seeMore'} tagColor={tagColor} textColor={textColor}/>
+            <LogContent seeMorePage={'/other/seeMore'} tagColor={tagColor} textColor={textColor}
+                        title={"otherLog의 title"}
+                        tag={["# 해시", "# other","# 태그"]}
+                        content={"otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당otherLog의 내용입니당"}
+            />
         </Wrap3>
     </Wrap>
 }
