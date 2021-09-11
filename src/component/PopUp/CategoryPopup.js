@@ -41,6 +41,7 @@ function CategoryPopup(props){
         },1000)
     }
     useEffect(()=>{
+        console.log(props.state, props.depth)
         const SelectedList = document.querySelectorAll('.categoryElementSection .selectedCategoryButton')
         for(let l=0;l<SelectedList.length;l++){
             SelectedList[l].className = 'categoryElement'
@@ -116,8 +117,9 @@ function CategoryPopup(props){
     }
     const wirteBtn =() =>{
         setWriteComplete(true)
+        console.log(choose)
         setTimeout(()=>{
-            window.location.href ='/home'
+            // window.location.href ='/home'
             setWriteComplete(false)
         },3000)
     }

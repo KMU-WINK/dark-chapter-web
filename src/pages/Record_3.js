@@ -30,6 +30,7 @@ function Record_3(props) {
     const [state, setState] = useState('')
     // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
     const bottomFloorHeight = window.innerHeight - 332
+    const [crrnt, setCrrnt] = useState(0);
 
     const goToTop = () => {
         window.scrollTo({
@@ -61,7 +62,8 @@ function Record_3(props) {
         const target = document.getElementById("test")
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
-        // console.log(tmp)
+        console.log(tmp)
+        setCrrnt(tmp)
 
 
         if(tmp<100){
@@ -176,7 +178,9 @@ function Record_3(props) {
                 }
                 <Record_3_bottom height={bottomFloorHeight}/>
                 {category ?
-                    <CategoryPopup category={category} setCategory={setCategory}/> : null
+                    <CategoryPopup category={category} setCategory={setCategory}
+                    state={state} depth ={crrnt}
+                    /> : null
                 }
             </div>
         </Wrap>
