@@ -2,8 +2,10 @@ import React,{ useState, useEffect } from "react";
 import '../styles/PostPage.css'
 import black_x from "../svg/black_x.svg"
 import PopUp from '../component/modal/PopUp.js';
+import { useHistory } from "react-router";
 
 function PostPage (props) {
+    const history = useHistory();
     const [title,setTitle] = useState('')
     const [contents, setContents] = useState('')
     const [isPopup, setIsPopup] = useState(false);
@@ -15,7 +17,10 @@ function PostPage (props) {
         setContents(target.value)
     }
     const postEmotion = () =>{
-        window.location.href ='/postEmotion'
+        history.push({
+            pathname:'/postEmotion',
+            state: {title, contents}
+        })
     }
     const checkFocus = () =>{
         setTypingFocus(document.activeElement.tagName==='TEXTAREA'?true:false)
