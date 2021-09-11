@@ -1,1 +1,0 @@
-export const ROOT_URL = "http://ec2-3-38-93-32.ap-northeast-2.compute.amazonaws.com:8000"

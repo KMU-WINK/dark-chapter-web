@@ -1,12 +1,10 @@
-import React,{useEffect} from 'react';
-import styled from "styled-components";
-import "../../fonts/fonts.css";
-import white_hr from "../../svg/white_hr.svg"
-import black_hr from "../../svg/black_hr.svg"
-import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
+import white_hr from "../../svg/white_hr.svg";
+import PaletteCircle from "../circle/PaletteCircle";
+import styled from "styled-components";
+import React from "react";
 
-function MyLogFloor(props){
+const LogListDiv = (props) => {
     const history = useHistory();
     let height = 0;
     if(props.num <= 3){
@@ -19,16 +17,16 @@ function MyLogFloor(props){
     // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
     const rendering = () => {
         let hr_height = 60;
-        // console.log(hr_height)
+        console.log(hr_height)
         const result = [];
         for (let i = 0; i< props.num; i++){
             result.push(
                 <div style={{position: "relative"}}>
-                    <HR src={props.color === "white" ? white_hr: black_hr}
+                    <HR src={white_hr}
                         h={hr_height}
                     />
                     <PostBox>
-                        <Post onClick={()=>{history.push('/myLog')}}>
+                        <Post onClick={()=>{history.push('/otherLog')}}>
 
                             <CircleDiv>
                                 <PaletteCircle
@@ -41,10 +39,10 @@ function MyLogFloor(props){
 
                             <div style={{marginLeft:16}}>
                                 <div className="jejugothic">
-                                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
+                                    <PostTitle>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
                                 </div>
 
-                                <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
+                                <PostBody>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
                             </div>
                         </Post>
                     </PostBox>
@@ -56,13 +54,10 @@ function MyLogFloor(props){
     }
     return(
         <Wrap
-            backgroundTop={props.backgroundTop}
-            backgroundBottom={props.backgroundBottom}
             num={props.num}
             height={height}
         >
-            <Text color={props.color}>{props.floor}</Text>
-
+            <Text>{props.floor}</Text>
             {rendering()}
 
             {/*데이터 패칭할 때 이거 사용 + map함수*/}
@@ -82,12 +77,13 @@ function MyLogFloor(props){
     )
 }
 
+export default LogListDiv;
+
 const Wrap = styled.div`
     width : 100%;
-    background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
-    padding-top:26px;
+    background : #2C2C38;
+    padding-top:20px;
     height: ${props => props.height}px;
-    z-index: -1;
 `
 
 const Text = styled.div`
@@ -96,7 +92,7 @@ const Text = styled.div`
     letter-spacing: -0.03em;
     font-weight : bold;
     height: 24px;
-    color: ${props => props.color};
+    color: white;
 `
 
 const PostBox = styled.div`
@@ -113,7 +109,6 @@ const Post = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
 `
 
 const CircleDiv = styled.div`
@@ -126,7 +121,7 @@ const PostTitle = styled.span`
     line-height: 21px;
     letter-spacing: -0.03em;
     font-weight : bold;
-    color: ${props => props.color}
+    color: white;
 `
 
 const PostBody = styled.div`
@@ -136,7 +131,7 @@ const PostBody = styled.div`
     font-family: PretendartVariable;
     font-size: 10px;
     line-height: 13px;
-    color: ${props => props.color};
+    color: #DCDCDC;
 `
 
 const HR = styled.img`
@@ -145,5 +140,3 @@ const HR = styled.img`
     transform: translateY(-50%);
     
 `
-
-export default MyLogFloor

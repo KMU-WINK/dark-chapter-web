@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, {useState} from 'react';
 import * as config from '../config'
+import { inject, observer } from 'mobx-react'
 
 import SignupText from "../component/signup/SignupText";
 import LoginInput from "../component/login/LoginInput";
@@ -9,6 +10,7 @@ import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
 import "../fonts/fonts.css"
+
 
 function Login_1() {
     const [isActive, setIsActive] = useState(false);

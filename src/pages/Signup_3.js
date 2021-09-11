@@ -9,7 +9,7 @@ import bi_x_active from "../svg/bi_x.svg";
 import {useHistory} from "react-router-dom";
 
 function Signup_3(props){
-
+    console.log(props)
     let history = useHistory();
 
     const [active, setActive] = useState(false);
@@ -19,10 +19,10 @@ function Signup_3(props){
     const [agreeMarketing, setMarketing] = useState(false);
 
     useEffect(() => {
-        console.log("all: ",agreeAll)
-        console.log("service: ",agreeService)
-        console.log("info: ",agreeInfo)
-        console.log("marketing: ",agreeMarketing)
+        // console.log("all: ",agreeAll)
+        // console.log("service: ",agreeService)
+        // console.log("info: ",agreeInfo)
+        // console.log("marketing: ",agreeMarketing)
         if(agreeService && agreeInfo && agreeMarketing){
             setAll(true)
             setActive(true)
@@ -43,23 +43,7 @@ function Signup_3(props){
     return(
         <Wrap width={props.width}>
             <ModalWrap color={config.BACKGROUND_COLOR} width={props.width}>
-                {/*<Div>*/}
-                {/*    <div onClick={()=>console.log("click")}>*/}
-                {/*        <XIcon*/}
-                {/*            id="rater"*/}
-                {/*            onClick={click}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*    <CheckAllWrap>*/}
-                {/*        <CheckAll*/}
-                {/*            setAll = {setAll}*/}
-                {/*            checked = {agreeAll}*/}
-                {/*            setService={setService}*/}
-                {/*            setInfo={setInfo}*/}
-                {/*            setMarketing={setMarketing}*/}
-                {/*        />*/}
-                {/*    </CheckAllWrap>*/}
-                {/*</Div>*/}
+
                 <Div>
                     <CheckAll
                         setAll = {setAll}
@@ -102,7 +86,13 @@ function Signup_3(props){
                         <NextBtn
                             onClick={() => {
 
-                                history.push('/signup/nickname')
+                                history.push({
+                                    pathname:'/signup/nickname',
+                                    state:{
+                                        email:props.email,
+                                        password: props.password
+                                    }
+                                })
                             }
                             }
                         >확인</NextBtn>

@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
+import {useLocation} from "react-router";
 import styled from "styled-components";
 import * as config from '../config'
+import * as user_service from "../axios/user-service";
 import {useHistory} from 'react-router-dom';
 
 import SignupText from "../component/signup/SignupText";
@@ -11,6 +13,9 @@ import InactiveBtn from "../component/button/InactiveBtn";
 
 
 function Signup_4(){
+    const location = useLocation();
+    const email = location.state.email;
+    const password = location.state.password;
 
     const [nickname,setNickname] = useState('');
 
@@ -18,7 +23,15 @@ function Signup_4(){
 
     const [message, setMessage] = useState("")
     const history = useHistory();
-    const check = () => {
+    const check = async () => {
+        // const result = await user_service.signUp({
+        //     email:email,
+        //     password:password,
+        //     nickname:nickname
+        // })
+
+
+
         if (nickname === 'aaa') {
             history.push('/home');
         }
@@ -29,7 +42,11 @@ function Signup_4(){
 
     return(
         <Container color={config.BACKGROUND_COLOR}>
-            <GoBackBtn previousPage="/signup/password"/>
+            <GoBackBtn
+                previousPage="/signup/password"
+                variableName = "email"
+                sendInfo={email}
+            />
             <SignupText title = "별명설정" description = "사용하실 별명을 입력해주세요."/>
             <NicknameInput
                 setIsActive={setIsActive}
@@ -43,7 +60,6 @@ function Signup_4(){
                             text = "끝내기"
                             check = {check}
                         />
-
                     :
                         <InactiveBtn text = "끝내기"/>
 
