@@ -112,6 +112,15 @@ function PostEmotionPage (props) {
             setComplete(true)
             document.querySelector('.popup').style.bottom = '-188px'
             document.querySelector('.contentsInfo').style.opacity = 0
+            history.push({
+                pathname : '/postDepth',
+                state : {...props.history.location.state,
+                    angry : cntAngry,
+                    shy : cntShy,
+                    sad : cntSad,
+                    laugh : cntLaugh,
+                }
+            })
         }
     }
     const ModifyAction = () =>{

@@ -19,7 +19,7 @@ import CategoryPopup from "../component/PopUp/CategoryPopup";
 //3. 심층에선 위로 올라가기 버튼
 
 
-function Record_3() {
+function Record_3(props) {
     const [isMove, setIsMove] = useState(false);
     const [isHundred, setIsHundred] = useState(false);
     const [nextMeter, setNextMeter] = useState(0);
@@ -27,7 +27,7 @@ function Record_3() {
     const [goTop, setGoTop] = useState(false);
     const [category, setCategory] = useState(false)
     const [complete, setComplete] = useState(false)
-
+    const [state, setState] = useState('')
     // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
     const bottomFloorHeight = window.innerHeight - 332
 
@@ -56,12 +56,12 @@ function Record_3() {
     const {y} = useScroll();
 
     useEffect(() => {
-        // console.log(window.scrollY)
+        setState(props.history.location)
         if (window.scrollY > 0) setIsMove(true)
         const target = document.getElementById("test")
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
-        console.log(tmp)
+        // console.log(tmp)
 
 
         if(tmp<100){
