@@ -40,6 +40,8 @@ const Header = styled.div`
     justify-content: space-between;
     align-items: center;
     z-index:1;
+    backdrop-filter: blur(1006px);
+
 `
 
 const Div = styled.div`
@@ -73,7 +75,7 @@ const Jewelry = styled.img.attrs(props => ({
     width: 24px;
     height: 24px;
     padding-right: 16px;
-`
+`;
 
 
 export default MyLogHeader
