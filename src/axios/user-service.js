@@ -6,11 +6,12 @@ export async function signUp(args) {
         password,
         nickname,
     } = args;
+    // console.log(email, password, nickname)
     await baseService.post('/users', {
         email,
         password,
         nickname,
-    });
+    }).then((res) =>{return res})
 }
 
 export async function updateUser(
@@ -45,5 +46,6 @@ export async function login(args) {
 
 export async function getUser(email) {
     const user = await baseService.get(`/users/${encodeURI(email)}`);
+    console.log(user.data)
     return user.data;
 }

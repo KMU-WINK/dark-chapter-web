@@ -19,7 +19,7 @@ function MyLogFloor(props){
     // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
     const rendering = () => {
         let hr_height = 60;
-        console.log(hr_height)
+        // console.log(hr_height)
         const result = [];
         for (let i = 0; i< props.num; i++){
             result.push(
@@ -87,6 +87,7 @@ const Wrap = styled.div`
     background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
     padding-top:26px;
     height: ${props => props.height}px;
+    z-index: -1;
 `
 
 const Text = styled.div`
@@ -112,6 +113,7 @@ const Post = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    
 `
 
 const CircleDiv = styled.div`

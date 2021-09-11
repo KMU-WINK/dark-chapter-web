@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from "react";
 
 const PaletteCircle = (props) => {
-    console.log(props)
+    // console.log(props)
     const ShowCircle = () => {
         if (props.feeling.length === 1) return <Circle w={props.width} h={props.height}  deg={"50% 50%"} feeling={props.feeling[0]*8} color={props.color[0]} per={80}/>
         else if (props.feeling.length === 2) {
@@ -25,7 +25,7 @@ const PaletteCircle = (props) => {
             </>
         }
     }
-    console.log(props)
+    // console.log(props)
     return <Wrap>
         <Wrap2>
             <White w={props.width} h={props.height}/>
