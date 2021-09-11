@@ -20,7 +20,7 @@ const RevealToast = keyframes`
 const ToastMessage = styled.div`
     position: fixed;
     top: 550px;
-    left: 30%;
+    left: 33%;
     width: 120px;
     height: 20px;
     background: rgba(0, 0, 0, 0.4);
