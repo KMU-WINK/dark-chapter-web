@@ -17,7 +17,6 @@ import inreveal_inactive from '../../svg/inreveal_inactive.svg'
 
 function PasswordInput(props){
 
-    console.log(document.documentElement.clientWidth)
     // 활성화, 비활성화
     const [isPwdActive,setPwdActive] = useState(false);
 

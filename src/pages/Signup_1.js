@@ -8,10 +8,12 @@ import GoBackBtn from "../component/button/GoBackBtn";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
+import * as user_service from "../axios/user-service";
+
 import {useHistory} from "react-router-dom"
 
 function Signup_1() {
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth)
     let history = useHistory()
 
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
@@ -21,12 +23,20 @@ function Signup_1() {
     const [message, setMessage] = useState("")
 
 
-    const checkValidate = () => {
+    const checkValidate = async () => {
         if (!regExp.test(email)) {
             setMessage("올바른 이메일 형식이 아닙니다.");
 
-        } else if (email === "aaa@aa.com") {
-            history.push('/signup/password')
+        }
+
+
+        else if (email === "aaa@aa.com") {
+            // const result = await user_service.getUser(email)
+            // await console.log(result)
+            history.push({
+                pathname: '/signup/password',
+                state : {email: email}
+            })
 
         } else setMessage("이미 등록된 이메일 입니다.")
     }

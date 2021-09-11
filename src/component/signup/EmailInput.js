@@ -21,9 +21,6 @@ function EmailInput(props){
         setEmail(e.target.value);
     };
 
-    console.log("a: ",document.documentElement.clientWidth)
-
-
     useEffect(()=>{
         if(email.indexOf('@') > -1){
             setIsAtSign(true);
