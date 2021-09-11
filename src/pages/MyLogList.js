@@ -6,9 +6,11 @@ import MyLogHeader from "../component/MyLog/MyLogHeader";
 import MyLogBottomFloor from "../component/MyLog/MyLogBottomFloor";
 import scale from "../svg/black_scale_group.svg"
 import white_hr from "../svg/white_scale_group.svg"
+import * as board_service from "../axios/board-service";
 
 function MyLogList() {
     const [headerColor, setHeaderColor] = useState("#000000")
+    const [logList, setLogList] = useState([])
 
     // 임의로 정한 흑역사 층별 데이터 개수
     const firstFloor = 7
@@ -66,6 +68,18 @@ function MyLogList() {
         else if (firstFloor > 3 && y >= firstFloor * 130 + 80) setHeaderColor("#FFFFFF")
         else if(firstFloor > 3 && y < firstFloor * 130 + 80) setHeaderColor("#000000")
     }, [y])
+
+    useEffect(() => {
+        const getBoardList = async () => {
+            const result = await board_service.getAllBoards()
+            setLogList(result)
+        }
+        getBoardList()
+    }, [])
+
+    useEffect(() => {
+        console.log(logList)
+    }, [logList])
 
     return (
         <Div
