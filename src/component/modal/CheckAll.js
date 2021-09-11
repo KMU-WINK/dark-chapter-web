@@ -10,7 +10,7 @@ import bi_x_active from "../../svg/bi_x.svg";
 
 
 function CheckAll(props) {
-    console.log(props)
+
 
     const checked = () => {
         props.setAll(!props.checked)

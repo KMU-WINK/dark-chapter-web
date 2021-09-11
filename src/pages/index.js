@@ -25,3 +25,4 @@ export { default as WalkThrough_1} from "./WalkThrough_1";
 export { default as MyLogPage} from "./MyLogList";
 export { default as gotoGemstone} from "./gotoGemstone";
 export { default as GenerateGemstone } from "./GenerateGemstone";
+export { default as OtherList} from "./OtherList";

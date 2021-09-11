@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
+import {inject, observer} from "mobx-react";
 
-import emailIcon from "../../svg/signup_mail.svg";
-import Password from "../../svg/signup_password.svg";
+import emailIcon from "../../svg/mail.svg";
+import Password from "../../svg/password.svg";
 import reveal_active from "../../svg/reveal-icons_eye.svg";
 import reveal_inactive from "../../svg/reveal_inactive.svg";
 import inreveal_inactive from "../../svg/inreveal_inactive.svg";
@@ -18,8 +19,6 @@ function LoginInput(props){
     //
     // const [isPwdValidate, setIsPwdValidate] = useState(false);
     // const [pwdVMsg, setPwdVMsg] = useState("");
-
-
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
 

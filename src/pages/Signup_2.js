@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import {useLocation} from "react-router";
 import styled from "styled-components";
 import SignupText from "../component/signup/SignupText";
 import PasswordInput from "../component/signup/PasswordInput";
@@ -11,7 +12,13 @@ import * as config from "../config";
 
 
 function Signup_2(){
-    console.log(window.innerWidth)
+    const location = useLocation();
+    let email = ""
+    if(location.state.email) email = location.state.email;
+    else email = location.state.info.email;
+
+
+
     const [popup, setPopup] = useState(false);
     const [isActive, setIsActive] = useState(false)
 
@@ -35,8 +42,6 @@ function Signup_2(){
             setPopup(true)
         }
 
-        console.log('pwd : ' + pwd)
-        console.log('confirm: ' + confirmPwd)
     }
 
     // 비밀번호, 비밀번호 확인 둘 다 4글자 이상인지 여부에 따라 버튼 활성화
@@ -86,7 +91,12 @@ function Signup_2(){
                 </BtnWrap>
             }
 
-            {popup ? <Signup_3 onClose = {setPopup} width={document.documentElement.clientWidth}/>:null}
+            {popup ? <Signup_3
+                onClose = {setPopup}
+                width={document.documentElement.clientWidth}
+                email={email}
+                password ={pwd}
+            />:null}
         </Container>
     )
 }

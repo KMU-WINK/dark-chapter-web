@@ -4,6 +4,7 @@ import backIcon from "../svg/record_3_goback.svg";
 import styled from "styled-components";
 import minus from "../svg/minusBtn.svg";
 import {useHistory} from "react-router-dom";
+import PaletteCircle from "../component/circle/PaletteCircle";
 
 let cntAngry = 0;
 let cntShy = 0;
@@ -34,73 +35,25 @@ function PostEmotionPage () {
         document.querySelector('.popup').style.bottom = 0
         document.querySelector('.contentsInfo').style.opacity = 1
     }
-    const ShowCircles = () => {
-        let feel = [];
-        let feelColor = [];
 
-        if (cntAngry>0) {
-            feel.push(angry);
-            feelColor.push(color.angry);
-        }
-        if (cntShy>0) {
-            feel.push(shy);
-            feelColor.push(color.shy);
-        }
-        if (cntSad>0) {
-            feel.push(sad);
-            feelColor.push(color.sad);
-        }
-        if (cntLaugh>0) {
-            feel.push(laugh);
-            feelColor.push(color.laugh);
-        }
-
-        if (feel.length === 0) return <InitCircle><p className='emotionNotice'>10개의 감정이 필요해요!</p></InitCircle>
-
-        else if (feel.length === 1) return <Circle deg={"50% 0"} feeling={feel[0]} color={feelColor[0]}/>
-        else if (feel.length === 2){
-            return <>
-                <Circle deg={"14.6% 14.6%"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[1]} color={feelColor[1]}/>
-            </>
-        }
-        else if (feel.length === 3){
-            return <>
-                <Circle deg={"50% 0"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"6.7% 75%"} feeling={feel[1]} color={feelColor[1]}/>
-                <Circle deg={"93.3% 75%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"93.3% 75%"} feeling={feel[2]} color={feelColor[2]}/>
-            </>
-        }
-        else if (feel.length === 4){
-            return <>
-                <Circle deg={"14.6% 14.6%"} feeling={feel[0]} color={feelColor[0]}/>
-                <Circle deg={"14.6% 85.4%"} feeling={feel[1]} color={feelColor[1]}/>
-                <Circle deg={"85.4% 14.6%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"85.4% 14.6%"} feeling={feel[2]} color={feelColor[2]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[3]} color={feelColor[3]}/>
-                <Circle deg={"85.4% 85.4%"} feeling={feel[3]} color={feelColor[3]}/>
-            </>
-        }
-    }
 
     const showFeeling = async (feeling) => {
         if (cntAngry+cntShy+cntLaugh+cntSad >= 10) return null;
 
         if(feeling === "angry") {
-            setAngry(angry+8);
+            setAngry(angry+1);
             cntAngry += 1;
         }
         else if(feeling === "shy") {
-            setShy(shy+8);
+            setShy(shy+1);
             cntShy += 1;
         }
         else if(feeling === "sad") {
-            setSad(sad+8);
+            setSad(sad+1);
             cntSad += 1;
         }
         else if(feeling === "laugh") {
-            setLaugh(laugh+12);
+            setLaugh(laugh+1);
             cntLaugh += 1
         }
 
@@ -110,25 +63,25 @@ function PostEmotionPage () {
     const minusFeeling = async (feeling) => {
         if(feeling === "angry") {
             if (cntAngry>0) {
-                setAngry(angry - 8);
+                setAngry(angry - 1);
                 cntAngry -= 1;
             }
         }
         else if(feeling === "shy") {
             if (cntShy>0) {
-                setShy(shy - 8);
+                setShy(shy - 1);
                 cntShy -= 1;
             }
         }
         else if(feeling === "sad") {
             if (cntSad>0) {
-                setSad(sad - 8);
+                setSad(sad - 1);
                 cntSad -= 1;
             }
         }
         else if(feeling === "laugh") {
             if (cntLaugh>0) {
-                setLaugh(laugh - 12);
+                setLaugh(laugh - 1);
                 cntLaugh -= 1
             }
         }
@@ -161,6 +114,24 @@ function PostEmotionPage () {
     const ModifyAction = () =>{
         setModify(!modify)
     }
+    let makeFeeling = [];
+    let makeColor = [];
+    if (angry>0) {
+        makeFeeling.push(angry);
+        makeColor.push("#FE4E62");
+    }
+    if (shy>0) {
+        makeFeeling.push(shy);
+        makeColor.push("#FFF9D9");
+    }
+    if (sad>0) {
+        makeFeeling.push(sad);
+        makeColor.push("#466598");
+    }
+    if (laugh>0) {
+        makeFeeling.push(laugh);
+        makeColor.push("#FDADA6");
+    }
     return(<>
         <div className='Header'>
             <button className='backBtn' onClick={()=>history.push('/post')}><img src={backIcon} alt=""/></button>
@@ -175,7 +146,15 @@ function PostEmotionPage () {
         </Reset>
         <Wrap>
             <Circles>
-                <ShowCircles/>
+                {makeFeeling.length === 0?
+                    <InitCircle><p className='emotionNotice'>10개의 감정이 필요해요!</p></InitCircle>
+                    :
+                    <PaletteCircle
+                        width={240} height={240}
+                        color={makeColor}
+                        feeling={makeFeeling}
+                    />
+                }
             </Circles>
 
             <Result className='contentsInfo'>

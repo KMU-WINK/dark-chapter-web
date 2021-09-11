@@ -12,7 +12,7 @@ const OtherHeader = (props) => {
                 <HeaderText>공감하기</HeaderText>
             </Wrap2>
             {props.list?
-                <ListViewIcon/>
+                <ListViewIcon onClick={()=>{history.push('/other')}}/>
                 :
                 null
             }

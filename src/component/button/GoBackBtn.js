@@ -7,8 +7,10 @@ import {useHistory} from "react-router-dom";
 
 function GoBackBtn(props){
     const history = useHistory();
+    const info = {}
 
-    console.log(props)
+    info[props.variableName] = props.sendInfo
+
     return <>
         {props.black?
             <Div>
@@ -19,7 +21,12 @@ function GoBackBtn(props){
             :
             <Div>
                 <BackIcon onClick={() =>{
-                    history.push(props.previousPage)
+                    history.push({
+                        pathname:props.previousPage,
+                        state:{
+                            info
+                        }
+                    })
                 }}/>
             </Div>
         }

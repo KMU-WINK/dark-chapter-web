@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "../../fonts/fonts.css"
 
 function ActiveBtn(props){
-    console.log(props)
+
     return(
         <>
             <NextBtn onClick={()=>{
