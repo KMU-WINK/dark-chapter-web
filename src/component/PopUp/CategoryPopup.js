@@ -3,7 +3,7 @@ import './Category.css'
 import resetIcon from '../../svg/reset.svg'
 import privateIcon from '../../svg/private.svg'
 import shareIcon from '../../svg/carbon_share.svg'
-
+import ToastMsg from '../modal/ToastMessage'
 function CategoryPopup(props){
     const [choose, setChoose] = useState([]);
     const [category, setCategory] = useState('place');
@@ -32,6 +32,7 @@ function CategoryPopup(props){
         'regret' : ['(ㅍㅅㅍ)','수치플','쎈척','멍청','반성','자퇴각','퇴사각'],
         'sad' : ['(ㅠㅅㅠ)','우울','트라우마','후회']
     }}
+    const [writeComplete, setWriteComplete] = useState(false)
     const setUnvisible = () =>{
         document.querySelector('.categoryContents').style.height = 0;
         document.querySelector('.categoryBottomBtn').style.bottom = '-62px';
@@ -113,6 +114,13 @@ function CategoryPopup(props){
             }
         }
     }
+    const wirteBtn =() =>{
+        setWriteComplete(true)
+        setTimeout(()=>{
+            window.location.href ='/home'
+            setWriteComplete(false)
+        },3000)
+    }
     return(
         <div className='categoryPopup'>
             <div onClick={setUnvisible} className='popupCloseDiv'/>
@@ -134,11 +142,12 @@ function CategoryPopup(props){
                     }
                 </div>
                 {functionCategoryElement(category)}
+                {writeComplete?ToastMsg('흑역사 빠뜨리기 성공 !'):null}
                 <div className='categoryBottomBtn'>
                     <button className='resetBtn' onClick={initBtn}><img src={resetIcon} alt=""/> 전체 초기화</button>
                     <div className='bottomBtnRight'>
-                        <button className='privateBtn'><img src={privateIcon} alt=""/>나만 보기</button>
-                        <button className='shareBtn'><img src={shareIcon} alt=""/>공유하기</button>
+                        <button className='privateBtn' onClick={wirteBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
+                        <button className='shareBtn' onClick={wirteBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
                     </div>
                 </div>
             </div>
