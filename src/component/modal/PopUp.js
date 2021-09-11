@@ -36,7 +36,7 @@ function PopUp(props) {
                 }, 3000);
                 break;
             case "overcome":
-                history.push('/gemstone');
+                history.push('/generateGemstone');
                 break;
         }
     }
