@@ -21,7 +21,7 @@ const GemstoneList = () => {
                         size={85}
                         sympathyFeeling={[50,30,27,20]}
                         sympathyColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        black={false}
+                                                black={false}
 
                         width={85} height={85}
                         deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
