@@ -14,7 +14,7 @@ const LogTitle = (props) => {
         }
             <Title>{props.title}</Title>
         <Tags>
-            {tag.map((tag)=><Tag tagColor={props.tagColor}>{tag}</Tag>)}
+            {tag.map((tag)=><Tag tagColor={props.tagColor}># {tag}</Tag>)}
         </Tags>
     </Wrap>
 }

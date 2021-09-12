@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import LogTitle from "./LogTitle";
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, useHistory } from 'react-router-dom';
 import React, {useState} from "react";
 import PopUp from "../modal/PopUp.js";
 
 const LogMoreContent = (props) => {
+    const history = useHistory();
     const [isPopup, setIsPopup] = useState(false);
     const [content, setContent] = useState(props.content);
     return <>
@@ -20,7 +21,7 @@ const LogMoreContent = (props) => {
                         :
                         <>
                             {props.status === "OtherLog"?
-                                <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                                <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor} onClick={()=>history.push({pathname:'/selectSympathy', state:props.data})}>공감하기</OvercomeBtn>
                                 :
                                 null
                             }
