@@ -136,9 +136,6 @@ function Record_3(props) {
         return result
 
     }
-
-
-
     return (
 
         <Wrap Wrap color={isMove ? "linear-gradient(#D2DADF 1%,#D2DADF 1%, #97A2B2 3%,#97A2B2 3%, #2C2C38 7%, #2C2C38 85%)" : "#F3F3ED"}>
@@ -155,7 +152,7 @@ function Record_3(props) {
                         <P>수심을 설정해 주세요</P>
                     </TextDiv>}
                 <Space id="test" height={window.innerHeight/2-80}></Space>
-                <Record_3_circle/>
+                <Record_3_circle emotion={[props.history.location.state.angry, props.history.location.state.shy, props.history.location.state.sad, props.history.location.state.laugh]}/>
 
 
                 {/*<GroundColor/>*/}
