@@ -7,6 +7,13 @@ import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
+    // const date = props.data[0].createdAt;
+
+    // console.log(props.data[0].createdAt.split('T')[0])
+
+    const color = props.color;
+    const textColor = props.bodyTextColor
+
     const history = useHistory();
     let height = 0;
     if(props.num <= 3){
@@ -16,19 +23,33 @@ function MyLogFloor(props){
         height = props.num * 130 + 24;
     }
 
-    // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
-    const rendering = () => {
-        let hr_height = 60;
-        // console.log(hr_height)
-        const result = [];
-        for (let i = 0; i< props.num; i++){
-            result.push(
+
+    return(
+        <Wrap
+            backgroundTop={props.backgroundTop}
+            backgroundBottom={props.backgroundBottom}
+            num={props.num}
+            height={height}
+        >
+            <Text color={color}>{props.floor}</Text>
+
+            {/*데이터 패칭할 때 이거 사용 + map함수*/}
+            {props.data.map(data =>
                 <div style={{position: "relative"}}>
-                    <HR src={props.color === "white" ? white_hr: black_hr}
-                        h={hr_height}
-                    />
+                    <HR src={props.color === "white" ? white_hr: black_hr}/>
                     <PostBox>
-                        <Post onClick={()=>{history.push('/myLog')}}>
+                        <Post onClick={()=>{
+                            history.push({
+                                pathname: '/myLog',
+                                state:{
+                                    title: data.title,
+                                    content: data.content,
+                                    tag: data.tag,
+                                    date: props.data[0].createdAt.split('T')[0]
+                                }
+                                }
+                            )
+                        }}>
 
                             <CircleDiv>
                                 <PaletteCircle
@@ -41,42 +62,15 @@ function MyLogFloor(props){
 
                             <div style={{marginLeft:16}}>
                                 <div className="jejugothic">
-                                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
+                                    <PostTitle color={color}>{data.title}</PostTitle>
                                 </div>
 
-                                <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
+                                <PostBody color={textColor}>{data.content}</PostBody>
                             </div>
                         </Post>
                     </PostBox>
                 </div>
-            )
-            height += 60
-        }
-        return result;
-    }
-    return(
-        <Wrap
-            backgroundTop={props.backgroundTop}
-            backgroundBottom={props.backgroundBottom}
-            num={props.num}
-            height={height}
-        >
-            <Text color={props.color}>{props.floor}</Text>
-
-            {rendering()}
-
-            {/*데이터 패칭할 때 이거 사용 + map함수*/}
-            {/*<PostBox>*/}
-            {/*    <Hr borderColor = {props.color}/>*/}
-            {/*    <Circle circleColor = {props.color}></Circle>*/}
-            {/*    <Post>*/}
-
-            {/*        <PaletteCircle/>*/}
-            {/*        <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>*/}
-            {/*        <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>*/}
-            {/*    </Post>*/}
-            {/*</PostBox>*/}
-            {/**/}
+            )}
 
         </Wrap>
     )

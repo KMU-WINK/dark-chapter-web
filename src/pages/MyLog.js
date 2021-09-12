@@ -4,8 +4,17 @@ import ContentHeader from "../component/header/ContentHeader";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import SympathyCircle from "../component/circle/SympathyCircle";
 import {useState} from "react";
+import {useLocation} from "react-router";
 
 const MyLog = () => {
+    const location = useLocation();
+    // console.log(location.state.title)
+    const title = location.state.title;
+    const content = location.state.content;
+    const tagList = location.state.tag;
+    const date = location.state.date
+
+
     const [depth, setDepth] = useState(2);
     let backgroundColor = "";
     let tagColor = "";
@@ -46,9 +55,9 @@ const MyLog = () => {
             </Wrap2>
             <Wrap3>
                 <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor} textColor={textColor}
-                            title={"myLog의 title"} tag={["# 나의 기록","# 해시태그"]}
-                            timeStamp={"2021-05-21"}
-                            content={"myLog의 content"}
+                            title={title} tag={tagList}
+                            timeStamp={date}
+                            content={content}
                 />
             </Wrap3>
     </Wrap>

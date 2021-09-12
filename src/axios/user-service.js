@@ -67,6 +67,7 @@ export async function login(args) {
             })
 
             sessionStorage.setItem("token",result.data.token);
+            sessionStorage.setItem("Oid",userInfo.data._id)
             return 200
         }
 
