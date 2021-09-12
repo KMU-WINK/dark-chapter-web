@@ -11,7 +11,7 @@ let cntShy = 0;
 let cntSad = 0;
 let cntLaugh = 0;
 
-function PostEmotionPage () {
+function PostEmotionPage (props) {
     const history = useHistory();
     const [emotion,setEmotion] = useState([]);
     const [cnt, setCnt] = useState(0);
@@ -31,6 +31,9 @@ function PostEmotionPage () {
     useEffect(() => {
         popupInteraction()
     }, [cnt]);
+    useEffect(() => {
+        console.log(props.history.location.state)
+    }, []);
     const popupInteraction = () =>{
         document.querySelector('.popup').style.bottom = 0
         document.querySelector('.contentsInfo').style.opacity = 1
@@ -109,6 +112,15 @@ function PostEmotionPage () {
             setComplete(true)
             document.querySelector('.popup').style.bottom = '-188px'
             document.querySelector('.contentsInfo').style.opacity = 0
+            history.push({
+                pathname : '/postDepth',
+                state : {...props.history.location.state,
+                    angry : cntAngry,
+                    shy : cntShy,
+                    sad : cntSad,
+                    laugh : cntLaugh,
+                }
+            })
         }
     }
     const ModifyAction = () =>{

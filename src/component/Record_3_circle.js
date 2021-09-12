@@ -2,15 +2,14 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import PaletteCircle from "./circle/PaletteCircle";
 
-function Record_3_circle(){
+function Record_3_circle(props){
+    console.log(props)
     return(
-
         <Div>
             <PaletteCircle
                 width={160} height={160}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                 color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
+                feeling={[props.emotion[0]*10,props.emotion[1]*10,props.emotion[2]*10,props.emotion[3]*10]}
             />
         </Div>
     )
