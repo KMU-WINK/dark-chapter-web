@@ -8,21 +8,34 @@ import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 import PasswordInput from "../component/signup/PasswordInput";
 
+import * as user_service from "../axios/user-service";
+
 import {useHistory} from "react-router-dom";
 
 
-function ResetNickname_1(){
+function ResetNickname_1() {
     const history = useHistory();
 
     const [isActive, setIsActive] = useState(false)
 
-    const [pwd,setPwd] = useState("")
+    const [pwd, setPwd] = useState("")
 
     const [pwdMessage, setPwdMessage] = useState("fff")
 
+    const [isValidate, setIsValidate] = useState(true);
 
-    const checkValidate = () =>{
-        history.push('/resetNickname/pwd')
+
+    const checkValidate = async () => {
+        const result = await user_service.getUser(sessionStorage.getItem("email"));
+        if (result.password === pwd) history.push({
+            pathname: '/resetNickname/pwd',
+            state: {password: pwd}
+        })
+        else {
+            setIsValidate(false)
+            setPwdMessage("wrong password")
+        }
+
     }
 
     // 비밀번호, 비밀번호 확인 둘 다 4글자 이상인지 여부에 따라 버튼 활성화
@@ -30,23 +43,21 @@ function ResetNickname_1(){
         if (pwd.length >= 4) {
             setIsActive(true);
 
-        }
-        else setIsActive(false)
-    },[pwd])
+        } else setIsActive(false)
+    }, [pwd])
 
 
-
-    return(
+    return (
         <Container color={config.BACKGROUND_COLOR}>
             <GoBackBtn previousPage="/home"/>
-            <SignupText title = "닉네임 재설정" description = "비밀번호를 입력해주세요."/>
+            <SignupText title="닉네임 재설정" description="비밀번호를 입력해주세요."/>
 
             <Div>
                 <PasswordInput
-                    setIsActive = {setIsActive}
-                    pwdMsg = {pwdMessage}
-                    setPwd = {setPwd}
-                    isValidateMsg ={true}
+                    setIsActive={setIsActive}
+                    pwdMsg={pwdMessage}
+                    setPwd={setPwd}
+                    isValidateMsg={isValidate}
                 />
 
             </Div>
@@ -54,12 +65,12 @@ function ResetNickname_1(){
             {isActive
                 ? <BtnWrap>
                     <ActiveBtn
-                        text = "Next"
-                        check = {checkValidate}
+                        text="Next"
+                        check={checkValidate}
                     />
                 </BtnWrap>
                 : <BtnWrap>
-                    <InactiveBtn text = "Next"/>
+                    <InactiveBtn text="Next"/>
                 </BtnWrap>
             }
 

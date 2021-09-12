@@ -7,6 +7,8 @@ import PasswordInput from "../component/signup/PasswordInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 import {useHistory} from "react-router-dom";
+import * as user_service from "../axios/user-service";
+
 
 function ResetPassword_2(){
     const history = useHistory();
@@ -20,19 +22,21 @@ function ResetPassword_2(){
     const [pwdMessage, setPwdMessage] = useState("fff")
 
 
-    const checkValidate = () =>{
+    const checkValidate = async () =>{
         if (pwd !== confirmPwd) {
             setValidate(false)
             setPwdMessage("비밀번호가 일치하지 않습니다.")
         }
-        else {
-            setValidate(true)
-            setPwdMessage("")
-            history.push('/home')
+        else{
+            const result = await user_service.updateUser(
+                sessionStorage.getItem("token"),
+                sessionStorage.getItem("email"),
+                pwd,
+                sessionStorage.getItem("nickname")
+            )
+            if(result.status === 200) history.push('/home')
         }
 
-        console.log('pwd : ' + pwd)
-        console.log('confirm: ' + confirmPwd)
     }
     // 비밀번호, 비밀번호 확인 둘 다 4글자 이상인지 여부에 따라 버튼 활성화
     useEffect(() => {

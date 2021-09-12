@@ -19,7 +19,7 @@ import CategoryPopup from "../component/PopUp/CategoryPopup";
 //3. 심층에선 위로 올라가기 버튼
 
 
-function Record_3() {
+function Record_3(props) {
     const [isMove, setIsMove] = useState(false);
     const [isHundred, setIsHundred] = useState(false);
     const [nextMeter, setNextMeter] = useState(0);
@@ -27,9 +27,10 @@ function Record_3() {
     const [goTop, setGoTop] = useState(false);
     const [category, setCategory] = useState(false)
     const [complete, setComplete] = useState(false)
-
+    const [state, setState] = useState('')
     // 딱 10,000m 에서 멈추게 할라고 가장 바닥층 높이 설정.
     const bottomFloorHeight = window.innerHeight - 332
+    const [crrnt, setCrrnt] = useState(0);
 
     const goToTop = () => {
         window.scrollTo({
@@ -56,12 +57,13 @@ function Record_3() {
     const {y} = useScroll();
 
     useEffect(() => {
-        // console.log(window.scrollY)
+        setState(props.history.location)
         if (window.scrollY > 0) setIsMove(true)
         const target = document.getElementById("test")
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
         console.log(tmp)
+        setCrrnt(tmp)
 
 
         if(tmp<100){
@@ -134,9 +136,6 @@ function Record_3() {
         return result
 
     }
-
-
-
     return (
 
         <Wrap Wrap color={isMove ? "linear-gradient(#D2DADF 1%,#D2DADF 1%, #97A2B2 3%,#97A2B2 3%, #2C2C38 7%, #2C2C38 85%)" : "#F3F3ED"}>
@@ -153,7 +152,7 @@ function Record_3() {
                         <P>수심을 설정해 주세요</P>
                     </TextDiv>}
                 <Space id="test" height={window.innerHeight/2-80}></Space>
-                <Record_3_circle/>
+                <Record_3_circle emotion={[props.history.location.state.angry, props.history.location.state.shy, props.history.location.state.sad, props.history.location.state.laugh]}/>
 
 
                 {/*<GroundColor/>*/}
@@ -176,7 +175,9 @@ function Record_3() {
                 }
                 <Record_3_bottom height={bottomFloorHeight}/>
                 {category ?
-                    <CategoryPopup category={category} setCategory={setCategory}/> : null
+                    <CategoryPopup category={category} setCategory={setCategory}
+                    state={state} depth ={crrnt} root='record'
+                    /> : null
                 }
             </div>
         </Wrap>

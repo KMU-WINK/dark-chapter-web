@@ -6,9 +6,13 @@ import LogListDiv from "../component/content/LogListDiv";
 import SelectCategory from "../component/content/SelectCategory";
 import * as board_service from "../axios/board-service";
 import * as user_service from "../axios/user-service";
+import CategoryPopup from "../component/PopUp/CategoryPopup";
 
 const OtherList = () => {
     const [data, setData] = useState([]);
+    const [category, setCategory] = useState(false);
+    const [select, setSelect] = useState([]);
+
     useEffect(async() => {
         const result = await board_service.getAllBoards();
         setData(result);
@@ -25,7 +29,9 @@ const OtherList = () => {
     return(
         <Div>
             <OtherHeader previousPage={'/home'} list={true} />
-            <Wrap>
+            <Wrap onClick={()=>{setCategory(true)
+                console.log(select)}}>
+                {/*select 에 선택된 카테고리들 담아둠*/}
                 <SelectCategory/>
             </Wrap>
             <div>
@@ -38,6 +44,10 @@ const OtherList = () => {
                     />
                 </div>
             </div>
+            {category?
+                <CategoryPopup category={category} setCategory={setCategory} root='list' setSelect={setSelect}/>
+                :null
+            }
         </Div>
     )
 }
