@@ -8,7 +8,7 @@ const OtherHeader = (props) => {
     return <>
         <Wrap className={"jejugothic"}>
             <Wrap2>
-                <UpArrowIcon onClick={()=>{history.push({pathname:props.previousPage, state:props.data})}}/>
+                <UpArrowIcon onClick={()=>{history.push({pathname:props.previousPage, state:{state:props.data}})}}/>
                 <HeaderText>공감하기</HeaderText>
             </Wrap2>
             {props.list?
@@ -52,8 +52,8 @@ const HeaderText = styled.div`
   color: #FFFFFF;
 `
 const ListViewIcon = styled.img.attrs({
-        src : listView
-    })`
+    src : listView
+})`
     margin-right: 24px;
     margin-top : 16px;
     width : 24px;

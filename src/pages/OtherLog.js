@@ -40,19 +40,19 @@ const OtherLog = (props) => {
     }
 
     return <Wrap backgroundColor={backgroundColor}>
-        <OtherHeader previousPage={'/home'} list={true}/>
+        <OtherHeader previousPage={'/other'} list={true}/>
         <Wrap1>
             <SelectCategory/>
         </Wrap1>
         <Wrap2>
-            <SetCircle data={location.state}/>
+            <SetCircle data={location.state.state}/>
         </Wrap2>
         <Wrap3>
             <LogContent seeMorePage={'/other/seeMore'} tagColor={tagColor} textColor={textColor}
-                        data={location.state}
-                        title={location.state.title}
-                        tag={location.state.tag}
-                        content={location.state.content}
+                        data={location.state.state}
+                        title={location.state.state.title}
+                        tag={location.state.state.tag}
+                        content={location.state.state.content}
             />
         </Wrap3>
     </Wrap>
