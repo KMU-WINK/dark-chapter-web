@@ -33,10 +33,8 @@ const Home = () => {
                 <InitDiv/>
                 :
                 <>
-                    {/*<White/>*/}
                     <PaletteCircle
                         width={128} height={128}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                         color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
                         feeling={[40,10,20,30]}
                     />

@@ -24,7 +24,12 @@ const GemstoneLog = (props) => {
         </Wrap2>
 
         <Wrap1>
-            <LogMoreContent state={"none"} tagColor={"#fff"}/>
+            <LogMoreContent state={"none"} tagColor={"#fff"}
+                            timeStamp = {"21.05.23 ~ 21.06.23"}
+                            title={"gemstoneLog의 title"}
+                            tag={["# 해시", "# 내용"]}
+                            content={"gemstoneLog의 content"}
+            />
         </Wrap1>
     </Wrap>
 }

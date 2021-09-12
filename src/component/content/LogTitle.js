@@ -1,19 +1,20 @@
 import styled from "styled-components";
+import {useState} from "react";
 
 const LogTitle = (props) => {
-    console.log(props)
+    const [title, setTitle] = useState(props.title);
+    const [tag, setTag] = useState(props.tag);
+    const [timeStamp, setTimeStamp] = useState(props.timeStamp);
+
     return <Wrap className="jejugothic" textColor={props.textColor} tagColor={props.tagColor}>
-        {props.date?
-            <LogDate>21.05.23</LogDate>
+        {props.timeStamp !== ""?
+            <LogDate>{timeStamp}</LogDate>
             :
             null
         }
-            <Title>썸남 앞에서 코파버렸다</Title>
+            <Title>{props.title}</Title>
         <Tags>
-            <Tag tagColor={props.tagColor}>#해시</Tag>
-            <Tag tagColor={props.tagColor}>#해시태그</Tag>
-            <Tag tagColor={props.tagColor}>#해시태</Tag>
-            <Tag tagColor={props.tagColor}>#해시</Tag>
+            {tag.map((tag)=><Tag tagColor={props.tagColor}>{tag}</Tag>)}
         </Tags>
     </Wrap>
 }
