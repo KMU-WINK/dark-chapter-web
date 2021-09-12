@@ -31,7 +31,7 @@ function Signup_4(){
         })
 
         if(result === 201){
-            history.push('/home');
+            history.push('/login');
         }
         else if(result === 409){
             history.push('/signup')

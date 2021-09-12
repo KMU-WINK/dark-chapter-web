@@ -26,7 +26,20 @@ function Signup_1() {
     const checkValidate = async () => {
         if (!regExp.test(email)) {
             setMessage("올바른 이메일 형식이 아닙니다.");
+            return null
+        }
 
+        const result = await user_service.getUser(email);
+        console.log(result)
+        if(result.status === 404) {
+            history.push({
+                pathname: '/signup/password',
+                state : {email: email}
+            })
+
+        }
+        else{
+            setMessage("이미 등록된 이메일 입니다.")
         }
 
 
@@ -42,12 +55,9 @@ function Signup_1() {
         //     })
 
         // }
-        else setMessage("이미 등록된 이메일 입니다.")
+        // else setMessage("이미 등록된 이메일 입니다.")
 
-        history.push({
-            pathname: '/signup/password',
-            state : {email: email}
-        })
+
     }
 
 
