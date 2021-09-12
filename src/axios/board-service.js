@@ -1,15 +1,9 @@
 import baseService from "./base-service";
 
 //게시글 생성
-export async function createBoard(args, token) {
-  args.enctype='multipart/form-data';
+export async function createBoard(args) {
   try{
-    await baseService.post('/boards', args,{
-      headers: {
-        // 'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`,
-      }
-    });
+    await baseService.post('/boards', args);
   } catch (e) {
     console.error('!', e.response);
   }

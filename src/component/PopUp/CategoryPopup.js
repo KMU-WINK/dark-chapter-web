@@ -4,6 +4,8 @@ import resetIcon from '../../svg/reset.svg'
 import privateIcon from '../../svg/private.svg'
 import shareIcon from '../../svg/carbon_share.svg'
 import ToastMsg from '../modal/ToastMessage'
+import {createBoard} from "../../axios/board-service"
+
 function CategoryPopup(props){
     const [choose, setChoose] = useState([]);
     const [category, setCategory] = useState('place');
@@ -18,7 +20,7 @@ function CategoryPopup(props){
     },
     'person' : {
         'love' : ['사랑','짝남짝녀','썸남썸녀','연인','첫사랑'],
-        'family' : ['가족','가족','부모님','형제/자매','부부','친척','반려동물'],
+        'family' : ['가족','가족','부모님','형제자매','부부','친척','반려동물'],
         'friend' : ['친구','친구','룸메이트'],
         'work' : ['업무','직장동료','상사','거래처'],
         'school' : ['학교','선후배','스승','학생','동기','팀원'],
@@ -115,30 +117,31 @@ function CategoryPopup(props){
             }
         }
     }
-    const wirteBtn =async ({target}) =>{
-        const api = 'http://ec2-3-38-93-32.ap-northeast-2.compute.amazonaws.com:8000/'
-        try {await api.concat('').post({  //concat 채워야
-            'title': props.state.title,
-            'content' : props.state.contents,
-            "writer": "613c9292d5d0c20939dad3ed",
-            "angry": props.state.angry,
-            "funny": props.state.laugh,
-            "gloomy": props.state.sad,
-            "shameful": props.state.shy,
-            "depth": props.depth,
-            "isPrivate": target.value==='private',
-            "tag": choose
-        }).then(()=> {
-            setWriteComplete(true)
-            setTimeout(() => {
-                // window.location.href ='/home'
-                setWriteComplete(false)
-            }, 3000)
-        })}
-        catch (error){
+    const wirteBtn = async ({target}) => {
+        // console.log(props.state, props.depth, choose)
+        try {
+            const body = {
+                "title": props.state.state.title,
+                "content": props.state.state.contents,
+                "writer": "613c9292d5d0c20939dad3ed",
+                "angry": props.state.state.angry,
+                "funny": props.state.state.laugh,
+                "gloomy": props.state.state.sad,
+                "shameful": props.state.state.shy,
+                "depth": props.depth,
+                "isPrivate": target.value === 'private',
+                "tag": choose
+            }
+            await createBoard(body).then(()=> {
+                setWriteComplete(true)
+                setTimeout(() => {
+                    window.location.href ='/home'
+                    setWriteComplete(false)
+                }, 3000)
+            })
+        } catch (error) {
             console.log(error)
         }
-        console.log(props.state,props.depth,choose)
     }
     return(
         <div className='categoryPopup'>
