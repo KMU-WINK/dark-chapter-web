@@ -33,6 +33,12 @@ function MenuBar () {
         if (!appLock) history.push('/appLock')
     }
 
+    const setLogout =() =>{
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('email');
+        history.push('/landing')
+    }
+
     // const [aniValue, setAniValue] = useState(new Animated.Value(0));
     // const color = isOn ? onColor : offColor;
     //
@@ -106,7 +112,7 @@ function MenuBar () {
                     </button>
                 </div>
             </div>
-            <button className='logoutBtn'>
+            <button className='logoutBtn' onClick={setLogout}>
                 <img src={logout} alt="" className='menuComponentIcon'/>
                 <p>Logout</p>
             </button>
