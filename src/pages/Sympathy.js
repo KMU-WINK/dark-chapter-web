@@ -12,6 +12,7 @@ const Sympathy = () => {
                         feeling={[50,47,45,43]}
                         color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
                         black={true}
+                        size={240}
         />
         <Text>
             <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
