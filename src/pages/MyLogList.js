@@ -76,7 +76,8 @@ function MyLogList() {
     }, [y])
 
     const divideFloor = (data) => {
-
+        // console.log(data.createdAt)
+        data.createdAt = data.createdAt
         if(data.depth < 100){
             setFirstNum(firstNum+1)
             setFirstFloor(firstFloor => [...firstFloor, data])

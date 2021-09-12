@@ -7,7 +7,9 @@ import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
-    console.log(props.data)
+    // const date = props.data[0].createdAt;
+
+    // console.log(props.data[0].createdAt.split('T')[0])
 
     const color = props.color;
     const textColor = props.bodyTextColor
@@ -21,44 +23,7 @@ function MyLogFloor(props){
         height = props.num * 130 + 24;
     }
 
-    // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
-    const rendering = () => {
-        let hr_height = 60;
-        // console.log(hr_height)
-        const result = [];
-        for (let i = 0; i< props.num; i++){
-            result.push(
-                <div style={{position: "relative"}}>
-                    <HR src={props.color === "white" ? white_hr: black_hr}
 
-                    />
-                    <PostBox>
-                        <Post onClick={()=>{history.push('/myLog')}}>
-
-                            <CircleDiv>
-                                <PaletteCircle
-                                    width={60} height={60}
-                                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                                    feeling={[20,10,20,50]}
-                                />
-                            </CircleDiv>
-
-                            <div style={{marginLeft:16}}>
-                                <div className="jejugothic">
-                                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                                </div>
-
-                                <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                            </div>
-                        </Post>
-                    </PostBox>
-                </div>
-            )
-            height += 60
-        }
-        return result;
-    }
     return(
         <Wrap
             backgroundTop={props.backgroundTop}
@@ -68,14 +33,23 @@ function MyLogFloor(props){
         >
             <Text color={color}>{props.floor}</Text>
 
-            {/*{rendering()}*/}
-
             {/*데이터 패칭할 때 이거 사용 + map함수*/}
             {props.data.map(data =>
                 <div style={{position: "relative"}}>
                     <HR src={props.color === "white" ? white_hr: black_hr}/>
                     <PostBox>
-                        <Post onClick={()=>{history.push('/myLog')}}>
+                        <Post onClick={()=>{
+                            history.push({
+                                pathname: '/myLog',
+                                state:{
+                                    title: data.title,
+                                    content: data.content,
+                                    tag: data.tag,
+                                    date: props.data[0].createdAt.split('T')[0]
+                                }
+                                }
+                            )
+                        }}>
 
                             <CircleDiv>
                                 <PaletteCircle
