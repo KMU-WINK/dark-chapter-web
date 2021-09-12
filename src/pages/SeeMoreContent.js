@@ -39,13 +39,13 @@ const SeeMoreContent = () => {
     }
 
     return <Wrap background={backgroundColor[location.state.depth]}>
-        <ContentHeader state={"share"} previousPage={'/myLog'}/>
+        <ContentHeader state={"share"} previousPage={'/myLog'} data={location.state.state}/>
         <Wrap2>
             <SetCircle data={location.state.state}/>
         </Wrap2>
         <Wrap3>
             <LogMoreContent status={"MyLog"} tagColor={tagColor[location.state.depth]} textColor={textColor[location.state.depth]}
-                            data={location.state}
+                            data={location.state.state}
                             title={location.state.state.title}
                             tag={location.state.state.tag}
                             content={location.state.state.content}

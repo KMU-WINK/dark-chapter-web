@@ -14,6 +14,7 @@ const ContentHeader = (props) => {
             <GoBackBtn
                 black={props.black}
                 previousPage={props.previousPage}
+                data={props.data}
                 variableName = "email"
                 sendInfo={props.data}
             />

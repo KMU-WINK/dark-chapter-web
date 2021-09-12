@@ -47,9 +47,9 @@ function Signup_4(){
     return(
         <Container color={config.BACKGROUND_COLOR}>
             <GoBackBtn
-                previousPage="/signup/password"
+                previousPage="/signup"
                 variableName = "email"
-                sendInfo={email}
+                email={email}
             />
             <SignupText title = "별명설정" description = "사용하실 별명을 입력해주세요."/>
             <NicknameInput
