@@ -9,7 +9,7 @@ function GoBackBtn(props){
     const history = useHistory();
     const info = {}
 
-    // info[props.variableName] = props.sendInfo
+    info[props.variableName] = props.sendInfo
 
     return <>
         {props.black?
