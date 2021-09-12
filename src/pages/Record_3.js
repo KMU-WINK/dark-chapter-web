@@ -179,7 +179,7 @@ function Record_3(props) {
                 <Record_3_bottom height={bottomFloorHeight}/>
                 {category ?
                     <CategoryPopup category={category} setCategory={setCategory}
-                    state={state} depth ={crrnt}
+                    state={state} depth ={crrnt} root='record'
                     /> : null
                 }
             </div>

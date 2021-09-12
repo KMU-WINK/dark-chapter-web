@@ -145,6 +145,11 @@ function CategoryPopup(props){
             console.log(error)
         }
     }
+    const selectDone =() =>{
+        props.setSelect(choose)
+        setUnvisible()
+    }
+
     return(
         <div className='categoryPopup'>
             <div onClick={setUnvisible} className='popupCloseDiv'/>
@@ -169,10 +174,16 @@ function CategoryPopup(props){
                 {writeComplete?ToastMsg('흑역사 빠뜨리기 성공 !'):null}
                 <div className='categoryBottomBtn'>
                     <button className='resetBtn' onClick={initBtn}><img src={resetIcon} alt=""/> 전체 초기화</button>
-                    <div className='bottomBtnRight'>
-                        <button className='privateBtn' onClick={writeBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
-                        <button className='shareBtn' onClick={writeBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
-                    </div>
+                    {props.root === 'list' ?
+                        <div className='bottomBtnRight'>
+                            <button className='selectDoneBtn' onClick={selectDone}>선택 완료</button>
+                        </div>
+                        :
+                        <div className='bottomBtnRight'>
+                            <button className='privateBtn' onClick={writeBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
+                            <button className='shareBtn' onClick={writeBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
