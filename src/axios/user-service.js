@@ -18,8 +18,6 @@ export async function signUp(args) {
         // console.log(e.message.slice(e.message.length-3))
         return Number(e.message.slice(e.message.length - 3))
     }
-
-
 }
 
 export async function updateUser(
@@ -29,6 +27,11 @@ export async function updateUser(
     nickname,
 ) {
     try {
+        console.log(token)
+        console.log(email)
+        console.log(password)
+        console.log(nickname)
+
         const response = await baseService.patch(`/users/${email}`, {
             password,
             nickname,
@@ -37,8 +40,7 @@ export async function updateUser(
                 'Authorization': `Bearer ${token}`,
             },
         })
-
-        console.log(response);
+        return response;
     } catch (e) {
         alert(e.response.data.error);
     }
@@ -68,6 +70,7 @@ export async function login(args) {
 
             sessionStorage.setItem("token",result.data.token);
             sessionStorage.setItem("Oid",userInfo.data._id)
+            sessionStorage.setItem("nickname",userInfo.data.nickname)
             return 200
         }
 

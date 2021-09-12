@@ -4,29 +4,46 @@ import ContentHeader from "../component/header/ContentHeader";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import SympathyCircle from "../component/circle/SympathyCircle";
 import {useState} from "react";
-import {useLocation} from "react-router";
+import {useLocation} from "react-router-dom";
 
-const MyLog = () => {
+const MyLog = (props) => {
     const location = useLocation();
-    // console.log(location.state.title)
-    const title = location.state.title;
-    const content = location.state.content;
-    const tagList = location.state.tag;
-    const date = location.state.date
-
-
-    const [depth, setDepth] = useState(2);
-    let backgroundColor = "";
-    let tagColor = "";
-    let textColor = "";
-
+    console.log(location);
+    const [depth, setDepth] = useState(location.state.depth);
     const background = ["#d1d9de","#96a1b1","#2c2d39"]
     const tag = ["#e9e9e9","#EAEAEA","#ABABAF"]
     const text = ["#000","#fff","#fff"]
 
-    backgroundColor = background[depth];
-    tagColor = tag[depth];
-    textColor = text[depth];
+    let backgroundColor = background[depth];
+    let tagColor = tag[depth];
+    let textColor = text[depth];
+
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={240} height={240}
+            color={color}
+            feeling={feeling}
+        />
+    }
 
     const [palette,setPalette] = useState(true);
 
@@ -39,11 +56,7 @@ const MyLog = () => {
             <ContentHeader textColor={textColor} previousPage={'/myLogPage'} state={"share"}/>
 
             <Wrap2 onClick={()=>{clickPalette()}}>
-                <PaletteCircle
-                    width={240} height={240}
-                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                    feeling={[28,14,21,7]}
-                />
+                <SetCircle data={location.state.state}/>
                 {palette?
                     null
                     :
@@ -54,10 +67,11 @@ const MyLog = () => {
                 }
             </Wrap2>
             <Wrap3>
-                <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor} textColor={textColor}
-                            title={title} tag={tagList}
-                            timeStamp={date}
-                            content={content}
+                <LogContent seeMorePage={'/myLog/seeMore'} tagColor={tagColor} textColor={textColor} depth={depth}
+                            title={location.state.state.title} tag={location.state.state.tag}
+                            timeStamp={location.state.state.createdAt.split('T')[0]}
+                            content={location.state.state.content}
+                            data={location.state.state}
                 />
             </Wrap3>
     </Wrap>

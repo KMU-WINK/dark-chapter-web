@@ -38,21 +38,6 @@ function MenuBar () {
         sessionStorage.removeItem('email');
         history.push('/landing')
     }
-
-    // const [aniValue, setAniValue] = useState(new Animated.Value(0));
-    // const color = isOn ? onColor : offColor;
-    //
-    // const moveSwitchToggle = aniValue.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: [0, 20],
-    // });
-    //
-    // Animated.timing(aniValue, {
-    //     toValue: isOn ? 1 : 0,
-    //     duration: 200,
-    //     easing: Easing.linear,
-    //     useNativeDriver: true,
-    // }).start();
     return(
         <div className='menuComponent'>
             <button className='menuBarButtonDiv' onClick={()=>{history.push('/home')}}>

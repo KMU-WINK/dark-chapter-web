@@ -30,8 +30,8 @@ function Signup_4(){
             nickname:nickname
         })
 
-        if(result === 201){
-            history.push('/home');
+        if(result === 201 || result === 200){
+            history.push('/login');
         }
         else if(result === 409){
             history.push('/signup')
@@ -47,9 +47,9 @@ function Signup_4(){
     return(
         <Container color={config.BACKGROUND_COLOR}>
             <GoBackBtn
-                previousPage="/signup/password"
+                previousPage="/signup"
                 variableName = "email"
-                sendInfo={email}
+                email={email}
             />
             <SignupText title = "별명설정" description = "사용하실 별명을 입력해주세요."/>
             <NicknameInput
