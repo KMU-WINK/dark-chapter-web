@@ -27,7 +27,7 @@ const MyLog = () => {
     }
 
     return <Wrap backgroundColor={backgroundColor}>
-            <ContentHeader textColor={textColor} previousPage={'/myLogPage'}/>
+            <ContentHeader textColor={textColor} previousPage={'/myLogPage'} state={"share"}/>
 
             <Wrap2 onClick={()=>{clickPalette()}}>
                 <PaletteCircle

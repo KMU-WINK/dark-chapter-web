@@ -4,7 +4,7 @@ import PaletteCircle from "./PaletteCircle";
 import shadowCircle from "../../svg/shadowCircle.svg";
 import surfaceCircle from "../../svg/surfaceCircle.svg";
 
-const GemstoneCircle = (props) => {
+const GotoGemstoneCircle = (props) => {
     return <Wrap size={props.size}>
         <Wrap1>
             <SympathyCircle size={props.size}
@@ -27,7 +27,7 @@ const GemstoneCircle = (props) => {
     </Wrap>
 }
 
-export default GemstoneCircle;
+export default GotoGemstoneCircle;
 
 const Wrap = styled.div`
   width: ${props=>props.size}px;
@@ -40,7 +40,9 @@ const Wrap = styled.div`
 const Wrap1 = styled.div`
   width: ${props=>props.size}px;
   height: ${props=>props.size}px;
-  
+  position : absolute;
+  top : -150px;
+  left : -62px;
   z-index:1;
 `
 

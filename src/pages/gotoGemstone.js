@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import GemstoneCircle from "../component/circle/GemstoneCircle";
+import GotoGemstoneCircle from "../component/circle/GotoGemstoneCircle";
 import React from "react";
 
 const GotoGemstone = () => {
@@ -9,14 +9,13 @@ const GotoGemstone = () => {
 
     return <Wrap className={"jejugothic"}>
         <Wrap2>
-        <GemstoneCircle
+        <GotoGemstoneCircle
             size={240}
             sympathyFeeling={[50,30,27,20]}
             sympathyColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-            black={false}
+            black={true} backgroundColor={"white"}
 
             width={240} height={240}
-            deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
             paletteColor={["#FF2036FF","#366197FF","#FFF890FF","#faaba4"]}
             paletteFeeling={[40,10,30,20]}
         />

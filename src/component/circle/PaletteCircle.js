@@ -53,7 +53,7 @@ const Circle = styled.div`
   border-radius: 50%;
   background: radial-gradient(circle at ${props=>props.deg}, ${props=>props.color} ${props => props.feeling}%, transparent ${props=>props.per}%);
   filter: blur(4px);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   mix-blend-mode: unset;
   
   // unset, hard-light, lighten, inherit, initial
