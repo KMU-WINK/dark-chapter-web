@@ -41,7 +41,7 @@ const SeeMoreOther = () => {
 
 
     return <Wrap background={backgroundColor[2]}>
-        <OtherHeader previousPage={'/otherLog'} data={location.state.state} list={true}/>
+        <OtherHeader previousPage={'/otherLog'} data={location.state} list={true}/>
         <Wrap2>
             <SetCircle data={location.state.state}/>
         </Wrap2>

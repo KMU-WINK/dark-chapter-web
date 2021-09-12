@@ -39,7 +39,7 @@ const SeeMoreContent = () => {
     }
 
     return <Wrap background={backgroundColor[location.state.depth]}>
-        <ContentHeader state={"share"} previousPage={'/myLog'} data={location.state.state}/>
+        <ContentHeader state={"share"} previousPage={'/myLog'} data={location.state}/>
         <Wrap2>
             <SetCircle data={location.state.state}/>
         </Wrap2>

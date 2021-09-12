@@ -14,10 +14,7 @@ function GoBackBtn(props){
                 <BBackIcon onClick={() =>{
                     history.push({
                         pathname: props.previousPage,
-                        state : {
-                            state : props.data,
-                            email : props.email,
-                        },
+                        state : props.data,
                     })
                 }}/>
             </Div>
@@ -27,7 +24,6 @@ function GoBackBtn(props){
                     history.push({
                         pathname: props.previousPage,
                         state : props.data,
-                        email : props.email,
                     })
                 }}/>
             </Div>
