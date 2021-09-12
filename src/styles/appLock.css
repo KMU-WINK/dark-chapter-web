@@ -1,6 +1,7 @@
 .root {
     background: #F3F3ED;
-    min-height: 100vh;
+    height: calc(100vh - 139px);
+    width: calc(100% - 30px);
     padding: 139px 0 0 30px;
     text-align: left;
     display: flex;
