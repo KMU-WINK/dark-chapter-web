@@ -3,14 +3,35 @@ import styled from "styled-components";
 import PaletteCircle from "./circle/PaletteCircle";
 
 function Record_3_circle(props){
-    console.log(props)
+    const SetCircle = () => {
+        let feeling = [];
+        let color = [];
+
+        if (props.emotion[0]>0) {
+            feeling.push(props.emotion[0]);
+            color.push("#FE4E62");
+        }
+        if (props.emotion[1]>0) {
+            feeling.push(props.emotion[1]);
+            color.push("#FFF9D9");
+        }
+        if (props.emotion[2]>0) {
+            feeling.push(props.emotion[2]);
+            color.push("#466598");
+        }
+        if (props.emotion[3]>0) {
+            feeling.push(props.emotion[3]);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={160} height={160}
+            color={color}
+            feeling={feeling}
+        />
+    }
     return(
         <Div>
-            <PaletteCircle
-                width={160} height={160}
-                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[props.emotion[0]*10,props.emotion[1]*10,props.emotion[2]*10,props.emotion[3]*10]}
-            />
+            <SetCircle data={props.emotion}/>
         </Div>
     )
 }
