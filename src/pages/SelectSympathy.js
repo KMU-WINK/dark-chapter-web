@@ -6,7 +6,7 @@ import SympathyCircle from "../component/circle/SympathyCircle";
 import OtherHeader from "../component/header/OtherHeader";
 import {useLocation} from "react-router-dom";
 
-const SelectSympathy = (prpos) => {
+const SelectSympathy = (props) => {
     const location = useLocation();
     const history = useHistory();
     const [color, setColor] = useState({
@@ -55,7 +55,7 @@ const SelectSympathy = (prpos) => {
                 <Wrap>
                     <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
                     {/*<SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>*/}
-                    <Complete onClick={()=>{history.push({pathname:'/sympathy'})}} opacity={1}>완료</Complete>
+                    <Complete onClick={()=>{history.push({pathname:'/sympathy', board_id: props.location.state._id})}} opacity={1}>완료</Complete>
                 </Wrap>
                 : <Wrap>
                     <Circles>

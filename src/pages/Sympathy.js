@@ -1,8 +1,33 @@
 import styled, { keyframes }  from 'styled-components';
 import SympathyCircle from "../component/circle/SympathyCircle";
 import { Route, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import baseService from "../axios/base-service";
 
-const Sympathy = () => {
+const Sympathy = (props) => {
+    const [sympathyData, setSympathyData] = useState([])
+    const [colorData, setColorData] = useState([])
+
+    useEffect(() => {
+      const getSympathy = async() => {
+        await baseService.get(`/sympathy/${props.location.board_id}`)
+        .then(
+          result => setSympathyData(result.data)
+        )
+      }
+      getSympathy();
+    }, [])
+
+    useEffect(() => {
+      var colorList = []
+      for(var i = 0; i < sympathyData.length; i++) {
+        if(sympathyData[i].angry === 1) colorList.push("#fe4e62")
+        else if(sympathyData[i].gloomy === 1) colorList.push("#466598")
+        else if(sympathyData[i].funny === 1) colorList.push("#fdada6")
+        else if(sympathyData[i].shameful === 1) colorList.push("#fff9d9")
+      }
+      setColorData(colorList)
+    }, [sympathyData])
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
         <Wrap className={"jejugothic"}>
@@ -10,7 +35,7 @@ const Sympathy = () => {
         <Circle/>
         <SympathyCircle backgroundColor={"#2c2c38"}
                         feeling={[50,47,45,43]}
-                        color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        color={colorData}
                         black={true}
                         size={240}
         />

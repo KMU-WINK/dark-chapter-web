@@ -30,8 +30,8 @@ function Signup_4(){
             nickname:nickname
         })
 
-        if(result === 201){
-            history.push('/home');
+        if(result === 201 || result === 200){
+            history.push('/login');
         }
         else if(result === 409){
             history.push('/signup')
