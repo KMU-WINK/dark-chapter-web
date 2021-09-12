@@ -118,7 +118,7 @@ function CategoryPopup(props){
             }
         }
     }
-    const wirteBtn = async ({target}) => {
+    const writeBtn = async ({target}) => {
         const id = getUser(window.sessionStorage.getItem('email'))['_id']
         // console.log(props.state, props.depth, choose)
         try {
@@ -170,8 +170,8 @@ function CategoryPopup(props){
                 <div className='categoryBottomBtn'>
                     <button className='resetBtn' onClick={initBtn}><img src={resetIcon} alt=""/> 전체 초기화</button>
                     <div className='bottomBtnRight'>
-                        <button className='privateBtn' onClick={wirteBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
-                        <button className='shareBtn' onClick={wirteBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
+                        <button className='privateBtn' onClick={writeBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
+                        <button className='shareBtn' onClick={writeBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
                     </div>
                 </div>
             </div>
