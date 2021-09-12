@@ -30,4 +30,5 @@ const ToastMessage = styled.div`
     line-height: 20px;
     border-radius: 20px;
     animation: ${RevealToast} 3s infinite;
+    text-align: center;
 `
