@@ -117,37 +117,38 @@ function LoginInput(props){
                     (function () {
                         if (isReveal && isPwdActive){
                             return (
-                                <InRevealActiveIcon
+                                <RevealActiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
+
                                 />
                             )
                         }
                         else if (isReveal && !isPwdActive){
                             return (
 
-                                <InRevealInactiveIcon
+                                <RevealInactiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
+
                                 />
 
                             )
                         }
                         else if (!isReveal && isPwdActive){
                             return (
-
-                                <RevealActiveIcon
+                                <InRevealActiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
-
                                 />
+
 
                             )
                         }
                         else if (!isReveal && !isPwdActive){
                             return (
 
-                                <RevealInactiveIcon
+                                <InRevealInactiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
-
                                 />
+
 
                             )
                         }
