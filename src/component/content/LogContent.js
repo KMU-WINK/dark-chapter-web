@@ -9,8 +9,8 @@ const LogContent = (props) => {
         <LogTitle title={props.title} tag={props.tag} timeStamp={props.timeStamp}
                   tagColor={props.tagColor} textColor={props.textColor}/>
         <div>
-            <TextBox>{props.content}</TextBox>
-            <SeeMore onClick={()=>{history.push({pathname:props.seeMorePage, state:{state:props.data,depth:props.depth}})}}>더보기</SeeMore>
+            <TextBox onClick={()=>{history.push({pathname:props.seeMorePage, state:{state:props.data,depth:props.depth}})}}>{props.content} ...더보기</TextBox>
+            {/*<SeeMore onClick={()=>{history.push({pathname:props.seeMorePage, state:{state:props.data,depth:props.depth}})}}>더보기</SeeMore>*/}
         </div>
     </Wrap>
 }

@@ -65,6 +65,7 @@ const White = styled.div`
   position: absolute;
   background: white;
   mix-blend-mode: hard-light;
+  filter: blur(${props => props.h/50}px);
 `
 
 

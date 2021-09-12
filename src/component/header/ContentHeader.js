@@ -12,6 +12,7 @@ const ContentHeader = (props) => {
     return <>
         <Header>
             <GoBackBtn
+                style={{marginTop:16}}
                 black={props.black}
                 previousPage={props.previousPage}
                 data={props.data}
@@ -42,7 +43,6 @@ const ListIcon = styled.img.attrs({
     src : list
 })`
     margin-right: 24px;
-    margin-top : 16px;
     fill: ${props=>props.color};
 `
 
@@ -50,6 +50,5 @@ const BListIcon = styled.img.attrs({
     src : blackList
 })`
     margin-right: 24px;
-    margin-top : 16px;
     fill: ${props=>props.color};
 `

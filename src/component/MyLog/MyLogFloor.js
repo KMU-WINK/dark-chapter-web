@@ -147,7 +147,13 @@ const PostTitle = styled.span`
     line-height: 21px;
     letter-spacing: -0.03em;
     font-weight : bold;
-    color: ${props => props.color}
+    color: ${props => props.color};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
 `
 
 const PostBody = styled.div`
@@ -158,6 +164,12 @@ const PostBody = styled.div`
     font-size: 10px;
     line-height: 13px;
     color: ${props => props.color};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
 `
 
 const HR = styled.img`
