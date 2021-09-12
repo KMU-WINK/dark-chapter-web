@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
-import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
 import {inject, observer} from "mobx-react";
 
@@ -50,6 +49,7 @@ function LoginInput(props){
         //     setEmailVMsg("통과!");
         //     setIsEmailValidate(true);
         // }
+        props.setEmail(email)
 
         if(email.indexOf('@') > -1){
             setIsAtSign(true);
@@ -60,6 +60,7 @@ function LoginInput(props){
     },[email])
 
     useEffect(() => {
+        props.setPassword(pwd)
         if (pwd.length >=4) setPwdActive(true)
         else setPwdActive(false)
     },[pwd])
@@ -91,11 +92,11 @@ function LoginInput(props){
                     active = {isAtSign}
                     type = "text"
                 />
-                {/*{*/}
-                {/*    isEmailValidate*/}
-                {/*        ?<SuccessMessage message = {emailVMsg}/>*/}
-                {/*        : <ErrorMessage message ={emailVMsg} />*/}
-                {/*}*/}
+                {
+                    props.emailMessage
+                        ?<ErrorMessage message = {props.emailMessage}/>
+                        : null
+                }
             </InputBox>
 
 
@@ -107,6 +108,11 @@ function LoginInput(props){
                     onChange = {onChangePwd}
                     active = {isPwdActive}
                 />
+                {
+                    props.passwordMessage
+                        ?<ErrorMessage message = {props.passwordMessage}/>
+                        : null
+                }
                 {
                     (function () {
                         if (isReveal && isPwdActive){

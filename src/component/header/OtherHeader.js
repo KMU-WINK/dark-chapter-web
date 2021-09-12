@@ -8,7 +8,7 @@ const OtherHeader = (props) => {
     return <>
         <Wrap className={"jejugothic"}>
             <Wrap2>
-                <UpArrowIcon onClick={()=>{history.push(props.previousPage)}}/>
+                <UpArrowIcon onClick={()=>{history.push({pathname:props.previousPage, state:props.data})}}/>
                 <HeaderText>공감하기</HeaderText>
             </Wrap2>
             {props.list?

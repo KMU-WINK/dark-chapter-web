@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const SympathyCircle = (props) => {
 
@@ -119,10 +119,16 @@ const SympathyCircle = (props) => {
 
 export default SympathyCircle;
 
+const FadeOut = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+`
+
 const Wrap = styled.div`
   position : absolute;
   top : 0;
   left : 0;
+  animation: ${FadeOut} 1s ;
 `
 
 const Circle = styled.div`
@@ -134,6 +140,7 @@ const Circle = styled.div`
   border-radius: 50%;
   background: ${props=>props.color};
   filter: blur(${props=>props.blur}px);
+  
 `
 const Black = styled.div`
   position : absolute;

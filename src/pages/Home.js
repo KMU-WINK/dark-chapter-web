@@ -8,11 +8,14 @@ import download from "../svg/download.svg"
 import {useState} from "react";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
+import * as board_service from "../axios/board-service";
 
 const Home = () => {
     const history = useHistory();
-    const [title, setTitle] = useState('흑역사를 입력해주세요')
     const [init, setInit] = useState(false);
+    const [title, setTitle] = useState('흑역사를 입력해주세요')
+
+
 
     return <All>
         <Header>
@@ -33,10 +36,8 @@ const Home = () => {
                 <InitDiv/>
                 :
                 <>
-                    {/*<White/>*/}
                     <PaletteCircle
                         width={128} height={128}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                         color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
                         feeling={[40,10,20,30]}
                     />

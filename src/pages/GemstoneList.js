@@ -24,7 +24,6 @@ const GemstoneList = () => {
                                                 black={false}
 
                         width={85} height={85}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                         paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
                         paletteFeeling={[4,1,2,3]}
                     />
@@ -48,7 +47,6 @@ const GemstoneList = () => {
                         black={false}
 
                         width={85} height={85}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
                         paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
                         paletteFeeling={[2,1,2,5]}
                     />

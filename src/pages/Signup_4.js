@@ -24,20 +24,24 @@ function Signup_4(){
     const [message, setMessage] = useState("")
     const history = useHistory();
     const check = async () => {
-        // const result = await user_service.signUp({
-        //     email:email,
-        //     password:password,
-        //     nickname:nickname
-        // })
+        const result = await user_service.signUp({
+            email:email,
+            password:password,
+            nickname:nickname
+        })
 
-
-
-        if (nickname === 'aaa') {
+        if(result === 201){
             history.push('/home');
         }
-        else{
+        else if(result === 409){
+            history.push('/signup')
+        }
+        else if(result === 410){
             setMessage("블가능한 별명입니다.")
         }
+
+        console.log(result)
+
     }
 
     return(

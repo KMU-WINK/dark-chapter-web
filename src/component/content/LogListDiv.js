@@ -2,10 +2,44 @@ import {useHistory} from "react-router-dom";
 import white_hr from "../../svg/white_hr.svg";
 import PaletteCircle from "../circle/PaletteCircle";
 import styled from "styled-components";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import * as board_service from "../../axios/board-service";
 
 const LogListDiv = (props) => {
     const history = useHistory();
+    const [data,setData] = useState([]);
+
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={60} height={60}
+            color={color}
+            feeling={feeling}
+        />
+    }
+
+    useEffect(async() => {
+        const result = await board_service.getAllBoards();
+        setData(result);
+    },[]);
     let height = 0;
     if(props.num <= 3){
         height = 414
@@ -14,64 +48,34 @@ const LogListDiv = (props) => {
         height = props.num * 130 + 24;
     }
 
-    // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
-    const rendering = () => {
-        let hr_height = 60;
-        console.log(hr_height)
-        const result = [];
-        for (let i = 0; i< props.num; i++){
-            result.push(
-                <div style={{position: "relative"}}>
-                    <HR src={white_hr}
-                        h={hr_height}
-                    />
-                    <PostBox>
-                        <Post onClick={()=>{history.push('/otherLog')}}>
 
-                            <CircleDiv>
-                                <PaletteCircle
-                                    width={60} height={60}
-                                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                                    feeling={[20,10,20,50]}
-                                />
-                            </CircleDiv>
-
-                            <div style={{marginLeft:16}}>
-                                <div className="jejugothic">
-                                    <PostTitle>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                                </div>
-
-                                <PostBody>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                            </div>
-                        </Post>
-                    </PostBox>
-                </div>
-            )
-            height += 60
-        }
-        return result;
-    }
     return(
         <Wrap
             num={props.num}
             height={height}
         >
             <Text>{props.floor}</Text>
-            {rendering()}
 
-            {/*데이터 패칭할 때 이거 사용 + map함수*/}
-            {/*<PostBox>*/}
-            {/*    <Hr borderColor = {props.color}/>*/}
-            {/*    <Circle circleColor = {props.color}></Circle>*/}
-            {/*    <Post>*/}
+            {data.map((data)=> <>
+            <div style={{position: "relative"}}>
+                <HR src={white_hr}/>
+                <PostBox>
+                    <Post onClick={()=>{history.push({pathname:`/otherLog`, state:data})}}>
+                        <CircleDiv>
+                            <SetCircle data={data}/>
+                        </CircleDiv>
+                        <div style={{marginLeft:16}}>
+                            <div className="jejugothic">
+                                <PostTitle>{data.title}</PostTitle>
+                            </div>
+                            <PostBody>{data.content} ...더보기</PostBody>
+                        </div>
+                    </Post>
+                </PostBox>
+            </div>
+                </>
+            )}
 
-            {/*        <PaletteCircle/>*/}
-            {/*        <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>*/}
-            {/*        <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>*/}
-            {/*    </Post>*/}
-            {/*</PostBox>*/}
-            {/**/}
 
         </Wrap>
     )
@@ -138,5 +142,5 @@ const HR = styled.img`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+
 `
