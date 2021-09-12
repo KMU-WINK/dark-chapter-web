@@ -10,7 +10,7 @@ function MyLogFloor(props){
     // const date = props.data[0].createdAt;
 
     // console.log(props.data[0].createdAt.split('T')[0])
-
+    let depth = 0;
     const color = props.color;
     const textColor = props.bodyTextColor
 
@@ -23,6 +23,40 @@ function MyLogFloor(props){
         height = props.num * 130 + 24;
     }
 
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={60} height={60}
+            color={color}
+            feeling={feeling}
+        />
+    }
+
+    const setDepth = (value) => {
+        console.log(value);
+        if (value < 100) depth = 0;
+        else if (value < 500) depth = 1;
+        else depth = 2;
+        return depth;
+    }
 
     return(
         <Wrap
@@ -41,23 +75,16 @@ function MyLogFloor(props){
                         <Post onClick={()=>{
                             history.push({
                                 pathname: '/myLog',
-                                state:{
-                                    title: data.title,
-                                    content: data.content,
-                                    tag: data.tag,
-                                    date: props.data[0].createdAt.split('T')[0]
-                                }
-                                }
-                            )
+                                state: {
+                                    state : data,
+                                    depth : setDepth(data.depth),
+                                },
+
+                            })
                         }}>
 
                             <CircleDiv>
-                                <PaletteCircle
-                                    width={60} height={60}
-                                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                                    feeling={[20,10,20,50]}
-                                />
+                                <SetCircle data={data}/>
                             </CircleDiv>
 
                             <div style={{marginLeft:16}}>
@@ -107,7 +134,7 @@ const Post = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+
 `
 
 const CircleDiv = styled.div`
@@ -137,7 +164,7 @@ const HR = styled.img`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+
 `
 
 export default MyLogFloor
