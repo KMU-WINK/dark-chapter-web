@@ -44,8 +44,8 @@ export async function deleteBoard(boardId, token) {
 }
 
 //아이디 해당 게시글 가져오기
-export async function getBoard(boardId) {
-  return boardId && (await baseService.get(`/boards/${boardId}`)).data
+export async function getBoard(email) {
+  return email && (await baseService.get(`/boards/${email}`)).data
 }
 
 //모든 게시글 가져오기
