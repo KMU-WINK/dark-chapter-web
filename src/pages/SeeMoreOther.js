@@ -43,14 +43,14 @@ const SeeMoreOther = () => {
     return <Wrap background={backgroundColor[2]}>
         <OtherHeader previousPage={'/otherLog'} data={location.state} list={true}/>
         <Wrap2>
-            <SetCircle data={location.state}/>
+            <SetCircle data={location.state.state}/>
         </Wrap2>
         <Wrap3>
             <LogMoreContent status={"OtherLog"} tagColor={tagColor[2]} textColor={textColor[2]}
-                            data={location.state}
-                            title={location.state.title}
-                            tag={location.state.tag}
-                            content={location.state.content}
+                            data={location.state.state}
+                            title={location.state.state.title}
+                            tag={location.state.state.tag}
+                            content={location.state.state.content}
             />
         </Wrap3>
     </Wrap>

@@ -10,7 +10,7 @@ const LogContent = (props) => {
                   tagColor={props.tagColor} textColor={props.textColor}/>
         <div>
             <TextBox>{props.content}</TextBox>
-            <SeeMore onClick={()=>{history.push({pathname:props.seeMorePage, state:props.data})}}>더보기</SeeMore>
+            <SeeMore onClick={()=>{history.push({pathname:props.seeMorePage, state:{state:props.data,depth:props.depth}})}}>더보기</SeeMore>
         </div>
     </Wrap>
 }
