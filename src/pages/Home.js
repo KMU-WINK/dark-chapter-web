@@ -134,8 +134,8 @@ const Wave = styled.img.attrs({
     src : wave
 })`
   position: absolute;
-  width : 360px;
-  height : ${props=>props.height}px;
+  width : 100%;
+  height : ${props=>props.height};
   top: ${props=>props.top}px;
 `
 
