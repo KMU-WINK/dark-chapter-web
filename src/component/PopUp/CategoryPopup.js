@@ -5,6 +5,7 @@ import privateIcon from '../../svg/private.svg'
 import shareIcon from '../../svg/carbon_share.svg'
 import ToastMsg from '../modal/ToastMessage'
 import {createBoard} from "../../axios/board-service"
+import {getUser} from "../../axios/user-service";
 
 function CategoryPopup(props){
     const [choose, setChoose] = useState([]);
@@ -118,12 +119,13 @@ function CategoryPopup(props){
         }
     }
     const wirteBtn = async ({target}) => {
+        const id = getUser(window.sessionStorage.getItem('email'))['_id']
         // console.log(props.state, props.depth, choose)
         try {
             const body = {
                 "title": props.state.state.title,
                 "content": props.state.state.contents,
-                "writer": "613c9292d5d0c20939dad3ed",
+                "writer": id,
                 "angry": props.state.state.angry,
                 "funny": props.state.state.laugh,
                 "gloomy": props.state.state.sad,
