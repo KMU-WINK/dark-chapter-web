@@ -2,14 +2,27 @@ import styled from 'styled-components';
 import ContentHeader from "../component/header/ContentHeader";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import LogMoreContent from "../component/content/LogMoreContent";
+import {useLocation} from "react-router";
 
 const SeeMoreContent = () => {
+    const location = useLocation();
+    console.log(location.state)
+
     const backgroundColor = ["#d1d9de","#96a1b1","#2c2d39"]
     const tagColor = ["#EAEAEA","#EAEAEA","#ABABAF"]
     const textColor = ["#000","#fff","#fff"]
 
     return <Wrap background={backgroundColor[2]}>
-        <ContentHeader state={"share"} previousPage={'/myLog'}/>
+        <ContentHeader
+            state={"share"}
+            previousPage={'/myLog'}
+            data={{
+                title: location.state.title,
+                content: location.state.content,
+                tag: location.state.tag,
+                date: location.state.timestamp
+            }}
+        />
         <Wrap2>
             <PaletteCircle
                 width={120} height={120}
@@ -20,9 +33,9 @@ const SeeMoreContent = () => {
         </Wrap2>
         <Wrap3>
             <LogMoreContent status={"MyLog"} tagColor={tagColor[2]} textColor={textColor[2]}
-                            title={"myLog/seeMore의 title"}
-                            tag={["# myLog", "# 해시", "# 내용", "# 태그"]}
-                            content={"myLog의 더보기 내용입니다."}
+                            title={location.state.title}
+                            tag={location.state.tag}
+                            content={location.state.content}
             />
         </Wrap3>
     </Wrap>

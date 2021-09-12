@@ -7,8 +7,13 @@ import NicknameInput from "../component/signup/NicknameInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 import {useHistory} from "react-router-dom";
+import {useLocation} from "react-router";
+
+import * as user_service from "../axios/user-service";
 
 function ResetNickname_2(){
+    const location = useLocation();
+    const password = location.state.password
     const history = useHistory();
     const [nickname,setNickname] = useState('');
 
@@ -16,13 +21,15 @@ function ResetNickname_2(){
 
     const [message, setMessage] = useState("")
 
-    const check = () => {
-        if (nickname !== 'aaa'){
-            setMessage("블가능한 별명입니다.")
-        }
-        else {
-            history.push('/home');
-        }
+    const check = async () => {
+        const result = await user_service.updateUser(
+            sessionStorage.getItem("token"),
+            sessionStorage.getItem("email"),
+            password,
+            nickname
+        )
+        if(result.status === 200) history.push('/home')
+
     }
 
     return(

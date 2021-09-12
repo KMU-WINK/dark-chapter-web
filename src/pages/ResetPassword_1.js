@@ -7,16 +7,28 @@ import EmailInput from "../component/signup/EmailInput";
 import ActiveBtn from "../component/button/ActiveBtn";
 import InactiveBtn from "../component/button/InactiveBtn";
 
+
 import {useHistory} from "react-router-dom";
 
 function ResetPassword_1(){
-    const history = useHistory();
-
     const [isActive, setIsActive] = useState(false);
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("")
+    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
-    const checkValidate = () => {
+
+    const history = useHistory();
+
+
+
+    const checkValidate = async () => {
+        if (!regExp.test(email)) {
+            setMessage("올바른 이메일 형식이 아닙니다.");
+            return null
+        }
+        else if(email === sessionStorage.getItem("email")){
+            history.push('/resetPassword/pwd')
+        }
 
         // 서버 통신 후 잘못된 이메일일 경우
         if(email !== "aaa@aa.com") setMessage("이메일을 다시 확인해주세요.");
