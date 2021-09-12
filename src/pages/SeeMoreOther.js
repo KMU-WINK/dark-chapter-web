@@ -3,27 +3,54 @@ import ContentHeader from "../component/header/ContentHeader";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import LogMoreContent from "../component/content/LogMoreContent";
 import OtherHeader from "../component/header/OtherHeader";
+import {useLocation} from "react-router-dom";
+import React from "react";
 
 const SeeMoreOther = () => {
+    const location = useLocation();
     const backgroundColor = ["#d1d9de","#96a1b1","#2c2d39"]
     const tagColor = ["#EAEAEA","#EAEAEA","#ABABAF"]
     const textColor = ["#000","#fff","#fff"]
 
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={120} height={120}
+            color={color}
+            feeling={feeling}
+        />
+    }
+
+
     return <Wrap background={backgroundColor[2]}>
-        <OtherHeader previousPage={'/other'} list={true}/>
+        <OtherHeader previousPage={'/otherLog'} data={location.state} list={true}/>
         <Wrap2>
-            <PaletteCircle
-                width={120} height={120}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
-            />
+            <SetCircle data={location.state}/>
         </Wrap2>
         <Wrap3>
             <LogMoreContent status={"OtherLog"} tagColor={tagColor[2]} textColor={textColor[2]}
-                            title={"otherLog/seeMore의 title"}
-                            tag={["# otherLog", "# 해시", "# 내용", "# 태그"]}
-                            content={"myLog의 더보기 내용입니다."}
+                            data={location.state}
+                            title={location.state.title}
+                            tag={location.state.tag}
+                            content={location.state.content}
             />
         </Wrap3>
     </Wrap>
