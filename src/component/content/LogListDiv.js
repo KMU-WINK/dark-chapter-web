@@ -57,26 +57,24 @@ const LogListDiv = (props) => {
             <Text>{props.floor}</Text>
 
             {data.map((data)=> <>
-            <div style={{position: "relative"}}>
-                <HR src={white_hr}/>
-                <PostBox>
-                    <Post onClick={()=>{history.push({pathname:`/otherLog`, state:data})}}>
-                        <CircleDiv>
-                            <SetCircle data={data}/>
-                        </CircleDiv>
-                        <div style={{marginLeft:16}}>
-                            <div className="jejugothic">
-                                <PostTitle>{data.title}</PostTitle>
+                <div style={{position: "relative"}}>
+                    <HR src={white_hr}/>
+                    <PostBox>
+                        <Post onClick={()=>{history.push({pathname:`/otherLog`, state:{state:data}})}}>
+                            <CircleDiv>
+                                <SetCircle data={data}/>
+                            </CircleDiv>
+                            <div style={{marginLeft:16}}>
+                                <div className="jejugothic">
+                                    <PostTitle>{data.title}</PostTitle>
+                                </div>
+                                <PostBody>{data.content} ...더보기</PostBody>
                             </div>
-                            <PostBody>{data.content} ...더보기</PostBody>
-                        </div>
-                    </Post>
-                </PostBox>
-            </div>
-                </>
+                        </Post>
+                    </PostBox>
+                </div>
+            </>
             )}
-
-
         </Wrap>
     )
 }
@@ -121,11 +119,18 @@ const CircleDiv = styled.div`
 `
 
 const PostTitle = styled.span`
+    width : 70%;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.03em;
     font-weight : bold;
     color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
 `
 
 const PostBody = styled.div`
@@ -136,6 +141,12 @@ const PostBody = styled.div`
     font-size: 10px;
     line-height: 13px;
     color: #DCDCDC;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap:break-word;
 `
 
 const HR = styled.img`
