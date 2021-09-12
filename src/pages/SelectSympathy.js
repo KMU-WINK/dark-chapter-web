@@ -5,6 +5,8 @@ import PaletteCircle from "../component/circle/PaletteCircle";
 import SympathyCircle from "../component/circle/SympathyCircle";
 import OtherHeader from "../component/header/OtherHeader";
 import {useLocation} from "react-router-dom";
+import baseService from "../axios/base-service";
+import * as user_service from "../axios/user-service";
 
 const SelectSympathy = (props) => {
     const location = useLocation();
@@ -16,9 +18,9 @@ const SelectSympathy = (props) => {
         laugh : "#FFF9D9",
     })
     const [feel, setFeel] = useState("");
-    console.log(location.state)
+    const [feelName, setFeelName] = useState("");
+    const [body, setBody] = useState({});
     const SetCircle = (props) => {
-        console.log(props.data)
         let feeling = [];
         let color = [];
 
@@ -45,8 +47,36 @@ const SelectSympathy = (props) => {
         />
     }
 
-    const clickSym = (sym) => {
-        setFeel(sym)
+    const clickSym = (f) => {
+        setFeelName(f)
+    }
+
+    useEffect(() => {
+        const getUser = async() => {
+            const user = await user_service.getUser(sessionStorage.getItem('email'))
+            var body = {
+                boardId: props.location.state._id,
+                userId: user._id,
+                angry: 0,
+                funny: 0,
+                gloomy: 0,
+                shameful: 0
+            }
+            if(feelName === 'angry') body.angry = 1
+            else if(feelName === 'laugh') body.funny = 1
+            else if(feelName === 'sad') body.gloomy = 1
+            else if(feelName === 'shy') body.shameful = 1
+            setBody(body)
+            console.log(body)
+        }
+        getUser();
+    }, [feelName])
+    
+    const postSympathy = async() => {
+        await baseService.post(`/sympathy`, body)
+        .then(
+        result => console.log(result)
+        )
     }
 
     const ShowComplete = () => {
@@ -55,7 +85,7 @@ const SelectSympathy = (props) => {
                 <Wrap>
                     <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
                     {/*<SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>*/}
-                    <Complete onClick={()=>{history.push({pathname:'/sympathy', board_id: props.location.state._id})}} opacity={1}>완료</Complete>
+                    <Complete onClick={()=>{history.push({pathname:'/sympathy', board_id: props.location.state._id}); postSympathy()}} opacity={1}>완료</Complete>
                 </Wrap>
                 : <Wrap>
                     <Circles>
@@ -76,19 +106,19 @@ const SelectSympathy = (props) => {
 
         <Select>
             <div>
-                <ColorButton color={color.angry} onClick={()=>{clickSym("#fc4e62")}}/>
+                <ColorButton color={color.angry} onClick={()=>{clickSym("angry"); setFeel("#fc4e62")}}/>
                 <SelectDiv>화나요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.laugh} onClick={()=>{clickSym("#FFF9D9")}}/>
+                <ColorButton color={color.laugh} onClick={()=>{clickSym("laugh"); setFeel("#FFF9D9")}}/>
                 <SelectDiv>웃겨요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.sad} onClick={()=>{clickSym("#466597")}}/>
+                <ColorButton color={color.sad} onClick={()=>{clickSym("sad"); setFeel("#466597")}}/>
                 <SelectDiv>우울해요</SelectDiv>
             </div>
             <div>
-                <ColorButton color={color.shy} onClick={()=>{clickSym("#fbaca5")}}/>
+                <ColorButton color={color.shy} onClick={()=>{clickSym("shy"); setFeel("#fbaca5")}}/>
                 <SelectDiv>부끄러워요</SelectDiv>
             </div>
         </Select>

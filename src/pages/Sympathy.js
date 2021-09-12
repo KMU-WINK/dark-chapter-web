@@ -5,36 +5,34 @@ import { useEffect, useState } from 'react';
 import baseService from "../axios/base-service";
 
 const Sympathy = (props) => {
-    const [sympathyData, setSympathyData] = useState([])
     const [colorData, setColorData] = useState([])
 
     useEffect(() => {
       const getSympathy = async() => {
         await baseService.get(`/sympathy/${props.location.board_id}`)
         .then(
-          result => setSympathyData(result.data)
+          result => {
+            console.log(result.data)
+            var colorList = []
+            for(var i = 0; i < result.data.length; i++) {
+              if(result.data[i].angry === 1) colorList.push("#fe4e62")
+              else if(result.data[i].gloomy === 1) colorList.push("#466598")
+              else if(result.data[i].funny === 1) colorList.push("#fdada6")
+              else if(result.data[i].shameful === 1) colorList.push("#fff9d9")
+            }
+            setColorData(colorList)
+          }
         )
       }
       getSympathy();
-    }, [])
-
-    useEffect(() => {
-      var colorList = []
-      for(var i = 0; i < sympathyData.length; i++) {
-        if(sympathyData[i].angry === 1) colorList.push("#fe4e62")
-        else if(sympathyData[i].gloomy === 1) colorList.push("#466598")
-        else if(sympathyData[i].funny === 1) colorList.push("#fdada6")
-        else if(sympathyData[i].shameful === 1) colorList.push("#fff9d9")
-      }
-      setColorData(colorList)
-    }, [sympathyData])
+    })
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
         <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[50,47,45,43]}
+                        feeling={[50,50,50,50]}
                         color={colorData}
                         black={true}
                         size={240}
