@@ -44,11 +44,11 @@ const Sympathy = (props) => {
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
-//         <SympathyCircle backgroundColor={"#2c2c38"}
-//                         feeling={[50,50,50,50]}
-//                         color={colorData}
-//                         black={true}
-//                         size={240}
+        <SympathyCircle backgroundColor={"#2c2c38"}
+                         feeling={[50,50,50,50]}
+                         color={colorData}
+                         black={true}
+                         size={240}
         />
         <Center>
             <SympathyCircle backgroundColor={"#2c2c38"}
