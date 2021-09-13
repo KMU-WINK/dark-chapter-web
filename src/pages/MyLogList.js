@@ -29,13 +29,10 @@ function MyLogList() {
     let secondPct = 0
     let thirdPct = 0
 
-    // useEffect(() => {
-    //     console.log("call")
-    //     total = firstNum + secondNum + thirdNum;
-    //     firstPct = firstNum / total * 100 - 10;
-    //     secondPct = secondNum / total * 100 - 30;
-    //     thirdPct = thirdNum / total * 100;
-    // },[firstNum,secondNum,thirdNum])
+    useEffect(() => {
+        console.log(secondFloor.length)
+
+    },[secondFloor])
 
 
     let checkFirst = 0;
@@ -85,30 +82,17 @@ function MyLogList() {
         else if(firstFloor > 3 && y < firstFloor * 130 + 80) setHeaderColor("#000000")
     }, [y])
 
-    const sortByDepth = (a,b) => {
-        if (a.depth == b.depth) {
-            return 0
-        }
-        return a.depth > b.depth ? 1 : -1;
-    }
-
     const divideFloor = (data) => {
         data.createdAt = data.createdAt
         if(data.depth < 100){
-
-            setFirstNum(firstNum+1)
 
             setFirstFloor(firstFloor => [...firstFloor, data])
         }
         else if (data.depth < 500 && data.depth >= 100){
 
-            setSecondNum(secondNum+1)
-
             setSecondFloor(secondFloor => [...secondFloor, data])
         }
         else{
-
-            setThirdNum(thirdNum+1)
 
             setThirdFloor(thirdFloor => [...thirdFloor, data])
         }
@@ -118,12 +102,11 @@ function MyLogList() {
         const getBoard = async () =>{
 
             const result = await board_service.getBoard(sessionStorage.getItem("email"))
-            result.map(data => console.log(data.depth))
+
             // console.log(result)
             result.sort(function(a,b) {
                 return parseFloat(a.depth) - parseFloat(b.depth);
             });
-            result.map(data => console.log(data.depth))
 
 
             result.map(board_result => divideFloor(board_result))
@@ -152,7 +135,7 @@ function MyLogList() {
                         bodyTextColor={"#747474"}
                         backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
                         floor={"상층"}
-                        num={firstNum}
+                        num={firstFloor.length}
                         data={firstFloor}
                     />
                     <MyLogFloor
@@ -161,11 +144,11 @@ function MyLogList() {
                         backgroundTop={"#97A2B2"}
                         backgroundBottom={"#2C2C38"}
                         floor={"중충"}
-                        num={secondNum}
+                        num={secondFloor.length}
                         data={secondFloor}
                     />
                     <MyLogFloor
-                        num={thirdNum}
+                        num={thirdFloor.length}
                         color={"white"}
                         bodyTextColor={"#DCDCDC"}
                         backgroundTop={"#2C2C38"}
