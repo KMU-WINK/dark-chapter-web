@@ -40,9 +40,8 @@ const Wrap = styled.div`
 const Wrap1 = styled.div`
   width: ${props=>props.size}px;
   height: ${props=>props.size}px;
-  position : absolute;
-  top : -150px;
-  left : -62px;
+  display : flex;
+  justify-content: center;
   z-index:1;
 `
 
