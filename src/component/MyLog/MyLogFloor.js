@@ -7,8 +7,8 @@ import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
-
     // console.log(props)
+    // console.log(props.floor, props.num)
     // const date = props.data[0].createdAt;
 
     // console.log(props.data[0].createdAt.split('T')[0])
@@ -109,7 +109,7 @@ const Wrap = styled.div`
     width : 100%;
     background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
     padding-top:26px;
-    
+    height: ${props => props.height}px;
     z-index: -1;
 `
 
