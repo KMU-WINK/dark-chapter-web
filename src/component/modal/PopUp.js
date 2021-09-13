@@ -11,8 +11,10 @@ function PopUp(props) {
     const {onClose} = props;
     const deleteBoardFunction = async () =>{
         await deleteBoard(props.boardId).then(()=>{
+            setVisible(true)
+            setToastText("글이 삭제되었습니다");
             setTimeout(function() {
-                toastMessage("글이 삭제되었습니다"); //이거 왜 안보임 ...?
+                setVisible(false)
                 history.push('/myLogPage')
             }, 3000);
         })
