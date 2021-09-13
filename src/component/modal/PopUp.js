@@ -2,12 +2,19 @@ import styled, { keyframes } from "styled-components";
 import React,{ useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import toastMessage from "./ToastMessage.js"
+import {deleteBoard} from "../../axios/board-service"
 
 function PopUp(props) {
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const [toastText, setToastText] = useState("");
     const {onClose} = props;
+    const deleteBoard = async () =>{
+        await deleteBoard(props.boardId).then(()=>{
+            toastMessage('글이 삭제되었습니다.')
+            history.push('/myLogPage')
+        })
+    }
 
     const yesButtonClicked = () => {
         switch (props.title) {

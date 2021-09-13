@@ -53,7 +53,7 @@ const MyLog = (props) => {
     }
 
     return <Wrap backgroundColor={backgroundColor}>
-            <ContentHeader textColor={textColor} previousPage={'/myLogPage'} state={"share"}/>
+            <ContentHeader textColor={textColor} previousPage={'/myLogPage'} state={"share"} boardId={location.state.state._id}/>
 
             <Wrap2 onClick={()=>{clickPalette()}}>
                 <SetCircle data={location.state.state}/>

@@ -26,7 +26,7 @@ const ContentHeader = (props) => {
             }
         </Header>
         {visible?
-            <ContentMenu onClose={setVisible} state={props.state}/>
+            <ContentMenu onClose={setVisible} state={props.state} boardId = {props.boardId}/>
             : null
         }
     </>

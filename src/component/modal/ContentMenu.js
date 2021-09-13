@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import PopUp from "./PopUp.js";
 
 const ContentMenu = (props) => {
+    console.log(props)
     const {onClose} = props;
     const [isPopup, setIsPopup] = useState(" ");
 
@@ -30,7 +31,7 @@ const ContentMenu = (props) => {
             }
         </Wrap>
         {isPopup === "share"?
-            <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?"/>
+            <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?" boardId = {props.boardId}/>
             : null
         }
         {isPopup === "collect"?

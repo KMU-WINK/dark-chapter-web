@@ -24,12 +24,13 @@ export async function updateBoard(boardId, token, args) {
 }
 
 //게시글 삭제
-export async function deleteBoard(boardId, token) {
+export async function deleteBoard(boardId) {
+  console.log(boardId)
   try{
     await baseService.delete(`/boards/${boardId}`,{
       headers: {
         // 'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`,
+        // 'Authorization': `Bearer ${token}`,
       }
     });
   } catch (e) {
