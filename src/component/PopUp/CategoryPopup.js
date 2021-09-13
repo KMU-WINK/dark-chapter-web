@@ -138,7 +138,7 @@ function CategoryPopup(props){
             await createBoard(body).then(()=> {
                 setWriteComplete(true)
                 setTimeout(() => {
-                    // window.location.href ='/home'
+                    window.location.href ='/home'
                     setWriteComplete(false)
                 }, 3000)
             })
