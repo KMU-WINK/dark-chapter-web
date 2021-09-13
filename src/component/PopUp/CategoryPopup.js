@@ -119,13 +119,13 @@ function CategoryPopup(props){
         }
     }
     const writeBtn = async ({target}) => {
-        const id = getUser(window.sessionStorage.getItem('email'))['_id']
-        // console.log(props.state, props.depth, choose)
+        const userEmail = window.sessionStorage.getItem('email');
+        const id = await getUser(userEmail);
         try {
             const body = {
                 "title": props.state.state.title,
                 "content": props.state.state.contents,
-                "writer": id,
+                "writer": id._id,
                 "angry": props.state.state.angry,
                 "funny": props.state.state.laugh,
                 "gloomy": props.state.state.sad,
@@ -134,10 +134,11 @@ function CategoryPopup(props){
                 "isPrivate": target.value === 'private',
                 "tag": choose
             }
+            console.log(body)
             await createBoard(body).then(()=> {
                 setWriteComplete(true)
                 setTimeout(() => {
-                    window.location.href ='/home'
+                    // window.location.href ='/home'
                     setWriteComplete(false)
                 }, 3000)
             })
