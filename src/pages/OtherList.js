@@ -15,9 +15,19 @@ const OtherList = () => {
 
     useEffect(async() => {
         const result = await board_service.getAllBoards();
-        setData(result);
-        console.log(result)
+        // setData(result);
+        result.map(res => {
+            if(!res.isPrivate){
+                // console.log(res)
+                setData(data => [...data, res])
+            }
+        })
+
     },[]);
+
+    useEffect(() => {
+        // console.log(data)
+    },[data])
     const hrRendering = () => {
         const result = [];
         for(let i= 0;i < data.length*2; i++){
