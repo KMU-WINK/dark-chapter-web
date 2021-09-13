@@ -5,64 +5,94 @@ import { useEffect, useState } from 'react';
 import baseService from "../axios/base-service";
 
 const Sympathy = (props) => {
-    const [colorData, setColorData] = useState([]);
+    const [sympathyFeel, setSympathyFeel] = useState([0,0,0,0]);
+    const [sympathyColor, setSympathyColor] = useState(["#fe4e62","#466598","#fff9d9","#fdada6"]);
     const [sympathyMessage, setSympathyMessage] = useState("");
 
-    useEffect(() => {
-      const getSympathy = async() => {
-        await baseService.get(`/sympathy/${props.location.board_id}`)
-        .then(
-          result => {
-            console.log(result.data)
-            var colorList = []
-            for(var i = 0; i < result.data.length; i++) {
-                if(result.data[i].angry === 1) {
-                    colorList.push("#fe4e62");
-                    setSympathyMessage("분노는 나의 힘..");
+    useEffect(async() => {
+        const GetSympathy = async() => {
+            await baseService.get(`/sympathy/${props.location.board_id}`).then(
+                result => {
+                    console.log(result.data)
+                    let symFeel = [0, 0, 0, 0];
+                    for (let i = 0; i < result.data.length; i++) {
+                        if (result.data[i].angry === 1) {
+                            symFeel[0]++;
+                            setSympathyMessage("분노는 나의 힘..");
+                        } else if (result.data[i].gloomy === 1) {
+                            symFeel[1]++;
+                            setSympathyMessage("덕분에 한결 가벼워졌어요");
+                        } else if (result.data[i].funny === 1) {
+                            symFeel[2]++;
+                            setSympathyMessage("당신을 웃길 수 있어 행복해요");
+                        } else if (result.data[i].shameful === 1) {
+                            symFeel[3]++;
+                            setSympathyMessage("부끄러움은 당신의 몫..");
+                        }
+                    }
+                    let feeling = [];
+                    let color = []
+                    if (symFeel[0] > 0) {
+                        feeling.push(symFeel[0]);
+                        color.push("#fe4e62");
+                    }
+                    if (symFeel[1] > 0) {
+                        feeling.push(symFeel[1]);
+                        color.push("#466598");
+                    }
+                    if (symFeel[2] > 0) {
+                        feeling.push(symFeel[2]);
+                        color.push("#fff9d9");
+                    }
+                    if (symFeel[3] > 0) {
+                        feeling.push(symFeel[3]);
+                        color.push("#fdada6");
+                    }
+                    console.log(feeling);
+
+                    let symFeeling = [];
+                    let symColor = [];
+                    for (let i = 0; i < feeling.length; i++) {
+                        let maxSym = 0;
+                        let maxIdx = -1;
+                        for (let j = 0; j < feeling.length; j++) {
+                            if (maxSym < feeling[j]) {
+                                maxSym = feeling[j];
+                                maxIdx = j;
+                            }
+                        }
+                        feeling[maxIdx] = -1;
+                        symFeeling.push(symFeel[maxIdx])
+                        symColor.push(color[maxIdx])
+                    }
+                    console.log(symFeeling)
+                    console.log(symColor)
+                    setSympathyColor(symColor);
+                    setSympathyFeel(symFeeling);
                 }
-                else if(result.data[i].gloomy === 1) {
-                    colorList.push("#466598");
-                    setSympathyMessage("덕분에 한결 가벼워졌어요");
-                }
-                else if(result.data[i].funny === 1) {
-                    colorList.push("#fff9d9");
-                    setSympathyMessage("당신을 웃길 수 있어 행복해요");
-                }
-                else if(result.data[i].shameful === 1) {
-                    colorList.push("#fdada6");
-                    setSympathyMessage("부끄러움은 당신의 몫..");
-                }
-            }
-            setColorData(colorList)
-          }
-        )
-      }
-      getSympathy();
+            )
+            return true;
+        }
+        await GetSympathy();
     },[])
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
         <Wrap className={"jejugothic"}>
-        <Space/>
-        <Circle/>
-        <SympathyCircle backgroundColor={"#2c2c38"}
-                         feeling={[50,50,50,50]}
-                         color={colorData}
-                         black={true}
-                         size={240}
-        />
-        <Center>
-            <SympathyCircle backgroundColor={"#2c2c38"}
-                            feeling={[50,50,50,50]}
-                            color={colorData}
-                            black={true}
-                            size={240}
-            />
-        </Center>
-        <Text>
-            <SympathyText>{sympathyMessage}</SympathyText>
-            <FromText>-심해에서 용치놀래기가-</FromText>
-        </Text>
-    </Wrap>
+            <Space/>
+            <Circle/>
+            <Center>
+                <SympathyCircle backgroundColor={"#2c2c38"}
+                                feeling={sympathyFeel}
+                                color={sympathyColor}
+                                black={true}
+                                size={240}
+                />
+            </Center>
+            <Text>
+                <SympathyText>{sympathyMessage}</SympathyText>
+                <FromText>-심해에서 용치놀래기가-</FromText>
+            </Text>
+        </Wrap>
     </Link>
 }
 

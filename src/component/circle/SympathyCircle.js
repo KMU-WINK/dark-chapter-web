@@ -36,6 +36,7 @@ const SympathyCircle = (props) => {
             value.else.size = 3;
         }
 
+        if (!props.feeling) return <></>
         if (props.feeling.length === 1) return <>
             <Circle
                 size={Math.min(200+((72/50)*props.feeling[0]),272)/value.one.size}

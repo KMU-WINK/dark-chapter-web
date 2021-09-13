@@ -11,7 +11,14 @@ export async function createStone(args) {
 
 //자기 이메일에 있는 모든 스톤 가져오기
 export async function getMyAllStone(email) {
-    return email && (await baseService.get(`/stones/${email}`)).data
+    console.log(email)
+    try {
+       const result = await baseService.get(`/stones/${email}`);
+       console.log(result)
+       return result;
+    } catch (e) {
+        console.log(e.response);
+    }
 }
 
 //stoneId에 맞는 원석 가져오기 - 이건 안써도 되긴함
