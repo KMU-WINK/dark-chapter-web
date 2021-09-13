@@ -137,6 +137,11 @@ const Wrap = styled.div`
   
 `
 
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 const Circles = styled.div`
   display : flex;
   justify-content: center;
