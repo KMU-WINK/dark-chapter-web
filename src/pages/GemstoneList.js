@@ -12,9 +12,8 @@ const GemstoneList = () => {
     const [data, setData] = useState([]);
 
     useEffect(async()=>{
-        console.log(sessionStorage.getItem("email"))
-        const result = await stone_service.getMyAllStone(sessionStorage.getItem("email"))
-        setData(result);
+        console.log(window.sessionStorage.getItem("email"));
+        const result = await stone_service.getMyAllStone(window.sessionStorage.getItem("email"));
         console.log("result ",result);
     },[])
 
