@@ -44,15 +44,19 @@ const Wrap = styled.div`
   color : ${props=>props.textColor};
 `
 
-const TextBox = styled.div` 
+const TextBox = styled.div`
+  overflow: auto;
+  height : 350px;
+  margin-top : 24px;
+
+  //display : flex;
+  //justify-content: center;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  margin-top : 24px;
-  overflow : auto;
-  height : 340px;
+  word-break : break-all;
 `
 
 const Wrap2 = styled.div`
@@ -74,4 +78,5 @@ const OvercomeBtn = styled.button`
   font-size: 14px;
   line-height: 21px;
   padding : 14px;
+  margin-bottom : 10px;
 `
