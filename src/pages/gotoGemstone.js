@@ -7,7 +7,7 @@ const GotoGemstone = () => {
         window.location.href ='/gemstone'
     }
 
-    return <Wrap className={"jejugothic"}>
+    return <Wrap onClick={gemstone} className={"jejugothic"}>
         <Wrap2>
         <GemstoneCircle
             size={240}
@@ -21,7 +21,7 @@ const GotoGemstone = () => {
             paletteFeeling={[40,10,30,20]}
         />
         </Wrap2>
-        <ClickMessage onClick={gemstone}>화면을 터치해주세요!</ClickMessage>
+        <ClickMessage>화면을 터치해주세요!</ClickMessage>
     </Wrap>
 }
 
@@ -33,6 +33,8 @@ const FadeIn = keyframes`
 `
 
 const Wrap = styled.div`
+    width: 100%;
+    height: 100vh;
 `
 
 const Wrap2 = styled.div`

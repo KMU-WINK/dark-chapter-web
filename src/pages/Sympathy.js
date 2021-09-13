@@ -1,20 +1,57 @@
 import styled, { keyframes }  from 'styled-components';
 import SympathyCircle from "../component/circle/SympathyCircle";
 import { Route, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import baseService from "../axios/base-service";
 
-const Sympathy = () => {
+const Sympathy = (props) => {
+    const [colorData, setColorData] = useState([]);
+    const [sympathyMessage, setSympathyMessage] = useState("");
+
+    useEffect(() => {
+      const getSympathy = async() => {
+        await baseService.get(`/sympathy/${props.location.board_id}`)
+        .then(
+          result => {
+            console.log(result.data)
+            var colorList = []
+            for(var i = 0; i < result.data.length; i++) {
+                if(result.data[i].angry === 1) {
+                    colorList.push("#fe4e62");
+                    setSympathyMessage("분노는 나의 힘..");
+                }
+                else if(result.data[i].gloomy === 1) {
+                    colorList.push("#466598");
+                    setSympathyMessage("덕분에 한결 가벼워졌어요");
+                }
+                else if(result.data[i].funny === 1) {
+                    colorList.push("#fff9d9");
+                    setSympathyMessage("당신을 웃길 수 있어 행복해요");
+                }
+                else if(result.data[i].shameful === 1) {
+                    colorList.push("#fdada6");
+                    setSympathyMessage("부끄러움은 당신의 몫..");
+                }
+            }
+            setColorData(colorList)
+          }
+        )
+      }
+      getSympathy();
+    },[])
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
         <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[50,47,45,43]}
-                        color={["#fe4e62","#466598","#fdada6","#fff9d9"]}
+                        feeling={[50,50,50,50]}
+                        color={colorData}
                         black={true}
+                        size={240}
         />
         <Text>
-            <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
+            <SympathyText>{sympathyMessage}</SympathyText>
             <FromText>-심해에서 용치놀래기가-</FromText>
         </Text>
     </Wrap>
@@ -76,6 +113,4 @@ const FromText = styled.div`
   color: rgba(255, 255, 255, 0.4);
   margin-top : 10px;
 `
-
-
 
