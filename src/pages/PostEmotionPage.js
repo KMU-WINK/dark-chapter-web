@@ -323,10 +323,9 @@ const ResetButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: 4px 8px;
-
   position: static;
-  width: 48px;
-  height: 22px;
+  width: 35px;
+  height: 18px;
   left: 1px;
   top: 7px;
   background: #C4C4C4;
@@ -335,7 +334,14 @@ const ResetButton = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 10px 0;
+  margin: 5px 0;
+  
+  font-family: PretendartVariable;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
 `
 
 export default PostEmotionPage
