@@ -5,14 +5,17 @@ import toastMessage from "./ToastMessage.js"
 import {deleteBoard} from "../../axios/board-service"
 
 function PopUp(props) {
+    console.log(props)
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const [toastText, setToastText] = useState("");
     const {onClose} = props;
-    const deleteBoard = async () =>{
+    const deleteBoardFunction = async () =>{
         await deleteBoard(props.boardId).then(()=>{
-            toastMessage('글이 삭제되었습니다.')
-            history.push('/myLogPage')
+            setTimeout(function() {
+                toastMessage("글이 삭제되었습니다"); //이거 왜 안보임 ...?
+                history.push('/myLogPage')
+            }, 3000);
         })
     }
 
@@ -30,10 +33,7 @@ function PopUp(props) {
                 break;
             case "delete_posting":
                 setVisible(true);
-                setToastText("흑역사를 삭제했어요.");
-                setTimeout(function() {
-                    setVisible(false);
-                }, 3000);
+                deleteBoardFunction()
                 break;
             case "delete_gemstone":
                 setVisible(true);

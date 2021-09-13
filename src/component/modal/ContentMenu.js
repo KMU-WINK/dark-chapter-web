@@ -31,7 +31,7 @@ const ContentMenu = (props) => {
             }
         </Wrap>
         {isPopup === "share"?
-            <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?" boardId = {props.boardId}/>
+            <PopUp onClose={setIsPopup} state={props.state} title="share_posting" text="글을 공유하고 싶으신가요?"/>
             : null
         }
         {isPopup === "collect"?
@@ -39,7 +39,7 @@ const ContentMenu = (props) => {
             : null
         }
         {isPopup === "delete"?
-            <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
+            <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요." boardId = {props.boardId}/>
             : null
         }
         {isPopup === "delete_gemstone"?
