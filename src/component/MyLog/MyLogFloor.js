@@ -7,6 +7,8 @@ import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
+
+    // console.log(props)
     // const date = props.data[0].createdAt;
 
     // console.log(props.data[0].createdAt.split('T')[0])
@@ -87,7 +89,7 @@ function MyLogFloor(props){
                                 <SetCircle data={data}/>
                             </CircleDiv>
 
-                            <div style={{marginLeft:16}}>
+                            <div style={{paddingLeft:16}}>
                                 <div className="jejugothic">
                                     <PostTitle color={color}>{data.title}</PostTitle>
                                 </div>
@@ -107,7 +109,7 @@ const Wrap = styled.div`
     width : 100%;
     background : linear-gradient(${props => props.backgroundTop}  , ${props => props.backgroundBottom});
     padding-top:26px;
-    height: ${props => props.height}px;
+    
     z-index: -1;
 `
 
@@ -124,7 +126,7 @@ const PostBox = styled.div`
     width : 360px;
     height : 130px;
     position: relative;
-    margin: 0 64px;
+    padding: 0 64px;
 `
 
 const Post = styled.div`

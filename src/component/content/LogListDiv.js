@@ -38,6 +38,7 @@ const LogListDiv = (props) => {
 
     useEffect(async() => {
         const result = await board_service.getAllBoards();
+        result.reverse()
         setData(result);
     },[]);
     let height = 0;
