@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
-import SuccessMessage from "../message/SuccessMessage";
 import ErrorMessage from "../message/ErrorMessage";
 import {inject, observer} from "mobx-react";
 
-import emailIcon from "../../svg/mail.svg";
-import Password from "../../svg/password.svg";
+import emailIcon from "../../svg/signup_mail.svg";
+import Password from "../../svg/signup_password.svg";
 import reveal_active from "../../svg/reveal-icons_eye.svg";
 import reveal_inactive from "../../svg/reveal_inactive.svg";
 import inreveal_inactive from "../../svg/inreveal_inactive.svg";
@@ -50,6 +49,7 @@ function LoginInput(props){
         //     setEmailVMsg("통과!");
         //     setIsEmailValidate(true);
         // }
+        props.setEmail(email)
 
         if(email.indexOf('@') > -1){
             setIsAtSign(true);
@@ -60,6 +60,7 @@ function LoginInput(props){
     },[email])
 
     useEffect(() => {
+        props.setPassword(pwd)
         if (pwd.length >=4) setPwdActive(true)
         else setPwdActive(false)
     },[pwd])
@@ -91,57 +92,63 @@ function LoginInput(props){
                     active = {isAtSign}
                     type = "text"
                 />
-                {/*{*/}
-                {/*    isEmailValidate*/}
-                {/*        ?<SuccessMessage message = {emailVMsg}/>*/}
-                {/*        : <ErrorMessage message ={emailVMsg} />*/}
-                {/*}*/}
+                {
+                    props.emailMessage
+                        ?<ErrorMessage message = {props.emailMessage}/>
+                        : null
+                }
             </InputBox>
 
 
             <PasswordBox>
                 <PasswordIcon/>
                 <InputPwd
-                    type={!isReveal ? "text" : "password"}
+                    type={!isReveal ? "password" : "text"}
                     value={pwd}
                     onChange = {onChangePwd}
                     active = {isPwdActive}
                 />
                 {
+                    props.passwordMessage
+                        ?<ErrorMessage message = {props.passwordMessage}/>
+                        : null
+                }
+                {
                     (function () {
                         if (isReveal && isPwdActive){
                             return (
-                                <InRevealActiveIcon
+                                <RevealActiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
+
                                 />
                             )
                         }
                         else if (isReveal && !isPwdActive){
                             return (
 
-                                <InRevealInactiveIcon
+                                <RevealInactiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
+
                                 />
 
                             )
                         }
                         else if (!isReveal && isPwdActive){
                             return (
-
-                                <RevealActiveIcon
+                                <InRevealActiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
-
                                 />
+
 
                             )
                         }
                         else if (!isReveal && !isPwdActive){
                             return (
 
-                                <RevealInactiveIcon
+                                <InRevealInactiveIcon
                                     onClick={() => {setIsReveal(!isReveal)}}
-
                                 />
+
 
                             )
                         }
@@ -226,7 +233,7 @@ const InRevealInactiveIcon = styled.img.attrs({
     src: inreveal_inactive,
 })`
     position : absolute;
-    left: 304px;
+    right:0;
 top: 7px;
 
 `;
@@ -235,7 +242,7 @@ const InRevealActiveIcon = styled.img.attrs({
     src: inreveal_active
 })`
     position : absolute;
-    left: 304px;
+    right:0;
 top: 7px;
 
 `

@@ -7,6 +7,7 @@ import baseService from "../axios/base-service";
 const Sympathy = (props) => {
     const [colorData, setColorData] = useState([]);
     const [sympathyMessage, setSympathyMessage] = useState("");
+    const [colorData, setColorData] = useState([])
 
     useEffect(() => {
       const getSympathy = async() => {
@@ -44,12 +45,20 @@ const Sympathy = (props) => {
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
-        <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[50,50,50,50]}
-                        color={colorData}
-                        black={true}
-                        size={240}
-        />
+//         <SympathyCircle backgroundColor={"#2c2c38"}
+//                         feeling={[50,50,50,50]}
+//                         color={colorData}
+//                         black={true}
+//                         size={240}
+//         />
+        <Center>
+            <SympathyCircle backgroundColor={"#2c2c38"}
+                            feeling={[50,50,50,50]}
+                            color={colorData}
+                            black={true}
+                            size={240}
+            />
+        </Center>
         <Text>
             <SympathyText>{sympathyMessage}</SympathyText>
             <FromText>-심해에서 용치놀래기가-</FromText>
@@ -112,5 +121,10 @@ const FromText = styled.div`
   text-align: center;
   color: rgba(255, 255, 255, 0.4);
   margin-top : 10px;
+`
+
+const Center = styled.div`
+  display : flex;
+  justify-content: center;
 `
 

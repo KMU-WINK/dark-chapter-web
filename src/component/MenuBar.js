@@ -33,20 +33,11 @@ function MenuBar () {
         if (!appLock) history.push('/appLock')
     }
 
-    // const [aniValue, setAniValue] = useState(new Animated.Value(0));
-    // const color = isOn ? onColor : offColor;
-    //
-    // const moveSwitchToggle = aniValue.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: [0, 20],
-    // });
-    //
-    // Animated.timing(aniValue, {
-    //     toValue: isOn ? 1 : 0,
-    //     duration: 200,
-    //     easing: Easing.linear,
-    //     useNativeDriver: true,
-    // }).start();
+    const setLogout =() =>{
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('email');
+        history.push('/landing')
+    }
     return(
         <div className='menuComponent'>
             <button className='menuBarButtonDiv' onClick={()=>{history.push('/home')}}>
@@ -106,7 +97,7 @@ function MenuBar () {
                     </button>
                 </div>
             </div>
-            <button className='logoutBtn'>
+            <button className='logoutBtn' onClick={setLogout}>
                 <img src={logout} alt="" className='menuComponentIcon'/>
                 <p>Logout</p>
             </button>

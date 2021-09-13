@@ -28,7 +28,7 @@ p {
     padding : 134px 0 0 32px;
     position: relative;
     text-align: left;
-    height: 100vh;
+    height: calc(100vh - 134px);
 }
 .menuComponent h2 {
     color: #2c2c38;

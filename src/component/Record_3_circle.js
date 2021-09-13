@@ -2,16 +2,36 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import PaletteCircle from "./circle/PaletteCircle";
 
-function Record_3_circle(){
-    return(
+function Record_3_circle(props){
+    const SetCircle = () => {
+        let feeling = [];
+        let color = [];
 
+        if (props.emotion[0]>0) {
+            feeling.push(props.emotion[0]);
+            color.push("#FE4E62");
+        }
+        if (props.emotion[1]>0) {
+            feeling.push(props.emotion[1]);
+            color.push("#FFF9D9");
+        }
+        if (props.emotion[2]>0) {
+            feeling.push(props.emotion[2]);
+            color.push("#466598");
+        }
+        if (props.emotion[3]>0) {
+            feeling.push(props.emotion[3]);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={160} height={160}
+            color={color}
+            feeling={feeling}
+        />
+    }
+    return(
         <Div>
-            <PaletteCircle
-                width={160} height={160}
-                deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                feeling={[20,10,20,50]}
-            />
+            <SetCircle data={props.emotion}/>
         </Div>
     )
 }

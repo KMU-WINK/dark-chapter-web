@@ -1,15 +1,9 @@
 import baseService from "./base-service";
 
 //게시글 생성
-export async function createBoard(args, token) {
-  args.enctype='multipart/form-data';
+export async function createBoard(args) {
   try{
-    await baseService.post('/boards', args,{
-      headers: {
-        // 'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`,
-      }
-    });
+    await baseService.post('/boards', args);
   } catch (e) {
     console.error('!', e.response);
   }
@@ -44,8 +38,9 @@ export async function deleteBoard(boardId, token) {
 }
 
 //아이디 해당 게시글 가져오기
-export async function getBoard(boardId) {
-  return boardId && (await baseService.get(`/boards/${boardId}`)).data
+export async function getBoard(email) {
+  console.log(email)
+  return email && (await baseService.get(`/boards/${email}`)).data
 }
 
 //모든 게시글 가져오기

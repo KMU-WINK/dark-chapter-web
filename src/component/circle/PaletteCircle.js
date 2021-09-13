@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import React from "react";
+import React,{useEffect} from "react";
 
 const PaletteCircle = (props) => {
-    // console.log(props)
+
     const ShowCircle = () => {
         if (props.feeling.length === 1) return <Circle w={props.width} h={props.height}  deg={"50% 50%"} feeling={props.feeling[0]*8} color={props.color[0]} per={80}/>
         else if (props.feeling.length === 2) {
@@ -53,9 +53,9 @@ const Circle = styled.div`
   border-radius: 50%;
   background: radial-gradient(circle at ${props=>props.deg}, ${props=>props.color} ${props => props.feeling}%, transparent ${props=>props.per}%);
   filter: blur(4px);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   mix-blend-mode: unset;
-  
+  z-index:1;
   // unset, hard-light, lighten, inherit, initial
 `
 
@@ -66,6 +66,8 @@ const White = styled.div`
   position: absolute;
   background: white;
   mix-blend-mode: hard-light;
+  filter: blur(${props => props.h/50}px);
+  z-index: 0;
 `
 
 

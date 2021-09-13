@@ -1,30 +1,27 @@
 import styled from "styled-components";
 import LogTitle from "./LogTitle";
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, useHistory } from 'react-router-dom';
 import React, {useState} from "react";
 import PopUp from "../modal/PopUp.js";
 
 const LogMoreContent = (props) => {
+    const history = useHistory();
     const [isPopup, setIsPopup] = useState(false);
-
+    const [content, setContent] = useState(props.content);
     return <>
             <Wrap textColor={props.textColor}>
-            <LogTitle tagColor={props.tagColor} textColor={props.textColor}/>
+            <LogTitle tagColor={props.tagColor} textColor={props.textColor}
+                      title={props.title} tag={props.tag} timeStamp={props.timeStamp}
+            />
             <TextBox>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
-                <div>하 오늘 지우 앞에서 코가 간지러워서 코를 팠는데 코에서 나루토의 나선환이 나왔다. 미안하다 이거 보여주려고 어그로 끌었다. 나루토 사스...</div>
+                {content}
                 <Wrap2>
                     {props.status === "MyLog"?
                         <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor} onClick={()=>{setIsPopup(true)}}>극복하기</OvercomeBtn>
                         :
                         <>
                             {props.status === "OtherLog"?
-                                <Link style={{color:props.textColor, textDecoration: 'none'}} to={'/selectSympathy'}><OvercomeBtn tagColor={props.tagColor} textColor={props.textColor}>공감하기</OvercomeBtn></Link>
+                                <OvercomeBtn tagColor={props.tagColor} textColor={props.textColor} onClick={()=>history.push({pathname:'/selectSympathy', state:props.data})}>공감하기</OvercomeBtn>
                                 :
                                 null
                             }
@@ -47,15 +44,19 @@ const Wrap = styled.div`
   color : ${props=>props.textColor};
 `
 
-const TextBox = styled.div` 
+const TextBox = styled.div`
+  overflow: auto;
+  height : 350px;
+  margin-top : 24px;
+
+  //display : flex;
+  //justify-content: center;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  margin-top : 24px;
-  overflow : auto;
-  height : 340px;
+  word-break : break-all;
 `
 
 const Wrap2 = styled.div`
@@ -77,4 +78,5 @@ const OvercomeBtn = styled.button`
   font-size: 14px;
   line-height: 21px;
   padding : 14px;
+  margin-bottom : 10px;
 `

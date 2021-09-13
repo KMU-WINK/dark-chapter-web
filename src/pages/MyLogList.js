@@ -7,18 +7,33 @@ import MyLogBottomFloor from "../component/MyLog/MyLogBottomFloor";
 import scale from "../svg/black_scale_group.svg"
 import white_hr from "../svg/white_scale_group.svg"
 
+import * as board_service from "../axios/board-service";
+
 function MyLogList() {
     const [headerColor, setHeaderColor] = useState("#000000")
+    const [data,setData] = useState([])
 
-    // 임의로 정한 흑역사 층별 데이터 개수
-    const firstFloor = 7
-    const secondFloor = 5
-    const thirdFloor = 8
+    const [firstFloor, setFirstFloor] = useState([])
+    const [secondFloor, setSecondFloor] = useState([])
+    const [thirdFloor, setThirdFloor] = useState([])
 
-    const total = firstFloor + secondFloor + thirdFloor;
-    const firstPct = firstFloor / total * 100 - 10;
-    const secondPct = secondFloor / total * 100 - 30;
-    const thirdPct = thirdFloor / total * 100;
+    const [firstNum, setFirstNum] = useState(0)
+    const [secondNum, setSecondNum] = useState(0)
+    const [thirdNum, setThirdNum] = useState(0)
+
+
+
+
+    let total = 0
+    let firstPct = 0
+    let secondPct = 0
+    let thirdPct = 0
+
+    useEffect(() => {
+        console.log(secondFloor.length)
+
+    },[secondFloor])
+
 
     let checkFirst = 0;
     // 눈금 영역 height
@@ -67,6 +82,39 @@ function MyLogList() {
         else if(firstFloor > 3 && y < firstFloor * 130 + 80) setHeaderColor("#000000")
     }, [y])
 
+    const divideFloor = (data) => {
+        data.createdAt = data.createdAt
+        if(data.depth < 100){
+
+            setFirstFloor(firstFloor => [...firstFloor, data])
+        }
+        else if (data.depth < 500 && data.depth >= 100){
+
+            setSecondFloor(secondFloor => [...secondFloor, data])
+        }
+        else{
+
+            setThirdFloor(thirdFloor => [...thirdFloor, data])
+        }
+    }
+
+    useEffect( () => {
+        const getBoard = async () =>{
+
+            const result = await board_service.getBoard(sessionStorage.getItem("email"))
+
+            // console.log(result)
+            result.sort(function(a,b) {
+                return parseFloat(a.depth) - parseFloat(b.depth);
+            });
+
+
+            result.map(board_result => divideFloor(board_result))
+        }
+        getBoard()
+
+    },[])
+
     return (
         <Div
             first={firstPct}
@@ -82,12 +130,13 @@ function MyLogList() {
                     <ScaleWrap height={height}>
                         {hrRendering()}
                     </ScaleWrap>
-                    <MyLogFloor
+                    <MyLogFloor id="floor"
                         color={"black"}
                         bodyTextColor={"#747474"}
                         backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
                         floor={"상층"}
-                        num={firstFloor}
+                        num={firstFloor.length}
+                        data={firstFloor}
                     />
                     <MyLogFloor
                         color={"white"}
@@ -95,15 +144,19 @@ function MyLogList() {
                         backgroundTop={"#97A2B2"}
                         backgroundBottom={"#2C2C38"}
                         floor={"중충"}
-                        num={secondFloor}
+                        num={secondFloor.length}
+                        data={secondFloor}
                     />
                     <MyLogFloor
-                        num={thirdFloor}
+                        num={thirdFloor.length}
                         color={"white"}
                         bodyTextColor={"#DCDCDC"}
                         backgroundTop={"#2C2C38"}
                         backgroundBottom={"#2C2C38"}
-                        floor={"심충"}/>
+                        floor={"심충"}
+                        data={thirdFloor}
+                    />
+
                     <MyLogBottomFloor
                         color={"white"}
                         background={"#2C2C38"}
@@ -117,9 +170,10 @@ function MyLogList() {
 
 const Div = styled.div`
     width : 100%;
-    height: 100vh;
+    
     background : #D2DADF;
-    z-index:-1
+    z-index:-1;
+    overflow:hidden;
 `
 
 const Scale = styled.img.attrs({

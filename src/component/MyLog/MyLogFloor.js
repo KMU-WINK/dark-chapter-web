@@ -7,6 +7,15 @@ import PaletteCircle from "../circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
 
 function MyLogFloor(props){
+    // console.log(props)
+    // console.log(props.floor, props.num)
+    // const date = props.data[0].createdAt;
+
+    // console.log(props.data[0].createdAt.split('T')[0])
+    let depth = 0;
+    const color = props.color;
+    const textColor = props.bodyTextColor
+
     const history = useHistory();
     let height = 0;
     if(props.num <= 3){
@@ -16,44 +25,41 @@ function MyLogFloor(props){
         height = props.num * 130 + 24;
     }
 
-    // 데이터 패칭할 때 이거 지우고 return()에서 map함수 쓰면 될듯
-    const rendering = () => {
-        let hr_height = 60;
-        // console.log(hr_height)
-        const result = [];
-        for (let i = 0; i< props.num; i++){
-            result.push(
-                <div style={{position: "relative"}}>
-                    <HR src={props.color === "white" ? white_hr: black_hr}
-                        h={hr_height}
-                    />
-                    <PostBox>
-                        <Post onClick={()=>{history.push('/myLog')}}>
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
 
-                            <CircleDiv>
-                                <PaletteCircle
-                                    width={60} height={60}
-                                    deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                                    color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                                    feeling={[20,10,20,50]}
-                                />
-                            </CircleDiv>
-
-                            <div style={{marginLeft:16}}>
-                                <div className="jejugothic">
-                                    <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>
-                                </div>
-
-                                <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>
-                            </div>
-                        </Post>
-                    </PostBox>
-                </div>
-            )
-            height += 60
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
         }
-        return result;
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={60} height={60}
+            color={color}
+            feeling={feeling}
+        />
     }
+
+    const setDepth = (value) => {
+        console.log(value);
+        if (value < 100) depth = 0;
+        else if (value < 500) depth = 1;
+        else depth = 2;
+        return depth;
+    }
+
     return(
         <Wrap
             backgroundTop={props.backgroundTop}
@@ -61,22 +67,39 @@ function MyLogFloor(props){
             num={props.num}
             height={height}
         >
-            <Text color={props.color}>{props.floor}</Text>
-
-            {rendering()}
+            <Text color={color}>{props.floor}</Text>
 
             {/*데이터 패칭할 때 이거 사용 + map함수*/}
-            {/*<PostBox>*/}
-            {/*    <Hr borderColor = {props.color}/>*/}
-            {/*    <Circle circleColor = {props.color}></Circle>*/}
-            {/*    <Post>*/}
+            {props.data.map(data =>
+                <div style={{position: "relative"}}>
+                    <HR src={props.color === "white" ? white_hr: black_hr}/>
+                    <PostBox>
+                        <Post onClick={()=>{
+                            history.push({
+                                pathname: '/myLog',
+                                state: {
+                                    state : data,
+                                    depth : setDepth(data.depth),
+                                },
 
-            {/*        <PaletteCircle/>*/}
-            {/*        <PostTitle color={props.color}>썸남앞에서 어쩌고 바보멍청이...  </PostTitle>*/}
-            {/*        <PostBody color={props.bodyTextColor}>내용내용내용 어쩌고 내용내용 ㅇ내 이용 애용아임 아아이이이잉이이이잉... 더보기</PostBody>*/}
-            {/*    </Post>*/}
-            {/*</PostBox>*/}
-            {/**/}
+                            })
+                        }}>
+
+                            <CircleDiv>
+                                <SetCircle data={data}/>
+                            </CircleDiv>
+
+                            <div style={{paddingLeft:16}}>
+                                <div className="jejugothic">
+                                    <PostTitle color={color}>{data.title}</PostTitle>
+                                </div>
+
+                                <PostBody color={textColor}>{data.content}</PostBody>
+                            </div>
+                        </Post>
+                    </PostBox>
+                </div>
+            )}
 
         </Wrap>
     )
@@ -100,20 +123,19 @@ const Text = styled.div`
 `
 
 const PostBox = styled.div`
-    width : 360px;
     height : 130px;
     position: relative;
-    margin: 0 64px;
 `
 
 const Post = styled.div`
-    width : 100%;
+    
     height : 60px;
     display: flex;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+    padding-left: 64px;
+
 `
 
 const CircleDiv = styled.div`
@@ -126,7 +148,13 @@ const PostTitle = styled.span`
     line-height: 21px;
     letter-spacing: -0.03em;
     font-weight : bold;
-    color: ${props => props.color}
+    color: ${props => props.color};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
 `
 
 const PostBody = styled.div`
@@ -137,13 +165,19 @@ const PostBody = styled.div`
     font-size: 10px;
     line-height: 13px;
     color: ${props => props.color};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
 `
 
 const HR = styled.img`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+
 `
 
 export default MyLogFloor

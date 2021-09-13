@@ -2,22 +2,46 @@ import styled from "styled-components";
 import logo from "../svg/logo.svg";
 import menu from "../svg/menu.svg";
 import plus from "../svg/plus.svg";
-import initPalette from "../svg/initPalette.svg"
 import wave from "../svg/wave.svg";
 import download from "../svg/download.svg"
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import PaletteCircle from "../component/circle/PaletteCircle";
 import {useHistory} from "react-router-dom";
+import * as board_service from "../axios/board-service";
+import empty_circle from "../svg/home_empty_circle.svg"
 
 const Home = () => {
+
+    console.log(window.innerHeight)
+
     const history = useHistory();
     const [title, setTitle] = useState('흑역사를 입력해주세요')
-    const [init, setInit] = useState(false);
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getBoard = async () => {
+            const result = await board_service.getBoard(sessionStorage.getItem("email"));
+            setData(result)
+        }
+        getBoard()
+        console.log(data.length)
+
+    }, [])
+
+    useEffect(()=>{
+        if(data.length !== 0){
+            setTitle(data[data.length-1].title)
+        }
+    },[data])
 
     return <All>
         <Header>
-            <MenuIcon onClick={()=>{history.push('/menu')}}/>
-            <PlusIcon onClick={()=>{history.push('/post')}}/>
+            <MenuIcon onClick={() => {
+                history.push('/menu')
+            }}/>
+            <PlusIcon onClick={() => {
+                history.push('/post')
+            }}/>
         </Header>
 
         <Wrap>
@@ -29,39 +53,43 @@ const Home = () => {
         </Wrap>
 
         <Wrap3>
-            {init?
+            {data.length === 0 ?
                 <InitDiv/>
                 :
-                <>
-                    {/*<White/>*/}
-                    <PaletteCircle
-                        width={128} height={128}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        color={["#FF2036FF","#FFF890FF","#366197FF","#faaba4"]}
-                        feeling={[40,10,20,30]}
-                    />
-                </>
+
+                <PaletteCircle
+                    width={128} height={128}
+                    color={["#FE4E62", "#FFF9D9", "#466598", "#FDADA6"]}
+                    feeling={[data[data.length-1].angry, data[data.length-1].shameful, data[data.length-1].gloomy, data[data.length-1].funny]}
+                    // color={color}
+                    // feeling={feeling}
+                />
+
             }
         </Wrap3>
 
-        <WaveDiv>
-            {init?
-                <Wave top={551} height={208}/>
-                :
-                <Wave top={291.11} height={467}/>
-            }
-        </WaveDiv>
 
-        <Wrap2>
-            <Page onClick={()=>{history.push('/myLogPage')}}>
+        {data.length === 0?
+            <Wave top={551} height={208}/>
+            :
+            <Wave top={291.11}  height={window.innerHeight-285}/>
+        }
+
+
+        <Wrap4 margin={data.length === 0}>
+            <Page onClick={() => {
+                history.push('/myLogPage')
+            }}>
                 <Icon/>
                 <Name className="jejugothic">My_log</Name>
             </Page>
-            <Page onClick={()=>{history.push('/other')}}>
+            <Page onClick={() => {
+                history.push('/other')
+            }}>
                 <Icon/>
                 <Name className="jejugothic">Other_log</Name>
             </Page>
-        </Wrap2>
+        </Wrap4>
     </All>
 }
 
@@ -80,14 +108,14 @@ const Header = styled.div`
 `
 
 const MenuIcon = styled.img.attrs({
-    src : menu
+    src: menu
 })`
     margin-left : 24px;
     margin-top : 9px;
 `
 
 const PlusIcon = styled.img.attrs({
-    src : plus
+    src: plus
 })`
   margin-right : 24px;
   margin-top : 8.5px; 
@@ -99,8 +127,8 @@ const Wrap = styled.div`
 `
 
 const LogoDiv = styled.img.attrs({
-        src : logo
-    })`
+    src: logo
+})`
     margin-top : 78px;
 `
 
@@ -121,7 +149,7 @@ const Wrap3 = styled.div`
 `
 
 const InitDiv = styled.img.attrs({
-    src : initPalette
+    src: empty_circle
 })`
 `
 
@@ -130,18 +158,21 @@ const WaveDiv = styled.div`
 `
 
 const Wave = styled.img.attrs({
-    src : wave
+    src: wave
 })`
   position: absolute;
-  width : 360px;
+  width : 100%;
+
   height : ${props=>props.height}px;
-  top: ${props=>props.top}px;
+  bottom:0;
+  // top: ${props => props.top}px;
+  z-index : 5;
 `
 
-const Wrap2 = styled.div`
+const Wrap4 = styled.div`
   display : flex;
   justify-content: space-around;
-  margin : 320px 30px 0 30px;
+  margin : ${props => props.margin  ? "204px 0 0 0" : "320px 30px 0 30px"};
   z-index : 5;
 `
 
@@ -152,7 +183,7 @@ const Page = styled.div`
 `
 
 const Icon = styled.img.attrs({
-    src : download
+    src: download
 })`
 `
 
@@ -168,9 +199,9 @@ const Name = styled.div`
 `
 const White = styled.div`
   background : white;
-  width : ${props=>props.w}px;
+  width : ${props => props.w}px;
   position : absolute;
-  height : ${props=>props.h}px;
+  height : ${props => props.h}px;
   z-index : -10;
   mix-blend-mode : normal;
 `

@@ -1,9 +1,37 @@
 import PaletteCircle from "../component/circle/PaletteCircle";
 import styled, { keyframes } from "styled-components";
-import { useHistory } from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 const GenerateGemstone = () => {
     const history = useHistory();
+    const location = useLocation();
+
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={240} height={240}
+            color={color}
+            feeling={feeling}
+        />
+    }
 
     setTimeout(function() {
         history.push('/gotoGemstone');
