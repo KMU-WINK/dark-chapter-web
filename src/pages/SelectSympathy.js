@@ -71,7 +71,7 @@ const SelectSympathy = (props) => {
         }
         getUser();
     }, [feelName])
-    
+
     const postSympathy = async() => {
         await baseService.post(`/sympathy`, body)
         .then(
@@ -83,16 +83,18 @@ const SelectSympathy = (props) => {
         return <>
             {feel !== ""?
                 <Wrap>
-                    <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
-                    {/*<SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>*/}
-                    <Complete onClick={()=>{history.push({pathname:'/sympathy', board_id: props.location.state._id}); postSympathy()}} opacity={1}>완료</Complete>
+                    <Circles>
+                        <SympathyCircle black={true} feeling={[5]} color={[feel]} backgroundColor={"#2c2d39"} />
+                    </Circles>
+                    <Message/>
+                    <CompleteDiv><Complete onClick={()=>{history.push({pathname:'/sympathy', board_id: props.location.state._id}); postSympathy()}} opacity={1}>완료</Complete></CompleteDiv>
                 </Wrap>
                 : <Wrap>
                     <Circles>
                         <SetCircle data={location.state}/>
                     </Circles>
                     <Message>공감할 감정을 눌러주세요</Message>
-                    <Complete opacity={0.5}>완료</Complete>
+                    <CompleteDiv><Complete opacity={0.5}>완료</Complete></CompleteDiv>
                 </Wrap>
             }
         </>
@@ -131,6 +133,8 @@ const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
   background: #2c2c38;
+  position : relative;
+  
 `
 
 const Circles = styled.div`
@@ -141,13 +145,14 @@ const Circles = styled.div`
 `
 
 const Message = styled.div`
-  margin-top : 60px;
+  margin-top : 300px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
   text-align: center;
   letter-spacing: -0.03em;
+  height : 21px;
   color: #FFFFFF;
 `
 
@@ -186,14 +191,18 @@ const SelectDiv = styled.div`
 const Wrap1 = styled.div`
   display : flex;
   justify-content: flex-end;
+  position : relative;
 `
-
+const CompleteDiv = styled.div`
+  display : flex;
+  justify-content: flex-end;
+  //margin-right : 15%;
+  width : 90%;
+`
 const Complete = styled.button`
-  position: absolute;
   width: 61px;
   height: 18px;
-  left: 310px;
-  top: 520.5px;
+  margin-top : 24px;
   font-family: PretendartVariable;
   font-style: normal;
   font-weight: normal;
@@ -201,7 +210,7 @@ const Complete = styled.button`
   line-height: 21px;
   display: flex;
   align-items: center;
-  text-align: right;
+  text-align: left;
   color: #FFFFFF;
   opacity: ${props=>props.opacity};
 `
