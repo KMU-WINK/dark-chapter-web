@@ -7,7 +7,6 @@ import baseService from "../axios/base-service";
 const Sympathy = (props) => {
     const [colorData, setColorData] = useState([]);
     const [sympathyMessage, setSympathyMessage] = useState("");
-    const [colorData, setColorData] = useState([])
 
     useEffect(() => {
       const getSympathy = async() => {
@@ -50,7 +49,7 @@ const Sympathy = (props) => {
 //                         color={colorData}
 //                         black={true}
 //                         size={240}
-//         />
+        />
         <Center>
             <SympathyCircle backgroundColor={"#2c2c38"}
                             feeling={[50,50,50,50]}
