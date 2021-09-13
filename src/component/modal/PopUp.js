@@ -2,6 +2,9 @@ import styled, { keyframes } from "styled-components";
 import React,{ useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import toastMessage from "./ToastMessage.js"
+import {getUser} from "../../axios/user-service";
+import {createStone} from "../../axios/stone-service";
+import baseService from "../../axios/base-service";
 import {deleteBoard} from "../../axios/board-service"
 
 function PopUp(props) {
@@ -20,7 +23,7 @@ function PopUp(props) {
         })
     }
 
-    const yesButtonClicked = () => {
+    const yesButtonClicked = async() => {
         switch (props.title) {
             case "exit_PostPage":
                 history.push('/home');
@@ -44,6 +47,60 @@ function PopUp(props) {
                 }, 3000);
                 break;
             case "overcome":
+                const userEmail = window.sessionStorage.getItem('email');
+                const id = await getUser(userEmail);
+                let feeling = [0,0,0,0];
+                let colorList = [];
+                await baseService.get(`/sympathy/${props.data._id}`)
+                    .then(result => {
+                        console.log(result.data)
+                        for(let i = 0; i < result.data.length; i++) {
+                            if(result.data[i].angry === 1) {
+                                feeling[0]++;
+                                colorList.push("#fe4e62")
+                            }
+                            else if(result.data[i].gloomy === 1) {
+                                feeling[1]++;
+                                colorList.push("#466598")
+                            }
+                            else if(result.data[i].funny === 1) {
+                                feeling[2]++;
+                                colorList.push("#fff9d9")
+                            }
+                            else if(result.data[i].shameful === 1) {
+                                feeling[3]++;
+                                colorList.push("#fdada6")
+                            }
+                        }
+                        console.log(colorList)
+                        console.log(feeling)
+                    }
+                )
+                try {
+                    const body = {
+                        "title": props.data.title,
+                        "content": props.data.content,
+                        "writer": id._id,
+                        "angry": props.data.angry,
+                        "funny": props.data.funny,
+                        "gloomy": props.data.gloomy,
+                        "shameful": props.data.shameful,
+                        "sympathyAngry": feeling[0],
+                        "sympathyFunny": feeling[2],
+                        "sympathyGloomy": feeling[1],
+                        "sympathyShameful": feeling[3],
+                        "tag": props.data.tag,
+                    }
+                    console.log(body)
+                    await createStone(body).then(()=> {
+                        setTimeout(function() {
+                            setVisible(false);
+                            history.push('/generateGemstone')
+                        }, 300);
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
                 history.push('/generateGemstone');
                 break;
             case "share_posting" :

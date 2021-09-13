@@ -3,9 +3,65 @@ import GemstoneCircle from "../component/circle/GemstoneCircle";
 import GoBackBtn from "../component/button/GoBackBtn";
 import "../fonts/fonts.css"
 import {useHistory} from "react-router-dom";
+import PaletteCircle from "../component/circle/PaletteCircle";
+import {useEffect, useState} from "react";
+import * as stone_service from "../axios/stone-service";
 
 const GemstoneList = () => {
     const history = useHistory();
+    const [data, setData] = useState([]);
+
+    useEffect(async()=>{
+        console.log(sessionStorage.getItem("email"))
+        const result = await stone_service.getMyAllStone(sessionStorage.getItem("email"))
+        setData(result);
+        console.log("result ",result);
+    },[])
+
+    let paletteFeeling = [];
+    let paletteColor = [];
+    let sympathyFeeling = [];
+    let sympathyColor = [];
+
+    const SetPaletteCircle = () => {
+        if (data.angry>0) {
+            paletteFeeling.push(data.angry);
+            paletteColor.push("#FE4E62");
+        }
+        if (data.shameful>0) {
+            paletteFeeling.push(data.shameful);
+            paletteColor.push("#FFF9D9");
+        }
+        if (data.gloomy>0) {
+            paletteFeeling.push(data.gloomy);
+            paletteColor.push("#466598");
+        }
+        if (data.funny>0) {
+            paletteFeeling.push(data.funny);
+            paletteColor.push("#FDADA6");
+        }
+        console.log(paletteFeeling);
+        console.log(paletteColor);
+    }
+
+    const SetSympathyCircle = () => {
+        if (data.sympathyAngry>0) {
+            sympathyFeeling.push(data.sympathyAngry);
+            paletteColor.push("#FE4E62");
+        }
+        if (data.sympathyShameful>0) {
+            sympathyFeeling.push(data.sympathyShameful);
+            paletteColor.push("#FFF9D9");
+        }
+        if (data.sympathyGloomy>0) {
+            sympathyFeeling.push(data.sympathyGloomy);
+            paletteColor.push("#466598");
+        }
+        if (data.sympathyFunny>0) {
+            sympathyFeeling.push(data.sympathyFunny);
+            paletteColor.push("#FDADA6");
+        }
+    }
 
     return <All className="jejugothic">
         <Header>
@@ -13,75 +69,31 @@ const GemstoneList = () => {
             <Text>원석함</Text>
         </Header>
 
-        {/* 나중에 연결할 때 map 사용 */}
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        sympathyFeeling={[50,30,27,20]}
-                        sympathyColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                                                black={false}
+        {
+            <Log>
+                <Wrap onClick={() => {
+                    history.push({pathname:"/gemstoneLog"})
+                }}>
+                    <Wrap1>
+                        <GemstoneCircle
+                            size={85}
+                            sympathyFeeling={[50, 30, 27, 20]}
+                            sympathyColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                            black={false}
 
-                        width={85} height={85}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[4,1,2,3]}
-                    />
-                </Wrap1>
+                            width={85} height={85}
+                            paletteColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                            paletteFeeling={[4, 1, 2, 3]}
+                        />
+                    </Wrap1>
 
-                <Wrap2 className={"jejugothic"}>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
-
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        backgroundColor={"#2c2c38"}
-                        sympathyFeeling={[50,47,45,43]}
-                        sympathyColor={["#466598","#fe4e62","#fdada6","#fff9d9"]}
-                        black={false}
-
-                        width={85} height={85}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[2,1,2,5]}
-                    />
-                </Wrap1>
-
-                <Wrap2>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
-
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        backgroundColor={"#2c2c38"}
-                        sympathyFeeling={[50,47,45,43]}
-                        sympathyColor={["#fff9d9","#466598","#fe4e62","#fdada6"]}
-                        black={false}
-
-                        width={85} height={85}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[2,2,4,2]}
-                    />
-                </Wrap1>
-
-                <Wrap2>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
+                    <Wrap2 className={"jejugothic"}>
+                        <Title>흑역사 제목</Title>
+                        <Date>20.02.01</Date>
+                    </Wrap2>
+                </Wrap>
+            </Log>
+        }
     </All>
 }
 
@@ -104,7 +116,7 @@ const Text = styled.span`
   height: 20px;
   left: 53.24px;
   top: 11.85px;
-  font-style: normal; 
+  font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;
