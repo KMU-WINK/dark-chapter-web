@@ -120,7 +120,7 @@ const MyLog = (props) => {
         <Wrap2 onClick={()=>{clickPalette()}}>
             <SetCircle data={location.state.state}/>
             {palette?
-                null
+                <SetCircle data={location.state.state}/>
                 :
                 <SympathyCircle black={true}
                                 feeling={sympathyFeel}
@@ -140,7 +140,7 @@ const MyLog = (props) => {
     </Wrap>
 }
 
-export default MyLog
+export default MyLog;
 
 const Wrap = styled.div`
   height: 100vh;

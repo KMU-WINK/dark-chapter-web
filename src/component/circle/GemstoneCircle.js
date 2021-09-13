@@ -6,14 +6,16 @@ import surfaceCircle from "../../svg/surfaceCircle.svg";
 
 const GemstoneCircle = (props) => {
     return <Wrap size={props.size}>
-        <Wrap1>
-            <SympathyCircle size={props.size}
-                            backgroundColor={props.backgroundColor}
-                            feeling={props.sympathyFeeling}
-                            color={props.sympathyColor}
-                            black={props.black}
-            />
-        </Wrap1>
+        <Wrap11>
+            <Wrap1 left={props.size=== 85? 165:120}>
+                <SympathyCircle size={props.size}
+                                backgroundColor={props.backgroundColor}
+                                feeling={props.sympathyFeeling}
+                                color={props.sympathyColor}
+                                black={props.black}
+                />
+            </Wrap1>
+        </Wrap11>
         <ShadowCircle style={{zIndex:2}} size={props.size}/>
         <Wrap2>
             <PaletteCircle
@@ -30,19 +32,22 @@ const GemstoneCircle = (props) => {
 export default GemstoneCircle;
 
 const Wrap = styled.div`
-  width: ${props=>props.size}px;
-  height: ${props=>props.size}px;
+  // width: ${props=>props.size}px;
+  // height: ${props=>props.size}px;
   position : relative;
   display : flex;
   justify-content: center;
 `
-
+const Wrap11 = styled.div`
+  display : flex;
+  justify-content: center;
+`
 const Wrap1 = styled.div`
-  width: ${props=>props.size}px;
-  height: ${props=>props.size}px;
+  // width: ${props=>props.size}px;
+  // height: ${props=>props.size}px;
   position: absolute;
   top : 130px;
-  left : 175px;
+  left : ${props=>props.left}px;
   z-index:1;
 `
 
@@ -51,7 +56,6 @@ const ShadowCircle = styled.img.attrs({
 })`
     position : absolute;
     top : -5px;
-    left : -5px;
     width: ${props=>props.size+10}px;
     height: ${props=>props.size+10}px;
 `

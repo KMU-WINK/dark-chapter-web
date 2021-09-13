@@ -93,6 +93,52 @@ const GemstoneList = () => {
                 </Wrap>
             </Log>
         }
+        <Log>
+            <Wrap onClick={() => {
+                history.push({pathname:"/gemstoneLog"})
+            }}>
+                <Wrap1>
+                    <GemstoneCircle
+                        size={85}
+                        sympathyFeeling={[50, 30, 27, 20]}
+                        sympathyColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                        black={false}
+
+                        width={85} height={85}
+                        paletteColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                        paletteFeeling={[4, 1, 2, 3]}
+                    />
+                </Wrap1>
+
+                <Wrap2 className={"jejugothic"}>
+                    <Title>흑역사 제목</Title>
+                    <Date>20.02.01</Date>
+                </Wrap2>
+            </Wrap>
+        </Log>
+        <Log>
+            <Wrap onClick={() => {
+                history.push({pathname:"/gemstoneLog"})
+            }}>
+                <Wrap1>
+                    <GemstoneCircle
+                        size={85}
+                        sympathyFeeling={[50, 30, 27, 20]}
+                        sympathyColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                        black={false}
+
+                        width={85} height={85}
+                        paletteColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                        paletteFeeling={[4, 1, 2, 3]}
+                    />
+                </Wrap1>
+
+                <Wrap2 className={"jejugothic"}>
+                    <Title>흑역사 제목</Title>
+                    <Date>20.02.01</Date>
+                </Wrap2>
+            </Wrap>
+        </Log>
     </All>
 }
 

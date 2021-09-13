@@ -34,6 +34,32 @@ const Home = () => {
         }
     },[data])
 
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={128} height={128}
+            color={color}
+            feeling={feeling}
+        />
+    }
+
     return <All>
         <Header>
             <MenuIcon onClick={() => {
@@ -56,14 +82,7 @@ const Home = () => {
             {data.length === 0 ?
                 <InitDiv/>
                 :
-
-                <PaletteCircle
-                    width={128} height={128}
-                    color={["#FE4E62", "#FFF9D9", "#466598", "#FDADA6"]}
-                    feeling={[data[data.length-1].angry, data[data.length-1].shameful, data[data.length-1].gloomy, data[data.length-1].funny]}
-                    // color={color}
-                    // feeling={feeling}
-                />
+                <SetCircle data={data[data.length-1]}/>
 
             }
         </Wrap3>
