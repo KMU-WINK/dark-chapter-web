@@ -5,7 +5,6 @@ import toastMessage from "./ToastMessage.js"
 import {deleteBoard} from "../../axios/board-service"
 
 function PopUp(props) {
-    console.log(props)
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const [toastText, setToastText] = useState("");

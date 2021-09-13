@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import PopUp from "./PopUp.js";
 
 const ContentMenu = (props) => {
-    console.log(props)
     const {onClose} = props;
     const [isPopup, setIsPopup] = useState(" ");
 

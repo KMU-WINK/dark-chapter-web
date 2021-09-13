@@ -7,7 +7,6 @@ import blackList from "../../svg/list_black.svg";
 
 const ContentHeader = (props) => {
     const [visible, setVisible] = useState(false);
-    console.log(props)
 
     return <>
         <Header>
