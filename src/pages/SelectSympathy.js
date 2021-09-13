@@ -70,7 +70,7 @@ const SelectSympathy = (props) => {
             console.log(body)
         }
         getUser();
-    }, [feelName])
+    }, [])
 
     const postSympathy = async() => {
         await baseService.post(`/sympathy`, body)

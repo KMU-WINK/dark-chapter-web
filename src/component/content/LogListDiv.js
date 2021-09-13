@@ -83,7 +83,6 @@ const LogListDiv = (props) => {
 export default LogListDiv;
 
 const Wrap = styled.div`
-    width : 100%;
     background : #2C2C38;
     padding-top:20px;
     height: ${props => props.height}px;
@@ -99,8 +98,7 @@ const Text = styled.div`
 `
 
 const PostBox = styled.div`
-    width : 360px;
-    height : 130px;
+    height : 100px;
     position: relative;
     margin: 0 64px;
 `
