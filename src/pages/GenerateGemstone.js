@@ -35,7 +35,7 @@ const GenerateGemstone = () => {
 
     setTimeout(function() {
         history.push('/gotoGemstone');
-    }, 3000);
+    }, 5000);
 
     return <Wrap>
         <Wrap1>
@@ -54,7 +54,8 @@ const GenerateGemstone = () => {
 export default GenerateGemstone;
 
 const FadeOut = keyframes`
-    0% { opacity: 1; }
+    0% { opacity: 0; }
+    30% { opacity: 1; }
     100% { opacity: 0; }
 `
 const Wrap = styled.div`
@@ -70,7 +71,7 @@ const Wrap1 = styled.div`
   width: 100%;
   position: relative;
   background: #2C2C38;
-  animation: ${FadeOut} 3s;
+  animation: ${FadeOut} 5s;
 `
 
 const Wrap2 = styled.div`

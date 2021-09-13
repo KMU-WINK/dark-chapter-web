@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import baseService from "../axios/base-service";
 
 const Sympathy = (props) => {
+    const [colorData, setColorData] = useState([]);
+    const [sympathyMessage, setSympathyMessage] = useState("");
     const [colorData, setColorData] = useState([])
 
     useEffect(() => {
@@ -13,15 +15,24 @@ const Sympathy = (props) => {
         .then(
           result => {
             console.log(result.data)
-            let colorList = [];
-            let feeling = [];
-            for(let i = 0; i < result.data.length; i++) {
-              if(result.data[i].angry === 1) {
-                  colorList.push("#fe4e62")
-              }
-              else if(result.data[i].gloomy === 1) colorList.push("#466598")
-              else if(result.data[i].funny === 1) colorList.push("#fff9d9")
-              else if(result.data[i].shameful === 1) colorList.push("#fdada6")
+            var colorList = []
+            for(var i = 0; i < result.data.length; i++) {
+                if(result.data[i].angry === 1) {
+                    colorList.push("#fe4e62");
+                    setSympathyMessage("분노는 나의 힘..");
+                }
+                else if(result.data[i].gloomy === 1) {
+                    colorList.push("#466598");
+                    setSympathyMessage("덕분에 한결 가벼워졌어요");
+                }
+                else if(result.data[i].funny === 1) {
+                    colorList.push("#fff9d9");
+                    setSympathyMessage("당신을 웃길 수 있어 행복해요");
+                }
+                else if(result.data[i].shameful === 1) {
+                    colorList.push("#fdada6");
+                    setSympathyMessage("부끄러움은 당신의 몫..");
+                }
             }
             setColorData(colorList)
           }
@@ -34,6 +45,12 @@ const Sympathy = (props) => {
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
+//         <SympathyCircle backgroundColor={"#2c2c38"}
+//                         feeling={[50,50,50,50]}
+//                         color={colorData}
+//                         black={true}
+//                         size={240}
+//         />
         <Center>
             <SympathyCircle backgroundColor={"#2c2c38"}
                             feeling={[50,50,50,50]}
@@ -43,7 +60,7 @@ const Sympathy = (props) => {
             />
         </Center>
         <Text>
-            <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
+            <SympathyText>{sympathyMessage}</SympathyText>
             <FromText>-심해에서 용치놀래기가-</FromText>
         </Text>
     </Wrap>
