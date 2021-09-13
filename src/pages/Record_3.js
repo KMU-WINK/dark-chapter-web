@@ -12,6 +12,7 @@ import Record_3_bottom from "../component/Record_3_bottom";
 
 import white_scale from "../svg/white_scale.svg"
 import CategoryPopup from "../component/PopUp/CategoryPopup";
+import {useHistory} from "react-router";
 
 //TO DO
 //1. 미터 글씨 커지게 하기
@@ -20,6 +21,8 @@ import CategoryPopup from "../component/PopUp/CategoryPopup";
 
 
 function Record_3(props) {
+    const history = useHistory();
+    // console.log(props.history.location.state)
     const [isMove, setIsMove] = useState(false);
     const [isHundred, setIsHundred] = useState(false);
     const [nextMeter, setNextMeter] = useState(0);
@@ -154,6 +157,7 @@ function Record_3(props) {
                 category={category}
                 setCategory={setCategory}
                 isHundred={isHundred}
+                location_data = {props.history.location.state}
             />
             <div id="ykgkg">
                 {isMove ? null :

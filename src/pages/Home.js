@@ -12,6 +12,8 @@ import empty_circle from "../svg/home_empty_circle.svg"
 
 const Home = () => {
 
+    console.log(window.innerHeight)
+
     const history = useHistory();
     const [title, setTitle] = useState('흑역사를 입력해주세요')
     const [data, setData] = useState([])
@@ -67,11 +69,11 @@ const Home = () => {
         </Wrap3>
 
 
-            {data.length === 0?
-                <Wave top={551} height={208}/>
-                :
-                <Wave top={291.11} height={467}/>
-            }
+        {data.length === 0?
+            <Wave top={551} height={208}/>
+            :
+            <Wave top={291.11}  height={window.innerHeight-285}/>
+        }
 
 
         <Wrap4 margin={data.length === 0}>
@@ -95,7 +97,7 @@ export default Home;
 
 const All = styled.div`
   width : 100vw;
-  height : 100vh;
+  height : 100vg;
   background: #F3F3ED;
   overflow : no-content;
 `
@@ -161,7 +163,8 @@ const Wave = styled.img.attrs({
   position: absolute;
   width : 100%;
 
-  height : 100vh;
+  height : ${props=>props.height}px;
+  bottom:0
   // top: ${props => props.top}px;
 `
 

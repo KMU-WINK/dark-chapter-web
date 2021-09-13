@@ -42,22 +42,6 @@ function Signup_1() {
             setMessage("이미 등록된 이메일 입니다.")
         }
 
-
-
-
-
-        // else if (email === "aaa@aa.com") {
-        //     // const result = await user_service.getUser(email)
-        //     // await console.log(result)
-        //     history.push({
-        //         pathname: '/signup/password',
-        //         state : {email: email}
-        //     })
-
-        // }
-        // else setMessage("이미 등록된 이메일 입니다.")
-
-
     }
 
 
