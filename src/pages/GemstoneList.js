@@ -3,9 +3,37 @@ import GemstoneCircle from "../component/circle/GemstoneCircle";
 import GoBackBtn from "../component/button/GoBackBtn";
 import "../fonts/fonts.css"
 import {useHistory} from "react-router-dom";
+import PaletteCircle from "../component/circle/PaletteCircle";
 
 const GemstoneList = () => {
     const history = useHistory();
+
+    const SetCircle = (props) => {
+        let feeling = [];
+        let color = [];
+
+        if (props.data.angry>0) {
+            feeling.push(props.data.angry);
+            color.push("#FE4E62");
+        }
+        if (props.data.shameful>0) {
+            feeling.push(props.data.shameful);
+            color.push("#FFF9D9");
+        }
+        if (props.data.gloomy>0) {
+            feeling.push(props.data.gloomy);
+            color.push("#466598");
+        }
+        if (props.data.funny>0) {
+            feeling.push(props.data.funny);
+            color.push("#FDADA6");
+        }
+        return <PaletteCircle
+            width={240} height={240}
+            color={color}
+            feeling={feeling}
+        />
+    }
 
     return <All className="jejugothic">
         <Header>
@@ -13,75 +41,31 @@ const GemstoneList = () => {
             <Text>원석함</Text>
         </Header>
 
-        {/* 나중에 연결할 때 map 사용 */}
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        sympathyFeeling={[50,30,27,20]}
-                        sympathyColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                                                black={false}
+        {
+            <Log>
+                <Wrap onClick={() => {
+                    history.push({pathname:"/gemstoneLog"})
+                }}>
+                    <Wrap1>
+                        <GemstoneCircle
+                            size={85}
+                            sympathyFeeling={[50, 30, 27, 20]}
+                            sympathyColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                            black={false}
 
-                        width={85} height={85}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[4,1,2,3]}
-                    />
-                </Wrap1>
+                            width={85} height={85}
+                            paletteColor={["#fe4e62", "#466598", "#fdada6", "#fff9d9"]}
+                            paletteFeeling={[4, 1, 2, 3]}
+                        />
+                    </Wrap1>
 
-                <Wrap2 className={"jejugothic"}>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
-
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        backgroundColor={"#2c2c38"}
-                        sympathyFeeling={[50,47,45,43]}
-                        sympathyColor={["#466598","#fe4e62","#fdada6","#fff9d9"]}
-                        black={false}
-
-                        width={85} height={85}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[2,1,2,5]}
-                    />
-                </Wrap1>
-
-                <Wrap2>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
-
-        <Log>
-            <Wrap onClick={()=>{history.push("/gemstoneLog")}}>
-                <Wrap1>
-                    <GemstoneCircle
-                        size={85}
-                        backgroundColor={"#2c2c38"}
-                        sympathyFeeling={[50,47,45,43]}
-                        sympathyColor={["#fff9d9","#466598","#fe4e62","#fdada6"]}
-                        black={false}
-
-                        width={85} height={85}
-                        deg={["14% 14%", "14% 86%", "86% 14%","86% 86%"]}
-                        paletteColor={["#fe4e62","#466598","#fdada6","#fff9d9"]}
-                        paletteFeeling={[2,2,4,2]}
-                    />
-                </Wrap1>
-
-                <Wrap2>
-                    <Title>흑역사 제목</Title>
-                    <Date>20.02.01</Date>
-                </Wrap2>
-            </Wrap>
-        </Log>
+                    <Wrap2 className={"jejugothic"}>
+                        <Title>흑역사 제목</Title>
+                        <Date>20.02.01</Date>
+                    </Wrap2>
+                </Wrap>
+            </Log>
+        }
     </All>
 }
 
@@ -104,7 +88,7 @@ const Text = styled.span`
   height: 20px;
   left: 53.24px;
   top: 11.85px;
-  font-style: normal; 
+  font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;

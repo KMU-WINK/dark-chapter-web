@@ -13,9 +13,12 @@ const Sympathy = (props) => {
         .then(
           result => {
             console.log(result.data)
-            var colorList = []
-            for(var i = 0; i < result.data.length; i++) {
-              if(result.data[i].angry === 1) colorList.push("#fe4e62")
+            let colorList = [];
+            let feeling = [];
+            for(let i = 0; i < result.data.length; i++) {
+              if(result.data[i].angry === 1) {
+                  colorList.push("#fe4e62")
+              }
               else if(result.data[i].gloomy === 1) colorList.push("#466598")
               else if(result.data[i].funny === 1) colorList.push("#fff9d9")
               else if(result.data[i].shameful === 1) colorList.push("#fdada6")
