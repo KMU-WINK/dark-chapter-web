@@ -7,7 +7,7 @@ const SelectCategory = () => {
     return <>
         <CategoryDiv>
             <HashTag>#</HashTag>
-            <Category>썸남 썰</Category>
+            <Category>흑역사 썰</Category>
             <DownIcon/>
         </CategoryDiv>
     </>

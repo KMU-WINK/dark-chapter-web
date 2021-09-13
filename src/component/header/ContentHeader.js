@@ -7,7 +7,6 @@ import blackList from "../../svg/list_black.svg";
 
 const ContentHeader = (props) => {
     const [visible, setVisible] = useState(false);
-    console.log(props)
 
     return <>
         <Header>
@@ -26,7 +25,7 @@ const ContentHeader = (props) => {
             }
         </Header>
         {visible?
-            <ContentMenu onClose={setVisible} state={props.state}/>
+            <ContentMenu onClose={setVisible} state={props.state} boardId = {props.boardId}/>
             : null
         }
     </>

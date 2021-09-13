@@ -2,12 +2,23 @@ import styled, { keyframes } from "styled-components";
 import React,{ useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import toastMessage from "./ToastMessage.js"
+import {deleteBoard} from "../../axios/board-service"
 
 function PopUp(props) {
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const [toastText, setToastText] = useState("");
     const {onClose} = props;
+    const deleteBoardFunction = async () =>{
+        await deleteBoard(props.boardId).then(()=>{
+            setVisible(true)
+            setToastText("글이 삭제되었습니다");
+            setTimeout(function() {
+                setVisible(false)
+                history.push('/myLogPage')
+            }, 3000);
+        })
+    }
 
     const yesButtonClicked = () => {
         switch (props.title) {
@@ -23,10 +34,7 @@ function PopUp(props) {
                 break;
             case "delete_posting":
                 setVisible(true);
-                setToastText("흑역사를 삭제했어요.");
-                setTimeout(function() {
-                    setVisible(false);
-                }, 3000);
+                deleteBoardFunction()
                 break;
             case "delete_gemstone":
                 setVisible(true);
@@ -37,6 +45,9 @@ function PopUp(props) {
                 break;
             case "overcome":
                 history.push('/generateGemstone');
+                break;
+            case "share_posting" :
+                alert('아직 준비하지 못한 기능입니다 ｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡')
                 break;
         }
     }
