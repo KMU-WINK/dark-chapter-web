@@ -132,10 +132,10 @@ const Wrap = styled.div`
   position : absolute;
   top : 3px;
   left : -120px;
-  animation: ${FadeOut} 1s ;
 `
 
 const Circle = styled.div`
+  animation: ${FadeOut} 1s ;
   position : absolute;
   top : ${props=>props.t-135}px;
   left : ${props=>props.l-60}px;
@@ -147,6 +147,7 @@ const Circle = styled.div`
   
 `
 const Black = styled.div`
+
   position : absolute;
   //left: 60px;
   //top: 153px;
