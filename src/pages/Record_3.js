@@ -64,8 +64,8 @@ function Record_3(props) {
         if (window.scrollY > 0) setIsMove(true)
         const target = document.getElementById("test")
 
-        let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
-        // console.log(tmp)
+        let tmp = Math.floor(target.getBoundingClientRect().y / 5 / 10) * 10
+
         setCrrnt(tmp)
 
 
@@ -86,15 +86,16 @@ function Record_3(props) {
             setIsHundred(true)
         }
 
-        const equalCircle = document.getElementById(String(tmp))
+
         // console.log(tmp)
-        if(tmp<=10000){
-            console.log("hi")
+        if(tmp<=10000 && tmp <= 0){
+
             for (let i = 0; i <= 10000; i += 10) {
                 const notEqualCircle = document.getElementById(String(i))
                 notEqualCircle.style.fontSize = "10px"
                 notEqualCircle.style.marginTop = "6px"
             }
+            const equalCircle = document.getElementById(String(tmp*-1))
 
             equalCircle.style.fontSize = "16px"
             equalCircle.style.marginTop = "4px"
@@ -103,7 +104,7 @@ function Record_3(props) {
             const dd = document.getElementById("10000")
             dd.style.fontSize = "16px";
             dd.style.marginTop = "4px";
-            console.log(dd)
+            // console.log(dd)
         }
 
     }, [y])

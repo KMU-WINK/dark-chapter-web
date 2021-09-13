@@ -7,7 +7,7 @@ import {useHistory} from "react-router";
 function Record_3_header(props) {
 
     const history = useHistory();
-    console.log(props)
+    // console.log(props)
     // console.log(props.history.location.state)
     const changeCategory = () => {
         props.setCategory(!props.category)
