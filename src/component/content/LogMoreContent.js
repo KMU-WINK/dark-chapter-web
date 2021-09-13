@@ -31,7 +31,7 @@ const LogMoreContent = (props) => {
             </TextBox>
         </Wrap>
         {isPopup?
-            <PopUp onClose={setIsPopup} state={props.state} title="overcome" text="흑역사를 극복하셨나요?"/>
+            <PopUp onClose={setIsPopup} state={props.state} title="overcome" text="흑역사를 극복하셨나요?" data={props.data}/>
             : null
         }
         </>

@@ -4,35 +4,63 @@ import GoBackBtn from "../component/button/GoBackBtn";
 import "../fonts/fonts.css"
 import {useHistory} from "react-router-dom";
 import PaletteCircle from "../component/circle/PaletteCircle";
+import {useEffect, useState} from "react";
+import * as stone_service from "../axios/stone-service";
 
 const GemstoneList = () => {
     const history = useHistory();
+    const [data, setData] = useState([]);
 
-    const SetCircle = (props) => {
-        let feeling = [];
-        let color = [];
+    useEffect(async()=>{
+        console.log(sessionStorage.getItem("email"))
+        const result = await stone_service.getMyAllStone(sessionStorage.getItem("email"))
+        setData(result);
+        console.log("result ",result);
+    },[])
 
-        if (props.data.angry>0) {
-            feeling.push(props.data.angry);
-            color.push("#FE4E62");
+    let paletteFeeling = [];
+    let paletteColor = [];
+    let sympathyFeeling = [];
+    let sympathyColor = [];
+
+    const SetPaletteCircle = () => {
+        if (data.angry>0) {
+            paletteFeeling.push(data.angry);
+            paletteColor.push("#FE4E62");
         }
-        if (props.data.shameful>0) {
-            feeling.push(props.data.shameful);
-            color.push("#FFF9D9");
+        if (data.shameful>0) {
+            paletteFeeling.push(data.shameful);
+            paletteColor.push("#FFF9D9");
         }
-        if (props.data.gloomy>0) {
-            feeling.push(props.data.gloomy);
-            color.push("#466598");
+        if (data.gloomy>0) {
+            paletteFeeling.push(data.gloomy);
+            paletteColor.push("#466598");
         }
-        if (props.data.funny>0) {
-            feeling.push(props.data.funny);
-            color.push("#FDADA6");
+        if (data.funny>0) {
+            paletteFeeling.push(data.funny);
+            paletteColor.push("#FDADA6");
         }
-        return <PaletteCircle
-            width={240} height={240}
-            color={color}
-            feeling={feeling}
-        />
+        console.log(paletteFeeling);
+        console.log(paletteColor);
+    }
+
+    const SetSympathyCircle = () => {
+        if (data.sympathyAngry>0) {
+            sympathyFeeling.push(data.sympathyAngry);
+            paletteColor.push("#FE4E62");
+        }
+        if (data.sympathyShameful>0) {
+            sympathyFeeling.push(data.sympathyShameful);
+            paletteColor.push("#FFF9D9");
+        }
+        if (data.sympathyGloomy>0) {
+            sympathyFeeling.push(data.sympathyGloomy);
+            paletteColor.push("#466598");
+        }
+        if (data.sympathyFunny>0) {
+            sympathyFeeling.push(data.sympathyFunny);
+            paletteColor.push("#FDADA6");
+        }
     }
 
     return <All className="jejugothic">
