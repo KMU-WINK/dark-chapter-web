@@ -62,7 +62,7 @@ function Record_3(props) {
         const target = document.getElementById("test")
 
         let tmp = Math.floor(target.getBoundingClientRect().y / -5 / 10) * 10
-        console.log(tmp)
+        // console.log(tmp)
         setCrrnt(tmp)
 
 
@@ -84,15 +84,25 @@ function Record_3(props) {
         }
 
         const equalCircle = document.getElementById(String(tmp))
+        // console.log(tmp)
+        if(tmp<=10000){
+            console.log("hi")
+            for (let i = 0; i <= 10000; i += 10) {
+                const notEqualCircle = document.getElementById(String(i))
+                notEqualCircle.style.fontSize = "10px"
+                notEqualCircle.style.marginTop = "6px"
+            }
 
-        for (let i = 0; i <= 10000; i += 10) {
-            const notEqualCircle = document.getElementById(String(i))
-            notEqualCircle.style.fontSize = "10px"
-            notEqualCircle.style.marginTop = "6px"
+            equalCircle.style.fontSize = "16px"
+            equalCircle.style.marginTop = "4px"
+        }
+        else{
+            const dd = document.getElementById("10000")
+            dd.style.fontSize = "16px";
+            dd.style.marginTop = "4px";
+            console.log(dd)
         }
 
-        equalCircle.style.fontSize = "16px"
-        equalCircle.style.marginTop = "4px"
     }, [y])
 
 

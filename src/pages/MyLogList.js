@@ -130,7 +130,7 @@ function MyLogList() {
                     <ScaleWrap height={height}>
                         {hrRendering()}
                     </ScaleWrap>
-                    <MyLogFloor
+                    <MyLogFloor id="floor"
                         color={"black"}
                         bodyTextColor={"#747474"}
                         backgroundTop={"#D2DADF"} backgroundBottom={"#97A2B2"}
@@ -170,9 +170,10 @@ function MyLogList() {
 
 const Div = styled.div`
     width : 100%;
-    height: 100vh;
+    
     background : #D2DADF;
-    z-index:-1
+    z-index:-1;
+    overflow:hidden;
 `
 
 const Scale = styled.img.attrs({

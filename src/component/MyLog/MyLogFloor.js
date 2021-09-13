@@ -123,19 +123,18 @@ const Text = styled.div`
 `
 
 const PostBox = styled.div`
-    width : 360px;
     height : 130px;
     position: relative;
-    padding: 0 64px;
 `
 
 const Post = styled.div`
-    width : 100%;
+    
     height : 60px;
     display: flex;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    padding-left: 64px;
 
 `
 
