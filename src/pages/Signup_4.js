@@ -37,7 +37,7 @@ function Signup_4(){
             history.push('/signup')
         }
         else if(result === 410){
-            setMessage("블가능한 별명입니다.")
+            setMessage("이미 등록된 별명 입니다..")
         }
 
         console.log(result)

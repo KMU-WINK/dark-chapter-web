@@ -31,11 +31,11 @@ function Login_1() {
         // result 402 : invalid email, 403: invalid password, 200 success
         console.log(result)
         if(result === 402) {
-            setEmailMessage("잘못된 이메일");
+            setEmailMessage("등록된 이메일이 아닙니다.");
             setPasswordMessage("")
         }
         else if(result===403) {
-            setPasswordMessage("잘못된 비밀번호");
+            setPasswordMessage("틀린 비밀번호 입니다.");
             setEmailMessage("")
         }
         else if(result === 200){
