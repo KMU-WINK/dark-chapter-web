@@ -148,6 +148,7 @@ function CategoryPopup(props){
     }
     const selectDone =() =>{
         props.setSelect(choose)
+        alert('아직 구현되지 않은 작업입니다...｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡');
         setUnvisible()
     }
 

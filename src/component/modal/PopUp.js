@@ -38,6 +38,9 @@ function PopUp(props) {
             case "overcome":
                 history.push('/generateGemstone');
                 break;
+            case "share_posting" :
+                alert('아직 준비하지 못한 기능입니다 ｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡')
+                break;
         }
     }
 
