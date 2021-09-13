@@ -97,7 +97,7 @@ export default Home;
 
 const All = styled.div`
   width : 100vw;
-  height : 100vg;
+  height : 100vh;
   background: #F3F3ED;
   overflow : no-content;
 `
@@ -164,8 +164,9 @@ const Wave = styled.img.attrs({
   width : 100%;
 
   height : ${props=>props.height}px;
-  bottom:0
+  bottom:0;
   // top: ${props => props.top}px;
+  z-index : 5;
 `
 
 const Wrap4 = styled.div`

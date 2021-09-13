@@ -20,7 +20,7 @@ const OtherList = () => {
     },[]);
     const hrRendering = () => {
         const result = [];
-        for(let i= 0;i < data.length*2.5; i++){
+        for(let i= 0;i < data.length*2; i++){
             result.push(<WhiteScale/>)
         }
         return result
@@ -77,4 +77,4 @@ const Wrap = styled.div`
   margin-top : 16px;
 `
 
-export default OtherList
+export default OtherList;

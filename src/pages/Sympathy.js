@@ -25,7 +25,7 @@ const Sympathy = (props) => {
         )
       }
       getSympathy();
-    })
+    },[])
 
     return <Link style={{color: 'white', textDecoration: 'none'}} to={'/other'}>
         <Wrap className={"jejugothic"}>
