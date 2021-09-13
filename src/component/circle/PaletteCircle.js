@@ -55,7 +55,7 @@ const Circle = styled.div`
   filter: blur(4px);
   backdrop-filter: blur(30px);
   mix-blend-mode: unset;
-  
+  z-index:1;
   // unset, hard-light, lighten, inherit, initial
 `
 
@@ -67,6 +67,7 @@ const White = styled.div`
   background: white;
   mix-blend-mode: hard-light;
   filter: blur(${props => props.h/50}px);
+  z-index: 0;
 `
 
 

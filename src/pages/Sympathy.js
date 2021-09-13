@@ -31,12 +31,14 @@ const Sympathy = (props) => {
         <Wrap className={"jejugothic"}>
         <Space/>
         <Circle/>
-        <SympathyCircle backgroundColor={"#2c2c38"}
-                        feeling={[50,50,50,50]}
-                        color={colorData}
-                        black={true}
-                        size={240}
-        />
+        <Center>
+            <SympathyCircle backgroundColor={"#2c2c38"}
+                            feeling={[50,50,50,50]}
+                            color={colorData}
+                            black={true}
+                            size={240}
+            />
+        </Center>
         <Text>
             <SympathyText>웃기다니 저도 한층 가볍네요!</SympathyText>
             <FromText>-심해에서 용치놀래기가-</FromText>
@@ -101,5 +103,8 @@ const FromText = styled.div`
   margin-top : 10px;
 `
 
-
+const Center = styled.div`
+  display : flex;
+  justify-content: center;
+`
 

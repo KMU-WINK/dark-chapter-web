@@ -136,12 +136,6 @@ const Wrap = styled.div`
   position : relative;
   
 `
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
 const Circles = styled.div`
   display : flex;
   justify-content: center;
