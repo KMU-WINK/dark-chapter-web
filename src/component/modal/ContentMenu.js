@@ -38,7 +38,7 @@ const ContentMenu = (props) => {
             : null
         }
         {isPopup === "delete"?
-            <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요."/>
+            <PopUp onClose={setIsPopup} state={props.state} title="delete_posting" text="정말 지우시겠어요?" text2="사라진 글은 되돌릴 수 없어요." boardId = {props.boardId}/>
             : null
         }
         {isPopup === "delete_gemstone"?
