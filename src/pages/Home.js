@@ -83,7 +83,6 @@ const Home = () => {
                 <InitDiv/>
                 :
                 <SetCircle data={data[data.length-1]}/>
-
             }
         </Wrap3>
 

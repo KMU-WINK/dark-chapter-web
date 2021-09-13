@@ -40,6 +40,7 @@ const Wrap = styled.div`
   display : flex;
   justify-content: center;
   position : relative;
+  isolation: isolate;
 `
 const Wrap2 = styled.div`
   display : flex;
@@ -54,7 +55,7 @@ const Circle = styled.div`
   background: radial-gradient(circle at ${props=>props.deg}, ${props=>props.color} ${props => props.feeling}%, transparent ${props=>props.per}%);
   filter: blur(4px);
   backdrop-filter: blur(30px);
-  mix-blend-mode: unset;
+  mix-blend-mode: soft-light;
   z-index:1;
   // unset, hard-light, lighten, inherit, initial
 `
@@ -64,7 +65,6 @@ const White = styled.div`
   height: ${props => props.h}px;
   border-radius: 50%;
   position: absolute;
-  background: white;
   mix-blend-mode: hard-light;
   filter: blur(${props => props.h/50}px);
   z-index: 0;
