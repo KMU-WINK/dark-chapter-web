@@ -9,6 +9,7 @@ function Step(props){
                 <Circle opacity={props.step[0]}></Circle>
                 <Circle opacity={props.step[1]}></Circle>
                 <Circle opacity={props.step[2]}></Circle>
+                <Circle opacity={props.step[3]}></Circle>
 
             </Div>
         </Container>

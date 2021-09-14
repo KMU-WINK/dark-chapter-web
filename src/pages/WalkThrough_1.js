@@ -39,7 +39,7 @@ const WalkThrough_1 = () => {
     const text2 = ["흑역사에 담긴 감정을 모아", "깊이", "빠뜨려요."]
     const text3 = ["비록, 흑역사일지라도", "저희가 함께", "잘해 드릴게요."]
 
-    const step = [[1,0.5,0.5], [0.5,1,0.5], [0.5,0.5,1]]
+    const step = [[1,0.5,0.5,0.5], [0.5,1,0.5,0.5], [0.5,0.5,1,0.5], [0.5,0.5,0.5,1]]
 
     // useEffect(() => {
     //     if(currentIdx === 3){
@@ -57,7 +57,7 @@ const WalkThrough_1 = () => {
     return (
 
         <Container id="qq">
-            {currentIdx !== 3 ? <Step step={step[currentIdx]}/> : null}
+            {currentIdx !== 4 ? <Step step={step[currentIdx]}/> : null}
 
             <Slider {...settings}>
                 <Wrap bg={background_1} id="first">
