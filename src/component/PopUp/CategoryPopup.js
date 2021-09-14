@@ -118,7 +118,9 @@ function CategoryPopup(props){
             }
         }
     }
-    const writeBtn = async ({target}) => {
+    const writeBtn = async (isPrivate) => {
+        // target.value === "private" ? console.log("private") : console.log("share")
+        console.log(isPrivate)
         const userEmail = window.sessionStorage.getItem('email');
         const id = await getUser(userEmail);
         try {
@@ -131,7 +133,7 @@ function CategoryPopup(props){
                 "gloomy": props.state.state.sad,
                 "shameful": props.state.state.shy,
                 "depth": props.depth,
-                "isPrivate": target.value === 'private',
+                "isPrivate": isPrivate,
                 "tag": choose
             }
             console.log(body)
@@ -182,8 +184,8 @@ function CategoryPopup(props){
                         </div>
                         :
                         <div className='bottomBtnRight'>
-                            <button className='privateBtn' onClick={writeBtn} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
-                            <button className='shareBtn' onClick={writeBtn} value='share'><img src={shareIcon} alt=""/>공유하기</button>
+                            <button className='privateBtn' onClick={() => writeBtn(true)} value='private'><img src={privateIcon} alt=""/>나만 보기</button>
+                            <button className='shareBtn' onClick={()=>writeBtn(false)} value='share'><img src={shareIcon} alt=""/>공유하기</button>
                         </div>
                     }
                 </div>
