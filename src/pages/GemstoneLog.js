@@ -39,6 +39,7 @@ const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
   background: #F3F3ED;
+  isolation: isolate;
 `
 const Wrap1 = styled.div`
  margin-top : 90px;
