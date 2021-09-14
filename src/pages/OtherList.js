@@ -66,6 +66,7 @@ const Div = styled.div`
     width : 100%;
     height: 100vh;
     background : #2C2C38;
+  isolation: isolate;
 `
 
 const WhiteScale = styled.img.attrs({

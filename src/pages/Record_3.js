@@ -209,6 +209,7 @@ const Wrap = styled.div`
     width : 100%;
     background : ${props => props.color};
     position: relative;
+  isolation: isolate;
 `
 
 const TextDiv = styled.div`

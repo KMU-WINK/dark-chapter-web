@@ -279,7 +279,7 @@ const Wrap = styled.div`
   width: 100vw;
   height: fit-content;
   background-size: contain;
-  //background: #f2f2ec;
+  isolation: isolate;
 `
 
 const Circles = styled.div`

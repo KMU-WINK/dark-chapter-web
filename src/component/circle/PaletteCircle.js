@@ -28,7 +28,7 @@ const PaletteCircle = (props) => {
     // console.log(props)
     return <Wrap>
         <Wrap2>
-            <White w={props.width} h={props.height}/>
+            {/*<White w={props.width} h={props.height}/>*/}
             <ShowCircle/>
         </Wrap2>
     </Wrap>

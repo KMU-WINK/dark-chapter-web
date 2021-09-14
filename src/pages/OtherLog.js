@@ -64,6 +64,7 @@ const Wrap = styled.div`
   height: 100vh;
   width: 100vw;
   background: ${props=>props.backgroundColor};
+  isolation: isolate;
 `
 const Wrap1 = styled.div`
   display : flex;
