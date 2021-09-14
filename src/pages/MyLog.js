@@ -146,6 +146,7 @@ const Wrap = styled.div`
   height: 100vh;
   width: 100vw;
   background: ${props=>props.backgroundColor};
+  isolation: isolate;
 `
 
 const Wrap2 = styled.div`

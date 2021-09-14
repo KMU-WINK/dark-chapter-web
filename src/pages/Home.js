@@ -118,6 +118,7 @@ const All = styled.div`
   height : 100vh;
   background: #F3F3ED;
   overflow : no-content;
+  isolation: isolate;
 `
 
 const Header = styled.div`

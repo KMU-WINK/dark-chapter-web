@@ -174,6 +174,7 @@ const Div = styled.div`
     background : #D2DADF;
     z-index:-1;
     overflow:hidden;
+  isolation: isolate;
 `
 
 const Scale = styled.img.attrs({
