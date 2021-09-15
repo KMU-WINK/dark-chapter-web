@@ -132,7 +132,7 @@ function CategoryPopup(props){
                 "funny": props.state.state.laugh,
                 "gloomy": props.state.state.sad,
                 "shameful": props.state.state.shy,
-                "depth": props.depth,
+                "depth": props.depth*-1,
                 "isPrivate": isPrivate,
                 "tag": choose
             }
